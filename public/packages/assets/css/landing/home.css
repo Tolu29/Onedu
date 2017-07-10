@@ -1,0 +1,87 @@
+.navbar {
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+#landLogo{
+  width: 3rem;
+}
+/*Intro*/
+
+@media (min-width: 768px) {
+    .view {
+        overflow: visible;
+        margin-top: -54px;
+    }
+}
+
+#section-1 {
+    z-index: 1;
+    color: #fff;
+    height: 100vh;
+}
+#section-1 .row {
+    position: fixed;
+}
+/*Parallax background*/
+#section-1 .parallax-layer-back {
+    background: url("/packages/assets/img/landing/intro.jpg")no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+/*Section with dummy content*/
+#section-2 {
+    z-index: 2;
+    position: relative;
+    background: #fff;
+    width: 100%;
+    padding-top: 3rem;
+}
+
+.landingLog{
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 7px;
+}
+.inputCont{
+  padding-top: 1.5rem;
+}
+
+.logInput{
+  width: 23rem;
+  height: 25px;
+  margin: 0 auto;
+  border: none;
+  border:solid 1px #ccc;
+  border-radius: 4px;
+  text-align: center;
+  margin-left: 2rem;
+  margin-bottom: .80rem;
+}
+
+.logLabel{
+  margin-left: 3rem !important;
+}
+
+#section-3{
+  z-index: 2;
+  position: relative;
+  background: #fff;
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.sections{
+
+}
+
+.imgAdvance{
+  border-radius: 50%;
+  width: 5rem;
+}

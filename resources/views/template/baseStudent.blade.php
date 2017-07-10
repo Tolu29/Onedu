@@ -1,7 +1,8 @@
 @extends('template.master')
 
 @section('css')
-<link rel="stylesheet" href="/packages/assets/css/templates/base.css">
+<link rel="stylesheet" href="/packages/assets/css/templates/baseStudent.css">
+@yield('css-plus')
 @stop
 
 @section('skin')
@@ -78,6 +79,13 @@ class="fixed-sn white-skin"
 
 @stop
 
+@section('content')
+  @yield('content-student')
+@stop
+
+
+
 @section('js')
-<script type="text/javascript" src="/packages/assets/js/base.js"></script>
+<script type="text/javascript" src="/packages/assets/js/baseStudent.js"></script>
+@yield('js-plus')
 @stop
