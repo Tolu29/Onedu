@@ -1,0 +1,111 @@
+.ad-UniInfo{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  display: -webkit-box;
+  border-radius: .23rem;
+}
+
+.ad-UniInfo>img{
+  width: 9rem;
+  height: 9rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 1.3rem;
+  border-radius: 50%;
+}
+
+.ad-UniInfo>div>p{
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+.ad-UniInfo>div>h2{
+  margin-top: 1.2rem;
+  font-weight: 400;
+}
+
+.ad-UniInfo>div{
+  margin-bottom: 1rem;
+}
+
+.ad-UniInfo>div>a{
+  margin-bottom: .8rem;
+}
+
+/*=======================*/
+
+.ad-plans{
+  background-color: #7c7c7c;
+  border-radius: .23rem;
+}
+
+.ad-plans>div>div>p{
+  padding-top: .8rem;
+  text-align: left;
+  padding-left: 1rem;
+  color: #ffffff;
+  padding-bottom: .3rem;
+}
+
+.ad-active{
+  background-color: #6f6f6f;
+}
+/*======================*/
+
+.ad-optionSel{
+  background-color: #454545;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  display: -webkit-box;
+}
+
+.ad-optionSel>div>div>h4{
+  margin-left: 3rem;
+  color: #ffffff;
+  padding-top: .8rem;
+}
+
+.ad-opt-descrip{
+  padding-left: 8rem;
+  color: #ffffff;
+}
+
+.ad-opt-descrip>div>h2{
+  margin-bottom: 2rem;
+}
+
+.ad-opt-descrip>div>p{
+  font-size: 1.2rem;
+}
+
+/*======================*/
+.preview{
+  background-color: #000000;
+  opacity: .95;
+  height: 140%;
+  width: 100%;
+  position: absolute;
+  z-index: 998;
+}
+
+.j{
+  opacity: 1;
+  z-index: 999;
+}
+
+.btnclosePrev{
+  position: absolute;
+  right: 2rem;
+}
+
+.ad-opt-descrip>textarea{
+  color: rgb(255, 255, 255);
+  width: 80%;
+  overflow: hidden;
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: auto;
+  max-height: 14rem;
+  resize: none;
+}

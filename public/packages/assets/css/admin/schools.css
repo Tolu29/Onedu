@@ -1,0 +1,174 @@
+.schoolHide{
+  display: none;
+}
+
+.padTopSchool{
+  padding-top: 9rem;
+}
+
+.schoolTableCont{
+  padding-top: 3rem;
+}
+
+.btnOPT{
+  display: flex;
+}
+
+.padTopSchool>button{
+  border-radius: .23rem;
+  background-color: #399c5f;
+  width: 11rem;
+}
+
+.btnAddImgs{
+  background-color: #cda939 !important;
+}
+
+.filterSchoolCont>button{
+  background-color: #5172a1;
+  height: 2.35rem;
+  width: 1.5rem;
+  right: .70rem;
+  bottom: .05rem;
+  border-radius: .23rem;
+}
+
+.filterSchoolCont>button>i{
+  right: .5rem;
+}
+
+.filterSchoolCont>input{
+  height: 2.4rem;
+  border-radius: .23rem;
+  outline: none;
+  border: solid 2px #d1d1d1;
+}
+
+thead>tr>th{
+  text-align: center;
+  background-color: #399c5f !important;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+tbody>tr>td{
+  text-align: center;
+}
+
+.adminDelBtn{
+  background-color: #b53625;
+  border-radius: .23rem;
+}
+
+.adminUpdBtn{
+  background-color: #5172a1;
+  border-radius: .23rem;
+}
+
+.colorRow1{
+  background-color: #c3c3c3 !important;
+}
+
+.colorRow2{
+  background-color: #ffffff;
+}
+
+.head{
+  background-color: #5172a1;
+}
+
+.logoWrap{
+  margin-bottom: 1rem;
+  height: 7rem;
+  border-radius: 50%;
+  width: 7rem;
+  margin-left: 2rem;
+}
+
+.fornBtnColor{
+  background-color: #5172a1 !important;
+  height: 3rem;
+}
+
+#logoPrev{
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+
+/*seccion click editar universidad*/
+
+.infoInpDisabled{
+  background-color: #ffffff !important;
+  outline: none;
+  border: solid 0;
+  box-shadow: none !important;
+}
+
+.contInput{
+  margin-top: 1.5rem;
+}
+.card-header{
+  background-color: #ffffff !important;
+}
+
+.btnLogo{
+  padding-top: 0px;
+}
+
+.padRowInfo{
+  margin-top: 3rem;
+}
+
+.padRowInfo>button{
+  border-radius: .23rem;
+  background-color: #399c5f;
+}
+
+.padRowInfo>h2{
+  margin-bottom: 0;
+}
+
+.aviableAssigned{
+  background-color: #5172a1;
+  text-align: center;
+  border-radius: .23rem;
+  color: #ffffff;
+  height: 2rem;
+}
+
+.aviassCont{
+  border: solid 1px #eaeaea;
+  max-height: 28rem;
+  height: 28rem;
+  overflow-y: scroll;
+  text-align: left !important;
+  padding-left: 1rem;
+}
+
+.assignedCareers{
+  text-align: left;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.rowInfoUniversity{
+  background-color: #ffffff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+#infoImg{
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+
+.btnAddInfo{
+  background-color: #5172a1;
+}
+
+.btnDelCareer{
+  background-color: #b53625;
+}

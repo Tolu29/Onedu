@@ -1,15 +1,100 @@
 .navbar {
-    background-color: transparent;
+    background-color: #5172a1
 }
 
 @media only screen and (max-width: 768px) {
-    .navbar {
-        background-color: #1C2331;
+    .ml-auto{
+      display: -webkit-box !important;
+    }
+
+    .futureOne{
+      text-align: center !important;
+      letter-spacing: 2px !important;
+    }
+
+    .padH1{
+      text-align: center;
+    }
+
+    .sec5Info{
+      letter-spacing: 0px !important;
+    }
+
+    .circleInfo{
+      height: 6rem !important;
+      width: 6rem !important;
+    }
+
+    .circuleCom{
+      position: relative !important;
+      top: 1rem !important;
+      left: .9rem !important;
+      font-size: .8rem !important;
+    }
+
+    .circleText{
+      position: relative !important;
+      left: 1rem !important;
+      top: 1.4rem !important;
+      font-size: 1.4rem;
+    }
+
+    .regInputCont{
+      padding-left: 1rem
+    }
+
+    .LandRegInp{
+      width: 18rem !important;
+    }
+
+    .landRegFa{
+      height: 3rem !important;
+      width: 2.5rem !important;
+      left: .3rem !important;
+    }
+
+    .adjustFa{
+      padding-left: .9em !important;
     }
 }
 
 #landLogo{
-  width: 3rem;
+  width: 3.5rem;
+}
+
+.circlegreen{
+  background-color: #399c5f;
+}
+
+.btnEnter{
+  background-color: #399c5f;
+  border-radius: .23rem;
+}
+
+.LandtextShad{
+  text-shadow: 0px 2px 2px rgba(150, 150, 150, 0.61);
+}
+
+.btnEnter:hover{
+  background-color: #399c5f !important;
+}
+
+.LandtextOnedu{
+  margin-bottom: 0;
+  color: white;
+  font-weight: 500;
+}
+
+.futureOne{
+  color: white;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+.landOpt{
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-right: 2rem !important;
 }
 /*Intro*/
 
@@ -42,15 +127,32 @@
     position: relative;
     background: #fff;
     width: 100%;
-    padding-top: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 .landingLog{
+  width: 27rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 7px;
 }
 .inputCont{
   padding-top: 1.5rem;
+}
+
+.headSec2{
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.descSec2{
+  letter-spacing: 2px;
+  color: #399c5f;
+  font-weight: 500;
+}
+
+.btnSec2{
+  background-color: #399c5f !important;
 }
 
 .logInput{
@@ -78,10 +180,401 @@
 }
 
 .sections{
-
+  z-index: 2;
+  position: relative;
+  background: #fff;
+  width: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem
 }
 
 .imgAdvance{
+  margin-top: 4rem;
+  margin-left: 4rem;
+  font-size: 3rem;
+  border: solid 3px;
   border-radius: 50%;
-  width: 5rem;
+  padding: 1rem;
+}
+
+.advanceColor{
+  background-color: #f4c945;
+}
+
+.advancePadd{
+  padding-top: 2rem;
+}
+
+.sec3Fimg{
+  padding: 0 !important;
+}
+
+.circleInfo{
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
+.circleText{
+  position: relative;
+  left: 2rem;
+  top: 3.1rem;
+  font-weight: 400;
+}
+
+.circuleCom{
+  position: relative;
+  top: 3.5rem;
+  left: 2.2rem;
+  font-weight: 500;
+}
+
+.LandRegInp{
+  width: 33rem;
+  height: 3rem;
+  margin: 0 auto;
+  border: none;
+  border:solid 1px #ccc;
+  border-radius: 5px;
+  outline: none;
+  color: #737474;
+  padding-left: 1rem;
+}
+
+.landRegFa{
+  background-color: #399c5f;
+  height: 3rem;
+  width: 3.5rem;
+  position: absolute;
+  left: -2.04rem;
+  border-top-left-radius: .23rem;
+  border-bottom-left-radius: .23rem;
+}
+
+.sec4Text{
+  padding-top: 7.5rem;
+  font-weight: 500
+}
+
+.sec4Color{
+  color: #399c5f
+}
+
+.adjustFa{
+  padding-left: 1.3rem;
+  padding-top: 1rem;
+}
+
+.regInputCont{
+  padding-top: 1.5rem;
+}
+
+.sec5Info{
+  color: #399c5f;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.fooBtn1{
+  border-radius: .23rem;
+  background-color: white;
+  color: green !important;
+  width: 13rem;
+}
+
+.fooBtn2{
+  border-radius: .23rem;
+  color: white !important;
+  border: 2px solid white;
+  width: 13rem;
+  background-color: transparent;
+}
+
+.btnReg{
+  background-color: #399c5f;
+  border-radius: .23rem;
+}
+
+.sec5Reg{
+  font-weight: 400;
+}
+
+.foo{
+  background-color: #5172a1 !important;
+}
+
+.social-section{
+  padding-bottom: 5rem;
+}
+
+
+
+
+/*medias query*/
+@media screen and (max-width: 1024px) and (min-width: 769px){
+  .advImg{
+    height: 27rem;
+  }
+
+  #section-2{
+    padding-bottom: 0;
+  }
+
+  .mdb-lightbox{
+    padding-top: 3rem;
+  }
+
+  .advancePadd{
+    font-size: 1.4rem;
+  }
+
+  .imgAdvance {
+    margin-left: 2rem;
+  }
+
+  .display-2{
+    font-size: 3.5rem !important;
+  }
+
+  .LandRegInp{
+    width: 29rem;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 737px){
+  .display-2{
+    font-size: 3.23rem !important;
+  }
+
+  .landingLog{
+    width: 21rem;
+  }
+
+  .logInput{
+    width: 18rem;
+  }
+
+  #section-2{
+    padding-bottom: 0;
+  }
+
+  .mdb-lightbox{
+    padding-top: 5rem;
+  }
+
+  .imgAdvance{
+    margin-left: 1rem;
+  }
+
+  .advancePadd {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .advImg{
+    height: 30.3rem;
+  }
+
+  .sec4Text{
+    padding-top: 3.5rem;
+  }
+
+  .sec5Info{
+    padding-top: 6rem;
+  }
+
+  .LandRegInp{
+    width: 21rem !important;
+  }
+
+  .btnReg{
+    margin-top: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 736px) and (min-width: 668px){
+
+  #logOn{
+    display: none;
+  }
+
+  .btnSec2{
+    margin-left: 26rem;
+  }
+
+  .imgAdvance{
+    margin-left: 21.5rem;
+  }
+
+  .LandRegInp {
+    width: 32rem !important;
+  }
+
+}
+
+@media screen and (max-width: 667px) and (min-width: 569px){
+
+  #logOn{
+    display: none;
+  }
+
+  .btnSec2{
+    margin-left: 26rem;
+  }
+
+  .imgAdvance{
+    margin-left: 19.5rem;
+  }
+
+  .sec4Text{
+    padding-bottom: 3rem;
+    padding-top: 0.5rem;
+    padding-left: 7rem;
+  }
+
+  .LandRegInp {
+    width: 32rem !important;
+  }
+}
+
+@media screen and (max-width: 568px) and (min-width: 376px){
+  #logOn{
+    display: none;
+  }
+
+  .display-2{
+    font-size: 3rem !important;
+  }
+
+  .btnSec2{
+    margin-left: 25rem;
+  }
+
+  .imgAdvance{
+    margin-left: 16rem;
+  }
+
+  .sec4Text{
+    padding-top: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 3rem;
+    padding-left: 7rem;
+  }
+
+  .circlegreen{
+    margin-left: 8rem;
+  }
+
+  .sec5Info{
+    padding-left: 8rem;
+  }
+
+  .sec5Reg{
+    padding-left: 10rem;
+  }
+
+  .headSec2{
+    letter-spacing: 3px;
+  }
+
+  .regInputCont{
+    padding-left: 6rem;
+  }
+
+  .landRegFa{
+    left: 4.96rem !important;
+  }
+
+  .LandRegInp{
+    width: 25rem !important;
+  }
+
+  .btnReg{
+    margin-right: 3rem !important;
+    border-radius: .23rem;
+    margin-top: 1.5rem;
+  }
+
+  .sections{
+    padding-top: 0;
+  }
+
+  #section-3{
+    padding-top: 0;
+  }
+
+}
+
+@media screen and (max-width: 375px) and (min-width: 321px){
+  .imgAdvance{
+    margin-left: 10rem;
+  }
+
+  #logOn{
+    display: none;
+  }
+
+  .padH1{
+    font-size: 4rem;
+  }
+
+  .btnSec2{
+    margin-left: 14rem;
+  }
+
+  .LandRegInp{
+    width: 21rem !important;
+  }
+
+  .sec5Reg{
+    font-size: 5rem;
+  }
+
+  .sec4Text{
+    padding-bottom: 2rem;
+    padding-top: 0.5rem;
+    font-weight: 500;
+    padding-left: 2rem;
+  }
+
+  .headSec2{
+    letter-spacing: 0px;
+  }
+}
+
+
+@media screen and (max-width: 320px) and (min-width: 1px){
+  #logOn{
+    display: none;
+  }
+
+  .display-2{
+    font-size: 3rem !important;
+  }
+
+  .btnSec2{
+    margin-left: 10rem;
+  }
+
+  .imgAdvance{
+    margin-left: 8rem;
+  }
+
+  .sec4Text{
+    padding-top: 1.5rem;
+    font-size: 3.4rem;
+    padding-bottom: 2rem;
+  }
+
+  .btnReg{
+    margin-top: 2rem;
+  }
+
+  .circleInfo{
+    margin-left: 0;
+  }
 }

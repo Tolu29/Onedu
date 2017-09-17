@@ -1,0 +1,61 @@
+.ad-imgHide{
+  display: none;
+}
+
+.tableCont{
+  margin-top: 10rem;
+}
+
+.btnAddimg{
+  background-color: #5172a1;
+}
+
+thead{
+  background-color: #399c5f;
+  color: #ffffff;
+}
+
+th{
+  text-align: center;
+}
+
+td{
+  text-align: center;
+}
+
+.btnDetail{
+    background-color: #5172a1;
+}
+
+.btnDelete{
+  background-color: #b53625;
+}
+
+.imgBtn{
+  background-color: #5172a1;
+  height: 4rem;
+  border-radius: .23rem;
+  padding-top: .5rem;
+}
+
+#previewInsta{
+  height: 15rem;
+  width: 100%;
+}
+
+.btnSave{
+  background-color: #5172a1;
+}
+
+.saveHeader{
+  background-color: #5172a1;
+}
+
+#previewUpd{
+  height: 15rem;
+  width: 100%;
+}
+
+.btnUpd{
+  background-color: #5172a1;
+}

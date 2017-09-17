@@ -1,0 +1,66 @@
+.schoolsbtnAdd{
+  padding-top: 10rem;
+}
+
+.filterSchoolCont{
+  padding-top: 10rem;
+}
+
+.schoolTableCont{
+  padding-top: 3rem;
+}
+
+.schoolsbtnAdd>button{
+  border-radius: .23rem;
+  background-color: #399c5f;
+}
+
+.filterSchoolCont>button{
+  background-color: #5172a1;
+  height: 2.35rem;
+  width: 1.5rem;
+  right: .70rem;
+  bottom: .05rem;
+  border-radius: .23rem;
+}
+
+.filterSchoolCont>button>i{
+  right: .5rem;
+}
+
+.filterSchoolCont>input{
+  height: 2.4rem;
+  border-radius: .23rem;
+  outline: none;
+  border: solid 2px #d1d1d1;
+}
+
+thead>tr>th{
+  text-align: center;
+  background-color: #399c5f !important;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+tbody>tr>td{
+  text-align: center;
+}
+
+.adminDelBtn{
+  background-color: #b53625;
+  border-radius: .23rem;
+}
+
+.adminUpdBtn{
+  background-color: #5172a1;
+  border-radius: .23rem;
+}
+
+.colorRow1{
+  background-color: #c3c3c3 !important;
+}
+
+.colorRow2{
+  background-color: #ffffff;
+}

@@ -1,0 +1,101 @@
+.messagesCont{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  height: 32rem;
+  border-top-left-radius: .23rem;
+  border-bottom-left-radius: .23rem;
+}
+
+.universitysActive{
+  margin-top: 9rem;
+  background-color: #f4c945;
+  height: 32rem;
+  border-top-right-radius: .23rem;
+  border-bottom-right-radius: .23rem;
+}
+
+.row>div{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.userMessages{
+  width: 88.8%;
+  background-color: #399c5f;
+  text-align: left;
+  border-radius: 1rem;
+  margin-left: 2.3rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+.userMessages>p{
+  margin: 1rem;
+  color: #ffffff;
+}
+
+.universityMessages{
+  width: 88.8%;
+  background-color: #cda939;
+  text-align: left;
+  border-radius: 1rem;
+  margin-left: 2.3rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+.universityMessages>p{
+  margin: 1rem;
+  color: #ffffff;
+}
+
+.universitysActive>.row>.col-md-11>div>img{
+  border-radius: 100%;
+  width: 3rem;
+  margin-top: .3rem;
+  margin-right: .5rem;
+}
+
+.universitysActive>.row>.col-md-11>div>p{
+  color: #ffffff;
+  margin-top: .3rem;
+  margin-right: .5rem;
+  font-weight: 600;
+  text-align: right;
+  padding-top: 1rem;
+  font-size: .8rem;
+  margin-right: 4rem;
+}
+
+.textInput{
+  position: absolute;
+  bottom: .8rem;
+  margin-left: 2rem;
+}
+
+.textInput>input{
+  height: 2.4rem;
+  width: 42rem;
+  border-radius: .23rem;
+  outline: none;
+  border: 1px solid #d1d1d1;
+  color: #686868;
+  font-weight: 100;
+  padding-left: 1rem;
+}
+
+.textInput>button{
+  background-color: #5172a1;
+  border-radius: .23rem;
+  position: absolute;
+  right: -7.6rem;
+  top: -.4rem;
+  height: 2.4rem;
+}
+
+.universitysActive>.row>.col-md-11>div{
+  margin: 1rem;
+  background-color: #cda939;
+  width: 17.8rem;
+  height: 3.5rem;
+}

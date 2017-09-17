@@ -11,6 +11,168 @@
 |
 */
 
-Route::get('/', function () {
-    return view('landing.home');
+
+
+/*
+* COMIENZO rutasLogIn
+*/
+
+  // LANDING
+  Route::get('/', function () {
+      return view('landing.home');
+  });
+
+  Route::post('/signIn', 'LoginController@signIn');
+  Route::post('/logIn', 'LoginController@logIn');
+  Route::post('/logOut', 'LoginController@logOut');
+
+/*
+* FIN rutas rutasLogIn
+*/
+
+
+
+Route::group(['middleware' => ['auth']], function() {
+
+
+  Route::group(['middleware' => ['role:student,view']], function () {
+    //VISTAS ESTUDIANTE
+    Route::get('/student-careers', function () {
+        return view('student.student-careers');
+    });
+
+    Route::get('/student-guide', function () {
+        return view('student.student-guide');
+    });
+
+    // Route::get('/student-messages', function () {
+    //     return view('student.student-messages');
+    // });
+
+    Route::get('/student-news', function () {
+        return view('student.student-news');
+    });
+
+    Route::get('/student-profile', function () {
+        return view('student.student-profile');
+    });
+
+
+    /*
+    * COMIENZO rutas StudentController
+    */
+      Route::post('/getCareers', 'StudentController@getCareers');
+    /*
+    * FIN rutas StudentController
+    */
+
+  });
+
+
+
+  Route::group(['middleware' => ['role:universidad,gestion noticias']], function () {
+    //VISTAS DE UNIVERSIDADES
+    Route::get('/publications', function () {
+        return view('university.publications');
+    });
+
+    Route::get('/updNew', function () {
+        return view('university.updNew');
+    });
+
+    // Route::get('/messages', function () {
+    //     return view('university.messages');
+    // });
+
+    Route::get('/newPublications', function () {
+        return view('university.newPublications');
+    });
+
+    /*
+    * COMIENZO rutas UniversityController
+    */
+
+    // vista newPublications
+    Route::post('/saveNews', 'UniversityController@saveNews');
+    Route::post('/getUniNews', 'UniversityController@getUniNews');
+    Route::post('/sessionUni', 'UniversityController@sessionUni');
+    Route::post('/infoNew', 'UniversityController@infoNew');
+    Route::post('/updateNew', 'UniversityController@updateNew');
+    Route::post('/imgUni', 'UniversityController@imgUni');
+
+    /*
+    * FIN rutas UniversityController
+    */
+  });
+
+
+
+  Route::group(['middleware' => ['role:admin,administrar']], function () {
+    // VISTAS ADMIN
+    Route::get('/schools', function () {
+        return view('admin.schools');
+    });
+
+    Route::get('/admin-images', function () {
+        return view('admin.admin-images');
+    });
+
+    // Route::get('/adminUsers', function () {
+    //     return view('admin.adminUsers');
+    // });
+
+    Route::get('/careers', function () {
+        return view('admin.careers');
+    });
+
+    Route::get('/information', function () {
+        return view('admin.information');
+    });
+
+    Route::get('/admin-preview', function () {
+        return view('admin.admin-preview');
+    });
+
+
+    /*
+    * COMIENZO rutas administerController
+    */
+    //vista schools
+    Route::post('/saveUni', 'AdministerController@save');
+    Route::post('/allUniversities', 'AdministerController@allUniversities');
+    Route::post('/deleteUniversity', 'AdministerController@deleteUniversity');
+    Route::post('/universityInfo', 'AdministerController@universityInfo');
+    Route::post('/updateUniversity', 'AdministerController@updateUniversity');
+    Route::post('/availableCareers', 'AdministerController@availableCareers');
+    Route::post('/saveAssignedCar', 'AdministerController@saveAssignedCar');
+    Route::post('/delAssignedCar', 'AdministerController@delAssignedCar');
+    Route::post('/newinfo', 'AdministerController@newinfo');
+    // vista careers
+    Route::post('/saveCareer', 'AdministerController@saveCareer');
+    Route::post('/allCareers', 'AdministerController@allCareers');
+    Route::post('/deleteCareer', 'AdministerController@deleteCareer');
+    Route::post('/infoCareer', 'AdministerController@infoCareer');
+    Route::post('/updateCareer', 'AdministerController@updateCareer');
+    //vista informacion
+    Route::post('/saveInformation', 'AdministerController@saveInformation');
+    Route::post('/getInformation', 'AdministerController@getInformation');
+    Route::post('/mixVideo', 'AdministerController@mixVideo');
+    Route::post('/getVideo', 'AdministerController@getVideo');
+    Route::post('/getPlans', 'AdministerController@getPlans');
+    Route::post('/mixPlans', 'AdministerController@mixPlans');
+    Route::post('/deletePlan', 'AdministerController@deletePlan');
+    Route::post('/getPreview', 'AdministerController@getPreview');
+    Route::post('/getPlanPrev', 'AdministerController@getPlanPrev');
+    Route::post('/getinfoSelected', 'AdministerController@getinfoSelected');
+    // vista admin-images
+    Route::post('/saveImg', 'AdministerController@saveImg');
+    Route::post('/getAllImg', 'AdministerController@getAllImg');
+    Route::post('/getImgInfo', 'AdministerController@getImgInfo');
+    Route::post('/updImg', 'AdministerController@updImg');
+    /*
+    * FIN rutas administerController
+    */
+  });
+
+
 });

@@ -6,7 +6,7 @@
 @stop
 
 @section('skin')
-class="fixed-sn white-skin"
+class="fixed-sn white-skin backColor"
 @stop
 
 @section('head')
@@ -18,7 +18,7 @@ class="fixed-sn white-skin"
         <!-- Logo -->
         <li>
             <div class="logo-wrapper">
-                <img src="/packages/assets/img/students/studentPrueba.jpg" class="img-fluid flex-center mx-auto" id="userPhoto">
+                <img src="/packages/assets/img/miscellaneous/manager.png" class="img-fluid flex-center mx-auto" id="userPhoto">
             </div>
         </li>
         <!--/. Logo -->
@@ -27,10 +27,10 @@ class="fixed-sn white-skin"
         <li>
             <ul class="collapsible collapsible-accordion">
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont"> Publicaciones</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/schools"> Universidades</a>
                 </li>
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Mensajes</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/careers"> Carreras</a>
                 </li>
             </ul>
         </li>
@@ -39,24 +39,22 @@ class="fixed-sn white-skin"
     </ul>
     <!--/. Sidebar navigation -->
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar double-nav">
-        <!-- Breadcrumb-->
-        <div class="breadcrumb-dn mr-auto burguer">
-            <img src="/packages/assets/img/miscellaneous/logo.png" class="img-fluid flex-center" id="Baselogo">
-        </div>
-        <!-- SideNav slide-out button -->
-        <div class="float-left">
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars  burguerColor"></i></a>
-        </div>
-        <div class="mx-auto searchB">
-          <input value="Busca una carrera" class="baseSearch">
-        </div>
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar double-nav z-depth-2">
+      <!-- Breadcrumb-->
+      <div class="breadcrumb-dn mr-auto burguer">
+          <img src="/packages/assets/img/miscellaneous/logo.png" class="img-fluid flex-center" id="Baselogo">
+      </div>
+      <!-- SideNav slide-out button -->
+      <div class="float-left landOnedu">
+        <h2 class="textOnedu">ONEDU</h2>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars  burguerColor"></i></a>
+      </div>
 
-        <ul class="nav navbar-nav nav-flex-icons ml-auto">
-            <li class="nav-item">
-                <button type="button" class="btn waves-effect BtnExit">Salir</button>
-            </li>
-        </ul>
+      <ul class="nav navbar-nav nav-flex-icons ml-auto">
+          <li class="nav-item">
+            <button type="button" class="btn waves-effect BtnExit z-depth-2">Salir</button>
+          </li>
+      </ul>
     </nav>
     <!-- /.Navbar -->
 </header>
@@ -65,12 +63,12 @@ class="fixed-sn white-skin"
 @stop
 
 @section('content')
-  @yield('content-student')
+  @yield('content-admin')
 @stop
 
 
 
 @section('js')
-<script type="text/javascript" src="/packages/assets/js/baseStudent.js"></script>
+<script type="text/javascript" src="/packages/assets/js/baseAll.js"></script>
 @yield('js-plus')
 @stop

@@ -1,0 +1,252 @@
+.hideCareers{
+  display: none;
+}
+
+/*
+Carreras
+*/
+
+.careersCont{
+  margin-top: 10rem;
+  border-radius: .23rem;
+  background-color: #ffffff;
+}
+
+.careerNameCont{
+  margin-left: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.careerNameCont>p{
+  letter-spacing: .5px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.careerNameCont>h2{
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.available-universities{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  border-top: 5px solid #f4c945;
+  border-radius: .23rem;
+  height: 6rem;
+}
+
+/*
+Descripcion de carreras
+*/
+
+.available-universities>select{
+  outline: none;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  border: 2px solid #d1d1d1;
+  color: #686868;
+  padding-left: 1rem;
+  font-weight: 100;
+  border-radius: .23rem;
+}
+
+.available-universities>label{
+  letter-spacing: .5px;
+  color: #686868;
+  padding-left: 7rem;
+  margin-top: 1rem;
+}
+
+.jumbotron>div{
+  display: inline-block;
+  background-color: red;
+  height: 5rem;
+  width: 11rem;
+}
+
+.jumbotron>div>p{
+  padding: 2rem;
+}
+
+.contDesc{
+  margin-top: 2rem;
+  margin-bottom: 0;
+  border-radius: .23rem;
+  height: 5rem;
+}
+
+.parentCol{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.parentCol>div{
+  box-shadow: none;
+  background-color: #eaeaea;
+  cursor: pointer;
+}
+
+.colExplanation{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.explanationCont{
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+  /*height: 20rem;*/
+}
+
+.explanationCont>div{
+  margin-top: 1.7rem;
+  margin-left: 4.39rem;
+  background-color: #ffffff;
+  width: 9rem;
+  height: 9rem;
+  display: inline-block;
+  margin-bottom: .6rem;
+}
+
+.explanationCont>div>img{
+  width: 100%;
+  margin-bottom: .8rem;
+}
+
+.explanationCont>p{
+  padding-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: left;
+  font-weight: 500;
+}
+
+/*
+descripcion de escuelas
+*/
+
+
+.schoolInfo{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  display: -webkit-box;
+}
+
+.schoolInfo>img{
+  margin-left: 1rem;
+  width: 9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
+.schoolInfo>div{
+  margin-left: 2rem;
+}
+
+.likeZone>i{
+  position: absolute;
+  right: 3rem;
+  bottom: 8rem;
+}
+
+.schoolInfo>div>h2{
+  font-weight: 400;
+  margin-top: 2rem;
+}
+
+.schoolInfo>div>p{
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+.schoolOptions{
+  background-color: #7c7c7c;
+}
+
+.schoolOptions>div{
+  color: #ffffff;
+  /*text-align: center;*/
+}
+
+.schoolOptions>.row>.col-md-4{
+  margin-top: .5rem;
+  margin-bottom: .5em;
+  padding-left: 4.5rem;
+  /*text-align: center;*/
+}
+
+/*color de opciones activas*/
+.schoolOptions>.row>.col-md-4>div:hover{
+  background-color: #6f6f6f;
+  height: 1.5rem;
+  width: 14rem !important;
+  border-radius: .25rem;
+}
+
+.schoolOptions>.row>.col-md-4>div>a{
+  font-weight: 300;
+  padding-left: .4rem;
+}
+
+.UniOptDescription{
+  background-color: #454545;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.UniOptDescription>.row>.col-md-4{
+  display: inline-grid;
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.UniOptDescription>.row>.col-md-4>a{
+  margin-left: 4rem;
+  margin-top: .6rem;
+}
+
+.UniOptDescription>.row>.col-md-4>a:first-child{
+  margin-top: 3rem;
+}
+
+.UniOptDescription>.row>.col-md-4>a:last-child{
+  margin-bottom: 3rem;
+}
+
+.contMat>h2{
+  font-size: 2.5rem;
+  padding-top: 3rem;
+  font-weight: 400;
+}
+
+.contMat>p:first-of-type{
+  padding-top: 1.5rem;
+}
+
+.contMat>p{
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+}
+
+.mapCont{
+  margin-top: 9rem;
+  border-top: .5rem solid #f4c945;
+  background-color: #ffffff;
+  height: 75vh;
+  margin-bottom: 3rem;
+}
+
+.mapCont>p{
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mapCont>iframe{
+  padding-left: 3.5rem;
+}

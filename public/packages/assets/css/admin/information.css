@@ -1,0 +1,141 @@
+.infoHide{
+  display: none;
+}
+
+.titles{
+  background-color: #ffffff;
+  margin-top: 2rem;
+  height: 6rem;
+  text-align: center;
+}
+
+#text{
+  padding: 1rem;
+}
+
+.titles>input{
+  margin: 2rem;
+  width: 80%;
+  background-color: #eaeaea;
+}
+
+.titles>label{
+  padding-left: 6rem;
+}
+
+.newInfo{
+  margin-top: 4rem !important;
+}
+
+.newInfo>textarea{
+  background-color: #ffffff;
+  height: 16.5rem;
+  overflow-y: scroll;
+  max-height: 16.5rem;
+  margin-bottom: 1rem;
+}
+
+.btnViewInfo{
+  background-color: #399c5f;
+  border-radius: .23rem;
+}
+
+.btnInfo{
+  border-radius: .23rem;
+  background-color: #5172a1;
+}
+
+.btnSaveInfo{
+  border-radius: .23rem;
+  background-color: #5172a1;
+}
+
+.card{
+  text-align: center;
+  height: 3rem;
+  width: 9rem;
+  padding-top: 1rem;
+  border-radius: .23rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.infoCareer{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  height: auto;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  border-radius: .23rem;
+}
+
+.infoCareer>div{
+  margin-top: 1rem;
+}
+
+/*=======*/
+
+.contTable{
+  background-color: #ffffff;
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+  border-radius: .23rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+thead{
+  background-color: #399c5f;
+  color: #ffffff;
+  border-radius: .23rem;
+}
+
+.btnDetails{
+  background-color: #5172a1;
+}
+
+.btnDelete{
+  background-color: #b53625;
+}
+
+.titlePlan{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.textPlan{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.textPlan>textarea{
+  overflow-y: scroll;
+  height: 9rem;
+  max-height: 9rem;
+}
+
+.btnWrap{
+  margin-top: .8rem;
+}
+
+.btnSavePlan{
+  background-color: #5172a1;
+}
+
+.btnBack{
+  background-color: #399c5f;
+}
+
+.btnSaveVid{
+  background-color: #5172a1;
+}
+
+.addPlan{
+  background-color: #399c5f;
+}
+
+.btnCancel{
+  background-color: #b53625;
+}
