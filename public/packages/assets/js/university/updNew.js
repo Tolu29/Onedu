@@ -9,7 +9,6 @@ $(function(){
 	})
 	.done(function(data){
 		setTimeout(function(){ tinyMCE.activeEditor.setContent(data.cuerpo); }, 3000);
-
 	});
 
 

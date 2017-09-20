@@ -4,12 +4,12 @@
 <link rel="stylesheet" href="/packages/assets/css/student/student-careers.css">
 @stop
 
-@section('content-student') 
+@section('content-student')
 <div class="container">
 
 
 <!-- PRIMER NIVEL -->
-  <div class="row wow" id="fisrtLevel">
+  <div class="row wow fisrtLevel">
     <div class="col-md-12">
       <div class="careersCont z-depth-2">
 
@@ -20,17 +20,14 @@
 
 
 <!-- SEGUNDO NIVEL -->
-  <div class="row wow hideCareers" id="secondLevel1">
+  <div class="row wow hideCareers secondLevel">
 
     <div class="col-md-12">
 
       <div class="available-universities z-depth-2">
-        <label>Default Select</label>
+        <label>Carreras Disponibles</label>
           <select class="browser-default">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            <option value="" disabled selected>Escoge una carrera</option>
           </select>
       </div>
 
@@ -39,7 +36,7 @@
 
   </div>
 
-  <div class="row wow hideCareers" id="secondLevel2">
+  <div class="row wow hideCareers secondLevel">
 
     <div class="col-md-2 parentCol">
       <div class="jumbotron contDesc optUniversities">
@@ -54,28 +51,31 @@
     </div>
 
     <div class="col-md-3 parentCol">
-      <div class="jumbotron contDesc">
+      <div class="jumbotron contDesc optProfile">
         <p class="text-center">PERFIL DE EGRESO</p>
       </div>
     </div>
 
     <div class="col-md-2 parentCol">
-      <div class="jumbotron contDesc">
+      <div class="jumbotron contDesc optRelated">
         <p class="text-center">RELACIONADAS</p>
       </div>
     </div>
 
     <div class="col-md-3 parentCol">
-      <div class="jumbotron contDesc">
+      <div class="jumbotron contDesc optCapm">
         <p class="text-center">CAMPOS DE TRABAJO</p>
       </div>
     </div>
 
   </div>
 
-  <div class="row wow hideCareers" id="secondLevel3">
+  <div class="row wow hideCareers secondLevel">
     <div class="col-md-12 colExplanation">
-      <div class="explanationCont z-depth-2">
+      <div class="explanationCont z-depth-2 container">
+
+      </div>
+      <div class="relatedCont z-depth-2 container">
 
       </div>
     </div>

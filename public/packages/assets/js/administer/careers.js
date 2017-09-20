@@ -1,5 +1,5 @@
 $(function(){
-  var infoArray = [], nameCard = 1 , updInfo = [], newInfo = [];
+  var infoArray = [], nameCard = 1 , updInfo = [], newInfo = [], updAjax = [];
 
   $.ajax({
     url: "/allCareers",
@@ -29,20 +29,26 @@ $(function(){
   $("body").on('click', '.btnmodalReg', function(){
     $(".careerLvl2").removeClass('careerHide');
     $(".careerLvl1").addClass('careerHide');
-    createInfo();
     $("[name='1']").css("background-color", "#5172a1");
+    saveBtn();
   });
 
+
   $("body").on('click', '.next', function(){
-    if (nameCard >= 5) {
-      infoArray.push($("#textInfo").val());
+    if (nameCard == 6) {
+      infoArray.push(tinyMCE.activeEditor.getContent());
       $(".next").remove();
       $(".btnSave").append("<button type='button' class='btn z-depth-2 btnRegCareer'>Guardar</button>");
     }else {
-      infoArray.push($("#textInfo").val());
-      createInfo();
+      if (nameCard == 3 || nameCard == 4) {
+        infoArray.push(tinyMCE.activeEditor.getContent());
+      }else {
+        infoArray.push($("[name='textInfo" + nameCard + "']").val());
+      }
+      $("[name='contInfo" + nameCard + "']").addClass('careerHide');
       nameCard += 1;
-      $(".cardColor").css("background-color", "#d5d2d2")
+      $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+      $(".cardColor").css("background-color", "#d5d2d2");
       $("[name=" + nameCard + "]").css("background-color", "#5172a1");
     }
   });
@@ -56,7 +62,8 @@ $(function(){
       level: infoArray[1],
       description: infoArray[2],
       profile: infoArray[3],
-      group: infoArray[4]
+      group: infoArray[4],
+      lab_camp: infoArray[5]
     }
 
     $.ajax({
@@ -72,133 +79,194 @@ $(function(){
         toastr.success('La carrera se ha borrado con exito');
         window.location.reload();
       }else {
-        toastr.error('Ingresa los datos correctamente');
+        toastr.error('Esto es incomodo... Podrias recargar la pagina');
       }
     });
 
   });
 
-  $("body").on('click', '.btnUpd', function(){
-    $(".careerLvl2").removeClass('careerHide');
-    $(".careerLvl1").addClass('careerHide');
-    let id = $(this).data('id')
-    let data = {
-      id: id
-    }
-    $.ajax({
-      url: "/infoCareer",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    })
-    .done(function(data){
-      newInfo = [id];
-      $i = 1
-      $.each(data, function(i){
-        updInfo[$i] = data[i];
-        $i += 1;
-      });
-      $("[name='1']").css("background-color", "#5172a1");
-      nameCard = 1;
-      createInfoUpd();
-      $("#textInfoUpd").text(updInfo[1]);
-    });
-  });
 
 
-  $("body").on('click', '.nextUpd', function(){
-    if (nameCard >= 5) {
-      newInfo.push($("#textInfoUpd").val());
-      $(".nextUpd").remove();
-      $(".btnSave").append("<button type='button' class='btn z-depth-2 btnUpdCareer'>Guardar</button>");
-    }else {
-      newInfo.push($("#textInfoUpd").val());
-      nameCard += 1;
-      createInfoUpd();
-      $("#textInfoUpd").text(updInfo[nameCard]);
-      $(".cardColor").css("background-color", "#d5d2d2")
-      $("[name=" + nameCard + "]").css("background-color", "#5172a1");
-    }
-  });
-
-
-  $("body").on('click', '.btnUpdCareer', function(){
-
-    let data = {
-      career: newInfo[1],
-      level: newInfo[2],
-      description: newInfo[3],
-      profile: newInfo[4],
-      group: newInfo[5],
-      id: newInfo[0]
-    }
-
-    $.ajax({
-      url: "/updateCareer",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    })
-    .done(function(data){
-      if(data == "La carrera se actualizo correctamente"){
-        toastr.success('La carrera se actualizo correctamente');
-        window.location.reload();
-      }else {
-        toastr.error('Ingresa los datos correctamente');
-      }
-    });
-  });
-
-
-  $("body").on('click', '.btnDelCareer', function(){
-    let trParent = $(this).parent().parent();
-    let data = {
-      id: $(this).data('id')
-    }
-    $.ajax({
-      url: "/deleteCareer",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    })
-    .done(function(data){
-      if (data == "La carrera se ha borrado con exito") {
-        toastr.success('La carrera se ha borrado con exito');
-        trParent.remove();
-      }else {
-        toastr.error('No se puede borrar intentalo mas tarde');
-      }
-    });
-  });
+  // $("body").on('click', '.btnUpd', function(){
+  //   $(".careerLvl2").removeClass('careerHide');
+  //   $(".careerLvl1").addClass('careerHide');
+  //   let id = $(this).data('id')
+  //   let data = {
+  //     id: id
+  //   }
+  //   $.ajax({
+  //     url: "/infoCareer",
+  //     type: "POST",
+  //     data: data,
+  //     headers: {
+  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //     }
+  //   })
+  //   .done(function(data){
+  //     newInfo = [id];
+  //     $i = 1
+  //     $.each(data, function(i){
+  //       updInfo[$i] = data[i];
+  //       $i += 1;
+  //     });
+  //     $("[name='1']").css("background-color", "#5172a1");
+  //     $("[name='textInfo" + nameCard + "']").val(updInfo[1]);
+  //     nameCard = 1;
+  //     updBtn();
+  //   });
+  // });
+  //
+  //
+  //
+  // $("body").on('click', '.nextUpd', function(){
+  //   if (nameCard >= 5) {
+  //     newInfo.push($("#textInfoUpd").val());
+  //     $(".nextUpd").remove();
+  //     $(".btnSave").append("<button type='button' class='btn z-depth-2 btnUpdCareer'>Guardar</button>");
+  //   }else {
+  //     newInfo.push($("#textInfoUpd").val());
+  //     $("[name='contInfo" + nameCard + "']").addClass('careerHide');
+  //     nameCard += 1;
+  //     $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+  //     if (nameCard == 3 || nameCard == 4) {
+  //       setTimeout(function(){ tinyMCE.activeEditor.setContent("<p>mdlkmalfkmaslkdmalskdmalskmdalksmdlaksmdlakmsdlkamsdlkm<p/>"); }, 3000);
+  //     }else {
+  //       $("[name='textInfo" + nameCard + "']").val(updInfo[nameCard]);
+  //     }
+  //     $(".cardColor").css("background-color", "#d5d2d2");
+  //     $("[name=" + nameCard + "]").css("background-color", "#5172a1");
+  //   }
+  // });
+  //
+  //
+  //
+  // $("body").on('click', '.btnUpdCareer', function(){
+  //
+  //   let data = {
+  //     career: newInfo[1],
+  //     level: newInfo[2],
+  //     description: newInfo[3],
+  //     profile: newInfo[4],
+  //     group: newInfo[5],
+  //     id: newInfo[0]
+  //   }
+  //
+  //   // $.ajax({
+  //   //   url: "/updateCareer",
+  //   //   type: "POST",
+  //   //   data: data,
+  //   //   headers: {
+  //   //   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //   //   }
+  //   // })
+  //   // .done(function(data){
+  //   //   if(data == "La carrera se actualizo correctamente"){
+  //   //     toastr.success('La carrera se actualizo correctamente');
+  //   //     window.location.reload();
+  //   //   }else {
+  //   //     toastr.error('Ingresa los datos correctamente');
+  //   //   }
+  //   // });
+  // });
+  //
+  //
+  // $("body").on('click', '.btnDelCareer', function(){
+  //   let trParent = $(this).parent().parent();
+  //   let data = {
+  //     id: $(this).data('id')
+  //   }
+  //   $.ajax({
+  //     url: "/deleteCareer",
+  //     type: "POST",
+  //     data: data,
+  //     headers: {
+  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //     }
+  //   })
+  //   .done(function(data){
+  //     if (data == "La carrera se ha borrado con exito") {
+  //       toastr.success('La carrera se ha borrado con exito');
+  //       trParent.remove();
+  //     }else {
+  //       toastr.error('No se puede borrar intentalo mas tarde');
+  //     }
+  //   });
+  // });
 
 
 
 });
 
-function createInfo(){
-  $(".infoCareerCont").empty();
-  $(".btnSave").empty();
-  $(".infoCareerCont").append(
-    "<div class='md-form text-center'>" +
-      "<textarea id='textInfo' rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>" +
-    "</div>"
-  )
+
+function updBtn(){
+  $(".btnSave").append("<button type='button' class='btn z-depth-2 nextUpd'>Siguiente</button>");
+}
+
+function saveBtn(){
   $(".btnSave").append("<button type='button' class='btn z-depth-2 next'>Siguiente</button>");
 }
 
-function createInfoUpd(){
-  $(".infoCareerCont").empty();
-  $(".btnSave").empty();
-  $(".infoCareerCont").append(
-    "<div class='md-form text-center'>" +
-      "<textarea id='textInfoUpd' rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>" +
-    "</div>"
-  )
-  $(".btnSave").append("<button type='button' class='btn z-depth-2 nextUpd'>Siguiente</button>");
-}
+
+/*TiNYMCE*/
+
+tinymce.init({
+	/* replace textarea having class .tinymce with tinymce editor */
+	selector: "textarea.tinymce",
+
+  branding: false,
+
+	/* theme of the editor */
+	theme: "modern",
+	skin: "lightgray",
+
+	/* width and height of the editor */
+	width: "100%",
+	height: 300,
+
+	/* display statusbar */
+	statubar: true,
+
+	/* plugin */
+	plugins: [
+		"advlist autolink link image lists charmap print preview hr anchor pagebreak",
+		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+		"save table contextmenu directionality emoticons template paste textcolor"
+	],
+
+	/* toolbar */
+	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor emoticons",
+
+	/* style */
+	style_formats: [
+		{title: "Headers", items: [
+			{title: "Header 1", format: "h1"},
+			{title: "Header 2", format: "h2"},
+			{title: "Header 3", format: "h3"},
+			{title: "Header 4", format: "h4"},
+			{title: "Header 5", format: "h5"},
+			{title: "Header 6", format: "h6"}
+		]},
+		{title: "Inline", items: [
+			{title: "Bold", icon: "bold", format: "bold"},
+			{title: "Italic", icon: "italic", format: "italic"},
+			{title: "Underline", icon: "underline", format: "underline"},
+			{title: "Strikethrough", icon: "strikethrough", format: "strikethrough"},
+			{title: "Superscript", icon: "superscript", format: "superscript"},
+			{title: "Subscript", icon: "subscript", format: "subscript"},
+			{title: "Code", icon: "code", format: "code"}
+		]},
+		{title: "Blocks", items: [
+			{title: "Paragraph", format: "p"},
+			{title: "Blockquote", format: "blockquote"},
+			{title: "Div", format: "div"},
+			{title: "Pre", format: "pre"}
+		]},
+		{title: "Alignment", items: [
+			{title: "Left", icon: "alignleft", format: "alignleft"},
+			{title: "Center", icon: "aligncenter", format: "aligncenter"},
+			{title: "Right", icon: "alignright", format: "alignright"},
+			{title: "Justify", icon: "alignjustify", format: "alignjustify"}
+		]}
+	]
+
+});

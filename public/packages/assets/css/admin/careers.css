@@ -82,19 +82,7 @@ tbody>tr>td{
 }
 
 .infoCareerCont{
-  background-color: #ffffff;
-  border-radius: .23rem;
   margin-top: 2rem;
-  height: 20rem;
-}
-
-.infoCareerCont>div>textarea{
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 90%;
-  resize: none;
-  height: 18rem;
-  padding: 2rem;
 }
 
 .infoCareer{
@@ -129,4 +117,20 @@ tbody>tr>td{
   margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: #5172a1;
+  border-radius: .23rem;
+}
+
+.nameCareer{
+  height: 6rem;
+  background-color: #ffffff;
+  border-radius: .23rem;
+}
+
+.nameCareer>input{
+  margin-top: 2rem;
+  width: 80%;
+}
+
+.nameCareer>label{
+  margin-left: 6rem;
 }

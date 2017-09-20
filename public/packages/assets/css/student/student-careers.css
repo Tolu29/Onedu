@@ -30,6 +30,11 @@ Carreras
   font-size: 3rem;
 }
 
+.careerNameRelated>h2{
+  font-weight: 500;
+  font-size: 3rem;
+}
+
 .available-universities{
   margin-top: 9rem;
   background-color: #ffffff;
@@ -100,6 +105,11 @@ Descripcion de carreras
   background-color: #ffffff;
   margin-bottom: 1rem;
   /*height: 20rem;*/
+}
+
+.relatedCont{
+  background-color: #ffffff;
+  margin-bottom: 1rem;
 }
 
 .explanationCont>div{

@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function() {
     * COMIENZO rutas StudentController
     */
       Route::post('/getCareers', 'StudentController@getCareers');
+      Route::post('/getSelectCareer', 'StudentController@getSelectCareer');
     /*
     * FIN rutas StudentController
     */

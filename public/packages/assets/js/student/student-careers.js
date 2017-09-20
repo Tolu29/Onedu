@@ -1,5 +1,7 @@
 $(function(){
 
+  var infoCareer = [], related = [];
+
   wow.init();
 
   var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -33,12 +35,6 @@ $(function(){
   });
 
   $("body").on('click','.explanationCont>div>img',function(){
-    // $("#secondLevel1").removeClass('fadeInRight');
-    // $("#secondLevel2").removeClass('fadeInRight');
-    // $("#secondLevel3").removeClass('fadeInRight');
-    // $("#secondLevel1").removeClass('animated');
-    // $("#secondLevel2").removeClass('animated');
-    // $("#secondLevel3").removeClass('animated');
     $("#secondLevel1").addClass('fadeOutLeft');
     $("#secondLevel2").addClass('fadeOutLeft');
     $("#secondLevel3").addClass('fadeOutLeft');
@@ -52,13 +48,9 @@ $(function(){
     });
   });
 
-  $("body").on('click', '.optDescription', function(){
-    $(".explanationCont").empty();
-    $(".explanationCont").append(
-      "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>" +
-      "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-    );
-  });
+
+
+
 
   $("body").on('click', '.optUniversities', function(){
     $(".explanationCont").empty();
@@ -71,20 +63,141 @@ $(function(){
     }
   });
 
-  $("body").on('click','.perro',function(){
-    $("#fisrtLevel").addClass('fadeOutLeft');
-    $('#fisrtLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $("#fisrtLevel").hide();
-      $(".optDescription").trigger('click')
-      $("#secondLevel1").removeClass('hideCareers');
-      $("#secondLevel2").removeClass('hideCareers');
-      $("#secondLevel3").removeClass('hideCareers');
-      $("#secondLevel1").addClass('fadeInRight');
-      $("#secondLevel2").addClass('fadeInRight');
-      $("#secondLevel3").addClass('fadeInRight');
+  // click en la carrera
+
+  $("body").on('click','.infoCareer',function(){
+    let data = {
+      id: $(this).data('id'),
+      group: $(this).data('group')
+    }
+    $(".fisrtLevel").addClass('fadeOutLeft');
+    $('.fisrtLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(".fisrtLevel").hide();
+      $(".secondLevel").removeClass('hideCareers');
+      $(".secondLevel").addClass('fadeInRight');
+      $.ajax({
+        url: "/getSelectCareer",
+        type: "POST",
+        data: data,
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      })
+      .done(function(data){
+        infoCareer = data.career;
+        related = data.related;
+        $(".optDescription").trigger('click');
+      });
+
+
     });
   });
 
+
+  // click en descripcion
+  $("body").on('click', '.optDescription', function(){
+    $(".explanationCont").empty();
+    $(".relatedCont").empty();
+    $(".explanationCont").append(infoCareer.descripcion);
+
+  });
+
+  // click en prefil
+  $("body").on('click', '.optProfile', function(){
+    $(".explanationCont").empty();
+    $(".relatedCont").empty();
+    $(".explanationCont").append(infoCareer.perfil);
+  });
+
+
+  //  click en campo de trabajo
+  $("body").on('click', '.optCapm', function(){
+    $(".explanationCont").empty();
+    $(".relatedCont").empty();
+    $(".explanationCont").append(infoCareer.campo_trabajo);
+  });
+
+
+  $("body").on('click', '.optRelated', function(){
+    $(".explanationCont").empty();
+    $(".relatedCont").empty();
+    // esta variable cuenta de 0 a 3 para variar los colores de las carreras(abcedario)
+    var cc = 0;
+    $.each(alphabet, function(i){
+
+      $(".relatedCont").append(
+        "<div class='careerNameRelated" + alphabet[i] + "'>" +
+          "<h2 class='colorLetter" + cc + "'>" + alphabet[i] + "</h2>" +
+        "</div>"
+      )
+      let tempParent =  $(".careerNameRelated" + alphabet[i]);
+      $.each(related, function(k){
+        if (related[k].nombre.substring(0, 1) == alphabet[i]) {
+          $('.careerNameRelated'+ alphabet[i]).append("<p class='relatedCareer' data-id='" + related[k].id + "' data-group='" + related[k].grupo + "'>" + related[k].nombre + "</p>")
+        }
+      });
+
+      if (tempParent.children().length == 1) {
+        tempParent.remove();
+      }
+
+      $(".colorLetter"+cc).css("color",colors[cc]);
+      cc += 1;
+      if (cc == 3) {
+        cc = 0;
+      }
+
+    });
+
+  });
+
+
+  $("body").on('click', '.relatedCareer', function(){
+    let data = {
+      id: $(this).data('id'),
+      group: $(this).data('group')
+    }
+    $.ajax({
+      url: "/getSelectCareer",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      infoCareer = data.career;
+      related = data.related;
+      $(".optDescription").trigger('click');
+    });
+  });
+
+
+
+  $("body").on('change', '.browser-default', function(){
+    let optionVal = JSON.parse($(this).val());
+    let data = {
+      id: optionVal.id,
+      group: optionVal.group
+    }    
+
+    $.ajax({
+      url: "/getSelectCareer",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      infoCareer = data.career;
+      related = data.related;
+      $(".optDescription").trigger('click');
+    });
+  });
+
+
+  // cambio de colores
   $("body").on('click','.parentCol>div',function(){
     $(".parentCol>div").css("background-color", "#eaeaea")
     $(".parentCol>div").css("color", "#292b2c")
@@ -115,15 +228,22 @@ function addCareers(alpha,color){
     }
   })
   .done(function(data){
+    // esta variable cuenta de 0 a 3 para variar los colores de las carreras(abcedario)
     var cc = 0;
     $.each(alpha,function(index,letter){
       $(".careersCont").append(
-        "<div class='careerNameCont'>" +
+        "<div class='careerNameCont " + alpha[index] + "'>" +
           "<h2 class='colorLetter" + cc + "'>" + alpha[index] + "</h2>" +
         "</div>"
       )
       $.each(data, function(i){
-        $(".careerNameCont").append("<p class='perro'>" + data[i].nombre + "</p>")
+
+        if (data[i].nombre.substr(0, 1) == alpha[index]) {
+          let temp = {id: data[i].id, group: data[i].grupo};
+          let optionVal = JSON.stringify(temp);
+          $(".browser-default").append("<option class='relatedCareer' value='" + optionVal + "'>" + data[i].nombre + "</option>");
+          $("." + alpha[index]).append("<p class='infoCareer' data-group='" + data[i].grupo + "' data-id='" + data[i].id + "'>" + data[i].nombre + "</p>");
+        }
       });
 
       $(".colorLetter"+cc).css("color",color[cc]);
@@ -133,6 +253,7 @@ function addCareers(alpha,color){
       }
 
     });
+
   });
 
 }

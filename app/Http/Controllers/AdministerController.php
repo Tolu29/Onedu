@@ -41,6 +41,7 @@ class AdministerController extends Controller
       'group' => 'required',
       'profile' => 'required',
       'description' => 'required',
+      'lab_camp' => 'required',
     ]);
     if( $validation->fails()){
       return 'Ingresa los datos correctamente';
@@ -53,6 +54,7 @@ class AdministerController extends Controller
       $career->grupo = $data['group'];
       $career->perfil = $data['profile'];
       $career->descripcion = $data['description'];
+      $career->campo_trabajo = $data['lab_camp'];
       $career->save();
       return 'La carrera se ha registrado con exito';
 
