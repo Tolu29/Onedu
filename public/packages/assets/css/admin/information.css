@@ -2,15 +2,15 @@
   display: none;
 }
 
+#infoCont{
+  margin-top: 3rem;
+}
+
 .titles{
   background-color: #ffffff;
   margin-top: 2rem;
   height: 6rem;
   text-align: center;
-}
-
-#text{
-  padding: 1rem;
 }
 
 .titles>input{
@@ -23,33 +23,6 @@
   padding-left: 6rem;
 }
 
-.newInfo{
-  margin-top: 4rem !important;
-}
-
-.newInfo>textarea{
-  background-color: #ffffff;
-  height: 16.5rem;
-  overflow-y: scroll;
-  max-height: 16.5rem;
-  margin-bottom: 1rem;
-}
-
-.btnViewInfo{
-  background-color: #399c5f;
-  border-radius: .23rem;
-}
-
-.btnInfo{
-  border-radius: .23rem;
-  background-color: #5172a1;
-}
-
-.btnSaveInfo{
-  border-radius: .23rem;
-  background-color: #5172a1;
-}
-
 .card{
   text-align: center;
   height: 3rem;
@@ -58,6 +31,8 @@
   border-radius: .23rem;
   margin-bottom: 1rem;
   cursor: pointer;
+  color: #ffffff;
+  background-color: #d5d2d2;
 }
 
 .infoCareer{
@@ -100,42 +75,13 @@ thead{
   background-color: #b53625;
 }
 
-.titlePlan{
-  width: 80%;
-  margin: 0 auto;
-}
-
-.textPlan{
-  width: 90%;
-  margin: 0 auto;
-}
-
-.textPlan>textarea{
-  overflow-y: scroll;
-  height: 9rem;
-  max-height: 9rem;
-}
-
-.btnWrap{
-  margin-top: .8rem;
-}
-
-.btnSavePlan{
+.btnCont>button{
   background-color: #5172a1;
 }
 
-.btnBack{
-  background-color: #399c5f;
+.addPlan>a{
+  background-color: #399c5f !important;
 }
-
-.btnSaveVid{
-  background-color: #5172a1;
-}
-
-.addPlan{
-  background-color: #399c5f;
-}
-
-.btnCancel{
-  background-color: #b53625;
+.btnBack>button{
+  background-color: #399c5f !important;
 }

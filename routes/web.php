@@ -155,16 +155,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/infoCareer', 'AdministerController@infoCareer');
     Route::post('/updateCareer', 'AdministerController@updateCareer');
     //vista informacion
-    Route::post('/saveInformation', 'AdministerController@saveInformation');
-    Route::post('/getInformation', 'AdministerController@getInformation');
-    Route::post('/mixVideo', 'AdministerController@mixVideo');
-    Route::post('/getVideo', 'AdministerController@getVideo');
-    Route::post('/getPlans', 'AdministerController@getPlans');
-    Route::post('/mixPlans', 'AdministerController@mixPlans');
-    Route::post('/deletePlan', 'AdministerController@deletePlan');
-    Route::post('/getPreview', 'AdministerController@getPreview');
-    Route::post('/getPlanPrev', 'AdministerController@getPlanPrev');
-    Route::post('/getinfoSelected', 'AdministerController@getinfoSelected');
+    Route::post('/getAllInfo', 'AdministerController@getAllInfo');
+    Route::post('/saveAll', 'AdministerController@saveAll');
     // vista admin-images
     Route::post('/saveImg', 'AdministerController@saveImg');
     Route::post('/getAllImg', 'AdministerController@getAllImg');

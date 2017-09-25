@@ -72,7 +72,7 @@ class AdministerController extends Controller
   function infoCareer(Request $request){
     $data = $request->all();
     $career = Career::where('id', '=', $data['id'])
-    ->select('nombre', 'nivel_educativo', 'descripcion', 'perfil', 'grupo')->first();
+    ->select('nombre', 'nivel_educativo', 'descripcion', 'perfil', 'grupo', 'campo_trabajo')->first();
     return $career;
   }
 
@@ -86,6 +86,7 @@ class AdministerController extends Controller
       'group' => 'required',
       'profile' => 'required',
       'description' => 'required',
+      'lab_camp' => 'required',
     ]);
     if( $validation->fails()){
       return 'Ingresa los datos correctamente';
@@ -97,6 +98,7 @@ class AdministerController extends Controller
       $career->grupo = $data['group'];
       $career->perfil = $data['profile'];
       $career->descripcion = $data['description'];
+      $career->campo_trabajo = $data['lab_camp'];
       $career->save();
 
       return 'La carrera se actualizo correctamente';
@@ -300,147 +302,100 @@ function allUniversities(){
     #funciones para Informaciones
   //==========================//
 
-  function getInformation(Request $request){
-    $data = $request->all();
 
-    $carrera_id = $request->session()->get('career_id');
-
-    $universidad_id = $request->session()->get('university_id');
-    $info = Informations::where('titulo', '=', $data['title'])
-    ->where('carrera_id', '=', $carrera_id)
-    ->where('universidad_id', '=', $universidad_id)->first();
-    return $info;
-  }
-
-  function saveInformation(Request $request){
-
-    $data = $request->all();
-
-    $validation = Validator::make($data,[
-      'title' => 'required',
-      'text' => 'required',
-    ]);
-    if( $validation->fails()){
-      return 'Tenemos un Error';
-    }else {
+    function getAllInfo(Request $request){
+      $data  = $request->all();
 
       $carrera_id = $request->session()->get('career_id');
       $universidad_id = $request->session()->get('university_id');
-      if ($data['decision'] === '1') {
-        $information = new Informations($data);
-        $information->titulo = $data['title'];
-        $information->descripcion = $data['text'];
-        $information->universidad_id = $universidad_id;
-        $information->carrera_id = $carrera_id;
-        $information->save();
-        return 'La informacion se ha guardado correctamente';
-      }else {
-        $information = Informations::where('universidad_id', '=', $universidad_id)
-        ->where('carrera_id', '=', $carrera_id)
-        ->where('titulo', '=', $data['title'])->first();
-        $information->titulo = $data['title'];
-        $information->descripcion = $data['text'];
-        $information->save();
-        return 'La informacion se ha actualizado correctamente';
-      }
 
-    }
-  }
+      $information = informations::where('universidad_id', '=', $universidad_id)
+      ->where('carrera_id', '=', $carrera_id)->get();
 
-  function getVideo(Request $request){
-    $data = $request->all();
-
-    $carrera_id = $request->session()->get('career_id');
-    $universidad_id = $request->session()->get('university_id');
-    $video = ClasesMuestra::where('carrera_id', '=', $carrera_id)
-    ->where('universidad_id', '=', $universidad_id)->first();
-    return $video;
-  }
-
-  function mixVideo(Request $request){
-    $data = $request->all();
-
-    $validation = Validator::make($data,[
-      'name' => 'required',
-      'embed' => 'required',
-    ]);
-    if( $validation->fails()){
-      return 'Tenemos un Error';
-    }else {
-
-    $carrera_id = $request->session()->get('career_id');
-    $universidad_id = $request->session()->get('university_id');
-    if ($data['decision'] == '1') {
-      $video = new ClasesMuestra($data);
-      $video->nombre = $data['name'];
-      $video->embed = $data['embed'];
-      $video->carrera_id = $carrera_id;
-      $video->universidad_id = $universidad_id;
-      $video->save();
-      return 'El video se ha registrado con exito';
-    }else {
       $video = ClasesMuestra::where('universidad_id', '=', $universidad_id)
       ->where('carrera_id', '=', $carrera_id)->first();
-      $video->nombre = $data['name'];
-      $video->embed = $data['embed'];
-      $video->save();
-      return 'Video se ha actualizado con exito';
+
+      $plans = StudyPlans::where('universidad_id', '=', $universidad_id)->get();
+
+      $infoComp = $information;
+      $comp = count($infoComp);
+
+      if ($comp == 0) {
+        return null;
+      } else {
+        return response()->json([
+          'informations' => $information,
+          'video' => $video,
+          'study_plans' => $plans
+        ]);
+      }
+
+
+    }
+
+
+    function saveAll(Request $request){
+      $data = $request->all();
+
+      $validation = Validator::make($data,[
+        'accreditation' => 'required',
+        'admission' => 'required',
+        'extra_activities' => 'required',
+        'plans' => 'required',
+        'schedules' => 'required',
+        'scholarships' => 'required',
+        ]);
+      if($validation->fails()){
+        return 'Tenemos un Error';
+      }else {
+
+        $carrera_id = $request->session()->get('career_id');
+        $universidad_id = $request->session()->get('university_id');
+
+        $informations = array(
+          'accreditation' => $data['accreditation'],
+          'admission' => $data['admission'],
+          'extra_activities' => $data['extra_activities'],
+          'schedules' => $data['schedules'],
+          'scholarships' => $data['scholarships']
+        );
+
+        $plans = $data['plans'];
+
+        foreach ($informations as $plan => $value) {
+          $info = new Informations($data);
+          $info->titulo = $plan;
+          $info->descripcion = $value;
+          $info->carrera_id = $carrera_id;
+          $info->universidad_id = $universidad_id;
+          $info->save();
+        }
+
+        if ($data['url'] != "vid_error404") {
+          $video = new ClasesMuestra($data);
+          $video->nombre = $data['title'];
+          $video->embed = $data['url'];
+          $video->carrera_id = $carrera_id;
+          $video->universidad_id = $universidad_id;
+          $video->save();
+        }
+
+        foreach ($plans as $plan => $value) {
+          if ($value != null) {
+            $study_plan = new StudyPlans($data);
+            $study_plan->nombre_plan = $value['namePlan'];
+            $study_plan->descripcion = $value['descriptionPlan'];
+            $study_plan->universidad_id = $universidad_id;
+            $study_plan->active = 1;
+            $study_plan->save();
+          }
+        }
+
+        return 'La informacion se ha guardado con exito';
 
       }
+
     }
-  }
-
-  function getPlans(Request $request){
-
-    $universidad_id = $request->session()->get('university_id');
-
-    $plans = StudyPlans::where('universidad_id', '=', $universidad_id)
-    ->where('active', '=', 1)->get();
-
-    return $plans;
-  }
-
-  function mixPlans(Request $request){
-    $data = $request->all();
-
-    $validation = Validator::make($data,[
-      'name' => 'required',
-      'text' => 'required',
-    ]);
-    if( $validation->fails()){
-      return 'Tenemos un Error';
-    }else {
-
-    if ($data['decision'] == '1') {
-
-      $universidad_id = $request->session()->get('university_id');
-      $plan = new StudyPlans($data);
-      $plan->nombre_plan = $data['name'];
-      $plan->descripcion = $data['text'];
-      $plan->active = 1;
-      $plan->universidad_id = $universidad_id;
-      $plan->save();
-      return 'El plan se ha guardado correctamente';
-    }else {
-
-      $plan = StudyPlans::where('id', '=', $data['id'])->first();
-      $plan->nombre_plan = $data['name'];
-      $plan->descripcion = $data['text'];
-      $plan->save();
-      return 'El plan se ha actualizado correctamente';
-      }
-    }
-  }
-
-  function deletePlan(Request $request){
-    $data = $request->all();
-
-    $plan = StudyPlans::where('id', '=', $data['id'])->first();
-    $plan->active = 0;
-    $plan->save();
-
-    return 'El plan se ha borrado con exito';
-  }
 
 
   //=============================//

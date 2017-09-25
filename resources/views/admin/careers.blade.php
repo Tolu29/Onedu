@@ -104,11 +104,11 @@
         </div>
 
         <div class='md-form text-center careerHide' name="contInfo3">
-          <textarea name='textInfo3' class='tinymce' rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
+          <textarea name='textInfo3' class='tinymce' id="textInfo3" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
         </div>
 
         <div class='md-form text-center careerHide' name="contInfo4">
-          <textarea name="textInfo4" class='tinymce' rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
+          <textarea name="textInfo4" class='tinymce' id="textInfo4" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
         </div>
 
         <div class='md-form text-center nameCareer careerHide' name="contInfo5">
@@ -117,7 +117,7 @@
         </div>
 
         <div class='md-form text-center careerHide' name="contInfo6">
-          <textarea name="textInfo6" class='tinymce' rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
+          <textarea name="textInfo6" class='tinymce' id="textInfo6" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
         </div>
 
       </div>

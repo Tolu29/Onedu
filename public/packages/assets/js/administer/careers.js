@@ -35,28 +35,33 @@ $(function(){
 
 
   $("body").on('click', '.next', function(){
-    if (nameCard == 6) {
-      infoArray.push(tinyMCE.activeEditor.getContent());
+    switch (nameCard) {
+      case 1:
+      case 2:
+      case 5:
+        infoArray.push($("[name='textInfo" + nameCard + "']").val());
+        break;
+      case 4:
+      case 3:
+        infoArray.push(tinyMCE.get('textInfo'+nameCard).getContent());
+      default:
+    }
+    
+    if (nameCard == 5) {
       $(".next").remove();
       $(".btnSave").append("<button type='button' class='btn z-depth-2 btnRegCareer'>Guardar</button>");
-    }else {
-      if (nameCard == 3 || nameCard == 4) {
-        infoArray.push(tinyMCE.activeEditor.getContent());
-      }else {
-        infoArray.push($("[name='textInfo" + nameCard + "']").val());
-      }
-      $("[name='contInfo" + nameCard + "']").addClass('careerHide');
-      nameCard += 1;
-      $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
-      $(".cardColor").css("background-color", "#d5d2d2");
-      $("[name=" + nameCard + "]").css("background-color", "#5172a1");
     }
+    $("[name='contInfo" + nameCard + "']").addClass('careerHide');
+    nameCard += 1;
+    $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+    $(".cardColor").css("background-color", "#d5d2d2");
+    $("[name=" + nameCard + "]").css("background-color", "#5172a1");
   });
 
 
 
   $("body").on('click', '.btnRegCareer', function(){
-
+    infoArray.push(tinyMCE.get('textInfo6').getContent());
     let data = {
       career: infoArray[0],
       level: infoArray[1],
@@ -87,88 +92,108 @@ $(function(){
 
 
 
-  // $("body").on('click', '.btnUpd', function(){
-  //   $(".careerLvl2").removeClass('careerHide');
-  //   $(".careerLvl1").addClass('careerHide');
-  //   let id = $(this).data('id')
-  //   let data = {
-  //     id: id
-  //   }
-  //   $.ajax({
-  //     url: "/infoCareer",
-  //     type: "POST",
-  //     data: data,
-  //     headers: {
-  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  //     }
-  //   })
-  //   .done(function(data){
-  //     newInfo = [id];
-  //     $i = 1
-  //     $.each(data, function(i){
-  //       updInfo[$i] = data[i];
-  //       $i += 1;
-  //     });
-  //     $("[name='1']").css("background-color", "#5172a1");
-  //     $("[name='textInfo" + nameCard + "']").val(updInfo[1]);
-  //     nameCard = 1;
-  //     updBtn();
-  //   });
-  // });
-  //
-  //
-  //
-  // $("body").on('click', '.nextUpd', function(){
-  //   if (nameCard >= 5) {
-  //     newInfo.push($("#textInfoUpd").val());
-  //     $(".nextUpd").remove();
-  //     $(".btnSave").append("<button type='button' class='btn z-depth-2 btnUpdCareer'>Guardar</button>");
-  //   }else {
-  //     newInfo.push($("#textInfoUpd").val());
-  //     $("[name='contInfo" + nameCard + "']").addClass('careerHide');
-  //     nameCard += 1;
-  //     $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
-  //     if (nameCard == 3 || nameCard == 4) {
-  //       setTimeout(function(){ tinyMCE.activeEditor.setContent("<p>mdlkmalfkmaslkdmalskdmalskmdalksmdlaksmdlakmsdlkamsdlkm<p/>"); }, 3000);
-  //     }else {
-  //       $("[name='textInfo" + nameCard + "']").val(updInfo[nameCard]);
-  //     }
-  //     $(".cardColor").css("background-color", "#d5d2d2");
-  //     $("[name=" + nameCard + "]").css("background-color", "#5172a1");
-  //   }
-  // });
-  //
-  //
-  //
-  // $("body").on('click', '.btnUpdCareer', function(){
-  //
-  //   let data = {
-  //     career: newInfo[1],
-  //     level: newInfo[2],
-  //     description: newInfo[3],
-  //     profile: newInfo[4],
-  //     group: newInfo[5],
-  //     id: newInfo[0]
-  //   }
-  //
-  //   // $.ajax({
-  //   //   url: "/updateCareer",
-  //   //   type: "POST",
-  //   //   data: data,
-  //   //   headers: {
-  //   //   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  //   //   }
-  //   // })
-  //   // .done(function(data){
-  //   //   if(data == "La carrera se actualizo correctamente"){
-  //   //     toastr.success('La carrera se actualizo correctamente');
-  //   //     window.location.reload();
-  //   //   }else {
-  //   //     toastr.error('Ingresa los datos correctamente');
-  //   //   }
-  //   // });
-  // });
-  //
+  $("body").on('click', '.btnUpd', function(){
+    $(".careerLvl2").removeClass('careerHide');
+    $(".careerLvl1").addClass('careerHide');
+    let id = $(this).data('id')
+    let data = {
+      id: id
+    }
+    $.ajax({
+      url: "/infoCareer",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      newInfo = [id];
+      $i = 1
+      $.each(data, function(i){
+        updInfo[$i] = data[i];
+        $i += 1;
+      });
+      $("[name='1']").css("background-color", "#5172a1");
+      $("[name='textInfo" + nameCard + "']").val(updInfo[1]);
+      nameCard = 1;
+      updBtn();
+    });
+  });
+
+
+
+  $("body").on('click', '.nextUpd', function(){
+    switch (nameCard) {
+      case 1:
+      case 2:
+      case 5:
+        newInfo.push($("[name='textInfo" + nameCard + "']").val());
+        break;
+      case 3:
+      case 4:
+        newInfo.push(tinyMCE.get('textInfo'+nameCard).getContent());
+      default:
+
+    }
+    $("[name='contInfo" + nameCard + "']").addClass('careerHide');
+    nameCard += 1;
+    if (nameCard == 3 || nameCard == 4) {
+      let temp = {
+        content: updInfo[(nameCard)]
+      }
+      setTimeout(function(){ tinyMCE.get('textInfo'+nameCard ).setContent(temp.content); }, 0000);
+      $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+    }else {
+      $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+      $("[name='textInfo" + nameCard + "']").val(updInfo[nameCard]);
+    }
+    $(".cardColor").css("background-color", "#d5d2d2");
+    $("[name=" + nameCard + "]").css("background-color", "#5172a1");
+    if (nameCard == 6) {
+      let temp = {
+        content: updInfo[(6)]
+      }
+      setTimeout(function(){ tinyMCE.get('textInfo'+nameCard ).setContent(temp.content); }, 0000);
+      $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+      $(".nextUpd").remove();
+      $(".btnSave").append("<button type='button' class='btn z-depth-2 btnUpdCareer'>Guardar</button>");
+    }
+
+  });
+
+
+
+  $("body").on('click', '.btnUpdCareer', function(){
+    newInfo.push(tinyMCE.get('textInfo6').getContent());
+    let data = {
+      career: newInfo[1],
+      level: newInfo[2],
+      description: newInfo[3],
+      profile: newInfo[4],
+      group: newInfo[5],
+      id: newInfo[0],
+      lab_camp: newInfo[6]
+    }
+
+    $.ajax({
+      url: "/updateCareer",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      if(data == "La carrera se actualizo correctamente"){
+        toastr.success('La carrera se actualizo correctamente');
+        window.location.reload();
+      }else {
+        toastr.error('Ingresa los datos correctamente');
+      }
+    });
+  });
+
   //
   // $("body").on('click', '.btnDelCareer', function(){
   //   let trParent = $(this).parent().parent();
