@@ -1,6 +1,6 @@
 $(function(){
 
-  var numCard = 0, saveInfo = [], plansInfo = [], url, updInfo = [];
+  var numCard = 0, saveInfo = [], plansInfo = [], updInfo = [], updSave = [], camps = ["accreditation", "extra_activities", "schedules", "scholarships", "admission"];
 
 
 
@@ -17,33 +17,39 @@ $(function(){
       btnSave();
       $("[name='1']").css("background-color", "#5172a1");
     } else {
+      updInfo = data;
+      $.each(data.study_plans, function(i){
+        plansInfo[i] = {namePlan: data.study_plans[i].nombre_plan, descriptionPlan:data.study_plans[i].descripcion, id:data.study_plans[i].id };
+      });
       $("[name='1']").css("background-color", "#5172a1");
-      $("#title").val(data.video.nombre);
-      $("#url").val(data.video.embed);
+      if (data.video != null) {
+        $("#title").val(data.video.nombre);
+        $("#url").val(data.video.embed);
+      }
       btnUpdate()
     }
     numCard += 1;
   });
 
 
-  $("#url").on('change', function(){
-    if (youtubeEmbed.validLink($("#url").val())) {
-      url = youtubeEmbed.makeCode($("#url").val());
-    }else {
-      toastr.error("El URL que ingresaste no es valido");
-    }
-
-  });
-
 
   // click next va guardando todos lo valores de los campos
   $("body").on('click', '.next', function(){
     switch (numCard) {
       case 1:
-        if (url == "" || url == undefined) {
+      let whiteSpaces = $("#url").val();
+        if (/^\s+$/.test(whiteSpaces)) {
+          $("#url").val("");
+        }
+        if ($("#url").val() == "" || $("#url").val() == undefined) {
           saveInfo.push(null);
           saveInfo.push("vid_error404");
         }else {
+          if (!youtubeEmbed.validLink($("#url").val())) {
+            toastr.error("El URL que ingresaste no es valido");
+            return ;
+          }
+          let url = youtubeEmbed.makeCode($("#url").val());
           saveInfo.push($("#title").val());
           saveInfo.push(url);
         }
@@ -53,6 +59,11 @@ $(function(){
       case 4:
       case 5:
       case 6:
+        let content = tinyMCE.get('info'+numCard).getContent();
+        if (content == "" || content == undefined || content == null) {
+          toastr.error("Debes de ingresar un texto para continuar");
+          return ;
+        }
         saveInfo.push(tinyMCE.get('info'+numCard).getContent());
       break;
       default:
@@ -75,6 +86,9 @@ $(function(){
     tinyMCE.get('PlanDesc').setContent("");
     $(".planLvl1").addClass('infoHide');
     $(".planLvl2").removeClass('infoHide');
+    if ($(".saveUpd")) {
+      $(".saveUpd").addClass('infoHide');
+    }
     $(".save").addClass('infoHide');
     $(".btnCont").append("<button type='button' class='btn z-depth-2 savePlan'>Guardar</button>");
   });
@@ -82,6 +96,10 @@ $(function(){
 
   // click para guardar un nuevo plan
   $("body").on('click', '.savePlan', function(){
+    if (tinyMCE.get('PlanDesc').getContent() == "" || $("#PlanName").val() == "") {
+      toastr.error("Debes de ingresar un texto y un titulo para guardar");
+      return ;
+    }
     let singlePlan = {
       namePlan: $("#PlanName").val(),
       descriptionPlan: tinyMCE.get('PlanDesc').getContent(),
@@ -115,6 +133,9 @@ $(function(){
     tinyMCE.get('PlanDesc').setContent(temp.descriptionPlan);
     $(".planLvl1").addClass('infoHide');
     $(".planLvl2").removeClass('infoHide');
+    if ($(".saveUpd")) {
+      $(".saveUpd").addClass('infoHide');
+    }
     $(".save").addClass('infoHide');
     $(".btnCont").append("<button type='button' data-id='" + $(this).data('id') + "' class='btn z-depth-2 updPlan'>Guardar</button>");
   });
@@ -127,6 +148,9 @@ $(function(){
     }
     $(".planLvl2").addClass('infoHide');
     $(".planLvl1").removeClass('infoHide');
+    if ($(".saveUpd")) {
+      $(".saveUpd").removeClass('infoHide');
+    }
     $(".save").removeClass('infoHide');
     $(".savePlan").remove();
   });
@@ -142,7 +166,7 @@ $(function(){
     plansInfo[i].namePlan = singlePlan.namePlan;
     plansInfo[i].descriptionPlan = singlePlan.descriptionPlan;
     name.text(singlePlan.namePlan);
-    $(".").trigger('click');
+    $(".back").trigger('click');
   });
 
   // click para borrar planes
@@ -150,11 +174,27 @@ $(function(){
     $i = $(this).data('id');
     let single = $( "td:contains('" + plansInfo[$i].namePlan + "')" );
     single.parent().remove();
-    plansInfo.splice($i, 1, null);
+    if (plansInfo[$i].hasOwnProperty('id')) {
+      plansInfo.splice($i, 1, {id:plansInfo[$i].id});
+    }else {
+      plansInfo.splice($i, 1, null);
+    }
   });
 
   //  click para guardar toda la informacion (final)
   $("body").on('click', '.save', function(){
+    $check = 0;
+    $.each(plansInfo, function(i){
+      if(plansInfo[i] != null){
+        $check += 1;
+      }
+    });
+    if ($check >= 1) {
+      return ;
+    }else if (plansInfo == "" || plansInfo == undefined || plansInfo == null) {
+      toastr.error("Debes de ingresar al menos un plan de estudios para continuar");
+      return ;
+    }
     $(".save").remove();
     let data = {
       title: saveInfo[0],
@@ -187,19 +227,109 @@ $(function(){
   });
 
   /*update section*/
-  // $("body").on('click', '.nextUpd', function(){
-  //   switch (numCard) {
-  //     case 1:
-  //     console.log(url);
-  //       updInfos.push();
-  //       updInfos.push();
-  //       break;
-  //     default:
-  //
-  //   }
-  //   numCard += 1;
-  //
-  // });
+  $("body").on('click', '.nextUpd', function(){
+    switch (numCard) {
+      case 1:
+        let whiteSpaces = $("#url").val();
+        if (/^\s+$/.test(whiteSpaces)) {
+          $("#url").val("");
+        }
+        if ($("#url").val() == "" || $("#url").val() == undefined) {
+          updSave.push(null);
+          updSave.push("vid_error404");
+        }else {
+          if (!youtubeEmbed.validLink($("#url").val())) {
+            toastr.error("El URL que ingresaste no es valido");
+            return ;
+          }
+          let url = youtubeEmbed.makeCode($("#url").val());
+          updSave.push($("#title").val());
+          updSave.push(url);
+        }
+        break;
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+          let content = tinyMCE.get('info'+numCard).getContent();
+          if (content == "" || content == undefined || content == null) {
+            toastr.error("Debes de ingresar un texto para continuar");
+            return ;
+          }
+          updSave.push(tinyMCE.get('info'+numCard).getContent());
+        break;
+      default:
+
+    }
+    if (numCard == 6) {
+      $(".nextUpd").remove();
+      $(".btnCont").append("<button type='button' class='btn z-depth-2 saveUpd'>Guardar</button>");
+      $("[name='info" + numCard + "']").addClass('infoHide');
+      numCard += 1;
+      $.each(plansInfo, function(i){
+        $("#tBodyCont").append(
+          "<tr>" +
+            "<td class='text-center'>" + plansInfo[i].namePlan + "</td>" +
+            "<td>" +
+              "<div class='text-center'>" +
+                "<button type='button' data-id='" + i + "' class='btn btn-sm btnDetails'>Detalles</button>" +
+                "<button type='button' data-id='" + i + "' class='btn btn-sm btnDelete'>Eliminar</button>" +
+              "</div>" +
+            "</td>" +
+          "</tr>"
+        );
+      });
+    }else if (numCard <= 5) {
+      $("[name='info" + numCard + "']").addClass('infoHide');
+      numCard += 1;
+      let info = atrib(updInfo.informations, 'titulo', camps[(numCard-2)]);
+      tinyMCE.get('info'+numCard).setContent(info.descripcion);
+    }
+    $(".cardInfo").css("background-color", "#d5d2d2");
+    $("[name='info" + numCard + "']").removeClass('infoHide');
+    $("[name='" + numCard + "']").css("background-color", "#5172a1");
+  });
+
+
+
+  $("body").on('click', '.saveUpd', function(){
+    $check = 0;
+    $.each(plansInfo, function(i){
+      if(plansInfo[i] != null && Object.keys(plansInfo[i]).length != 1){
+        $check += 1;
+        //  && !plansInfo[i].hasOwnProperty('id')
+      }
+    });
+    if ($check != 0) {
+      let data = {
+        title: updSave[0],
+        url: updSave[1],
+        accreditation: updSave[2],
+        extra_activities: updSave[3],
+        schedules: updSave[4],
+        scholarships: updSave[5],
+        admission: updSave[6],
+        plans: plansInfo
+      }
+       $.ajax({
+         url: "/updateInfo",
+         type: "POST",
+         data: data,
+         headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+       })
+       .done(function(data){
+
+       });
+    }else {
+      toastr.error("Debes de ingresar al menos 1 plan de estudios para continuar");
+      return ;
+    }
+  });
+
+
 
 // cierre jquery
 });
@@ -241,7 +371,7 @@ function atrib(obj,attr,data){
   var response=[];
   $.each(obj,function(index,obj,i){
     if (obj[attr] == data) {
-      response[index] = obj;
+      response = obj;
     }
   });
   return response;

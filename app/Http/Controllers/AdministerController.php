@@ -313,9 +313,11 @@ function allUniversities(){
       ->where('carrera_id', '=', $carrera_id)->get();
 
       $video = ClasesMuestra::where('universidad_id', '=', $universidad_id)
-      ->where('carrera_id', '=', $carrera_id)->first();
+      ->where('carrera_id', '=', $carrera_id)
+      ->where('active', '=', 1)->first();
 
-      $plans = StudyPlans::where('universidad_id', '=', $universidad_id)->get();
+      $plans = StudyPlans::where('universidad_id', '=', $universidad_id)
+      ->where('active', '=', 1)->get();
 
       $infoComp = $information;
       $comp = count($infoComp);
@@ -393,6 +395,108 @@ function allUniversities(){
 
         return 'La informacion se ha guardado con exito';
 
+      }
+
+    }
+
+
+    function updateInfo(Request $request){
+      $data = $request->all();
+
+      $validation = Validator::make($data,[
+        'accreditation' => 'required',
+        'admission' => 'required',
+        'extra_activities' => 'required',
+        'plans' => 'required',
+        'schedules' => 'required',
+        'scholarships' => 'required',
+        ]);
+      if($validation->fails()){
+        return 'Tenemos un Error';
+      }else {
+
+        $informations = array(
+          'accreditation' => $data['accreditation'],
+          'admission' => $data['admission'],
+          'extra_activities' => $data['extra_activities'],
+          'schedules' => $data['schedules'],
+          'scholarships' => $data['scholarships']
+        );
+
+        $plans = $data['plans'];
+
+        $carrera_id = $request->session()->get('career_id');
+        $universidad_id = $request->session()->get('university_id');
+
+        $video = ClasesMuestra::where('universidad_id', '=', $universidad_id)
+        ->where('carrera_id', '=', $carrera_id)
+        ->where('active', '=', 1)->first();
+
+        switch ($video) {
+          case true:
+            if ($data['url'] == "vid_error404") {
+              $video->active = 0;
+              $video->save();
+            }else {
+              $video->nombre = $data['title'];
+              $video->embed = $data['url'];
+              $video->save();
+            }
+            break;
+          case false:
+            if ($data['url'] != "vid_error404") {
+              $video = new ClasesMuestra($data);
+              $video->nombre = $data['title'];
+              $video->embed = $data['url'];
+              $video->carrera_id = $carrera_id;
+              $video->universidad_id = $universidad_id;
+              $video->save();
+            }
+            break;
+          default:
+
+            break;
+        }
+
+        foreach ($informations as $information => $value) {
+          $info = Informations::where('universidad_id', '=', $universidad_id)
+          ->where('carrera_id', '=', $carrera_id)
+          ->where('titulo', '=', $information)->first();
+          $info->descripcion = $value;
+          $info->save();
+        }
+
+
+        foreach ($plans as $plan => $value) {
+
+          switch ($value) {
+            case null:
+            break;
+            case array_key_exists('id', $value) && array_key_exists('descriptionPlan', $value):
+              $plan = StudyPlans::where('id', '=', $value['id'])->first();
+              $plan->nombre_plan = $value['namePlan'];
+              $plan->descripcion = $value['descriptionPlan'];
+              $plan->save();
+              break;
+            case count($value) == 1 && array_key_exists('id', $value):
+              $plan = StudyPlans::where('id', '=', $value['id'])->first();
+              $plan->active = 0;
+              $plan->save();
+              break;
+            case count($value) == 2 && array_key_exists('descriptionPlan', $value):
+              $study_plan = new StudyPlans($data);
+              $study_plan->nombre_plan = $value['namePlan'];
+              $study_plan->descripcion = $value['descriptionPlan'];
+              $study_plan->universidad_id = $universidad_id;
+              $study_plan->active = 1;
+              $study_plan->save();
+            break;
+            default:
+            break;
+          }
+        }
+
+        return 'la informacion se ha guardado con exito';
       }
 
     }

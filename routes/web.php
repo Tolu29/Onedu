@@ -157,6 +157,7 @@ Route::group(['middleware' => ['auth']], function() {
     //vista informacion
     Route::post('/getAllInfo', 'AdministerController@getAllInfo');
     Route::post('/saveAll', 'AdministerController@saveAll');
+    Route::post('/updateInfo', 'AdministerController@updateInfo');
     // vista admin-images
     Route::post('/saveImg', 'AdministerController@saveImg');
     Route::post('/getAllImg', 'AdministerController@getAllImg');

@@ -9,8 +9,12 @@
 .titles{
   background-color: #ffffff;
   margin-top: 2rem;
-  height: 6rem;
+  height: 14rem;
   text-align: center;
+}
+
+.titlePlan{
+  height: 7.5rem !important;  
 }
 
 .titles>input{

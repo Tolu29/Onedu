@@ -67,25 +67,26 @@
     <div class="col-md-12" id="infoCont">
 
 
-      <div name="info1">
+      <form id="videoForm">
+        <div name="info1">
 
-        <div class='titles md-form z-depth-2' >
-          <label for='form1'>titulo</label>
-          <input class='input-alternate' id="title" type='text'>
+          <div class='titles md-form z-depth-2'>
+            <label for='form1'>titulo</label>
+            <input class='input-alternate' id="title" name="title" type='text'>
+
+            <input class='input-alternate'  id='url' name="url"  type='text' placeholder="URL YouTube enbed">
+          </div>
+
         </div>
+      </form>
 
-        <div class='titles md-form z-depth-2'>
-          <label for='form1'>url</label>
-          <input class='input-alternate'  id='url'  type='text'>
+
+
+      <form id="form2">
+        <div class='md-form text-center infoHide' name="info2">
+          <textarea name="textInfo2" class='tinymce' id="info2" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
         </div>
-
-      </div>
-
-
-
-      <div class='md-form text-center infoHide' name="info2">
-        <textarea name="textInfo6" class='tinymce' id="info2" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
-      </div>
+      </form>
 
       <div class='md-form text-center infoHide' name="info3">
         <textarea name="textInfo6" class='tinymce' id="info3" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
@@ -129,7 +130,7 @@
             <button type='button' class='btn z-depth-2 back'>Atras</button>
           </div>
 
-          <div class='titles md-form z-depth-2'>
+          <div class='titlePlan titles md-form z-depth-2'>
             <label for='form1'>Tipo Plan</label>
             <input class='input-alternate'  id='PlanName'  type='text'>
           </div>
