@@ -31,35 +31,70 @@ $(function(){
     selectFile($("#uni-logo"), $("#logoPrev"));
   });
 
-  //click para ajax(envio de form registro de universidades)
+  //click para ajax(envio de form registro de universidades),
   $("body").on('click', '.btnSend', function(){
-      let formData = new FormData($("#formLogo")[0]);
-      formData.append('name', $('#newUniName').val());
-      formData.append('color', $('#newUniColor').val());
-      formData.append('campus', $('#newUniCampus').val());
-      formData.append('street', $('#newUniStreet').val());
-      formData.append('numExt', $('#newUniExt').val());
-      formData.append('numInt', $('#newUniInt').val());
-      formData.append('col', $('#newUniCol').val());
-      formData.append('username', $('#newUniUser').val());
-      formData.append('password', $('#newUniPass').val());
+      $("#formSchool").validate({
+         rules : {
+            formLogo : {required: true},
+            newUniUser  : {required:true},
+            newUniPass : {required:true},
+            newUniName : {required:true},
+            newUniCampus : {required:true},
+            newUniStreet : {required:true},
+            newUniExt : {required:true,maxlength:4},
+            newUniInt : { maxlength:4},
+            newUniCol : {required:true},
 
-      $.ajax({
-        contentType: false,
-        processData: false,
-        url: "/saveUni",
-        type: "POST",
-        data: formData,
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      })
-      .done(function(data){
-        if (data == "La Universidad se registro con exito") {
-          toastr.success('La Universidad se ha actualizado correctamente');
-          location.reload();
+         },
+         messages: {
+          formLogo: {required: "Ingresa el logo de la Universidad"},
+          newUniUser: {required: "Ingresa un nombre de usuario"},
+          newUniPass: {required: "Ingresa una contraseña"},
+          newUniName: {required: "Ingresa el nombre de la universidad"},
+          newUniCampus: {required: "Ingresa el campus"},
+          newUniStreet: {required: "Ingresa la calle donde esta ubicada la Universidad"},
+          newUniExt: {required: "Ingresa el numero de exterior", maxlength: "Solo puedes agregar maximo 4 caracteres"},
+          newUniInt:{maxlength: "Solo puedes agregar maximo 4 caracteres"},
+          newUniCol: {required: "Ingresa la colonia donde esta ubicada la Universidad"}
         }
       });
+      if ($("#formSchool").valid()){
+        let formData = new FormData($("#formLogo")[0]);
+        formData.append('name', $('#newUniName').val());
+        formData.append('color', $('#newUniColor').val());
+        formData.append('campus', $('#newUniCampus').val());
+        formData.append('street', $('#newUniStreet').val());
+        formData.append('numExt', $('#newUniExt').val());
+        formData.append('numInt', $('#newUniInt').val());
+        formData.append('col', $('#newUniCol').val());
+        formData.append('username', $('#newUniUser').val());
+        formData.append('password', $('#newUniPass').val());
+
+        $.ajax({
+          contentType: false,
+          processData: false,
+          url: "/saveUni",
+          type: "POST",
+          data: formData,
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        })
+        .done(function(data){
+          if (data == "La Universidad se registro con exito") {
+            toastr.success('La Universidad se registro con exito');
+            location.reload();
+          }
+        });
+      }else {
+        let BreakException = {};
+        $.each($("[id*=-error]"),function(i){
+          if ($($("[id*=-error]")[i]) && $($("[id*=-error]")[i]).text() != "") {
+            toastr.error($($("[id*=-error]")[i]).text());
+            throw BreakException;
+          }
+        });
+      }
 
     });
 
@@ -154,43 +189,76 @@ $(function(){
 
 
     $("body").on('click', '.btnUpdInfo', function(){
-      formData = new FormData($("#infoForm")[0]);
-      if ($("#infoInput").val() == null || $("#infoInput").val() == "") {
-        formData.append('infoInput', 'no_val108');
-      }
-      formData.append('id', $(this).data('id'));
-      formData.append('name', $("#infoName").val());
-      formData.append('campus', $("#infoCampus").val());
-      formData.append('color', $("#infoColor").val());
-      formData.append('street', $("#infoCalle").val());
-      formData.append('numInt', $("#infoInt").val());
-      formData.append('numExt', $("#infoExt").val());
-      formData.append('col', $("#infoColonia").val());
-      formData.append('username', $("#infoUser").val());
-      formData.append('password', $("#infoPass").val());
+      $("#updForm").validate({
+         rules : {
+            infoInput : {required: true},
+            infoUser  : {required:true},
+            infoName : {required:true},
+            infoCampus : {required:true},
+            infoCalle : {required:true},
+            infoExt : {required:true,maxlength:4},
+            infoInt : { maxlength:4},
+            infoColonia : {required:true},
 
-      $.ajax({
-        contentType: false,
-        processData: false,
-        url: "/updateUniversity",
-        type: "POST",
-        data: formData,
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      })
-      .done(function(data){
-        if (data == "La Universidad se ha actualizado correctamente") {
-          let disabledArray = ["#infoName", "#infoCampus", "#infoColor", "#infoCalle", "#infoColonia", "#infoExt", "#infoInt", "#infoUser", "#infoPass"]
-          $.each(disabledArray, function(i){
-            $(disabledArray[i]).attr("disabled", true);
-          });
-          toastr.success('La Universidad se ha actualizado correctamente');
-          $(".btnUpdInfo").text("EDITAR DATOS");
-          $(".btnUpdInfo").addClass('btnEditInfo');
-          $(".btnUpdInfo").removeClass('btnUpdInfo');
+         },
+         messages: {
+          infoInput: {required: "Ingresa el logo de la Universidad"},
+          infoUser: {required: "Ingresa un nombre de usuario"},
+          infoName: {required: "Ingresa el nombre de la universidad"},
+          infoCampus: {required: "Ingresa el campus"},
+          infoCalle: {required: "Ingresa la calle donde esta ubicada la Universidad"},
+          infoExt: {required: "Ingresa el numero de exterior", maxlength: "Solo puedes agregar maximo 4 caracteres"},
+          infoInt:{maxlength: "Solo puedes agregar maximo 4 caracteres"},
+          infoColonia: {required: "Ingresa la colonia donde esta ubicada la Universidad"}
         }
       });
+      if ($("#updForm").valid()){
+        formData = new FormData($("#infoForm")[0]);
+        if ($("#infoInput").val() == null || $("#infoInput").val() == "") {
+          formData.append('infoInput', 'no_val108');
+        }
+        formData.append('id', $(this).data('id'));
+        formData.append('name', $("#infoName").val());
+        formData.append('campus', $("#infoCampus").val());
+        formData.append('color', $("#infoColor").val());
+        formData.append('street', $("#infoCalle").val());
+        formData.append('numInt', $("#infoInt").val());
+        formData.append('numExt', $("#infoExt").val());
+        formData.append('col', $("#infoColonia").val());
+        formData.append('username', $("#infoUser").val());
+        formData.append('password', $("#infoPass").val());
+
+        $.ajax({
+          contentType: false,
+          processData: false,
+          url: "/updateUniversity",
+          type: "POST",
+          data: formData,
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        })
+        .done(function(data){
+          if (data == "La Universidad se ha actualizado correctamente") {
+            let disabledArray = ["#infoName", "#infoCampus", "#infoColor", "#infoCalle", "#infoColonia", "#infoExt", "#infoInt", "#infoUser", "#infoPass"]
+            $.each(disabledArray, function(i){
+              $(disabledArray[i]).attr("disabled", true);
+            });
+            toastr.success('La Universidad se ha actualizado correctamente');
+            $(".btnUpdInfo").text("EDITAR DATOS");
+            $(".btnUpdInfo").addClass('btnEditInfo');
+            $(".btnUpdInfo").removeClass('btnUpdInfo');
+          }
+        });
+      }else {
+        let BreakException = {};
+        $.each($("[id*=-error]"),function(i){
+          if ($($("[id*=-error]")[i]) && $($("[id*=-error]")[i]).text() != "") {
+            toastr.error($($("[id*=-error]")[i]).text());
+            throw BreakException;
+          }
+        });
+      }
     });
 
 

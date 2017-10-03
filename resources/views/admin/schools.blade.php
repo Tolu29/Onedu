@@ -75,72 +75,74 @@
           </h5>
         </a>
       </div>
-      <div id="infoUniversity" class="collapse" role="tabpanel" aria-labelledby="universityTag">
-          <div class="card-body">
-            <div class="contInput">
-              <label for="">Nombre</label>
-              <input id="infoName" type="text" class="input-alternate infoInpDisabled" disabled>
+      <form id="updForm">
+        <div id="infoUniversity" class="collapse" role="tabpanel" aria-labelledby="universityTag">
+            <div class="card-body">
+              <div class="contInput">
+                <label for="">Nombre de la Universidad</label>
+                <input id="infoName" name="infoName" type="text" class="input-alternate infoInpDisabled" disabled>
+              </div>
+              <div class="contInput">
+                <label for="">Campus</label>
+                <input id="infoCampus" name="infoCampus" type="text" class="input-alternate infoInpDisabled" disabled>
+              </div>
+              <div class="contInput">
+                <label for="">Color</label>
+                <input id="infoColor" name="" type="text" class="input-alternate" disabled>
+              </div>
             </div>
-            <div class="contInput">
-              <label for="">Campus</label>
-              <input id="infoCampus" type="text" class="input-alternate infoInpDisabled" disabled>
+        </div>
+        <div class="card-header contInput" role="tab" id="addressTag">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#addressInfo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5 class="mb-0">
+              Editar Direccion
+              <i class="fa fa-chevron-down prefix"></i>
+            </h5>
+          </a>
+        </div>
+        <!-- Card body -->
+        <div id="addressInfo" class="collapse" role="tabpanel" aria-labelledby="addressTag">
+            <div class="card-body">
+              <div class="contInput">
+                <label for="">Calle</label>
+                <input id="infoCalle" name="infoCalle" type="text" class="input-alternate" disabled>
+              </div>
+              <div class="contInput">
+                <label for="">Colonia</label>
+                <input id="infoColonia" name="infoColonia" type="text" class="input-alternate" disabled>
+              </div>
+              <div class="contInput">
+                <label for="">Numero ext</label>
+                <input id="infoExt" name="infoExt" type="text" class="input-alternate" disabled>
+              </div>
+              <div class="contInput">
+                <label for="">Numero int</label>
+                <input id="infoInt" name="infoInt" type="text" class="input-alternate" disabled>
+              </div>
             </div>
-            <div class="contInput">
-              <label for="">Color</label>
-              <input id="infoColor" type="text" class="input-alternate" disabled>
-            </div>
-          </div>
-      </div>
-      <div class="card-header contInput" role="tab" id="addressTag">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#addressInfo" aria-expanded="false" aria-controls="collapseTwo">
-          <h5 class="mb-0">
-            Editar Direccion
-            <i class="fa fa-chevron-down prefix"></i>
-          </h5>
-        </a>
-      </div>
-      <!-- Card body -->
-      <div id="addressInfo" class="collapse" role="tabpanel" aria-labelledby="addressTag">
-          <div class="card-body">
-            <div class="contInput">
-              <label for="">Calle</label>
-              <input id="infoCalle" type="text" class="input-alternate" disabled>
-            </div>
-            <div class="contInput">
-              <label for="">Colonia</label>
-              <input id="infoColonia" type="text" class="input-alternate" disabled>
-            </div>
-            <div class="contInput">
-              <label for="">Numero ext</label>
-              <input id="infoExt" type="text" class="input-alternate" disabled>
-            </div>
-            <div class="contInput">
-              <label for="">Numero int</label>
-              <input id="infoInt" type="text" class="input-alternate" disabled>
-            </div>
-          </div>
-      </div>
-      <div class="card-header contInput" role="tab" id="UserTag">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#userInfo" aria-expanded="false" aria-controls="collapseTwo">
-          <h5 class="mb-0">
-            Editar Usuario
-            <i class="fa fa-chevron-down prefix"></i>
-          </h5>
+        </div>
+        <div class="card-header contInput" role="tab" id="UserTag">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#userInfo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5 class="mb-0">
+              Editar Usuario
+              <i class="fa fa-chevron-down prefix"></i>
+            </h5>
 
-        </a>
-      </div>
-      <div id="userInfo" class="collapse" role="tabpanel" aria-labelledby="UserTag">
-          <div class="card-body">
-            <div class="contInput">
-              <label for="">Username</label>
-              <input id="infoUser" type="text" class="input-alternate" disabled>
+          </a>
+        </div>
+        <div id="userInfo" class="collapse" role="tabpanel" aria-labelledby="UserTag">
+            <div class="card-body">
+              <div class="contInput">
+                <label for="">Username</label>
+                <input id="infoUser" name="infoUser" type="text" class="input-alternate" disabled>
+              </div>
+              <div class="contInput">
+                <label for="">password</label>
+                <input id="infoPass" name="infoPass" type="text" class="input-alternate" disabled>
+              </div>
             </div>
-            <div class="contInput">
-              <label for="">password</label>
-              <input id="infoPass" type="text" class="input-alternate" disabled>
-            </div>
-          </div>
-      </div>
+        </div>
+      </form>
     </div>
     <!-- Accordion card -->
 
@@ -224,94 +226,97 @@
                 </button>
             </div>
             <!--Body-->
-            <div class="modal-body mb-0">
-              <div class="row">
-                <div class="col-md-6">
+            <form id="formSchool">
+              <div class="modal-body mb-0">
+                <div class="row">
+                  <div class="col-md-6">
 
-                  <div class='card logoWrap'>
-                    <img id='logoPrev' src='' alt=''>
-                  </div>
+                    <div class='card logoWrap'>
+                      <img id='logoPrev' src='' alt=''>
+                    </div>
 
-                    <div class='md-form'>
-                      <div class='file-field'>
-                        <div class='btn btn-primary fornBtnColor btnLogo'>
-                          <span>Escoge un Logo</span>
-                          <form id="formLogo">
-                            <input type='file' id='uni-logo' name='formLogo'>
-                          </form>
+                      <div class='md-form'>
+                        <div class='file-field'>
+                          <div class='btn btn-primary fornBtnColor btnLogo'>
+                            <span>Escoge un Logo</span>
+                            <form id="formLogo">
+                              <input type='file' id='uni-logo' name='formLogo'>
+                            </form>
+                          </div>
+                          <div class='file-path-wrapper'>
+                          </div>
                         </div>
-                        <div class='file-path-wrapper'>
-                        </div>
+                      </div><br>
+
+                      <div class="md-form form-sm">
+                       <br>
                       </div>
-                    </div><br>
 
-                    <div class="md-form form-sm">
-                     <br>
-                    </div>
+                      <div class="md-form form-sm">
+                       <i class="fa fa-user prefix"></i>
+                       <input type="text" id="newUniUser" name="newUniUser" class="form-control">
+                       <label for="form21">Nombre de usuario</label>
+                      </div>
+
+                      <div class="md-form form-sm">
+                       <i class="fa fa-user prefix"></i>
+                       <input type="text" id="newUniPass" name="newUniPass" class="form-control">
+                       <label for="form21">Contraseña</label>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
 
                     <div class="md-form form-sm">
                      <i class="fa fa-user prefix"></i>
-                     <input type="text" id="newUniUser" class="form-control">
-                     <label for="form21">username</label>
+                     <input type="text" id="newUniName" name="newUniName" class="form-control">
+                     <label for="form21">Nombre de la Universidad</label>
                     </div>
 
                     <div class="md-form form-sm">
-                     <i class="fa fa-user prefix"></i>
-                     <input type="text" id="newUniPass" class="form-control">
-                     <label for="form21">password</label>
+                     <i class="fa fa-pencil prefix"></i>
+                     <input type="text" id="newUniColor" name="newUniColor" class="form-control jscolor">
+                     <label for="form21">Color</label>
                     </div>
-                </div>
-                <div class="col-md-6">
 
-                  <div class="md-form form-sm">
-                   <i class="fa fa-user prefix"></i>
-                   <input type="text" id="newUniName" class="form-control">
-                   <label for="form21">Nombre</label>
+                    <div class="md-form form-sm">
+                     <i class="fa fa-university prefix"></i>
+                     <input type="text" id="newUniCampus" name="newUniCampus" class="form-control">
+                     <label for="form21">Campus</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                     <i class="fa fa-map-marker prefix"></i>
+                     <input type="text" id="newUniStreet" name="newUniStreet" class="form-control">
+                     <label for="form21">Calle</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                     <i class="fa fa-hashtag prefix"></i>
+                     <input type="text" id="newUniExt" name="newUniExt" class="form-control">
+                     <label for="form21">Numero Exterior</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                     <i class="fa fa-hashtag prefix"></i>
+                     <input type="text" id="newUniInt" name="newUniInt" class="form-control">
+                     <label for="form21">Numero Interior</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                     <i class="fa fa-map-marker prefix"></i>
+                     <input type="text" id="newUniCol" name="newUniCol" class="form-control">
+                     <label for="form21">Colonia</label>
+                    </div>
+
+                    <div class="text-center mt-1-half">
+                     <button type="button"class="btn mb-2 fornBtnColor btnSend">Registrar <i class="fa fa-send ml-1"></i></button>
+                    </div>
+
                   </div>
-
-                  <div class="md-form form-sm">
-                   <i class="fa fa-pencil prefix"></i>
-                   <input type="text" id="newUniColor" class="form-control jscolor">
-                   <label for="form21">Color</label>
-                  </div>
-
-                  <div class="md-form form-sm">
-                   <i class="fa fa-university prefix"></i>
-                   <input type="text" id="newUniCampus" class="form-control">
-                   <label for="form21">Campus</label>
-                  </div>
-
-                  <div class="md-form form-sm">
-                   <i class="fa fa-map-marker prefix"></i>
-                   <input type="text" id="newUniStreet" class="form-control">
-                   <label for="form21">Calle</label>
-                  </div>
-
-                  <div class="md-form form-sm">
-                   <i class="fa fa-hashtag prefix"></i>
-                   <input type="text" id="newUniExt" class="form-control">
-                   <label for="form21">Numero Exterior</label>
-                  </div>
-
-                  <div class="md-form form-sm">
-                   <i class="fa fa-hashtag prefix"></i>
-                   <input type="text" id="newUniInt" class="form-control">
-                   <label for="form21">Numero Interior</label>
-                  </div>
-
-                  <div class="md-form form-sm">
-                   <i class="fa fa-map-marker prefix"></i>
-                   <input type="text" id="newUniCol" class="form-control">
-                   <label for="form21">Colonia</label>
-                  </div>
-
-                  <div class="text-center mt-1-half">
-                   <button class="btn mb-2 fornBtnColor btnSend">Registrar <i class="fa fa-send ml-1"></i></button>
-                  </div>
-
                 </div>
               </div>
-            </div>
+            </form>
+
         </div>
         <!--/.Content-->
     </div>
@@ -366,6 +371,7 @@
 @stop
 
 @section('js-plus')
+<script type="text/javascript" src="/packages/libs/jquery-validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/libs/jscolor/jscolor.js"></script>
 <script type="text/javascript" src="/packages/assets/js/administer/schools.js"></script>
 @stop

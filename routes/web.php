@@ -22,9 +22,14 @@
       return view('landing.home');
   });
 
+  Route::get('/terms-and-conditions', function () {
+      return view('landing.terms-and-conditions');
+  });
+
   Route::post('/signIn', 'LoginController@signIn');
   Route::post('/logIn', 'LoginController@logIn');
   Route::post('/logOut', 'LoginController@logOut');
+  Route::post('/highSchools', 'LoginController@highSchools');
 
 /*
 * FIN rutas rutasLogIn

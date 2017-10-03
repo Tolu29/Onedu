@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Redirect;
 use App\User;
+use App\Ciudad;
 use App\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -91,6 +92,19 @@ class LoginController extends Controller
   function logOut(){
    Auth::logout();
    return "Hasta pronto";
+  }
+
+
+  function highSchools(){
+    $cities = DB::table('ciudades')->get();
+
+    $high_Schools = DB::table('ciudades')
+    ->join('preparatorias', 'preparatorias.ciudad_id', '=', 'ciudades.id')->get();
+
+    return response()->json([
+      'cities' => $cities,
+      'high_Schools' => $high_Schools
+    ]);
   }
 
 

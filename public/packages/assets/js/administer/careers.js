@@ -39,14 +39,27 @@ $(function(){
       case 1:
       case 2:
       case 5:
-        infoArray.push($("[name='textInfo" + nameCard + "']").val());
+        let whiteSpaces = $("[name='textInfo" + nameCard + "']").val(), singleInput = $("[name='textInfo" + nameCard + "']");
+        if (/^\s+$/.test(whiteSpaces)) {
+          singleInput.val("");
+        }
+        if (singleInput.val() == "" || singleInput.val() == undefined) {
+          toastr.error("Ingresa un texto para continuar");
+          return ;
+        }
+        infoArray.push(singleInput.val());
         break;
       case 4:
       case 3:
-        infoArray.push(tinyMCE.get('textInfo'+nameCard).getContent());
+        let content = tinyMCE.get('textInfo'+nameCard).getContent();
+        if (content == "" || content == undefined || content == null) {
+          toastr.error("Debes de ingresar un texto para continuar");
+          return ;
+        }
+        infoArray.push(content);
       default:
     }
-    
+
     if (nameCard == 5) {
       $(".next").remove();
       $(".btnSave").append("<button type='button' class='btn z-depth-2 btnRegCareer'>Guardar</button>");
@@ -61,7 +74,12 @@ $(function(){
 
 
   $("body").on('click', '.btnRegCareer', function(){
-    infoArray.push(tinyMCE.get('textInfo6').getContent());
+    let content = tinyMCE.get('textInfo6').getContent();
+    if (content == "" || content == undefined || content == null) {
+      toastr.error("Debes de ingresar un texto para continuar");
+      return ;
+    }
+    infoArray.push(content);
     let data = {
       career: infoArray[0],
       level: infoArray[1],
@@ -128,11 +146,24 @@ $(function(){
       case 1:
       case 2:
       case 5:
-        newInfo.push($("[name='textInfo" + nameCard + "']").val());
+        let whiteSpaces = $("[name='textInfo" + nameCard + "']").val(), singleInput = $("[name='textInfo" + nameCard + "']");
+        if (/^\s+$/.test(whiteSpaces)) {
+          singleInput.val("");
+        }
+        if (singleInput.val() == "" || singleInput.val() == undefined) {
+          toastr.error("Ingresa un texto para continuar");
+          return ;
+        }
+        newInfo.push(singleInput.val());
         break;
       case 3:
       case 4:
-        newInfo.push(tinyMCE.get('textInfo'+nameCard).getContent());
+        let content = tinyMCE.get('textInfo'+nameCard).getContent();
+        if (content == "" || content == undefined || content == null) {
+          toastr.error("Debes de ingresar un texto para continuar");
+          return ;
+        }
+        newInfo.push(content);
       default:
 
     }
@@ -165,6 +196,11 @@ $(function(){
 
 
   $("body").on('click', '.btnUpdCareer', function(){
+    let content = tinyMCE.get('textInfo6').getContent();
+    if (content == "" || content == undefined || content == null) {
+      toastr.error("Debes de ingresar un texto para continuar");
+      return ;
+    }
     newInfo.push(tinyMCE.get('textInfo6').getContent());
     let data = {
       career: newInfo[1],
@@ -194,29 +230,29 @@ $(function(){
     });
   });
 
-  //
-  // $("body").on('click', '.btnDelCareer', function(){
-  //   let trParent = $(this).parent().parent();
-  //   let data = {
-  //     id: $(this).data('id')
-  //   }
-  //   $.ajax({
-  //     url: "/deleteCareer",
-  //     type: "POST",
-  //     data: data,
-  //     headers: {
-  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  //     }
-  //   })
-  //   .done(function(data){
-  //     if (data == "La carrera se ha borrado con exito") {
-  //       toastr.success('La carrera se ha borrado con exito');
-  //       trParent.remove();
-  //     }else {
-  //       toastr.error('No se puede borrar intentalo mas tarde');
-  //     }
-  //   });
-  // });
+  
+  $("body").on('click', '.btnDelCareer', function(){
+    let trParent = $(this).parent().parent();
+    let data = {
+      id: $(this).data('id')
+    }
+    $.ajax({
+      url: "/deleteCareer",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      if (data == "La carrera se ha borrado con exito") {
+        toastr.success('La carrera se ha borrado con exito');
+        trParent.remove();
+      }else {
+        toastr.error('No se puede borrar intentalo mas tarde');
+      }
+    });
+  });
 
 
 

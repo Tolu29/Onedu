@@ -2,6 +2,10 @@
   display: none;
 }
 
+[id*=-error]{
+  display: none !important;
+}
+
 .padTopSchool{
   padding-top: 9rem;
 }

@@ -2,6 +2,15 @@
     background-color: #5172a1
 }
 
+[id*=-error]{
+  display: none !important;
+}
+
+.checkbox-success-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+    border-color: #399c5f ;
+    background-color: #399c5f;
+}
+
 @media only screen and (max-width: 768px) {
     .ml-auto{
       display: -webkit-box !important;

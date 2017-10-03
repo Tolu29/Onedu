@@ -26,24 +26,22 @@
 
        <ul class="nav navbar-nav nav-flex-icons ml-auto" style="padding-top: 1em;">
          <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Inicio</a>
+           <a class="nav-link waves-effect waves-light landOpt" href="#section-1">Inicio</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Carreras</a>
+           <a href="#section-3" class="nav-link waves-effect waves-light landOpt" id="ventajas">Ventajas</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Ventajas</a>
+           <a href="#section-4" class="nav-link waves-effect waves-light landOpt" id="oneduDo">¿Que hacemos?</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Exito</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Registro</a>
+           <a class="nav-link waves-effect waves-light landOpt" href="#section-5">Registro</a>
          </li>
          <li class="nav-item">
            <a class="nav-link waves-effect waves-light landOpt" data-toggle="modal" data-target="#modalLogin">Entrar</a>
          </li>
        </ul>
+
      </div>
    </div>
    </nav>
@@ -230,7 +228,7 @@
 
     </div>
 
-    <div class="sections">
+    <div class="sections" id="section-4">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -239,7 +237,7 @@
           <div class="offset-md-1"></div>
           <div class="col-md-7">
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-e_3Cg9GZFU" frameborder="0" allowfullscreen></iframe>
+              <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/IRGBU2r7O10" frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -248,7 +246,7 @@
 
     </div>
 
-    <div class="sections">
+    <div class="sections" id="section-5">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -269,29 +267,44 @@
           </div>
 
           <div class="col-md-6">
-            <div class="regInputCont">
-              <div class="landRegFa"><i class="fa fa-user adjustFa text-white" aria-hidden="true"></i></div>
-              <input name="" value="Nombre Completo" class="LandRegInp" id="nameReg">
-            </div>
-            <div class="regInputCont">
-              <div class="landRegFa"><i class="fa fa-envelope adjustFa text-white" aria-hidden="true"></i></div>
-              <input name="" value="Correo Electronico" class="LandRegInp" id="mailReg">
-            </div>
-            <div class="regInputCont">
-              <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
-              <input name="" value="Contrasena" class="LandRegInp" id="regPass">
-            </div>
-            <div class="regInputCont">
-              <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
-              <input name="" value="Confirmacion Contrasena" class="LandRegInp" id="regPassDup">
-            </div>
-            <div class="regInputCont">
-              <div class="landRegFa"><i class="fa fa-university adjustFa text-white" aria-hidden="true"></i></div>
-              <input name="" value="De que escuela vienes?" class="LandRegInp" id="regSchool">
-            </div>
-            <div class="text-right">
-              <button type="button" class="btn btnReg z-depth-2">Registrar</button>
-            </div>
+            <form id="formRegist">
+
+              <div class="regInputCont">
+                <div class="landRegFa"><i class="fa fa-user adjustFa text-white" aria-hidden="true"></i></div>
+                <input placeholder="Nombre Completo" class="LandRegInp" id="nameReg" name="nameReg">
+              </div>
+
+              <div class="regInputCont">
+                <div class="landRegFa"><i class="fa fa-envelope adjustFa text-white" aria-hidden="true"></i></div>
+                <input placeholder="Correo Electronico" class="LandRegInp" id="mailReg" name="mailReg">
+              </div>
+
+              <div class="regInputCont">
+                <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
+                <input placeholder="Contraseña"  class="LandRegInp" id="regPass" name="regPass">
+              </div>
+
+              <div class="regInputCont">
+                <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
+                <input placeholder="Confirmacion Contraseña" class="LandRegInp" id="regPassDup" name="regPassDup">
+              </div>
+
+              <div class="regInputCont">
+                <div class="landRegFa"><i class="fa fa-university adjustFa text-white" aria-hidden="true"></i></div>
+                <select class="browser-default LandRegInp" id="citiesSelect">
+                  <option value="" disabled selected>Escoge una ciudad</option>                                  
+                </select>
+              </div>
+
+              <div class="form-group checkbox-success-filled regInputCont">
+                <input type="checkbox" id="checkbox110" class="filled-in" name="checkbox110">
+                <label for="checkbox110">Aceptas <a href="#">terminos y Condiciones</a></label>
+              </div>
+
+              <div class="text-right">
+                <button type="button" class="btn btnReg z-depth-2">Registrar</button>
+              </div>
+            </form>
           </div>
 
         </div>
@@ -388,5 +401,6 @@
 @stop
 
 @section('js')
+<script type="text/javascript" src="/packages/libs/jquery-validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/assets/js/landing/home.js"></script>
 @stop
