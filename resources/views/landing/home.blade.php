@@ -291,9 +291,12 @@
 
               <div class="regInputCont">
                 <div class="landRegFa"><i class="fa fa-university adjustFa text-white" aria-hidden="true"></i></div>
-                <select class="browser-default LandRegInp" id="citiesSelect">
-                  <option value="" disabled selected>Escoge una ciudad</option>                                  
+                <select class="browser-default LandRegInp" id="citiesSelect" style='background-color: #ffffff;'>
+                  <option value="" disabled selected>Escoge una ciudad</option>
                 </select>
+              </div>
+
+              <div class='regInputCont' id="contCities">
               </div>
 
               <div class="form-group checkbox-success-filled regInputCont">

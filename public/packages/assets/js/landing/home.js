@@ -22,16 +22,14 @@ $(function () {
   $("body").on('change', '#citiesSelect', function(){
     $id = $(this).find(':selected').data('id');
     let schools = atrib(high_Schools,"ciudad_id",$id);
-    $("#formRegist").append(
-      "<div class='regInputCont'>" +
-        "<div class='landRegFa'><i class='fa fa-university adjustFa text-white' aria-hidden='true'></i></div>" +
-        "<select class='browser-default LandRegInp' id='schoolsSelect'>" +
+    $("#contCities").append(
+      "<div class='landRegFa'><i class='fa fa-university adjustFa text-white' aria-hidden='true'></i></div>" +
+        "<select class='browser-default LandRegInp' id='schoolsSelect' style='background-color: #ffffff;'>" +
         "<option value='' disabled selected>Escoge una preparatoria</option>" +
-        "</select>" +
-      "</div>"
+      "</select>"
     );
     $.each(schools, function(i){
-      $("#schoolsSelect").append("<option value=''>" + schools[i].nombre + "</option>")
+      $("#schoolsSelect").append("<option value='" + schools[i].nombre + "'>" + schools[i].nombre + "</option>")
     });
 
   });
@@ -59,17 +57,17 @@ $(function () {
     });
     if ($("#formRegist").valid()){
 
-        let name = $("#nameReg").val().substr(0, $("#nameReg").val().indexOf(' '));
-        let surname =  $("#nameReg").val().substr($("#nameReg").val().indexOf(' ')+1);
-
+        let school = $("#schoolsSelect").val();
+        if (school == null || school == undefined || school == "") {
+          school = "Sin establecer";
+        }
         let data = {
-          name: name,
-          surname: surname,
+          name: $("#nameReg").val(),
           pass: $("#regPass").val(),
           mail: $("#mailReg").val(),
-          school: $("#regSchool").val()
+          school: school
         }
-
+        
         $.ajax({
           url: "/signIn",
           type: "POST",

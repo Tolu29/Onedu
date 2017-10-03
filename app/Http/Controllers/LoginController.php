@@ -23,7 +23,6 @@ class LoginController extends Controller
 
     $validation = Validator::make($data,[
       'name' => 'required',
-      'surname' => 'required',
       'pass'  => 'required',
       'mail' => 'required',
       'school' => 'required',
@@ -45,8 +44,7 @@ class LoginController extends Controller
         $user->assignRole('student');
 
         $student = new Student($data);
-        $student->nombre = $data['name'];
-        $student->apellidos = $data['surname'];
+        $student->nombre = $data['name'];        
         $student->active = 1;
         $student->escuela_anterior = $data['school'];
         $student->user_id = $user->id;
