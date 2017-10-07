@@ -118,7 +118,7 @@ function allUniversities(){
 
   function save(Request $request){
 
-    $data = $request->all();    
+    $data = $request->all();
 
     $validation = Validator::make($data,[
       'name' => 'required',
@@ -388,6 +388,7 @@ function allUniversities(){
             $study_plan->nombre_plan = $value['namePlan'];
             $study_plan->descripcion = $value['descriptionPlan'];
             $study_plan->universidad_id = $universidad_id;
+            $study_plan->carrera_id = $carrera_id;
             $study_plan->active = 1;
             $study_plan->save();
           }

@@ -7,6 +7,7 @@ use Redirect;
 use App\User;
 use App\Career;
 use App\Student;
+use App\ClasesMuestra;
 use Illuminate\Support\Facades\DB;
 use App\Informations;
 use Illuminate\Http\Request;
@@ -52,10 +53,18 @@ class StudentController extends Controller
   }
 
   function infoselected(Request $request){
-    $data = $request->all();    
+
+    $data = $request->all();
     $Student_career_id = $request->session()->get('Student_career_id');
+
     $info = Informations::where('carrera_id', '=', $Student_career_id)
     ->where('universidad_id', '=', $data['id'])->get();
+
+    $class_sample = ClasesMuestra::where('carrera_id', '=', $Student_career_id)
+    ->where('universidad_id', '=', $data['id'])->first();
+
+
+
     return $info;
   }
 

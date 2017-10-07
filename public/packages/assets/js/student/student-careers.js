@@ -1,6 +1,6 @@
 $(function(){
 
-  var infoCareer = [], related = [], universities = [];
+  var infoCareer = [], related = [], universities = [], infosDesc = [];
 
   wow.init();
 
@@ -21,51 +21,14 @@ $(function(){
 
   // EJECUCION CLICK
 
-  // $("body").on('click','#schoolMap',function(){
-  //   $("#thirdLevel1").addClass('fadeOutLeft');
-  //   $("#thirdLevel2").addClass('fadeOutLeft');
-  //   $("#thirdLevel3").addClass('fadeOutLeft');
-  //   $('#thirdLevel1').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-  //     $("#thirdLevel1").hide();
-  //     $("#thirdLevel2").hide();
-  //     $("#thirdLevel3").hide();
-  //     $("#fourthLevel").removeClass('hideCareers');
-  //     $("#fourthLevel").addClass('fadeInRight');
-  //   });
-  // });
-
-  $("body").on('click', '.explanationCont>div>img' ,function(){
-    $id = $(this).data('id')
-    let single = atrib(universities, "id", $id);
-    $(".secondLevel").addClass('fadeOutLeft');
-    $('.secondLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $(".secondLevel").hide();
-      $(".thirdLevel").removeClass('hideCareers');
-      $(".logoUni").attr('src', '/packages/assets/img/universities/logos/'+ single[0].logo);
-      $(".universityName").text(single[0].nombre);
-      $(".universityStreet").text('Calle: '+ single[0].calle);
-      $(".universityCol").text('Col. '+ single[0].colonia);
-      let data = {
-        id: $id
-      }
-      $.ajax({
-        url: "/infoselected",
-        type: "POST",
-        data: data,
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      })
-      .done(function(data){
-
-      });
+  $("body").on('click','#schoolMap',function(){
+    $(".thirdLevel").addClass('fadeOutLeft');
+    $('.thirdLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(".thirdLevel").hide();
+      $(".fourthLevel").removeClass('hideCareers');
+      $(".fourthLevel").addClass('fadeInRight');
     });
   });
-
-
-
-
-
 
 
   // click en la carrera
@@ -97,6 +60,11 @@ $(function(){
 
 
     });
+  });
+
+  $("body").on('click', '.backSecond', function(){
+    $(".fisrtLevel").show();
+    $(".secondLevel").hide();
   });
 
   // universidades relacionadas
@@ -216,6 +184,68 @@ $(function(){
   });
 
 
+  // click descripcion universidad
+
+  $("body").on('click', '.explanationCont>div>img' ,function(){
+    $id = $(this).data('id')
+    let single = atrib(universities, "id", $id);
+    let data = {
+      id: $id
+    }
+    $.ajax({
+      url: "/infoselected",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      infosDesc = data;
+      $.each(data, function(i){
+        switch (data[i].titulo) {
+          case "accreditation":
+            addinfo("Acreditación", data[i].id);
+            break;
+          case "admission":
+            addinfo("Admición", data[i].id);
+            break;
+          case "extra_activities":
+            addinfo("Actividades Extracurriculares", data[i].id);
+            break;
+          case "schedules":
+            addinfo("Horarios", data[i].id);
+            break;
+          case "scholarships":
+            addinfo("Becas", data[i].id);
+            break;
+        }
+      });
+      $(".infoSelect:last-child").trigger('click');
+    });
+    $(".secondLevel").addClass('fadeOutLeft');
+    $('.secondLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(".secondLevel").hide();
+      $(".thirdLevel").removeClass('hideCareers');
+      $(".logoUni").attr('src', '/packages/assets/img/universities/logos/'+ single[0].logo);
+      $(".universityName").text(single[0].nombre);
+      $(".universityStreet").text('Calle: '+ single[0].calle);
+      $(".universityCol").text('Col. '+ single[0].colonia);
+    });
+  });
+
+
+  $("body").on('click', '.infoSelect', function(){
+    $(".contTitle").empty();
+    $(".contMat").empty();
+    $id = $(this).data('id');
+    $name = $(this).data('name');
+    let single = atrib(infosDesc, "id", $id);
+    $(".contTitle").append("<h2 class='alingH2'>" + $name + "</h2>");
+    $(".contMat").append(single[0].descripcion);
+  });
+
+
   // cambio de colores
   $("body").on('click','.parentCol>div',function(){
     $(".parentCol>div").css("background-color", "#eaeaea")
@@ -228,6 +258,16 @@ $(function(){
 
 
 // functions
+
+function addinfo(name, id){
+  $(".schoolOptions>div").append(
+    "<div class='col-md-4 col-sm-4'>" +
+      "<div data-name='" + name + "' class='infoSelect' data-id='" + id + "'>" +
+        "<a>" + name + "</a>" +
+      "</div>" +
+    "</div>"
+  );
+}
 
 function atrib(obj,attr,data){
   var response=[];

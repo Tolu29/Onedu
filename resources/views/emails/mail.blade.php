@@ -69,7 +69,7 @@
 
           <p class="welcome">Todos somos soñadores, pero no todos perseguimos nuestro sueño. En Onedu queremos ser el vínculo entre jóvenes que buscan el éxito a través de una carrera profesional y las universidades que las ofertan. Ven, encuentra tu pasión y alcanza tus sueños</p>
 
-          <center><a href="localhost:8000/activar/{{$token}}"><div id="confirm" type="button" name="button">Confirma tu cuenta</div></a></center>
+          <center><a href="http://localhost:8000/activar/{{$token}}"><div id="confirm" type="button" name="button">Confirma tu cuenta</div></a></center>
 
         </div>
       </div>
