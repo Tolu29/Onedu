@@ -9,7 +9,7 @@
 
   <div class="row" id="firstLevelSprofile1">
 
-    <div class="col-md-2">
+    <div class="col-md-3">
       <div class="jumbotron">
         <div class="info">
           <a>INFORMACION</a>
@@ -17,18 +17,10 @@
       </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-4">
       <div class="jumbotron">
         <div class="fav">
           <a>FAVORITOS</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="jumbotron">
-        <div class="historial">
-          <a>HISTORIAL ACADEMICO</a>
         </div>
       </div>
     </div>

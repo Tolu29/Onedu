@@ -11,6 +11,10 @@
     background-color: #399c5f;
 }
 
+#ONEDU{
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
     .ml-auto{
       display: -webkit-box !important;
@@ -102,7 +106,7 @@
 
 .landOpt{
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.09rem;
   padding-right: 2rem !important;
 }
 /*Intro*/
@@ -165,15 +169,19 @@
 }
 
 .logInput{
-  width: 23rem;
-  height: 25px;
-  margin: 0 auto;
-  border: none;
-  border:solid 1px #ccc;
-  border-radius: 4px;
-  text-align: center;
-  margin-left: 2rem;
-  margin-bottom: .80rem;
+  width: 23rem !important;
+  height: 25px !important;
+  margin: 0 auto !important;
+  border: none !important;
+  border:solid 1px #ccc !important;
+  border-radius: 4px !important;
+  text-align: center !important;
+  margin-left: 2rem !important;
+  margin-bottom: .80rem !important;
+}
+
+.mdb-lightbox figure img{
+  cursor: default !important;
 }
 
 .logLabel{
@@ -290,15 +298,15 @@
 .fooBtn1{
   border-radius: .23rem;
   background-color: white;
-  color: green !important;
-  width: 13rem;
+  color: #5172a1 !important;
+  width: 15rem;
 }
 
 .fooBtn2{
   border-radius: .23rem;
   color: white !important;
   border: 2px solid white;
-  width: 13rem;
+  width: 15rem;
   background-color: transparent;
 }
 

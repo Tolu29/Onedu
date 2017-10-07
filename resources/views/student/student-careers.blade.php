@@ -84,16 +84,16 @@
 
 
 <!-- tercer nivel -->
-  <div class="row wow hideCareers" id="thirdLevel1">
+  <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
       <div class="schoolInfo z-depth-2">
-        <img src="/packages/assets/img/students/studentPrueba.jpg" alt="">
+        <img alt="" class="logoUni">
         <div>
-          <h2>Tecnologico de Monterrey</h2>
-          <p>Av. Universidad</p>
-          <p>Col. EL tajito C.P 27000</p>
-          <p>Torreon, COAH.</p>
+          <h2 class="universityName">Tecnologico de Monterrey</h2>
+          <p class="universityStreet">Av. Universidad</p>
+          <p class="universityCol">Col. EL tajito C.P 27000</p>
+          <!-- <p class="university">Torreon, COAH.</p> -->
           <a id="schoolMap">VER MAPA</a>
         </div>
         <div class="likeZone">
@@ -104,7 +104,7 @@
 
   </div>
 
-  <div class="row wow hideCareers" id="thirdLevel2">
+  <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
       <div class="schoolOptions z-depth-2">
@@ -162,7 +162,7 @@
 
   </div>
 
-  <div class="row wow hideCareers" id="thirdLevel3">
+  <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
       <div class="UniOptDescription z-depth-2">

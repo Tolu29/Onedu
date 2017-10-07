@@ -19,7 +19,7 @@
      <div class="collapse navbar-collapse" id="navbarNav">
 
        <!-- SideNav slide-out button -->
-       <div class="float-left landOnedu">
+       <div class="float-left landOnedu" id="ONEDU">
          <h2 class="LandtextOnedu hidden-md-down">ONEDU</h2>
          <p class="futureOne hidden-md-down">Elige tu futuro</p>
        </div>
@@ -54,38 +54,39 @@
         <div class="modal-content">
 
             <!--Header-->
-            <div class="modal-header light-blue darken-3 white-text">
-                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+            <div class="modal-header white-text" style="background-color: #5172a1;">
+                <button type="button" class="close waves-effect waves-light" id="closeModal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
             </div>
             <!--Body-->
             <div class="modal-body">
-                <div class="md-form form-sm">
-                    <i class="fa fa-envelope prefix"></i>
-                    <input type="text" id="modMail" class="form-control">
-                    <label for="form30">Your email</label>
-                </div>
+                <form id="formModalEnter">
+                  <div class="md-form form-sm">
+                      <i class="fa fa-envelope prefix"></i>
+                      <input type="text" id="modMail" name="modMail" class="form-control">
+                      <label for="form30">Tu email</label>
+                  </div>
 
-                <div class="md-form form-sm">
-                    <i class="fa fa-lock prefix"></i>
-                    <input type="password" id="modPass" class="form-control">
-                    <label for="form31">Your password</label>
-                </div>
+                  <div class="md-form form-sm">
+                      <i class="fa fa-lock prefix"></i>
+                      <input type="password" id="modPass" name="modPass" class="form-control">
+                      <label for="form31">Contraseña</label>
+                  </div>
 
-                <div class="text-center mt-2">
-                    <button class="btn btn-info btnModEnter">Entrar <i class="fa fa-sign-in ml-1"></i></button>
-                </div>
-
+                  <div class="text-center mt-2">
+                      <button type="button" class="btn btnModEnter" style="background-color: #5172a1;">Entrar <i class="fa fa-sign-in ml-1"></i></button>
+                  </div>
+                </form>
             </div>
             <!--Footer-->
             <div class="modal-footer">
                 <div class="options text-center text-md-right mt-1">
-                    <p>No eres Miembro <a href="#">Registrate</a></p>
+                    <p>No eres Miembro <a href="#" id="modalRegister">Registrate</a></p>
                     <p>Olvidaste tu <a href="#">Contraseña?</a></p>
                 </div>
-                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar <i class="fa fa-times-circle ml-1"></i></button>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto" style="color: #5172a1 !important; border-color: #5172a1;" data-dismiss="modal">Cerrar <i class="fa fa-times-circle ml-1"></i></button>
             </div>
         </div>
         <!--/.Content-->
@@ -105,19 +106,21 @@
         <!--Container to center the content-->
         <div class="full-bg-img flex-center">
           <!-- <div class="row"> -->
-            <div class="col-md-5 wow fadeInLeft" id="logOn">
-              <div class="landingLog">
-                <div class="inputCont">
-                  <p class="logLabel">correo Electronico</p>
-                  <input class="logInput" id="logMail">
-                  <p class="logLabel">Contrasena</p>
-                  <input class="logInput" id="logPass">
-                </div>
-                <div class="text-right">
-                  <button type="button" class="btn btnEnter">Entrar</button>
+            <form id="formEnter">
+              <div class="col-md-5 wow fadeInLeft" id="logOn">
+                <div class="landingLog">
+                  <div class="inputCont">
+                    <p class="logLabel">Correo Electronico</p>
+                    <input class="logInput" id="logMail" name="logMail">
+                    <p class="logLabel">Contraseña</p>
+                    <input style="background-color: #ffffff" name="logPass" type="password" class="logInput" id="logPass">
+                  </div>
+                  <div class="text-right">
+                    <button type="button" class="btn btnEnter">Entrar</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
             <div class="col-md-6 wow fadeInRight">
               <h1 class="display-2 LandtextShad padH1">Observa todas las posibilidades</h1>
               <p class="futureOne LandtextShad">Con Onedu Elije la mejor opcion</p>
@@ -281,12 +284,12 @@
 
               <div class="regInputCont">
                 <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
-                <input placeholder="Contraseña"  class="LandRegInp" id="regPass" name="regPass">
+                <input placeholder="Contraseña" type="password"  class="LandRegInp" id="regPass" name="regPass">
               </div>
 
               <div class="regInputCont">
                 <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
-                <input placeholder="Confirmacion Contraseña" class="LandRegInp" id="regPassDup" name="regPassDup">
+                <input placeholder="Confirmacion Contraseña" type="password" class="LandRegInp" id="regPassDup" name="regPassDup">
               </div>
 
               <div class="regInputCont">
@@ -300,12 +303,12 @@
               </div>
 
               <div class="form-group checkbox-success-filled regInputCont">
-                <input type="checkbox" id="checkbox110" class="filled-in" name="checkbox110">
-                <label for="checkbox110">Aceptas <a href="#">terminos y Condiciones</a></label>
+                <input type="checkbox" id="checkbox110" name="checkbox110" class="filled-in">
+                <label for="checkbox110">Aceptas <a href="/terms-and-conditions" target="_blank">terminos y Condiciones</a></label>
               </div>
 
               <div class="text-right">
-                <button type="button" class="btn btnReg z-depth-2">Registrar</button>
+                <button type="button" class="btn btnReg z-depth-2">Registrarme</button>
               </div>
             </form>
           </div>
@@ -328,8 +331,8 @@
             <!--First column-->
             <div class="col-md-3 offset-md-1">
                 <h5 class="title">Contacto directo</h5>
-                <p>Numero Telefonico: (874)755-54-5</p>
-                <p>Correo electronico: asdasda@asdas.com.mx</p>
+                <p>Numero Telefonico: 8717857484</p>
+                <p>Correo electronico: Contacto@onedu.com.mx</p>
             </div>
             <!--/.First column-->
 
@@ -337,12 +340,12 @@
 
             <!--Second column-->
             <div class="col-md-3 offset-md-1">
-                <h5 class="title">Quieres ser parte de nosotros?</h5>
+                <h5 class="title">Direccion</h5>
                 <ul>
-                    <li><a href="#!">Calle sin nombre</a></li>
-                    <li><a href="#!">No. 0000</a></li>
-                    <li><a href="#!">Colonia sin Nombre</a></li>
-                    <li><a href="#!">Torreon, Coah. Mex</a></li>
+                    <li><a href="#!">Calle: Santiago Lavín</a></li>
+                    <li><a href="#!">No. 475</a></li>
+                    <li><a href="#!">Colonia: Las margaritas</a></li>
+                    <li><a href="#!">Torreón, Coahuila. Mexico</a></li>
                 </ul>
             </div>
             <!--/.Second column-->
@@ -353,8 +356,8 @@
             <div class="col-md-4">
 
                 <ul>
-                    <li><button type="button" class="btn btn-lg fooBtn1">Danger</button></li>
-                    <li><button type="button" class="btn waves-effect btn-lg fooBtn2">Danger</button></li>
+                    <li><button type="button" class="btn btn-lg fooBtn1">Registrarme Gratis</button></li>
+                    <li><button type="button" class="btn waves-effect btn-lg fooBtn2" data-toggle="modal" data-target="#modalLogin"> Ya tengo cuenta</button></li>
                 </ul>
             </div>
             <!--/.Third column-->
@@ -372,7 +375,7 @@
     <!--Copyright-->
     <div class="footer-copyright">
         <div class="container-fluid">
-            © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+            © 2017 Copyright: <a href="http://supernovaapps.com.mx/" target="_blank"> Supernova Apps </a>
 
         </div>
     </div>
@@ -381,13 +384,9 @@
     <!--Social buttons-->
     <div class="social-section footer-copyright">
         <ul>
-            <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-            <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-            <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-            <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-            <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-            <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-            <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-fb" href="https://www.facebook.com/OneduOficial/" target="_blank"><i class="fa fa-facebook"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-yt" href="https://www.youtube.com/channel/UCD9brIfPGQ3lyRHEKG2IZ8w/featured" target="_blank"><i class="fa fa-youtube"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-ins" href="https://www.instagram.com/onedu.oficial" target="_blank"><i class="fa fa-instagram"> </i></a></li>
         </ul>
     </div>
     <!--/.Social buttons-->
@@ -404,6 +403,8 @@
 @stop
 
 @section('js')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="/packages/assets/js/landing/scrollHome.js"></script>
 <script type="text/javascript" src="/packages/libs/jquery-validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/assets/js/landing/home.js"></script>
 @stop

@@ -19,31 +19,10 @@
      <div class="collapse navbar-collapse" id="navbarNav">
 
        <!-- SideNav slide-out button -->
-       <div class="float-left landOnedu">
+       <div class="float-left landOnedu" id="ONEDU">
          <h2 class="LandtextOnedu hidden-md-down">ONEDU</h2>
          <p class="futureOne hidden-md-down">Elige tu futuro</p>
        </div>
-
-       <ul class="nav navbar-nav nav-flex-icons ml-auto" style="padding-top: 1em;">
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Inicio</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Carreras</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Ventajas</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Exito</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt">Registro</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link waves-effect waves-light landOpt" data-toggle="modal" data-target="#modalLogin">Entrar</a>
-         </li>
-       </ul>
      </div>
    </div>
    </nav>
@@ -743,4 +722,8 @@
   </div>
 
 </div>
+@stop
+
+@section('js')
+<script type="text/javascript" src="/packages/assets/js/landing/terms-and-conditions.js"></script>
 @stop

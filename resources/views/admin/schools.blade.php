@@ -239,9 +239,9 @@
                         <div class='file-field'>
                           <div class='btn btn-primary fornBtnColor btnLogo'>
                             <span>Escoge un Logo</span>
-                            <form id="formLogo">
+                            <!-- <form id="formLogo"> -->
                               <input type='file' id='uni-logo' name='formLogo'>
-                            </form>
+                            <!-- </form> -->
                           </div>
                           <div class='file-path-wrapper'>
                           </div>

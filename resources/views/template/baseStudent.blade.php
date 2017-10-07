@@ -44,9 +44,6 @@ class="fixed-sn white-skin backColor"
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont">Perfil</a>
                 </li>
-                <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Ajustes</a>
-                </li>
             </ul>
         </li>
         <!--/. Side navigation links -->

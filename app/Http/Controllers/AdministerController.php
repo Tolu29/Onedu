@@ -118,7 +118,8 @@ function allUniversities(){
 
   function save(Request $request){
 
-    $data = $request->all();
+    $data = $request->all();    
+
     $validation = Validator::make($data,[
       'name' => 'required',
       'color' => 'required',
@@ -130,7 +131,6 @@ function allUniversities(){
       'password' => 'required',
     ]);
     if( $validation->fails()){
-
       return 'Tenemos un Error';
     }else {
 

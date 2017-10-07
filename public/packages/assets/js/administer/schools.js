@@ -59,7 +59,7 @@ $(function(){
         }
       });
       if ($("#formSchool").valid()){
-        let formData = new FormData($("#formLogo")[0]);
+        let formData = new FormData($("#formSchool")[0]);
         formData.append('name', $('#newUniName').val());
         formData.append('color', $('#newUniColor').val());
         formData.append('campus', $('#newUniCampus').val());
@@ -69,7 +69,7 @@ $(function(){
         formData.append('col', $('#newUniCol').val());
         formData.append('username', $('#newUniUser').val());
         formData.append('password', $('#newUniPass').val());
-
+        console.log(formData);
         $.ajax({
           contentType: false,
           processData: false,
