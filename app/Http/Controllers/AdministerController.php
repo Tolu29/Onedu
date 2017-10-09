@@ -119,6 +119,7 @@ function allUniversities(){
   function save(Request $request){
 
     $data = $request->all();
+
     $validation = Validator::make($data,[
       'name' => 'required',
       'color' => 'required',
@@ -130,7 +131,6 @@ function allUniversities(){
       'password' => 'required',
     ]);
     if( $validation->fails()){
-
       return 'Tenemos un Error';
     }else {
 
@@ -192,13 +192,13 @@ function allUniversities(){
 
   function updateUniversity(Request $request){
     $data = $request->all();
+    
     $validation = Validator::make($data,[
       'id' => 'required',
       'name' => 'required',
       'campus' => 'required',
       'color' => 'required',
       'street' => 'required',
-      'numInt' => 'required',
       'numExt' => 'required',
       'col' => 'required',
       'username' => 'required',
@@ -388,6 +388,7 @@ function allUniversities(){
             $study_plan->nombre_plan = $value['namePlan'];
             $study_plan->descripcion = $value['descriptionPlan'];
             $study_plan->universidad_id = $universidad_id;
+            $study_plan->carrera_id = $carrera_id;
             $study_plan->active = 1;
             $study_plan->save();
           }

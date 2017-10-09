@@ -9,6 +9,7 @@
 
 
 <!-- PRIMER NIVEL -->
+
   <div class="row wow fisrtLevel">
     <div class="col-md-12">
       <div class="careersCont z-depth-2">
@@ -20,8 +21,19 @@
 
 
 <!-- SEGUNDO NIVEL -->
+
+  <!-- <div class="row secondLevel">
+
+  </div> -->
+
   <div class="row wow hideCareers secondLevel">
 
+    <div class="col-md-4 col-sm-4">
+      <div class="backSecond">
+        <button type="button" class="btn z-depth-2 red">Registrar</button>
+      </div>
+    </div>
+    
     <div class="col-md-12">
 
       <div class="available-universities z-depth-2">
@@ -84,16 +96,16 @@
 
 
 <!-- tercer nivel -->
-  <div class="row wow hideCareers" id="thirdLevel1">
+  <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
       <div class="schoolInfo z-depth-2">
-        <img src="/packages/assets/img/students/studentPrueba.jpg" alt="">
+        <img alt="" class="logoUni">
         <div>
-          <h2>Tecnologico de Monterrey</h2>
-          <p>Av. Universidad</p>
-          <p>Col. EL tajito C.P 27000</p>
-          <p>Torreon, COAH.</p>
+          <h2 class="universityName">Tecnologico de Monterrey</h2>
+          <p class="universityStreet">Av. Universidad</p>
+          <p class="universityCol">Col. EL tajito C.P 27000</p>
+          <!-- <p class="university">Torreon, COAH.</p> -->
           <a id="schoolMap">VER MAPA</a>
         </div>
         <div class="likeZone">
@@ -104,57 +116,11 @@
 
   </div>
 
-  <div class="row wow hideCareers" id="thirdLevel2">
+  <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
       <div class="schoolOptions z-depth-2">
         <div class="row">
-
-          <div class="col-md-4">
-            <div class="">
-              <a>Becas</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Clase Muestra</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Actividades Extracurriculares</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Horarios</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Instalaciones</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Admicion</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Plan de Estudios</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Personal Docente</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="">
-              <a>Acreditacion</a>
-            </div>
-          </div>
 
         </div>
       </div>
@@ -162,30 +128,19 @@
 
   </div>
 
-  <div class="row wow hideCareers" id="thirdLevel3">
+  <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
       <div class="UniOptDescription z-depth-2">
         <div class="row">
           <div class="col-md-4">
-            <a> Semestre 1</a>
-            <a> Semestre 2</a>
-            <a> Semestre 3</a>
-            <a> Semestre 4</a>
-            <a> Semestre 5</a>
-            <a> Semestre 6</a>
-            <a> Semestre 7</a>
-            <a> Semestre 8</a>
+            <div class="contTitle">
+
+            </div>
           </div>
           <div class="col-md-8">
             <div class="contMat">
-              <h2>Semestre 2</h2>
-              <p>* Materia de universidad</p>
-              <p>* Materia de universidad</p>
-              <p>* Materia de universidad</p>
-              <p>* Materia de universidad</p>
-              <p>* Materia de universidad</p>
-              <p>* Materia de universidad</p>
+
             </div>
           </div>
         </div>
@@ -196,7 +151,7 @@
 
   <!-- cuarto nivel -->
 
-  <div class="row wow hideCareers" id="fourthLevel">
+  <div class="row wow hideCareers fourthLevel">
 
     <div class="col-md-12">
       <div class="mapCont z-depth-2">

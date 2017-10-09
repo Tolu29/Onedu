@@ -3,6 +3,9 @@ $(function(){
   let names = [];
 // =====================//
 
+  $('.uniLvl2').removeClass('schoolHide');
+  $('.uniLvl2').hide();
+
   $.ajax({
     url: "/allUniversities",
     type: "POST",
@@ -59,7 +62,7 @@ $(function(){
         }
       });
       if ($("#formSchool").valid()){
-        let formData = new FormData($("#formLogo")[0]);
+        let formData = new FormData($("#formSchool")[0]);
         formData.append('name', $('#newUniName').val());
         formData.append('color', $('#newUniColor').val());
         formData.append('campus', $('#newUniCampus').val());
@@ -69,7 +72,6 @@ $(function(){
         formData.append('col', $('#newUniCol').val());
         formData.append('username', $('#newUniUser').val());
         formData.append('password', $('#newUniPass').val());
-
         $.ajax({
           contentType: false,
           processData: false,
@@ -100,23 +102,48 @@ $(function(){
 
 
     $("body").on('click', '.adminDelBtn', function(){
-      let data = {
-        id: $(this).data("id")
-      }
-      let trUniversity = $(this).parent().parent();
-      $.ajax({
-        url: "/deleteUniversity",
-        type: "POST",
-        data: data,
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+      swal({
+        title: "Estas suguro de eliminar la Universidad?",
+        text: "Una vez borrada, No podras recuperar la informacion!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
       })
-      .done(function(data){
-        if (data == "La universidad se ha borrado con exito") {
-          toastr.success('La universidad se ha borrado con exito');
-          trUniversity.remove();
+      .then((willDelete) => {
+        if (willDelete) {
+          let data = {
+            id: $(this).data("id")
+          }
+          let trUniversity = $(this).parent().parent();
+          $.ajax({
+            url: "/deleteUniversity",
+            type: "POST",
+            data: data,
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          })
+          .done(function(data){
+            if (data == "La universidad se ha borrado con exito") {
+              trUniversity.remove();
+              swal("Tu archivo se ha borrado con exito!", {
+                icon: "success",
+              });
+            }
+          });
+        } else {
+          swal("Genial todo esta seguro!");
         }
+      });
+    });
+
+
+    // btn para retoceder
+    $("body").on('click', '.backSec2', function(){
+      $(".uniLvl2").fadeOut('slow', function(){
+        $(".uniLvl1").fadeIn('slow');
+        $(".addCareer").remove()
+        $('.btnCarAs').append("<button class='btn z-depth-2 addCareer' data-toggle='modal' data-target='#modalSubscription'>Agregar</button>");
       });
     });
 
@@ -138,11 +165,9 @@ $(function(){
         }
       })
       .done(function(data){
-        $(".uniLvl1").addClass('animated fadeOut');
-         $('.uniLvl1').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-           $(".uniLvl1").addClass('schoolHide');
-           $(".uniLvl2").removeClass('schoolHide');
-           $(".uniLvl2").addClass('animated fadeIn');
+          $(".uniLvl1").fadeOut('slow', function(){
+            $('.uniLvl2').fadeIn( 'slow' );
+          });
           //  appends a los div corresponsientes
           $("#infoName").val(data.university[0].nombre);
           $("#infoCampus").val(data.university[0].campus);
@@ -153,7 +178,8 @@ $(function(){
           $("#infoInt").val(data.university[0].num_int);
           $("#infoUser").val(data.university[0].username);
           $("#infoImg").attr('src', '/packages/assets/img/universities/logos/' + data.university[0].logo);
-         });
+
+          $("#tableAssignedUni").empty();
 
          $.each(data.careersUniversity, function(i){
            $("#tableAssignedUni").append(
@@ -181,6 +207,7 @@ $(function(){
       $(this).removeClass('btnEditInfo');
       $(this).addClass('btnUpdInfo');
       $(this).text("GUARDAR DATOS");
+      $(".infoA").click();
     });
 
     $("body").on('change', '#infoInput', function(){
@@ -244,10 +271,11 @@ $(function(){
             $.each(disabledArray, function(i){
               $(disabledArray[i]).attr("disabled", true);
             });
-            toastr.success('La Universidad se ha actualizado correctamente');
+            swal("Genial!", "La Universidad se ha actualizado con exito!", "success");
             $(".btnUpdInfo").text("EDITAR DATOS");
             $(".btnUpdInfo").addClass('btnEditInfo');
             $(".btnUpdInfo").removeClass('btnUpdInfo');
+            $(".infoA").click();
           }
         });
       }else {
@@ -263,7 +291,8 @@ $(function(){
 
 
     $("body").on('click', '.addCareer', function(){
-      let data = {
+      let data = {};
+      data = {
         id: $(this).data("id")
       }
       $(".saveCareersUni").attr('data-id', $(this).data("id"));
@@ -368,6 +397,8 @@ $(function(){
             "</tr>"
           )
         });
+        $(".cloeseCar_uni").trigger('click');
+        swal("Genial!", "Las carreras se han guardado con exito!", "success");
       }
     });
   });

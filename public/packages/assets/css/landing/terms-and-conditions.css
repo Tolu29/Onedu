@@ -5,3 +5,7 @@ body{
 .termsConditions{
   margin-top: 9rem;
 }
+
+#ONEDU{
+  cursor: pointer;
+}

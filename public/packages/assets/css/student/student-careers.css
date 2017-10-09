@@ -36,11 +36,15 @@ Carreras
 }
 
 .available-universities{
-  margin-top: 9rem;
+  margin-top: 3rem;
   background-color: #ffffff;
   border-top: 5px solid #f4c945;
   border-radius: .23rem;
   height: 6rem;
+}
+
+.backSecond{
+  margin-top: 9rem;
 }
 
 /*
@@ -139,6 +143,29 @@ Descripcion de carreras
 descripcion de escuelas
 */
 
+.contTitle{
+  min-height: 14rem;
+  text-align: center;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.contMat{
+  min-height: 14rem;
+  text-align: center;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.contMat>p h1 h2 h3 h4 h5 div{
+  margin: 0 auto;
+}
+
+.alingH2{
+  margin: 0 auto;
+}
 
 .schoolInfo{
   margin-top: 9rem;
@@ -160,7 +187,7 @@ descripcion de escuelas
 .likeZone>i{
   position: absolute;
   right: 3rem;
-  bottom: 8rem;
+  bottom: 7rem;
 }
 
 .schoolInfo>div>h2{

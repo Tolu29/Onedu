@@ -12,7 +12,6 @@
 */
 
 
-
 /*
 * COMIENZO rutasLogIn
 */
@@ -26,6 +25,9 @@
       return view('landing.terms-and-conditions');
   });
 
+  Route::get("/activar/{token}", 'LoginController@activateStudent');
+
+
   Route::post('/signIn', 'LoginController@signIn');
   Route::post('/logIn', 'LoginController@logIn');
   Route::post('/logOut', 'LoginController@logOut');
@@ -34,7 +36,6 @@
 /*
 * FIN rutas rutasLogIn
 */
-
 
 
 Route::group(['middleware' => ['auth']], function() {
@@ -68,6 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     */
       Route::post('/getCareers', 'StudentController@getCareers');
       Route::post('/getSelectCareer', 'StudentController@getSelectCareer');
+      Route::post('/infoselected', 'StudentController@infoselected');
     /*
     * FIN rutas StudentController
     */

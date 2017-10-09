@@ -6,6 +6,8 @@ use Auth;
 use Redirect;
 use App\User;
 use App\Ciudad;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome as WelcomeEmail;
 use App\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -23,7 +25,6 @@ class LoginController extends Controller
 
     $validation = Validator::make($data,[
       'name' => 'required',
-      'surname' => 'required',
       'pass'  => 'required',
       'mail' => 'required',
       'school' => 'required',
@@ -39,22 +40,26 @@ class LoginController extends Controller
         $user = new User($data);
         $user->username = $data['mail'];
         $user->password = $secret;
-        $user->active = 1;
+        $user->active = 0;
         $user->token = sha1($user->username);
         $user->save();
         $user->assignRole('student');
 
         $student = new Student($data);
-        $student->nombre = $data['name'];
-        $student->apellidos = $data['surname'];
-        $student->active = 1;
+        $student->nombre_completo = $data['name'];
+        $student->active = 0;
         $student->escuela_anterior = $data['school'];
         $student->user_id = $user->id;
         $student->mail = $data['mail'];
+        $mailUser = $student->nombre_completo;
         $student->save();
 
-        Auth::loginUsingId($user->id);
+        Mail::to($user->username, 'jonathan')
+        ->send(new WelcomeEmail($student->nombre_completo,$user->token));
 
+
+        // Auth::loginUsingId($user->id);
+        //
         return "Se ha registrado con exito";
 
       }else {
@@ -63,6 +68,16 @@ class LoginController extends Controller
 
     }
 
+  }
+
+  function activateStudent(Request $req,$token){
+    $user = User::where("token","=", $token)->first();// buscamos a el usuario con este token|
+    $user->active = 1;// y lo activamos
+    $user->save();
+    $student = Student::where('user_id', '=', $user->id)->first();
+    $student->active = 1;
+    $student->save();
+    return view('emails.confirmation_thanks');
   }
 
 

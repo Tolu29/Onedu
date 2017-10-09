@@ -19,19 +19,21 @@ $(function () {
 
   });
 
+  $("body").on('click', '#ONEDU', function(){
+    window.location.href = '/'
+  });
+
   $("body").on('change', '#citiesSelect', function(){
     $id = $(this).find(':selected').data('id');
     let schools = atrib(high_Schools,"ciudad_id",$id);
-    $("#formRegist").append(
-      "<div class='regInputCont'>" +
-        "<div class='landRegFa'><i class='fa fa-university adjustFa text-white' aria-hidden='true'></i></div>" +
-        "<select class='browser-default LandRegInp' id='schoolsSelect'>" +
+    $("#contCities").append(
+      "<div class='landRegFa'><i class='fa fa-university adjustFa text-white' aria-hidden='true'></i></div>" +
+        "<select class='browser-default LandRegInp' id='schoolsSelect' style='background-color: #ffffff;'>" +
         "<option value='' disabled selected>Escoge una preparatoria</option>" +
-        "</select>" +
-      "</div>"
+      "</select>"
     );
     $.each(schools, function(i){
-      $("#schoolsSelect").append("<option value=''>" + schools[i].nombre + "</option>")
+      $("#schoolsSelect").append("<option value='" + schools[i].nombre + "'>" + schools[i].nombre + "</option>")
     });
 
   });
@@ -40,7 +42,7 @@ $(function () {
   wow.init();
   new WOW().init();
 
-  $("body").on('click', '.btnReg', function(){
+  $("body").on('click', '.btnReg', function(e){
 
     $("#formRegist").validate({
        rules : {
@@ -58,16 +60,19 @@ $(function () {
       }
     });
     if ($("#formRegist").valid()){
-
-        let name = $("#nameReg").val().substr(0, $("#nameReg").val().indexOf(' '));
-        let surname =  $("#nameReg").val().substr($("#nameReg").val().indexOf(' ')+1);
-
+        if (!$('#checkbox110').is(":checked")) {
+          toastr.error("Acepta TERMINOS Y CONDICIONES para continuar");
+          return ;
+        }
+        let school = $("#schoolsSelect").val();
+        if (school == null || school == undefined || school == "") {
+          school = "Sin establecer";
+        }
         let data = {
-          name: name,
-          surname: surname,
+          name: $("#nameReg").val(),
           pass: $("#regPass").val(),
           mail: $("#mailReg").val(),
-          school: $("#regSchool").val()
+          school: school
         }
 
         $.ajax({
@@ -82,13 +87,20 @@ $(function () {
           switch (data) {
             case "Ingresa los datos Correctamente":
               toastr.error("Ingresa los datos Correctamente");
+              e.preventDefault();
               break;
             case "Se ha registrado con exito":
-              toastr.success("Se ha registrado con exito");
-              window.location.href = "/student-careers"
+              swal({
+                title: "Te haz registrado con exito!",
+                text: "Solo un paso mas confirma tu correo electronico!",
+                icon: "success",
+                button: "Aceptar!",
+              });
+              e.preventDefault();
               break;
             case "El mail ya existe":
               toastr.warning("El mail ya existe");
+              e.preventDefault();
               break;
             default:
               toastr.info("No sabemos que ha pasado recarga la pagina porfavor");
@@ -108,104 +120,207 @@ $(function () {
   });
 
 
-  $("body").on('click', '.btnEnter', function(){
+  $("body").on('click', '.btnEnter', function(e){
 
-    let data = {
-      mail: $("#logMail").val(),
-      pass: $("#logPass").val()
-    }
-
-    $.ajax({
-      url: "/logIn",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    })
-    .done(function(data){
-
-      switch (data) {
-        case "admin":
-          toastr.success("Yeah, Bienvenido");
-          window.location.href  = "/schools";
-          break;
-        case "student":
-          toastr.success("Yeah, Bienvenido");
-          window.location.href  = "/student-careers";
-          break;
-        case "universidad":
-          toastr.success("Yeah, Bienvenido");
-          window.location.href  = "/publications";
-          break;
-        default:
-          toastr.error("Parece que ha habido un error con tu mail o contraseña");
-      }
-      if (data == "el usuario inicio sesion correctamente") {
-        toastr.success("Yeah, Bienvenido");
-
-      } else {
-
+    $("#formEnter").validate({
+       rules : {
+          logMail : {required: true},
+          logPass : {required: true}
+       },
+       messages: {
+        logMail: {required: "Ingresa tu mail para continuar"},
+        logPass: {required: "Ingresa tu contraseña para continuar"}
       }
     });
+
+    if ($("#formEnter").valid()){
+      let data = {
+        mail: $("#logMail").val(),
+        pass: $("#logPass").val()
+      }
+
+      $.ajax({
+        url: "/logIn",
+        type: "POST",
+        data: data,
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      })
+      .done(function(data){
+
+        switch (data) {
+          case "admin":
+            toastr.success("Yeah, Bienvenido");
+            window.location.href  = "/schools";
+            break;
+          case "student":
+            toastr.success("Yeah, Bienvenido");
+            window.location.href  = "/student-careers";
+            break;
+          case "universidad":
+            toastr.success("Yeah, Bienvenido");
+            window.location.href  = "/publications";
+            break;
+          default:
+            e.preventDefault();
+            toastr.error("Parece que ha habido un error con tu mail o contraseña");
+        }
+        if (data == "el usuario inicio sesion correctamente") {
+          toastr.success("Yeah, Bienvenido");
+
+        }
+      });
+    }else {
+      let BreakException = {};
+      $.each($("[id*=-error]"),function(i){
+        if ($($("[id*=-error]")[i]) && $($("[id*=-error]")[i]).text() != "") {
+          toastr.error($($("[id*=-error]")[i]).text());
+          throw BreakException;
+        }
+      });
+    }
+
+
   });
+
+
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      if ($("#logPass").is(":focus")) {
+        $("#formEnter").validate({
+           rules : {
+              logMail : {required: true},
+              logPass : {required: true}
+           },
+           messages: {
+            logMail: {required: "Ingresa tu mail para continuar"},
+            logPass: {required: "Ingresa tu contraseña para continuar"}
+          }
+        });
+
+        if ($("#formEnter").valid()){
+          let data = {
+            mail: $("#logMail").val(),
+            pass: $("#logPass").val()
+          }
+
+          $.ajax({
+            url: "/logIn",
+            type: "POST",
+            data: data,
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          })
+          .done(function(data){
+
+            switch (data) {
+              case "admin":
+                toastr.success("Yeah, Bienvenido");
+                window.location.href  = "/schools";
+                break;
+              case "student":
+                toastr.success("Yeah, Bienvenido");
+                window.location.href  = "/student-careers";
+                break;
+              case "universidad":
+                toastr.success("Yeah, Bienvenido");
+                window.location.href  = "/publications";
+                break;
+              default:
+                e.preventDefault();
+                toastr.error("Parece que ha habido un error con tu mail o contraseña");
+            }
+            if (data == "el usuario inicio sesion correctamente") {
+              toastr.success("Yeah, Bienvenido");
+
+            }
+          });
+        }else {
+          let BreakException = {};
+          $.each($("[id*=-error]"),function(i){
+            if ($($("[id*=-error]")[i]) && $($("[id*=-error]")[i]).text() != "") {
+              toastr.error($($("[id*=-error]")[i]).text());
+              throw BreakException;
+            }
+          });
+        }
+      }
+    }
+});
 
 
   $("body").on('click', '.btnModEnter', function(){
-    let data = {
-      mail: $("#modMail").val(),
-      pass: $("#modPass").val()
-    }
-    $.ajax({
-      url: "/logIn",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+    $("#formModalEnter").validate({
+       rules : {
+          modMail : {required: true},
+          modPass : {required: true}
+       },
+       messages: {
+        modMail: {required: "Ingresa tu mail para continuar"},
+        modPass: {required: "Ingresa tu contraseña para continuar"}
       }
-    })
-    .done(function(data){
-      window.location.href  = "/student-guide";
     });
 
-  });
-
-
-  $('a[href*="#"]')
-  // Remove links that don't actually link to anything
-  .not('[href="#"]')
-  .not('[href="#0"]')
-  .click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-      &&
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 3000, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
+    if ($("#formModalEnter").valid()){
+      let data = {
+        mail: $("#modMail").val(),
+        pass: $("#modPass").val()
       }
+
+      $.ajax({
+        url: "/logIn",
+        type: "POST",
+        data: data,
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      })
+      .done(function(data){
+
+        switch (data) {
+          case "admin":
+            toastr.success("Yeah, Bienvenido");
+            window.location.href  = "/schools";
+            break;
+          case "student":
+            toastr.success("Yeah, Bienvenido");
+            window.location.href  = "/student-careers";
+            break;
+          case "universidad":
+            toastr.success("Yeah, Bienvenido");
+            window.location.href  = "/publications";
+            break;
+          default:
+            // e.preventDefault();
+            toastr.error("Parece que ha habido un error con tu mail o contraseña");
+        }
+        if (data == "el usuario inicio sesion correctamente") {
+          toastr.success("Yeah, Bienvenido");
+
+        }
+      });
+    }else {
+      let BreakException = {};
+      $.each($("[id*=-error]"),function(i){
+        if ($($("[id*=-error]")[i]) && $($("[id*=-error]")[i]).text() != "") {
+          toastr.error($($("[id*=-error]")[i]).text());
+          throw BreakException;
+        }
+      });
     }
+
   });
+
+
+
+  $("body").on('click', '#modalRegister', function(){
+    $("#closeModal").trigger('click');
+    setTimeout(function(){ window.location.href = '#section-5'; }, 500);
+  });
+
 
 
 

@@ -32,6 +32,33 @@ $(function(){
   });
 
 
+  $("body").on('click', '.backSec', function(){
+    $("[name='info" + numCard + "']").addClass('infoHide');
+    numCard -= 1;
+    $(".cardInfo").css("background-color", "#d5d2d2");
+    $("[name='info" + numCard + "']").removeClass('infoHide');
+    $("[name='" + numCard + "']").css("background-color", "#5172a1");
+    if (numCard == 1) {
+      $(".backSec").remove();
+    }
+    switch (numCard) {
+      case 1:
+        saveInfo = [];
+        break;
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        saveInfo.splice(numCard);
+        if (numCard == 6) {
+          $(".save").remove();
+          btnSave();
+        }
+      break;
+    }
+  });
+
 
   // click next va guardando todos lo valores de los campos
   $("body").on('click', '.next', function(){
@@ -46,12 +73,15 @@ $(function(){
           saveInfo.push("vid_error404");
         }else {
           if (!youtubeEmbed.validLink($("#url").val())) {
-            toastr.error("El URL que ingresaste no es valido");
+            swal("El URL que ingresaste no es valido!", "Ingresa el EMBED de YOUTUBE!", "warning");
             return ;
           }
           let url = youtubeEmbed.makeCode($("#url").val());
           saveInfo.push($("#title").val());
           saveInfo.push(url);
+        }
+        if ($("#btnBackSec").children().length == 1) {
+          $("#btnBackSec").append("<button type='button' class='btn z-depth-2 backSec'>Atras</button>");
         }
         break;
       case 2:
@@ -90,6 +120,7 @@ $(function(){
       $(".saveUpd").addClass('infoHide');
     }
     $(".save").addClass('infoHide');
+    $("#btnBackSec").addClass('infoHide');
     $(".btnCont").append("<button type='button' class='btn z-depth-2 savePlan'>Guardar</button>");
   });
 
@@ -151,6 +182,7 @@ $(function(){
     if ($(".saveUpd")) {
       $(".saveUpd").removeClass('infoHide');
     }
+    $("#btnBackSec").removeClass('infoHide');
     $(".save").removeClass('infoHide');
     $(".savePlan").remove();
   });
@@ -171,25 +203,44 @@ $(function(){
 
   // click para borrar planes
   $("body").on('click', '.btnDelete', function(){
-    $i = $(this).data('id');
-    let single = $( "td:contains('" + plansInfo[$i].namePlan + "')" );
-    single.parent().remove();
-    if (plansInfo[$i].hasOwnProperty('id')) {
-      plansInfo.splice($i, 1, {id:plansInfo[$i].id});
-    }else {
-      plansInfo.splice($i, 1, null);
-    }
+
+    swal({
+      title: "Estas seguro?",
+      text: "Una vez eliminado ya no podras recuperar la informacion!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $i = $(this).data('id');
+        let single = $( "td:contains('" + plansInfo[$i].namePlan + "')" );
+        single.parent().remove();
+        if (plansInfo[$i].hasOwnProperty('id')) {
+          plansInfo.splice($i, 1, {id:plansInfo[$i].id});
+        }else {
+          plansInfo.splice($i, 1, null);
+        }
+        swal("Listo! El plan de estudios ha sido eliminado!", {
+          icon: "success",
+        });
+      } else {
+        swal("Muy bien todo esta seguro!");
+      }
+    });
   });
 
   //  click para guardar toda la informacion (final)
   $("body").on('click', '.save', function(){
+    // alert('si entro');
     $check = 0;
     $.each(plansInfo, function(i){
       if(plansInfo[i] != null){
         $check += 1;
       }
     });
-    if ($check >= 1) {
+    if ($check < 1) {
+      toastr.error("Debes de ingresar al menos un plan de estudios para continuar");
       return ;
     }else if (plansInfo == "" || plansInfo == undefined || plansInfo == null) {
       toastr.error("Debes de ingresar al menos un plan de estudios para continuar");
@@ -206,22 +257,25 @@ $(function(){
       admission: saveInfo[6],
       plans: plansInfo
     }
-    $.ajax({
-      url: "/saveAll",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    })
-    .done(function(data){
-      if (data == "La informacion se ha guardado con exito") {
-        toastr.success("La informacion se ha guardado con exito");
-        setTimeout(function(){ window.location.href = "/schools" }, 1500);
-      }else {
-        toastr.error("Ah ocurrido un error podrias recargar la pagina");
-      }
-    });
+
+    console.log(data);
+
+    // $.ajax({
+    //   url: "/saveAll",
+    //   type: "POST",
+    //   data: data,
+    //   headers: {
+    //   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //   }
+    // })
+    // .done(function(data){
+    //   if (data == "La informacion se ha guardado con exito") {
+    //     toastr.success("La informacion se ha guardado con exito");
+    //     setTimeout(function(){ window.location.href = "/schools" }, 1500);
+    //   }else {
+    //     toastr.error("Ah ocurrido un error podrias recargar la pagina");
+    //   }
+    // });
 
 
   });
@@ -239,7 +293,7 @@ $(function(){
           updSave.push("vid_error404");
         }else {
           if (!youtubeEmbed.validLink($("#url").val())) {
-            toastr.error("El URL que ingresaste no es valido");
+            swal("El URL que ingresaste no es valido!", "Ingresa el EMBED de YOUTUBE!", "warning");
             return ;
           }
           let url = youtubeEmbed.makeCode($("#url").val());
@@ -298,7 +352,6 @@ $(function(){
     $.each(plansInfo, function(i){
       if(plansInfo[i] != null && Object.keys(plansInfo[i]).length != 1){
         $check += 1;
-        //  && !plansInfo[i].hasOwnProperty('id')
       }
     });
     if ($check != 0) {

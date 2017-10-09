@@ -32,14 +32,7 @@ $("body").on('click','.contUni',function(){
     $(".contProfile").empty();
     infoUni();
   });
-// click historial academico Btn
-  $("body").on('click','.historial',function(){
-    $(".jumbotron>div").css("background-color", "#eaeaea");
-    $(".jumbotron>div").css("color", "#393939");
 
-    $(this).css("background-color", "#399c5f");
-    $(this).css("color", "#ffffff");
-  });
 
 
 });

@@ -25,7 +25,7 @@
   </div>
 
 
-<div class="row uniLvl1 wow">
+<div class="row uniLvl1">
   <div class="col-md-12 col-sm-12">
 
     <div class="schoolTableCont">
@@ -52,6 +52,7 @@
 
     <div class="col-md-5 col-sm-5">
       <div class="padTopSchool">
+        <button class="btn z-depth-2 backSec2">Atras</button>
         <h2>Informacion de la Escuela</h2>
       </div>
     </div>
@@ -68,7 +69,7 @@
   <div class="row padRowInfo rowInfoUniversity schoolHide  uniLvl2 wow depth-2">
     <div class="col-md-5">
       <div class="card-header contInput" role="tab" id="universityTag">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#infoUniversity" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed infoA" data-toggle="collapse" data-parent="#accordionEx" href="#infoUniversity" aria-expanded="false" aria-controls="collapseTwo">
           <h5 class="mb-0">
             Editar Universidad
             <i class="fa fa-chevron-down prefix"></i>
@@ -93,7 +94,7 @@
             </div>
         </div>
         <div class="card-header contInput" role="tab" id="addressTag">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#addressInfo" aria-expanded="false" aria-controls="collapseTwo">
+          <a class="collapsed infoA" data-toggle="collapse" data-parent="#accordionEx" href="#addressInfo" aria-expanded="false" aria-controls="collapseTwo">
             <h5 class="mb-0">
               Editar Direccion
               <i class="fa fa-chevron-down prefix"></i>
@@ -122,7 +123,7 @@
             </div>
         </div>
         <div class="card-header contInput" role="tab" id="UserTag">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#userInfo" aria-expanded="false" aria-controls="collapseTwo">
+          <a class="collapsed infoA" data-toggle="collapse" data-parent="#accordionEx" href="#userInfo" aria-expanded="false" aria-controls="collapseTwo">
             <h5 class="mb-0">
               Editar Usuario
               <i class="fa fa-chevron-down prefix"></i>
@@ -182,7 +183,7 @@
     </div>
 
     <div class="col-md-4 offset-md-3 col-sm-4 offset-sm-4">
-      <div class="padRowInfo">
+      <div class="padRowInfo btnCarAs">
         <button class="btn z-depth-2 addCareer" data-toggle="modal" data-target="#modalSubscription">Agregar</button>
       </div>
     </div>
@@ -239,9 +240,9 @@
                         <div class='file-field'>
                           <div class='btn btn-primary fornBtnColor btnLogo'>
                             <span>Escoge un Logo</span>
-                            <form id="formLogo">
+                            <!-- <form id="formLogo"> -->
                               <input type='file' id='uni-logo' name='formLogo'>
-                            </form>
+                            <!-- </form> -->
                           </div>
                           <div class='file-path-wrapper'>
                           </div>
@@ -332,7 +333,7 @@
       <!--Header-->
       <div class="modal-header head white-text">
           <h4 class="title"><i class="fa fa-newspaper-o"></i> Carreras Disponibles</h4>
-          <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close waves-effect waves-light cloeseCar_uni" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
       </div>

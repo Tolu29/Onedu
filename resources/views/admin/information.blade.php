@@ -66,13 +66,15 @@
 
     <div class="col-md-12" id="infoCont">
 
+      <div class='text-left' id="btnBackSec">
+        <button type='button' class='btn z-depth-2 btnCancel warning-color-dark'>Cancelar</button>
+      </div>
 
       <form id="videoForm">
         <div name="info1">
 
           <div class='titles md-form z-depth-2'>
-            <label for='form1'>titulo</label>
-            <input class='input-alternate' id="title" name="title" type='text'>
+            <input class='input-alternate' id="title" name="title" type='text' placeholder="Titulo">
 
             <input class='input-alternate'  id='url' name="url"  type='text' placeholder="URL YouTube enbed">
           </div>
