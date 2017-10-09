@@ -107,7 +107,7 @@ $(function(){
     numCard += 1;
     $(".cardInfo").css("background-color", "#d5d2d2");
     $("[name='info" + numCard + "']").removeClass('infoHide');
-    $("[name='" + numCard + "']").css("background-color", "#5172a1");  
+    $("[name='" + numCard + "']").css("background-color", "#5172a1");
   });
 
   // click para agregar plan de estudios
@@ -120,6 +120,7 @@ $(function(){
       $(".saveUpd").addClass('infoHide');
     }
     $(".save").addClass('infoHide');
+    $("#btnBackSec").addClass('infoHide');
     $(".btnCont").append("<button type='button' class='btn z-depth-2 savePlan'>Guardar</button>");
   });
 
@@ -181,6 +182,7 @@ $(function(){
     if ($(".saveUpd")) {
       $(".saveUpd").removeClass('infoHide');
     }
+    $("#btnBackSec").removeClass('infoHide');
     $(".save").removeClass('infoHide');
     $(".savePlan").remove();
   });
