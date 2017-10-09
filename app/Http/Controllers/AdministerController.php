@@ -192,13 +192,13 @@ function allUniversities(){
 
   function updateUniversity(Request $request){
     $data = $request->all();
+    
     $validation = Validator::make($data,[
       'id' => 'required',
       'name' => 'required',
       'campus' => 'required',
       'color' => 'required',
       'street' => 'required',
-      'numInt' => 'required',
       'numExt' => 'required',
       'col' => 'required',
       'username' => 'required',

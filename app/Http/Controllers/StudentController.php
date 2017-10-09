@@ -63,8 +63,6 @@ class StudentController extends Controller
     $class_sample = ClasesMuestra::where('carrera_id', '=', $Student_career_id)
     ->where('universidad_id', '=', $data['id'])->first();
 
-
-
     return $info;
   }
 

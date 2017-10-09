@@ -6,6 +6,15 @@
   margin-top: 3rem;
 }
 
+.btnCancel{
+  border-radius: .23rem;
+}
+
+.backSec{
+  background-color: rgb(81, 114, 161);
+  border-radius: .23rem;
+}
+
 .titles{
   background-color: #ffffff;
   margin-top: 2rem;
@@ -14,7 +23,7 @@
 }
 
 .titlePlan{
-  height: 7.5rem !important;  
+  height: 7.5rem !important;
 }
 
 .titles>input{

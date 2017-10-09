@@ -403,7 +403,6 @@
 @stop
 
 @section('js')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="/packages/assets/js/landing/scrollHome.js"></script>
 <script type="text/javascript" src="/packages/libs/jquery-validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/assets/js/landing/home.js"></script>

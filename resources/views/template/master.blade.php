@@ -35,6 +35,8 @@
     <script type="text/javascript" src="/packages/libs/MDB/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="/packages/libs/MDB/js/mdb.min.js"></script>
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @yield('js')
 </body>
 
