@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <div class="tableCont">
         <div class="text-right">
-          <button type="button" class="btn btnAddimg" data-toggle="modal" data-target="#modalContactForm">Agregar Imagen</button>
+          <button type="button" class="btn btnAddimg z-depth-2" data-toggle="modal" data-target="#modalContactForm">Agregar Imagen</button>
         </div>
         <table class="table table-striped table-bordered">
           <thead>

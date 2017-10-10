@@ -1,5 +1,5 @@
 $(function(){
-  var infoArray = [], nameCard = 1 , updInfo = [], newInfo = [], updAjax = [];
+  var infoArray = [], nameCard = 1, bndUpd = false , updInfo = [], newInfo = [], updAjax = [];
 
   $.ajax({
     url: "/allCareers",
@@ -16,13 +16,59 @@ $(function(){
           "<td>" + data[i].nivel_educativo + "</td>" +
           "<td>" +
             "<button type='button' data-id='" + data[i].id + "' class='btn adminDelBtn btnDelCareer btn-sm z-depth-2'>Eliminar</button>" +
-            "<button type='button' data-id='" + data[i].id + "' class='btn btnUpd adminUpdBtn btn-sm z-depth-2' data-toggle='modal' data-target='#modalUpd'>Editar</button>" +
+            "<button type='button' data-id='" + data[i].id + "' class='btn btnUpd adminUpdBtn btn-sm z-depth-2'>Editar</button>" +
           "</td>" +
         "</tr>"
       )
 
     });
 
+  });
+
+  $("body").on('click', '.btnCancel', function(){
+    window.location.reload();
+  });
+
+
+  $("body").on('click', '.backSec', function(){
+    $("[name='contInfo" + nameCard + "']").addClass('careerHide');
+    nameCard -= 1;
+    $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
+    $(".cardColor").css("background-color", "#d5d2d2");
+    $("[name=" + nameCard + "]").css("background-color", "#5172a1");
+    if (nameCard == 1) {
+      $(".backSec").remove();
+    }
+    
+    switch (nameCard) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        if (bndUpd == true) {
+          if (nameCard == 1) {
+            newInfo.splice(1);
+          }else {
+            newInfo.splice((nameCard - 1))
+          }
+          if (nameCard == 5) {
+            $(".btnUpdCareer").remove();
+            updBtn();
+          }
+        }else {
+          infoArray.splice((nameCard - 1))
+          if (nameCard == 5) {
+            $(".btnRegCareer").remove();
+            saveBtn();
+          }
+        }
+
+        break;
+      default:
+
+    }
   });
 
 
@@ -48,6 +94,9 @@ $(function(){
           return ;
         }
         infoArray.push(singleInput.val());
+        if ($(".backCont").children().length == 1) {
+          $(".backCont").append("<button type='button' class='btn z-depth-2 backSec'>Atras</button>");
+        }
         break;
       case 4:
       case 3:
@@ -117,6 +166,7 @@ $(function(){
     let data = {
       id: id
     }
+
     $.ajax({
       url: "/infoCareer",
       type: "POST",
@@ -136,7 +186,9 @@ $(function(){
       $("[name='textInfo" + nameCard + "']").val(updInfo[1]);
       nameCard = 1;
       updBtn();
+      bndUpd = true;
     });
+
   });
 
 
@@ -155,6 +207,9 @@ $(function(){
           return ;
         }
         newInfo.push(singleInput.val());
+        if ($(".backCont").children().length == 1) {
+          $(".backCont").append("<button type='button' class='btn z-depth-2 backSec'>Atras</button>");
+        }
         break;
       case 3:
       case 4:
@@ -168,6 +223,7 @@ $(function(){
 
     }
     $("[name='contInfo" + nameCard + "']").addClass('careerHide');
+    updInfo[nameCard] = newInfo[nameCard];
     nameCard += 1;
     if (nameCard == 3 || nameCard == 4) {
       let temp = {
@@ -211,7 +267,6 @@ $(function(){
       id: newInfo[0],
       lab_camp: newInfo[6]
     }
-
     $.ajax({
       url: "/updateCareer",
       type: "POST",
@@ -228,9 +283,10 @@ $(function(){
         toastr.error('Ingresa los datos correctamente');
       }
     });
+
   });
 
-  
+
   $("body").on('click', '.btnDelCareer', function(){
     let trParent = $(this).parent().parent();
     let data = {

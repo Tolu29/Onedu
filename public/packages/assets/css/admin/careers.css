@@ -2,6 +2,10 @@
   display: none;
 }
 
+.backSec{
+  background-color: #5172a1;
+}
+
 .schoolsbtnAdd{
   padding-top: 10rem;
 }

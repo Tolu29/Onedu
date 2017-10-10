@@ -42,6 +42,7 @@ $(function(){
       }
     })
     .done(function(data){
+      toastr.success("La imagen se ha gusardado con exito");
       window.location.reload()
     });
   });
@@ -91,7 +92,40 @@ $(function(){
       }
     })
     .done(function(data){
+      toastr.success("La imagen se ha gusardado con exito");
+    });
+  });
 
+
+
+  $("body").on('click', '.btnDelete', function(){
+    let data = {
+      id: $(this).data('id')
+    }
+    swal({
+      title: "Estas segiro de eliminar la imagen?",
+      text: "Una vez eliminada no podras recuperarla!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          url: "/deleteImg",
+          type: "POST",
+          data: data,
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        })
+        .done(function(data){
+          toastr.success("Listo! La imagen ha sido eliminada!");
+          setTimeout(function(){ window.location.reload(); }, 1000);          
+        });
+      } else {
+        swal("Todo esta seguro!");
+      }
     });
   });
 

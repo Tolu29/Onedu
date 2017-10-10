@@ -1,6 +1,6 @@
 $(function(){
 
-  var numCard = 0, saveInfo = [], plansInfo = [], updInfo = [], updSave = [], camps = ["accreditation", "extra_activities", "schedules", "scholarships", "admission"];
+  var numCard = 0, bndUpd = false, saveInfo = [], plansInfo = [], updInfo = [], updSave = [], camps = ["accreditation", "extra_activities", "schedules", "scholarships", "admission"];
 
 
 
@@ -17,6 +17,7 @@ $(function(){
       btnSave();
       $("[name='1']").css("background-color", "#5172a1");
     } else {
+      bndUpd = true;
       updInfo = data;
       $.each(data.study_plans, function(i){
         plansInfo[i] = {namePlan: data.study_plans[i].nombre_plan, descriptionPlan:data.study_plans[i].descripcion, id:data.study_plans[i].id };
@@ -43,20 +44,37 @@ $(function(){
     }
     switch (numCard) {
       case 1:
-        saveInfo = [];
+        if (bndUpd == true) {
+          updSave = []
+        }else {          
+          saveInfo = [];
+        }
         break;
       case 2:
       case 3:
       case 4:
       case 5:
       case 6:
+      if (bndUpd == true) {
+        updSave.splice(numCard);
+        if (numCard == 6) {
+          $(".saveUpd").remove();
+          btnUpdate();
+          $("#tBodyCont").empty();
+        }
+      }else {
         saveInfo.splice(numCard);
         if (numCard == 6) {
           $(".save").remove();
           btnSave();
         }
+      }
       break;
     }
+  });
+
+  $("body").on('click', '.btnCancel', function(){
+    window.location.href = '/schools';
   });
 
 
@@ -258,24 +276,22 @@ $(function(){
       plans: plansInfo
     }
 
-    console.log(data);
-
-    // $.ajax({
-    //   url: "/saveAll",
-    //   type: "POST",
-    //   data: data,
-    //   headers: {
-    //   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //   }
-    // })
-    // .done(function(data){
-    //   if (data == "La informacion se ha guardado con exito") {
-    //     toastr.success("La informacion se ha guardado con exito");
-    //     setTimeout(function(){ window.location.href = "/schools" }, 1500);
-    //   }else {
-    //     toastr.error("Ah ocurrido un error podrias recargar la pagina");
-    //   }
-    // });
+    $.ajax({
+      url: "/saveAll",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      if (data == "La informacion se ha guardado con exito") {
+        toastr.success("La informacion se ha guardado con exito");
+        setTimeout(function(){ window.location.href = "/schools" }, 1500);
+      }else {
+        toastr.error("Ah ocurrido un error podrias recargar la pagina");
+      }
+    });
 
 
   });
@@ -300,12 +316,21 @@ $(function(){
           updSave.push($("#title").val());
           updSave.push(url);
         }
+        if ($("#btnBackSec").children().length == 1) {
+          $("#btnBackSec").append("<button type='button' class='btn z-depth-2 backSec'>Atras</button>");
+        }
         break;
         case 2:
         case 3:
         case 4:
         case 5:
         case 6:
+          let info = atrib(updInfo.informations, 'titulo', camps[(numCard-2)]);
+          id = info.id;
+          var index = updInfo.informations.findIndex(function(item, i){
+            return item.id === id
+          });
+          updInfo.informations[index].descripcion = tinyMCE.get('info'+numCard).getContent();
           let content = tinyMCE.get('info'+numCard).getContent();
           if (content == "" || content == undefined || content == null) {
             toastr.error("Debes de ingresar un texto para continuar");
@@ -365,17 +390,18 @@ $(function(){
         admission: updSave[6],
         plans: plansInfo
       }
-       $.ajax({
-         url: "/updateInfo",
-         type: "POST",
-         data: data,
-         headers: {
-         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-         }
-       })
-       .done(function(data){
 
-       });
+      //  $.ajax({
+      //    url: "/updateInfo",
+      //    type: "POST",
+      //    data: data,
+      //    headers: {
+      //    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      //    }
+      //  })
+      //  .done(function(data){
+       //
+      //  });
     }else {
       toastr.error("Debes de ingresar al menos 1 plan de estudios para continuar");
       return ;
