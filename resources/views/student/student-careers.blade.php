@@ -33,7 +33,7 @@
         <button type="button" class="btn z-depth-2 red">Registrar</button>
       </div>
     </div>
-    
+
     <div class="col-md-12">
 
       <div class="available-universities z-depth-2">
@@ -109,7 +109,7 @@
           <a id="schoolMap">VER MAPA</a>
         </div>
         <div class="likeZone">
-          <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-heart fa-2x likeUni" aria-hidden="true"></i>
         </div>
       </div>
     </div>
@@ -133,13 +133,18 @@
     <div class="col-md-12">
       <div class="UniOptDescription z-depth-2">
         <div class="row">
-          <div class="col-md-4">
-            <div class="contTitle">
+          <div class="col-md-4 hideCareers" id="contPlans">
+            <div class="namePlans">
 
             </div>
           </div>
-          <div class="col-md-8">
-            <div class="contMat">
+          <div class="col-md-4" id="contTitle">
+            <div id="titles">
+
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="contMat container">
 
             </div>
           </div>

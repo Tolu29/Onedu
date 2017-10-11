@@ -8,6 +8,8 @@ use App\User;
 use App\Career;
 use App\Student;
 use App\ClasesMuestra;
+use App\StudyPlans;
+use App\Prospectos;
 use Illuminate\Support\Facades\DB;
 use App\Informations;
 use Illuminate\Http\Request;
@@ -55,7 +57,11 @@ class StudentController extends Controller
   function infoselected(Request $request){
 
     $data = $request->all();
+    $request->session()->put('Student_university_id', $data['id']);
     $Student_career_id = $request->session()->get('Student_career_id');
+    $user = Auth::user();
+
+    $student = Student::where('user_id', '=', $user->id)->first();
 
     $info = Informations::where('carrera_id', '=', $Student_career_id)
     ->where('universidad_id', '=', $data['id'])->get();
@@ -63,7 +69,55 @@ class StudentController extends Controller
     $class_sample = ClasesMuestra::where('carrera_id', '=', $Student_career_id)
     ->where('universidad_id', '=', $data['id'])->first();
 
-    return $info;
+    $plans = StudyPlans::where('carrera_id', '=', $Student_career_id)
+    ->where('universidad_id', '=', $data['id'])->get();
+
+    $like = Prospectos::where('carrera_id', '=', $Student_career_id)
+    ->where('universidad_id', '=', $data['id'])
+    ->where('student_id', '=', $student->id)
+    ->select('active')->first();
+
+    return response()->json([
+      'plans' => $plans,
+      'class_sample' =>$class_sample,
+      'info' => $info,
+      'like' => $like
+    ]);
+  }
+
+  function likeUniversity(Request $request){
+
+    $data = $request->all();
+    $user = Auth::user();
+    $student_university_id = $request->session()->get('Student_university_id');
+    $Student_career_id = $request->session()->get('Student_career_id');
+
+    $student = Student::where('user_id', '=', $user->id)->first();
+
+    $prospects = new Prospectos($data);
+    $prospects->universidad_id = $student_university_id;
+    $prospects->carrera_id = $Student_career_id;
+    $prospects->student_id = $student->id;
+    $prospects->save();
+
+    return 'listo';
+  }
+
+  function delLike(Request $request){
+    
+    $data = $request->all();
+    $user = Auth::user();
+    $student_university_id = $request->session()->get('Student_university_id');
+    $Student_career_id = $request->session()->get('Student_career_id');
+
+    $student = Student::where('user_id', '=', $user->id)->first();
+
+    $prospects = Prospectos::where('carrera_id', '=', $Student_career_id)
+    ->where('universidad_id', '=', $student_university_id)
+    ->where('student_id', '=', $student->id)->delete();
+
+    return 'listo';
+
   }
 
   //===========================//

@@ -46,7 +46,7 @@ $(function(){
       case 1:
         if (bndUpd == true) {
           updSave = []
-        }else {          
+        }else {
           saveInfo = [];
         }
         break;
@@ -390,18 +390,19 @@ $(function(){
         admission: updSave[6],
         plans: plansInfo
       }
-
-      //  $.ajax({
-      //    url: "/updateInfo",
-      //    type: "POST",
-      //    data: data,
-      //    headers: {
-      //    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      //    }
-      //  })
-      //  .done(function(data){
-       //
-      //  });
+      $(".saveUpd").remove();
+       $.ajax({
+         url: "/updateInfo",
+         type: "POST",
+         data: data,
+         headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+       })
+       .done(function(data){
+        toastr.success("La informacion se ha guardado con exito");
+        window.location.href = '/schools';
+       });
     }else {
       toastr.error("Debes de ingresar al menos 1 plan de estudios para continuar");
       return ;
