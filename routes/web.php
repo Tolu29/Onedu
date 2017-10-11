@@ -170,6 +170,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/getAllImg', 'AdministerController@getAllImg');
     Route::post('/getImgInfo', 'AdministerController@getImgInfo');
     Route::post('/updImg', 'AdministerController@updImg');
+    Route::post('/deleteImg', 'AdministerController@deleteImg');
     /*
     * FIN rutas administerController
     */

@@ -88,7 +88,11 @@
           </div>
         </div>
       </div>
+      <div class="text-left backCont" style="margin-top:1rem;">
+        <button type='button' class='btn z-depth-2 btnCancel warning-color-dark'>Cancelar</button>
+      </div>
     </div>
+
 
     <div class="col-md-12 careerLvl2 careerHide">
       <div class="infoCareerCont z-depth-2">

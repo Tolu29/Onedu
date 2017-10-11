@@ -192,7 +192,7 @@ function allUniversities(){
 
   function updateUniversity(Request $request){
     $data = $request->all();
-    
+
     $validation = Validator::make($data,[
       'id' => 'required',
       'name' => 'required',
@@ -576,54 +576,17 @@ function allUniversities(){
     }
   }
 
-
-
-
-
-  //ONLY PREVIEW
-
-  function getPreview(Request $request){
-
-    $carrera_id = $request->session()->get('career_id');
-    $universidad_id = $request->session()->get('university_id');
-
-    $university = DB::table('universities')
-    ->where('universities.id', '=', $universidad_id)
-    ->join('addresses', 'addresses.id', '=', 'universities.direccion_id')->get();
-
-    $informations = DB::table('informations')
-    ->where('informations.carrera_id', '=', $carrera_id)
-    ->where('informations.universidad_id', '=', $universidad_id)->get();
-
-    $plans = StudyPlans::where('active', '=', 1)
-    ->where('universidad_id', '=', $universidad_id)->get();
-
-    $class_sample = ClasesMuestra::where('carrera_id', '=', $carrera_id)
-    ->where('universidad_id', '=', $universidad_id)->first();
-
-    return response()->json([
-      'university' => $university,
-      'informations' => $informations,
-      'plans' => $plans,
-      'class_sample' => $class_sample
-    ]);
-  }
-
-  function getPlanPrev(Request $request){
+  function deleteImg(Request $request){
     $data = $request->all();
 
-    $plan = StudyPlans::where('id', '=', $data['id'])->first();
+    $img = Installation::where('id', '=', $data['id'])->first();
+    $img->active = 0;
+    $img->save();
 
-    return $plan;
+    return 'La imagen ha sido elminada con exito';
+
   }
 
-  function getinfoSelected(Request $request){
-    $data = $request->all();
-
-    $info = Informations::where('id', '=', $data['id'])->first();
-
-    return $info;
-  }
 
 }
 
