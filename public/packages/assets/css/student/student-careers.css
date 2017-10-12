@@ -143,8 +143,8 @@ Descripcion de carreras
 descripcion de escuelas
 */
 
-.contTitle{
-  min-height: 14rem;
+#titles{
+  min-height: 15rem;
   text-align: center;
   display: flex;
   justify-items: center;
@@ -152,15 +152,23 @@ descripcion de escuelas
 }
 
 .contMat{
-  min-height: 14rem;
-  text-align: center;
-  display: flex;
-  justify-items: center;
+  min-height: 15rem;
   align-items: center;
 }
 
-.contMat>p h1 h2 h3 h4 h5 div{
-  margin: 0 auto;
+.planselect{
+  cursor: pointer;
+}
+
+.namePlans{
+  padding-top: 2rem;
+  min-height: 23rem;
+  text-align: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 }
 
 .alingH2{
@@ -178,6 +186,10 @@ descripcion de escuelas
   width: 9rem;
   margin-top: 1rem;
   margin-bottom: 1rem
+}
+
+.likeUni{
+  color: #7c7c7c;
 }
 
 .schoolInfo>div{
@@ -218,10 +230,10 @@ descripcion de escuelas
 
 /*color de opciones activas*/
 .schoolOptions>.row>.col-md-4>div:hover{
-  background-color: #6f6f6f;
-  height: 1.5rem;
+  background-color: #6f6f6f !important;
+  height: 1.5rem !important;
   width: 14rem !important;
-  border-radius: .25rem;
+  border-radius: .25rem !important;
 }
 
 .schoolOptions>.row>.col-md-4>div>a{
