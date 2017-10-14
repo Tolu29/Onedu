@@ -18,13 +18,21 @@
 }
 
 .btnProf{
-  background-color: #5172A2;
   position: absolute;
   left: -1.2rem;
   bottom: 1rem;
   width: 9rem;
   height: 3.5rem;
   border-radius: .23rem;
+  cursor: pointer;
+}
+
+.btnProf-edit{
+  background-color: #5172A2;
+}
+
+.btnProf-edit-save{
+  background-color: rgb(57, 156, 95);
 }
 
 label{
@@ -76,4 +84,15 @@ label{
 
 .contUniFirst{
   margin-left: 8rem;
+}
+
+.pinput{
+  padding-right: 1rem !important;
+  box-sizing: border-box !important;
+}
+
+.waitingInfo{
+  text-align: center;
+  padding-top: 6rem;
+  color: #848484;
 }

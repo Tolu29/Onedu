@@ -104,7 +104,7 @@ class StudentController extends Controller
   }
 
   function delLike(Request $request){
-    
+
     $data = $request->all();
     $user = Auth::user();
     $student_university_id = $request->session()->get('Student_university_id');
@@ -126,7 +126,37 @@ class StudentController extends Controller
 
 
   function infoStudent(){
-    $user = Auth::user();
+    $user =  User::join('students', 'students.user_id', '=', 'users.id')->where('users.id', '=', Auth::user()->id)->first();
+    return $user;
+  }
+
+  function updateProfile(Request $req){
+    $data = $req->all();
+    $user_id = Auth::user()->id;
+
+    $student = Student::where('user_id', '=', $user_id)->first();
+    $user = User::where('id', '=', $user_id)->first();
+
+    $userMail = User::where('username', '=', $data['email'])->get();
+    $studentMail = Student::where('mail', '=', $data['email'])->get();
+
+    if (count($userMail) > 0 || count($studentMail) > 0){
+      if ($student->mail != $data['email'] || $user->username != $data['email']){
+        return "El Correo electrónico ya se encuentra en uso";
+      }
+    }
+
+    $student->nombre_completo = $data['nombre'];
+    $student->mail = $data['email'];
+    $user->username = $data['email'];
+    if ($data['password'] != ""){
+      $user->password = Hash::make($data['password']);
+    }
+
+    $user->save();
+    $student->save();
+
+    return 'success';
   }
 
 }
