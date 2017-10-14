@@ -1,3 +1,7 @@
+* {
+  outline: 0 !important;
+}
+
 .navbar {
     background-color: #5172a1
 }
@@ -53,21 +57,21 @@
     }
 
     .regInputCont{
-      padding-left: 1rem
+      /*padding-left: 1rem*/
     }
 
     .LandRegInp{
-      width: 18rem !important;
+      /*width: 18rem !important;*/
     }
 
     .landRegFa{
-      height: 3rem !important;
+      /*height: 3rem !important;
       width: 2.5rem !important;
-      left: .3rem !important;
+      left: .3rem !important;*/
     }
 
     .adjustFa{
-      padding-left: .9em !important;
+      /*padding-left: .9em !important;*/
     }
 }
 
@@ -80,16 +84,17 @@
 }
 
 .btnEnter{
-  background-color: #399c5f;
+  background-color: #5172a1;
   border-radius: .23rem;
 }
 
 .LandtextShad{
   text-shadow: 0px 2px 2px rgba(150, 150, 150, 0.61);
+  font-weight: bold;
 }
 
 .btnEnter:hover{
-  background-color: #399c5f !important;
+  background-color: #3e5f8f !important;
 }
 
 .LandtextOnedu{
@@ -145,12 +150,13 @@
 }
 
 .landingLog{
-  width: 27rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 7px;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 .inputCont{
-  padding-top: 1.5rem;
+  /*padding-top: 1.5rem;*/
 }
 
 .headSec2{
@@ -169,23 +175,15 @@
 }
 
 .logInput{
-  width: 23rem !important;
-  height: 25px !important;
-  margin: 0 auto !important;
-  border: none !important;
-  border:solid 1px #ccc !important;
+  border: solid 1px #ccc !important;
   border-radius: 4px !important;
   text-align: center !important;
-  margin-left: 2rem !important;
-  margin-bottom: .80rem !important;
+  background-color: #fff !important;
+  height: 2.5rem !important;
 }
 
 .mdb-lightbox figure img{
   cursor: default !important;
-}
-
-.logLabel{
-  margin-left: 3rem !important;
 }
 
 #section-3{
@@ -250,23 +248,24 @@
 }
 
 .LandRegInp{
-  width: 33rem;
-  height: 3rem;
-  margin: 0 auto;
+  /*width: 33rem;
+  height: 3rem;*/
+  /*margin: 0 auto;
   border: none;
   border:solid 1px #ccc;
   border-radius: 5px;
   outline: none;
   color: #737474;
-  padding-left: 1rem;
+  padding-left: 1rem;*/
 }
 
 .landRegFa{
-  background-color: #399c5f;
-  height: 3rem;
+  background-color: #399c5f !important;
+  /*height: 3rem;
   width: 3.5rem;
   position: absolute;
-  left: -2.04rem;
+  left: -2.04rem;*/
+  width: 3.5rem;
   border-top-left-radius: .23rem;
   border-bottom-left-radius: .23rem;
 }
@@ -281,12 +280,12 @@
 }
 
 .adjustFa{
-  padding-left: 1.3rem;
-  padding-top: 1rem;
+  /*padding-left: 1.3rem;
+  padding-top: 1rem;*/
 }
 
 .regInputCont{
-  padding-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .sec5Info{
@@ -357,7 +356,7 @@
   }
 
   .LandRegInp{
-    width: 29rem;
+    /*width: 29rem;*/
   }
 }
 
@@ -366,12 +365,12 @@
     font-size: 3.23rem !important;
   }
 
-  .landingLog{
+  /*.landingLog{
     width: 21rem;
-  }
+  }*/
 
   .logInput{
-    width: 18rem;
+    /*width: 18rem;*/
   }
 
   #section-2{
@@ -404,7 +403,7 @@
   }
 
   .LandRegInp{
-    width: 21rem !important;
+    /*width: 21rem !important;*/
   }
 
   .btnReg{
@@ -428,7 +427,7 @@
   }
 
   .LandRegInp {
-    width: 32rem !important;
+    /*width: 32rem !important;*/
   }
 
 }
@@ -454,7 +453,7 @@
   }
 
   .LandRegInp {
-    width: 32rem !important;
+    /*width: 32rem !important;*/
   }
 }
 
@@ -483,15 +482,15 @@
   }
 
   .circlegreen{
-    margin-left: 8rem;
+    margin-left: 3rem;
   }
 
   .sec5Info{
-    padding-left: 8rem;
+    /*padding-left: 8rem;*/
   }
 
   .sec5Reg{
-    padding-left: 10rem;
+    /*padding-left: 10rem;*/
   }
 
   .headSec2{
@@ -499,15 +498,15 @@
   }
 
   .regInputCont{
-    padding-left: 6rem;
+    /*padding-left: 6rem;*/
   }
 
   .landRegFa{
-    left: 4.96rem !important;
+    /*left: 4.96rem !important;*/
   }
 
   .LandRegInp{
-    width: 25rem !important;
+    /*width: 25rem !important;*/
   }
 
   .btnReg{
@@ -544,7 +543,7 @@
   }
 
   .LandRegInp{
-    width: 21rem !important;
+    /*width: 21rem !important;*/
   }
 
   .sec5Reg{
@@ -594,4 +593,19 @@
   .circleInfo{
     margin-left: 0;
   }
+}
+
+.landinputpass{
+  height: 2.75rem !important;
+  border: solid 1px #cccccc !important;
+}
+
+.form-control{
+  margin-top: -0.01rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  box-sizing: border-box !important;
+  outline: 0 !important;
+  border-top-right-radius: .23rem !important;
+  border-bottom-right-radius: .23rem !important;
 }

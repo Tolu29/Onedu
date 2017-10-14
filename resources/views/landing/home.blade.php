@@ -58,7 +58,7 @@
                 <button type="button" class="close waves-effect waves-light" id="closeModal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+                <h4 class="title"><i class="fa fa-user"></i> Inicia Sesión</h4>
             </div>
             <!--Body-->
             <div class="modal-body">
@@ -66,27 +66,29 @@
                   <div class="md-form form-sm">
                       <i class="fa fa-envelope prefix"></i>
                       <input type="text" id="modMail" name="modMail" class="form-control">
-                      <label for="form30">Tu email</label>
+                      <label for="modMail">Correo Electrónico</label>
                   </div>
 
                   <div class="md-form form-sm">
                       <i class="fa fa-lock prefix"></i>
                       <input type="password" id="modPass" name="modPass" class="form-control">
-                      <label for="form31">Contraseña</label>
+                      <label for="modPass">Contraseña</label>
                   </div>
 
-                  <div class="text-center mt-2">
-                      <button type="button" class="btn btnModEnter" style="background-color: #5172a1;">Entrar <i class="fa fa-sign-in ml-1"></i></button>
+                  <div class="text-right mt-2">
+                      <button type="button" class="btn btnModEnter" style="background-color: #5172a1;">
+                        Entrar &nbsp;
+                        <i class="fa fa-sign-in ml-1"></i></button>
                   </div>
                 </form>
             </div>
             <!--Footer-->
             <div class="modal-footer">
                 <div class="options text-center text-md-right mt-1">
-                    <p>No eres Miembro <a href="#" id="modalRegister">Registrate</a></p>
-                    <p>Olvidaste tu <a href="#">Contraseña?</a></p>
+                    {{-- <p>No eres Miembro <a href="#" id="modalRegister">Registrate</a></p> --}}
+                    {{-- <p>Olvidaste tu <a href="#">Contraseña?</a></p> --}}
                 </div>
-                <button type="button" class="btn btn-outline-info waves-effect ml-auto" style="color: #5172a1 !important; border-color: #5172a1;" data-dismiss="modal">Cerrar <i class="fa fa-times-circle ml-1"></i></button>
+                {{-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" style="color: #5172a1 !important; border-color: #5172a1;" data-dismiss="modal">Cerrar <i class="fa fa-times-circle ml-1"></i></button> --}}
             </div>
         </div>
         <!--/.Content-->
@@ -105,27 +107,28 @@
 
         <!--Container to center the content-->
         <div class="full-bg-img flex-center">
-          <!-- <div class="row"> -->
-            <form id="formEnter">
-              <div class="col-md-5 wow fadeInLeft" id="logOn">
+            <div class="col-md-5 wow fadeInLeft" id="logOn">
+              <form id="formEnter">
                 <div class="landingLog">
                   <div class="inputCont">
                     <p class="logLabel">Correo Electronico</p>
-                    <input class="logInput" id="logMail" name="logMail">
+                    <input class="form-control logInput" id="logMail" name="logMail">
                     <p class="logLabel">Contraseña</p>
-                    <input style="background-color: #ffffff" name="logPass" type="password" class="logInput" id="logPass">
+                    <input name="logPass" type="password" class="form-control logInput" id="logPass">
                   </div>
                   <div class="text-right">
-                    <button type="button" class="btn btnEnter">Entrar</button>
+                    <button type="button" class="btn btnEnter">
+                      Entrar &nbsp;
+                      <i class="fa fa-sign-in ml-1"></i>
+                    </button>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
             <div class="col-md-6 wow fadeInRight">
               <h1 class="display-2 LandtextShad padH1">Observa todas las posibilidades</h1>
               <p class="futureOne LandtextShad">Con Onedu Elije la mejor opcion</p>
             </div>
-          <!-- </div> -->
         </div>
           <!--/Container to center the content-->
 
@@ -235,7 +238,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <h3 class="display-4 sec4Text">Conoce mas</h3>
+            <h3 class="display-4 sec4Text">Conoce Más</h3>
           </div>
           <div class="offset-md-1"></div>
           <div class="col-md-7">
@@ -253,8 +256,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h1 class="sec5Info">No esperes mas</h1>
-            <h2 class="display-2 sec5Reg">Registrate</h2>
+            <h1 class="sec5Info">No esperes más</h1>
+            <h2 class="display-2 sec5Reg">Regístrate</h2>
             <div class="circleInfo circlegreen">
               <h3 class="circleText text-white">+ 30</h3>
               <p class="text-white circuleCom">ESCUELAS</p>
@@ -271,40 +274,55 @@
 
           <div class="col-md-6">
             <form id="formRegist">
-
-              <div class="regInputCont">
-                <div class="landRegFa"><i class="fa fa-user adjustFa text-white" aria-hidden="true"></i></div>
-                <input placeholder="Nombre Completo" class="LandRegInp" id="nameReg" name="nameReg">
+              <br>
+              <div class="regInputCont input-group">
+                <span class="input-group-addon landRegFa">
+                  <i class="fa fa-user adjustFa text-white" aria-hidden="true"></i>
+                </span>
+                {{-- <div class="landRegFa"><i class="fa fa-user adjustFa text-white" aria-hidden="true"></i></div> --}}
+                <input placeholder="Nombre Completo" class="form-control" id="nameReg" name="nameReg">
               </div>
 
-              <div class="regInputCont">
-                <div class="landRegFa"><i class="fa fa-envelope adjustFa text-white" aria-hidden="true"></i></div>
-                <input placeholder="Correo Electronico" class="LandRegInp" id="mailReg" name="mailReg">
+              <div class="regInputCont input-group">
+                <span class="input-group-addon landRegFa">
+                  <i class="fa fa-envelope adjustFa text-white" aria-hidden="true"></i>
+                </span>
+                {{-- <div class="landRegFa"><i class="fa fa-envelope adjustFa text-white" aria-hidden="true"></i></div> --}}
+                <input placeholder="Correo Electronico" class="form-control " id="mailReg" name="mailReg">
               </div>
 
-              <div class="regInputCont">
-                <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
-                <input placeholder="Contraseña" type="password"  class="LandRegInp" id="regPass" name="regPass">
+              <div class="regInputCont input-group">
+                <span class="input-group-addon landRegFa">
+                  <i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i>
+                </span>
+                {{-- <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div> --}}
+                <input placeholder="Contraseña" type="password"  class="form-control landinputpass" id="regPass" name="regPass">
               </div>
 
-              <div class="regInputCont">
-                <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div>
-                <input placeholder="Confirmacion Contraseña" type="password" class="LandRegInp" id="regPassDup" name="regPassDup">
+              <div class="regInputCont input-group">
+                <span class="input-group-addon landRegFa">
+                  <i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i>
+                </span>
+                {{-- <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div> --}}
+                <input placeholder="Confirmacion Contraseña" type="password" class="form-control landinputpass" id="regPassDup" name="regPassDup">
               </div>
-
-              <div class="regInputCont">
-                <div class="landRegFa"><i class="fa fa-university adjustFa text-white" aria-hidden="true"></i></div>
-                <select class="browser-default LandRegInp" id="citiesSelect" style='background-color: #ffffff;'>
+              {{-- LandRegInp landinputpass --}}
+              <div class="regInputCont input-group">
+                <span class="input-group-addon landRegFa">
+                  <i class="fa fa-university adjustFa text-white" aria-hidden="true"></i>
+                </span>
+                {{-- <div class="landRegFa"><i class="fa fa-university adjustFa text-white" aria-hidden="true"></i></div> --}}
+                <select class="form-control browser-default" id="citiesSelect" style='background-color: #ffffff;'>
                   <option value="" disabled selected>Escoge una ciudad</option>
                 </select>
               </div>
 
-              <div class='regInputCont' id="contCities">
+              <div class='regInputCont input-group' id="contCities">
               </div>
 
-              <div class="form-group checkbox-success-filled regInputCont">
+              <div class="form-group checkbox-success-filled regInputCont input-group">
                 <input type="checkbox" id="checkbox110" name="checkbox110" class="filled-in">
-                <label for="checkbox110">Aceptas <a href="/terms-and-conditions" target="_blank">terminos y Condiciones</a></label>
+                <label for="checkbox110">Aceptas <a href="/terms-and-conditions" target="_blank">Términos y Condiciones</a></label>
               </div>
 
               <div class="text-right">
@@ -330,9 +348,9 @@
 
             <!--First column-->
             <div class="col-md-3 offset-md-1">
-                <h5 class="title">Contacto directo</h5>
-                <p>Numero Telefonico: 8717857484</p>
-                <p>Correo electronico: Contacto@onedu.com.mx</p>
+                <h5 class="title"><b>Contácto directo</b></h5>
+                <p>Número Telefónico: (871) 785 74 84</p>
+                <p>Correo Electrónico: Contacto@onedu.com.mx</p>
             </div>
             <!--/.First column-->
 
@@ -340,12 +358,12 @@
 
             <!--Second column-->
             <div class="col-md-3 offset-md-1">
-                <h5 class="title">Direccion</h5>
+                <h5 class="title"><b>Dirección</b></h5>
                 <ul>
                     <li><a href="#!">Calle: Santiago Lavín</a></li>
                     <li><a href="#!">No. 475</a></li>
-                    <li><a href="#!">Colonia: Las margaritas</a></li>
-                    <li><a href="#!">Torreón, Coahuila. Mexico</a></li>
+                    <li><a href="#!">Colonia: Las Margaritas</a></li>
+                    <li><a href="#!">Torreón, Coahuila. México</a></li>
                 </ul>
             </div>
             <!--/.Second column-->
@@ -356,8 +374,16 @@
             <div class="col-md-4">
 
                 <ul>
-                    <li><button type="button" class="btn btn-lg fooBtn1">Registrarme Gratis</button></li>
-                    <li><button type="button" class="btn waves-effect btn-lg fooBtn2" data-toggle="modal" data-target="#modalLogin"> Ya tengo cuenta</button></li>
+                    <li>
+                      <a class="btn btn-lg fooBtn1" href="#section-5">
+                        Registrarme Grátis
+                      </a>
+                    </li>
+                    <li>
+                      <button type="button" class="btn waves-effect btn-lg fooBtn2" data-toggle="modal" data-target="#modalLogin">
+                        Ya tengo cuenta
+                      </button>
+                    </li>
                 </ul>
             </div>
             <!--/.Third column-->
@@ -375,7 +401,7 @@
     <!--Copyright-->
     <div class="footer-copyright">
         <div class="container-fluid">
-            © 2017 Copyright: <a href="http://supernovaapps.com.mx/" target="_blank"> Supernova Apps </a>
+            © 2017 Powered By: <a href="http://supernovaapps.com.mx/" target="_blank"> Supernova Apps </a>
 
         </div>
     </div>
