@@ -1,5 +1,5 @@
 body{
-  background-color: #eaeaea;
+  background-color: #fff;
 }
 
 .termsConditions{
@@ -8,4 +8,9 @@ body{
 
 #ONEDU{
   cursor: pointer;
+}
+
+h2{
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
 }
