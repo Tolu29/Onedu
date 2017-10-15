@@ -2,6 +2,7 @@
 
 @section('css-plus')
 <link rel="stylesheet" href="/packages/assets/css/admin/schools.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClSl5b-QZJAeAfIe-NueH2pQr7CZQ4_1c"></script>
 @stop
 
 @section('content-admin')
@@ -57,10 +58,11 @@
       </div>
     </div>
 
-    <div class="col-md-4 offset-md-3 col-sm-4 offset-sm-4">
+    <div class="col-md-6 offset-md-1 col-sm-4 offset-sm-4">
       <div class="padTopSchool btnOPT">
         <button class="btn z-depth-2 btnEditInfo">Editar datos</button>
         <button class="btn z-depth-2 btnAddImgs">Agregar Imagenes</button>
+        <button class="btn z-depth-2 ubication" data-toggle="modal" data-target="#centralModalSuccess">Agregar Ubicacion</button>
       </div>
     </div>
 
@@ -233,7 +235,7 @@
                   <div class="col-md-6">
 
                     <div class='card logoWrap'>
-                      <img id='logoPrev' src='' alt=''>
+                      <img id='logoPrev' src='/packages/assets/img/miscellaneous/university.png' alt=''>
                     </div>
 
                       <div class='md-form'>
@@ -369,10 +371,45 @@
 <!--Modal: Subscription From-->
 
 
+<!-- Central Modal Medium Success -->
+  <div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-success" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading lead">Modal Success</p>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+          <div class="text-center">
+            <div id="map"></div>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <a type="button" class="btn btn-primary-modal saveUbication">Get it now <i class="fa fa-diamond ml-1"></i></a>
+          <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">No, thanks</a>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Central Modal Medium Success-->
+
+
+
 @stop
 
 @section('js-plus')
 <script type="text/javascript" src="/packages/libs/jquery-validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/packages/libs/jscolor/jscolor.js"></script>
 <script type="text/javascript" src="/packages/assets/js/administer/schools.js"></script>
+<script type="text/javascript" src="/packages/assets/js/administer/map.js"></script>
 @stop

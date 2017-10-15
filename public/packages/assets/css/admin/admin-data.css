@@ -1,0 +1,23 @@
+.cont-search{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  border-radius: .23rem;
+  min-height: 11rem;
+}
+
+.download{
+  border-radius: .23rem;
+  background-color: #5172a1;
+}
+
+/*.nene{
+  width: 33rem;
+  height: 3rem;
+  margin: 0 auto;
+  border: none;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  outline: none;
+  color: #737474;
+  padding-left: 1rem;
+}*/

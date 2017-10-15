@@ -15,20 +15,13 @@ $(function(){
 
 
 
-
-
-
-
-
-
   // EJECUCION CLICK
 
   $("body").on('click','#schoolMap',function(){
-    $(".thirdLevel").addClass('fadeOutLeft');
-    $('.thirdLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $(".thirdLevel").hide();
-      $(".fourthLevel").removeClass('hideCareers');
-      $(".fourthLevel").addClass('fadeInRight');
+    $(".thirdLevel").fadeOut('slow', function(){
+      $(".fourthLevel").fadeIn('slow', function(){
+        setTimeout(function(){ google.maps.event.trigger(map, "resize"); }, 1000);
+      });
     });
   });
 
@@ -204,6 +197,7 @@ $(function(){
       }
     })
     .done(function(data){
+      $(".schoolOptions>div").empty();
       infosDesc = data;
       addPlan();
 

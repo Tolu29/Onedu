@@ -143,6 +143,10 @@ Route::group(['middleware' => ['auth']], function() {
         return view('admin.admin-preview');
     });
 
+    Route::get('/admin-data', function () {
+        return view('admin.admin-data');
+    });
+
 
     /*
     * COMIENZO rutas administerController
@@ -157,6 +161,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/saveAssignedCar', 'AdministerController@saveAssignedCar');
     Route::post('/delAssignedCar', 'AdministerController@delAssignedCar');
     Route::post('/newinfo', 'AdministerController@newinfo');
+    Route::post('/location', 'AdministerController@location');
     // vista careers
     Route::post('/saveCareer', 'AdministerController@saveCareer');
     Route::post('/allCareers', 'AdministerController@allCareers');
@@ -173,6 +178,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/getImgInfo', 'AdministerController@getImgInfo');
     Route::post('/updImg', 'AdministerController@updImg');
     Route::post('/deleteImg', 'AdministerController@deleteImg');
+    //vista admin-data
+    Route::post('/dataBaseInfo', 'AdministerController@dataBaseInfo');
+    Route::post('/downloadExcel', 'AdministerController@downloadExcel');
     /*
     * FIN rutas administerController
     */

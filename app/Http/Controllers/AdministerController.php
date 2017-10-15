@@ -298,6 +298,18 @@ function allUniversities(){
     $request->session()->put('career_id', $data['id']);
   }
 
+  function location(Request $request){
+    $data = $request->all();
+    $universidad_id = $request->session()->get('university_id');
+
+    $university = University::where('id', '=', $universidad_id)->first();
+    $university->latitud = $data['lat'];
+    $university->longitud = $data['long'];
+    $university->save();
+
+    return "listo";
+  }
+
   //===========================//
     #funciones para Informaciones
   //==========================//
@@ -585,6 +597,29 @@ function allUniversities(){
 
     return 'La imagen ha sido elminada con exito';
 
+  }
+
+
+  //=================================//
+    #funciones para administacion DB
+  //================================//
+
+  function dataBaseInfo(){
+
+    $cities = DB::table('ciudades')->get();
+    $highSchools = DB::table('preparatorias')->get();
+
+    return response()->json([
+      'highSchools' => $highSchools,
+      'cities' => $cities
+    ]);
+
+  }
+
+  function downloadExcel(Request $request){
+    $data = $request->all();
+
+    
   }
 
 
