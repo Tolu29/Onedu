@@ -212,17 +212,17 @@
       <div class="">
         <div class="row">
           <div class="col-md-2 advanceColor">
-            <i class="fa fa-comments-o imgAdvance" aria-hidden="true"></i>
+            <center><i class="fa fa-comments-o imgAdvance" aria-hidden="true"></i></center>
             <h3 class="text-center advancePadd">Contacto:</h3>
             <p class="text-center"> ¿Inseguro? Manda un mensaje directo a tu universidad favorita y deja que aclaren cualquier duda.</p>
           </div>
           <div class="col-md-2 advanceColor">
-            <i class="fa fa-map imgAdvance" aria-hidden="true"></i>
+            <center><i class="fa fa-map imgAdvance" aria-hidden="true"></i></center>
             <h3 class="text-center advancePadd">Información:</h3>
             <p class="text-center"> Nadie sabe lo que quiere hasta que lo tiene en frente. Conoce primero todos los detalles que te permitan encontrar tu pasión.</p>
           </div>
           <div class="col-md-2 advanceColor">
-            <i class="fa fa-university imgAdvance" aria-hidden="true"></i>
+            <center><i class="fa fa-university imgAdvance" aria-hidden="true"></i></center>
             <h3 class="text-center advancePadd">Universidades:</h3>
             <p class="text-center"> Descubre la Institución educativa que se volverá el vehículo para alcanzar tus sueños.</p>
           </div>

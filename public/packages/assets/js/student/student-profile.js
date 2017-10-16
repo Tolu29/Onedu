@@ -36,7 +36,7 @@ $("body").on('click','.contUni',function(){
 
 
 });
- 
+
 function createForm(){
   $(".contProfile").html(`<h1 class="waitingInfo">Cargando Información...</h1>`);
   $.ajax({
@@ -86,48 +86,58 @@ function createForm(){
     $("body").find('.form-control').prop('disabled', true);
   })
   .fail(function(err){
-    alert('Ha ocurrido un error al obtener la información');
+    swal({
+      title: "Error!",
+      text: "Ha ocurrido un error al obtener la información",
+      icon: "error",
+      button: "Aceptar!",
+      dangerMode: true,
+    });
     console.log(err);
   });
 
 }
 
 function infoUni(){
-  $(".contProfile").append(
-    "<div class='row'>" +
-
-      "<div class='col-md-12'>"  +
-        "<div class='z-depth-2 contUni contUniFirst'>"  +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>"  +
-        "</div>"  +
-
-        "<div class='z-depth-2 contUni'>"  +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>"  +
-        "</div>"  +
-
-        "<div class='z-depth-2 contUni'>"  +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni contUniFirst'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-      "</div>" +
-
-    "</div>"
-  )
+  $(".contProfile").html(`<h1 class="waitingInfo">Cargando Información...</h1>`);
+  $.ajax({
+    url: '/getFavorites',
+    method: 'POST',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  })
+  .done(function(res){
+    if (res.length > 0){
+      $(".contProfile").html(
+        "<div class='row' id='boxToFavorites'>" +
+        "</div>"
+      );
+      for (var i = 0; i < res.length; i++) {
+        $("body").find('#boxToFavorites').append(`
+          <div class='col-sm-2 boxFav-dad'>
+            <div class="likeZone">
+              <i class="fa fa-heart fa-2x likeUni" aria-hidden="true" data-prosp="${res[i].id}" style="color: rgb(181, 54, 37);"></i>
+            </div>
+            <center><div class='boxFav' style="background-image: url(/packages/assets/img/universities/logos/${res[i].logo});"></div></center>
+          </div>
+        `);
+      }
+    }
+    else {
+      $(".contProfile").html(`<h1 class="waitingInfo">Actualmente no cuentas con favoritos</h1>`);
+    }
+  })
+  .fail(function(err){
+    swal({
+      title: "Error!",
+      text: "Ha ocurrido un error al obtener la información",
+      icon: "error",
+      button: "Aceptar!",
+      dangerMode: true,
+    });
+    console.log(err);
+  });
 }
 
 wow = new WOW({
@@ -172,11 +182,22 @@ $(function(){
       })
       .done(function(res){
         if (res != "success"){
-          alert(res);
+          swal({
+            title: "Ten Cuidado!",
+            icon: "warning",
+            text: res,
+            button: "Aceptar!",
+            dangerMode: true,
+          });
           $this.prop('disabled', false);
           $this.text('Guardar');
         }
         else{
+          swal({
+            title: "Actualizado!",
+            icon: "success",
+            button: "Aceptar!",
+          });
           $this.removeClass('btnProf-edit-save');
           $this.text("Editar");
           $("body").find('.form-control').prop('disabled', true);
@@ -190,8 +211,40 @@ $(function(){
       });
     }
     else {
-      alert('No puedes dejar campos vacios con la marca (*)');
+      swal({
+        title: "Error!",
+        text: "Ha ocurrido un error al obtener la información",
+        icon: "error",
+        button: "Aceptar!",
+        dangerMode: true,
+      });
     }
+  });
+
+  $("body").on('click', '.likeUni', function(){
+    $this = $(this);
+    $.ajax({
+      url: "/delFavoriteProf",
+      type: "POST",
+      data:{
+        id: $this.data('prosp')
+      },
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(){
+      var count = 0;
+      $this.parent().parent().fadeOut('slow', function(){
+        $this.parent().parent().remove();
+        $.each($(".boxFav-dad"), function(i, e){
+          count++;
+        });
+        if (count == 0){
+          $(".contProfile").html(`<h1 class="waitingInfo">Actualmente no cuentas con favoritos</h1>`);
+        }
+      });
+    });
   });
 
 });

@@ -205,7 +205,7 @@
 
 .imgAdvance{
   margin-top: 4rem;
-  margin-left: 4rem;
+  /*margin-left: 4rem;*/
   font-size: 3rem;
   border: solid 3px;
   border-radius: 50%;
@@ -348,7 +348,7 @@
   }
 
   .imgAdvance {
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
   }
 
   .display-2{
@@ -382,7 +382,7 @@
   }
 
   .imgAdvance{
-    margin-left: 1rem;
+    /*margin-left: 1rem;*/
   }
 
   .advancePadd {
@@ -419,11 +419,11 @@
   }
 
   .btnSec2{
-    margin-left: 26rem;
+    /*margin-left: 26rem;*/
   }
 
   .imgAdvance{
-    margin-left: 21.5rem;
+    /*margin-left: 21.5rem;*/
   }
 
   .LandRegInp {
@@ -439,11 +439,11 @@
   }
 
   .btnSec2{
-    margin-left: 26rem;
+    /*margin-left: 26rem;*/
   }
 
   .imgAdvance{
-    margin-left: 19.5rem;
+    /*margin-left: 19.5rem;*/
   }
 
   .sec4Text{
@@ -467,11 +467,11 @@
   }
 
   .btnSec2{
-    margin-left: 25rem;
+    /*margin-left: 25rem;*/
   }
 
   .imgAdvance{
-    margin-left: 16rem;
+    /*margin-left: 16rem;*/
   }
 
   .sec4Text{
@@ -527,7 +527,7 @@
 
 @media screen and (max-width: 375px) and (min-width: 321px){
   .imgAdvance{
-    margin-left: 10rem;
+    /*margin-left: 10rem;*/
   }
 
   #logOn{
@@ -539,7 +539,7 @@
   }
 
   .btnSec2{
-    margin-left: 14rem;
+    /*margin-left: 14rem;*/
   }
 
   .LandRegInp{
@@ -573,11 +573,11 @@
   }
 
   .btnSec2{
-    margin-left: 10rem;
+    /*margin-left: 10rem;*/
   }
 
   .imgAdvance{
-    margin-left: 8rem;
+    /*margin-left: 8rem;*/
   }
 
   .sec4Text{

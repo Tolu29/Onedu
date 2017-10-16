@@ -159,6 +159,23 @@ class StudentController extends Controller
     return 'success';
   }
 
+  function getFavorites(){
+    return Prospectos::join('students', 'students.id', '=', 'prospectos.student_id')
+    ->join('universities', 'universities.id', '=', 'prospectos.universidad_id')
+    ->join('careers', 'careers.id', '=', 'prospectos.carrera_id')
+    ->where('students.user_id', '=', Auth::user()->id)
+    ->select('universities.logo', 'prospectos.id')
+    ->get();
+  }
+
+  function delFavoriteProf(Request $request){
+
+    $data = $request->all();
+    $prospects = Prospectos::where('id', '=', $data['id'])->delete();
+    return 'success';
+
+  }
+
 }
 // $user = Auth::user();
 // $role = Role::create(['name' => 'student']);
