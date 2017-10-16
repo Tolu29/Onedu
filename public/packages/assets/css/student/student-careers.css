@@ -299,3 +299,7 @@ descripcion de escuelas
 .mapCont>iframe{
   padding-left: 3.5rem;
 }
+
+#map {
+  height: 100%;
+}

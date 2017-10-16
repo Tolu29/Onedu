@@ -1,6 +1,8 @@
+var locationInfo = {};
+
 $(function(){
 // =====================//
-  let names = [];
+  var names = [];
 // =====================//
 
   $('.uniLvl2').removeClass('schoolHide');
@@ -165,6 +167,9 @@ $(function(){
         }
       })
       .done(function(data){
+          locationInfo = {
+            obj: data.university[0]
+          };          
           $(".uniLvl1").fadeOut('slow', function(){
             $('.uniLvl2').fadeIn( 'slow' );
           });
@@ -196,7 +201,6 @@ $(function(){
       });
 
     });
-
 
     $("body").on('click', '.btnEditInfo', function(){
       $("#infoColor").addClass("jscolor");
@@ -521,11 +525,11 @@ function makeBlob($idInput){
 }
 
 
-  wow = new WOW({
-  boxClass: 'wow', // default
-  animateClass: 'animated', // default
-  offset: 0, // default
-  mobile: true, // default
-  live: true // default
-  })
-  wow.init();
+wow = new WOW({
+boxClass: 'wow', // default
+animateClass: 'animated', // default
+offset: 0, // default
+mobile: true, // default
+live: true // default
+})
+wow.init();

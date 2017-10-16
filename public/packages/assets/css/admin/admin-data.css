@@ -1,0 +1,50 @@
+.admD-hide{
+  display: none;
+}
+
+[id*=-error]{
+  display: none !important;
+}
+
+.cont-search{
+  margin-top: 9rem;
+  background-color: #ffffff;
+  border-radius: .23rem;
+  min-height: 11rem;
+}
+
+.download{
+  border-radius: .23rem;
+  background-color: #5172a1;
+  margin-top: 2rem;
+}
+
+.selectStyle{
+  width: 33rem;
+  height: 3rem !important;
+  margin: 0 auto !important;
+  border: none !important;
+  border: solid 1px #ccc !important;
+  border-radius: 5px !important;
+  outline: none !important;
+  color: #737474 !important;
+  padding-left: 1rem !important;
+  margin-bottom: 4rem !important;
+  margin-top: 1rem;
+}
+
+#finalDate{
+  width: 30rem !important;
+}
+
+#inicialDate{
+  margin-left: 1rem !important;
+}
+
+#highSchool_select{
+  margin-top: 1rem !important;
+}
+
+#city_select{
+  margin-top: 1rem !important;
+}

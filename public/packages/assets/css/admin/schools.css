@@ -18,10 +18,15 @@
   display: flex;
 }
 
+#map {
+  height: 100%;
+}
+
 .padTopSchool>button{
   border-radius: .23rem;
   background-color: #399c5f;
   width: 11rem;
+  margin-bottom: 2rem;
 }
 
 .btnAddImgs{

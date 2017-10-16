@@ -36,7 +36,7 @@ $("body").on('click','.contUni',function(){
 
 
 });
-
+ 
 function createForm(){
   $(".contProfile").html(`<h1 class="waitingInfo">Cargando Información...</h1>`);
   $.ajax({

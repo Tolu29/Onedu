@@ -2,7 +2,7 @@ $(function(){
   $(".hideCareers").hide();
   $(".hideCareers").removeClass('hideCareers');
 
-  var infoCareer = [], related = [], universities = [], infosDesc = [];
+  var backLevel = 1, infoCareer = [], related = [], universities = [], infosDesc = [];
 
   wow.init();
 
@@ -15,20 +15,13 @@ $(function(){
 
 
 
-
-
-
-
-
-
   // EJECUCION CLICK
 
   $("body").on('click','#schoolMap',function(){
-    $(".thirdLevel").addClass('fadeOutLeft');
-    $('.thirdLevel').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $(".thirdLevel").hide();
-      $(".fourthLevel").removeClass('hideCareers');
-      $(".fourthLevel").addClass('fadeInRight');
+    $(".thirdLevel").fadeOut('slow', function(){
+      $(".fourthLevel").fadeIn('slow', function(){
+        setTimeout(function(){ google.maps.event.trigger(map, "resize"); }, 1000);
+      });
     });
   });
 
@@ -36,7 +29,7 @@ $(function(){
   // click en la carrera
 
   $("body").on('click','.infoCareer',function(){
-
+    backLevel = 2;
     let data = {
       id: $(this).data('id'),
       group: $(this).data('group')
@@ -63,9 +56,19 @@ $(function(){
 
 
 
-  $("body").on('click', '.backSecond', function(){
-    $(".fisrtLevel").show();
-    $(".secondLevel").hide();
+  $("body").on('click', '.back', function(){
+    switch (backLevel) {
+      case 2:
+        $(".secondLevel").fadeOut('slow', function(){
+          $(".fisrtLevel").fadeIn('slow')
+          backLevel = 1;
+        });
+        break;
+      default:
+
+    }
+    // $(".fisrtLevel").show();
+    // $(".secondLevel").hide();
   });
 
 
@@ -204,6 +207,7 @@ $(function(){
       }
     })
     .done(function(data){
+      $(".schoolOptions>div").empty();
       infosDesc = data;
       addPlan();
 

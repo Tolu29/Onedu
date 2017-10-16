@@ -18,7 +18,7 @@ class="fixed-sn white-skin backColor"
         <!-- Logo -->
         <li>
             <div class="logo-wrapper">
-                <img src="/packages/assets/img/students/studentPrueba.jpg" class="img-fluid flex-center mx-auto" id="userPhoto">
+                <img src="/packages/assets/img/miscellaneous/user.png" class="img-fluid flex-center mx-auto" id="userPhoto">
             </div>
         </li>
         <!--/. Logo -->
@@ -27,22 +27,16 @@ class="fixed-sn white-skin backColor"
         <li>
             <ul class="collapsible collapsible-accordion">
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont"> Noticias</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-news"> Noticias</a>
                 </li>
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Carreras</a>
-                </li>
-                <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Postgrados</a>
-                </li>
-                <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Guia de orientacion</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-careers">Carreras</a>
                 </li>
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont">Mensajes</a>
                 </li>
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Perfil</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-profile">Perfil</a>
                 </li>
             </ul>
         </li>
@@ -82,5 +76,6 @@ class="fixed-sn white-skin backColor"
 
 @section('js')
 <script type="text/javascript" src="/packages/assets/js/baseAll.js"></script>
+<script type="text/javascript" src="/packages/assets/js/baseStudent.js"></script>
 @yield('js-plus')
 @stop

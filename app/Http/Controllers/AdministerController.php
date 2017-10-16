@@ -8,6 +8,7 @@ use Validator;
 use App\Address;
 use App\StudyPlans;
 use App\User;
+use App\Student;
 use App\University;
 use App\Installation;
 use App\ClasesMuestra;
@@ -296,6 +297,18 @@ function allUniversities(){
   function newinfo(Request $request){
     $data = $request->all();
     $request->session()->put('career_id', $data['id']);
+  }
+
+  function location(Request $request){
+    $data = $request->all();
+    $universidad_id = $request->session()->get('university_id');
+
+    $university = University::where('id', '=', $universidad_id)->first();
+    $university->latitud = $data['lat'];
+    $university->longitud = $data['long'];
+    $university->save();
+
+    return "listo";
   }
 
   //===========================//
@@ -588,11 +601,36 @@ function allUniversities(){
   }
 
 
+  //=================================//
+    #funciones para administacion DB
+  //================================//
+
+  function dataBaseInfo(){
+
+    $cities = DB::table('ciudades')->get();
+    $highSchools = DB::table('preparatorias')->get();
+
+    return response()->json([
+      'highSchools' => $highSchools,
+      'cities' => $cities
+    ]);
+
+  }
+
+  function downloadExcel(Request $request){
+    $data = $request->all();
+
+    $students = Student::where('id', '=', $data['school'])
+    ->whereBetween('created_at', [$data['iniDate'],$data['finDate']])->get();
+    return $students;
+  }
+
+
 }
 
  function makeRandomName($rand = true, $date = true){
-      $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-      $limit = 5;
+    $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    $limit = 5;
 		$word = "";
 		for($i=0; $i < $limit; $i++) { $word .= substr($characters, rand(0, strlen($characters)), 1); }
       if ($rand) { $word.=rand(); }
