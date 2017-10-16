@@ -86,7 +86,13 @@ function createForm(){
     $("body").find('.form-control').prop('disabled', true);
   })
   .fail(function(err){
-    alert('Ha ocurrido un error al obtener la información');
+    swal({
+      title: "Error!",
+      text: "Ha ocurrido un error al obtener la información",
+      icon: "error",
+      button: "Aceptar!",
+      dangerMode: true,
+    });
     console.log(err);
   });
 
@@ -123,7 +129,13 @@ function infoUni(){
     }
   })
   .fail(function(err){
-    alert('Ha ocurrido un error al obtener la información');
+    swal({
+      title: "Error!",
+      text: "Ha ocurrido un error al obtener la información",
+      icon: "error",
+      button: "Aceptar!",
+      dangerMode: true,
+    });
     console.log(err);
   });
 }
@@ -170,11 +182,22 @@ $(function(){
       })
       .done(function(res){
         if (res != "success"){
-          alert(res);
+          swal({
+            title: "Ten Cuidado!",
+            icon: "warning",
+            text: res,
+            button: "Aceptar!",
+            dangerMode: true,
+          });
           $this.prop('disabled', false);
           $this.text('Guardar');
         }
         else{
+          swal({
+            title: "Actualizado!",
+            icon: "success",
+            button: "Aceptar!",
+          });
           $this.removeClass('btnProf-edit-save');
           $this.text("Editar");
           $("body").find('.form-control').prop('disabled', true);
@@ -188,7 +211,13 @@ $(function(){
       });
     }
     else {
-      alert('No puedes dejar campos vacios con la marca (*)');
+      swal({
+        title: "Error!",
+        text: "Ha ocurrido un error al obtener la información",
+        icon: "error",
+        button: "Aceptar!",
+        dangerMode: true,
+      });
     }
   });
 
