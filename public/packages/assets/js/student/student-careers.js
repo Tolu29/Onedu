@@ -2,7 +2,7 @@ $(function(){
   $(".hideCareers").hide();
   $(".hideCareers").removeClass('hideCareers');
 
-  var infoCareer = [], related = [], universities = [], infosDesc = [];
+  var backLevel = 1, infoCareer = [], related = [], universities = [], infosDesc = [];
 
   wow.init();
 
@@ -29,7 +29,7 @@ $(function(){
   // click en la carrera
 
   $("body").on('click','.infoCareer',function(){
-
+    backLevel = 2;
     let data = {
       id: $(this).data('id'),
       group: $(this).data('group')
@@ -56,9 +56,19 @@ $(function(){
 
 
 
-  $("body").on('click', '.backSecond', function(){
-    $(".fisrtLevel").show();
-    $(".secondLevel").hide();
+  $("body").on('click', '.back', function(){
+    switch (backLevel) {
+      case 2:
+        $(".secondLevel").fadeOut('slow', function(){
+          $(".fisrtLevel").fadeIn('slow')
+          backLevel = 1;
+        });
+        break;
+      default:
+
+    }
+    // $(".fisrtLevel").show();
+    // $(".secondLevel").hide();
   });
 
 

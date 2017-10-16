@@ -23,15 +23,11 @@
 
 <!-- SEGUNDO NIVEL -->
 
-  <!-- <div class="row secondLevel">
-
-  </div> -->
-
   <div class="row wow hideCareers secondLevel">
 
     <div class="col-md-4 col-sm-4">
       <div class="backSecond">
-        <button type="button" class="btn z-depth-2 red">Registrar</button>
+        <button type="button" class="btn back z-depth-2 red">Registrar</button>
       </div>
     </div>
 

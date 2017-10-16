@@ -8,6 +8,7 @@ use Validator;
 use App\Address;
 use App\StudyPlans;
 use App\User;
+use App\Student;
 use App\University;
 use App\Installation;
 use App\ClasesMuestra;
@@ -619,15 +620,17 @@ function allUniversities(){
   function downloadExcel(Request $request){
     $data = $request->all();
 
-    
+    $students = Student::where('id', '=', $data['school'])
+    ->whereBetween('created_at', [$data['iniDate'],$data['finDate']])->get();
+    return $students;
   }
 
 
 }
 
  function makeRandomName($rand = true, $date = true){
-      $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-      $limit = 5;
+    $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    $limit = 5;
 		$word = "";
 		for($i=0; $i < $limit; $i++) { $word .= substr($characters, rand(0, strlen($characters)), 1); }
       if ($rand) { $word.=rand(); }

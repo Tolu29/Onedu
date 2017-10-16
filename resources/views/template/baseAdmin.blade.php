@@ -32,6 +32,9 @@ class="fixed-sn white-skin backColor"
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/careers"> Carreras</a>
                 </li>
+                <li>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/admin-data"> Estudiantes</a>
+                </li>
             </ul>
         </li>
         <!--/. Side navigation links -->
