@@ -36,7 +36,7 @@ $("body").on('click','.contUni',function(){
 
 
 });
- 
+
 function createForm(){
   $(".contProfile").html(`<h1 class="waitingInfo">Cargando Información...</h1>`);
   $.ajax({
@@ -93,41 +93,39 @@ function createForm(){
 }
 
 function infoUni(){
-  $(".contProfile").append(
-    "<div class='row'>" +
-
-      "<div class='col-md-12'>"  +
-        "<div class='z-depth-2 contUni contUniFirst'>"  +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>"  +
-        "</div>"  +
-
-        "<div class='z-depth-2 contUni'>"  +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>"  +
-        "</div>"  +
-
-        "<div class='z-depth-2 contUni'>"  +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni contUniFirst'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-
-        "<div class='z-depth-2 contUni'>" +
-          "<img src='/packages/assets/img/students/studentPrueba.jpg' alt=''>" +
-        "</div>" +
-      "</div>" +
-
-    "</div>"
-  )
+  $(".contProfile").html(`<h1 class="waitingInfo">Cargando Información...</h1>`);
+  $.ajax({
+    url: '/getFavorites',
+    method: 'POST',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  })
+  .done(function(res){
+    if (res.length > 0){
+      $(".contProfile").html(
+        "<div class='row' id='boxToFavorites'>" +
+        "</div>"
+      );
+      for (var i = 0; i < res.length; i++) {
+        $("body").find('#boxToFavorites').append(`
+          <div class='col-sm-2 boxFav-dad'>
+            <div class="likeZone">
+              <i class="fa fa-heart fa-2x likeUni" aria-hidden="true" data-active="1" style="color: rgb(181, 54, 37);"></i>
+            </div>
+            <center><div class='boxFav' style="background-image: url(/packages/assets/img/universities/logos/${res[i].logo});"></div></center>
+          </div>
+        `);
+      }
+    }
+    else {
+      $(".contProfile").html(`<h1 class="waitingInfo">Actualmente no cuentas con favoritos</h1>`);
+    }
+  })
+  .fail(function(err){
+    alert('Ha ocurrido un error al obtener la información');
+    console.log(err);
+  });
 }
 
 wow = new WOW({
@@ -192,6 +190,26 @@ $(function(){
     else {
       alert('No puedes dejar campos vacios con la marca (*)');
     }
+  });
+
+  $("body").on('click', '.likeUni', function(){
+    $this = $(this);
+    $this.parent().parent().fadeOut('slow', function(){
+      $this.parent().parent().remove();
+    });
+    // $.ajax({
+    //   url: "/delLike",
+    //   type: "POST",
+    //   headers: {
+    //   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //   }
+    // })
+    // .done(function(){
+    //   $this.parent.remove();
+    //   // $(".likeUni").remove();
+    //   // $(".likeZone").append("<i class='fa fa-heart fa-2x likeUni' aria-hidden='true'></i>");
+    //   // $(".likeUni").css('color', '#7c7c7c');
+    // });
   });
 
 });

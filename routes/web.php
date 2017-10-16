@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function() {
       Route::post('/delLike', 'StudentController@delLike');
       Route::post('/updateProfile', 'StudentController@updateProfile');
       Route::post('/getInfoStudent', 'StudentController@infoStudent');
+      Route::post('/getFavorites', 'StudentController@getFavorites');
     /*
     * FIN rutas StudentController
     */
