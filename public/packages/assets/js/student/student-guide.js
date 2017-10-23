@@ -1,7 +1,10 @@
 (function() {
+
+  let $i = 0;
+
   const myQuestions = [
     {
-      question: "Me gusta Contruir, arreglar, montar...herramientas, objetos?",
+      question: "Pregunta 1/70 Me gusta Contruir, arreglar, montar...herramientas, objetos?",
       answers: {
         si: "Si",
         no: "No",
@@ -568,6 +571,7 @@
 
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
+      $i += 1;
       // we'll want to store the list of answer choices
       const answers = [];
 
@@ -587,6 +591,7 @@
       output.push(
         `<div class="slide">
            <div class="question"> ${currentQuestion.question} </div>
+           <div class="question">` + $i + `/70</div>
            <div class="answers"> ${answers.join("")} </div>
          </div>`
       );

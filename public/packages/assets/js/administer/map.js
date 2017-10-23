@@ -32,7 +32,11 @@
 
 
       // Adds a marker to the map.
-      function addMarker(location, map) {      
+      function addMarker(location, map) {
+        if (markers.length == 1) {
+          clearMarkers();
+          markers = [];
+        }
         // Add the marker at the clicked location, and add the next-available label
         // from the array of alphabetical characters.
         marker = new google.maps.Marker({
@@ -72,9 +76,9 @@ $(function(){
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     })
-    // .done(function(data){
-    //   console.log(data);
-    // });
+    .done(function(data){
+      $(".closeMap").trigger('click');
+    });
   });
 
 });

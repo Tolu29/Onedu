@@ -1,8 +1,9 @@
+var infosDesc = [], uniActive, mailActive;
 $(function(){
   $(".hideCareers").hide();
   $(".hideCareers").removeClass('hideCareers');
 
-  var backLevel = 1, infoCareer = [], related = [], universities = [], infosDesc = [];
+  var backLevel = 1, infoCareer = [], related = [], universities = [];
 
   wow.init();
 
@@ -13,17 +14,19 @@ $(function(){
 
   addCareers(alphabet,colors);
 
-
+  setTimeout(function(){
+    if (mailActive == 2) {
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        dangerMode: true,
+      });
+    }
+  }, 3000);
 
   // EJECUCION CLICK
 
-  $("body").on('click','#schoolMap',function(){
-    $(".thirdLevel").fadeOut('slow', function(){
-      $(".fourthLevel").fadeIn('slow', function(){
-        setTimeout(function(){ google.maps.event.trigger(map, "resize"); }, 1000);
-      });
-    });
-  });
 
 
   // click en la carrera
@@ -59,16 +62,24 @@ $(function(){
   $("body").on('click', '.back', function(){
     switch (backLevel) {
       case 2:
-        $(".secondLevel").fadeOut('slow', function(){
+          $(".secondLevel").fadeOut('slow', function(){
           $(".fisrtLevel").fadeIn('slow')
           backLevel = 1;
         });
         break;
-      default:
-
-    }
-    // $(".fisrtLevel").show();
-    // $(".secondLevel").hide();
+      case 3:
+          $(".thirdLevel").fadeOut('slow', function(){
+          $(".secondLevel").fadeIn('slow');
+          backLevel = 2;
+        });
+        break;
+      case 4:
+          $(".fourthLevel").fadeOut('slow', function(){
+          $(".thirdLevel").fadeIn('slow');
+          backLevel = 3;
+        });
+        break;
+      }
   });
 
 
@@ -166,7 +177,7 @@ $(function(){
   });
 
 
-
+ 
   $("body").on('change', '.browser-default', function(){
     let optionVal = JSON.parse($(this).val());
     let data = {
@@ -193,8 +204,10 @@ $(function(){
   // click descripcion universidad
 
   $("body").on('click', '.explanationCont>div>img' ,function(){
-    $id = $(this).data('id')
+    $id = $(this).data('id');
+    backLevel = 3;
     let single = atrib(universities, "id", $id);
+    uniActive = atrib(universities, "id", $id);
     let data = {
       id: $id
     }
@@ -390,6 +403,7 @@ function addCareers(alpha,color){
     }
   })
   .done(function(data){
+    mailActive = data.active;
     // esta variable cuenta de 0 a 3 para variar los colores de las carreras(abcedario)
     var cc = 0;
     $.each(alpha,function(index,letter){
@@ -398,13 +412,13 @@ function addCareers(alpha,color){
           "<h2 class='colorLetter" + cc + "'>" + alpha[index] + "</h2>" +
         "</div>"
       )
-      $.each(data, function(i){
+      $.each(data.careers, function(i){
 
-        if (data[i].nombre.substr(0, 1) == alpha[index]) {
-          let temp = {id: data[i].id, group: data[i].grupo};
+        if (data.careers[i].nombre.substr(0, 1) == alpha[index]) {
+          let temp = {id: data.careers[i].id, group: data.careers[i].grupo};
           let optionVal = JSON.stringify(temp);
-          $(".browser-default").append("<option class='relatedCareer' value='" + optionVal + "'>" + data[i].nombre + "</option>");
-          $("." + alpha[index]).append("<p class='infoCareer' data-group='" + data[i].grupo + "' data-id='" + data[i].id + "'>" + data[i].nombre + "</p>");
+          $(".browser-default").append("<option class='relatedCareer' value='" + optionVal + "'>" + data.careers[i].nombre + "</option>");
+          $("." + alpha[index]).append("<p class='infoCareer' data-group='" + data.careers[i].grupo + "' data-id='" + data.careers[i].id + "'>" + data.careers[i].nombre + "</p>");
         }
       });
 

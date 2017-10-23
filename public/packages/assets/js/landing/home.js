@@ -92,9 +92,12 @@ $(function () {
             case "Se ha registrado con exito":
               swal({
                 title: "Te haz registrado con exito!",
-                text: "Solo un paso mas confirma tu correo electronico!",
+                text: "!",
                 icon: "success",
                 button: "Aceptar!",
+              })
+              .then((value) => {
+                window.location.href = '/student-careers'
               });
               e.preventDefault();
               break;
@@ -148,26 +151,28 @@ $(function () {
         }
       })
       .done(function(data){
-
         switch (data) {
           case "admin":
-            toastr.success("Yeah, Bienvenido");
+            toastr.success("¡Éxito!, bienvenido");
             window.location.href  = "/schools";
             break;
           case "student":
-            toastr.success("Yeah, Bienvenido");
+            toastr.success("¡Éxito!, bienvenido");
             window.location.href  = "/student-careers";
             break;
           case "universidad":
-            toastr.success("Yeah, Bienvenido");
+            toastr.success("¡Éxito!, bienvenido");
             window.location.href  = "/publications";
+            break;
+          case "Correo sin Confirmacion":
+            toastr.warning("Porfavor confirma tu correo para poder acceder");
             break;
           default:
             e.preventDefault();
             toastr.error("Parece que ha habido un error con tu mail o contraseña");
         }
         if (data == "el usuario inicio sesion correctamente") {
-          toastr.success("Yeah, Bienvenido");
+          toastr.success("¡Éxito!, bienvenido");
 
         }
       });
@@ -217,23 +222,26 @@ $(function () {
 
             switch (data) {
               case "admin":
-                toastr.success("Yeah, Bienvenido");
+                toastr.success("¡Éxito!, bienvenido");
                 window.location.href  = "/schools";
                 break;
               case "student":
-                toastr.success("Yeah, Bienvenido");
+                toastr.success("¡Éxito!, bienvenido");
                 window.location.href  = "/student-careers";
                 break;
               case "universidad":
-                toastr.success("Yeah, Bienvenido");
+                toastr.success("¡Éxito!, bienvenido");
                 window.location.href  = "/publications";
+                break;
+              case "Correo sin Confirmacion":
+                toastr.warning("Porfavor confirma tu correo para poder acceder");
                 break;
               default:
                 e.preventDefault();
                 toastr.error("Parece que ha habido un error con tu mail o contraseña");
             }
             if (data == "el usuario inicio sesion correctamente") {
-              toastr.success("Yeah, Bienvenido");
+              toastr.success("¡Éxito!, bienvenido");
 
             }
           });
@@ -282,23 +290,26 @@ $(function () {
 
         switch (data) {
           case "admin":
-            toastr.success("Yeah, Bienvenido");
+            toastr.success("¡Éxito!, bienvenido");
             window.location.href  = "/schools";
             break;
           case "student":
-            toastr.success("Yeah, Bienvenido");
+            toastr.success("¡Éxito!, bienvenido");
             window.location.href  = "/student-careers";
             break;
           case "universidad":
-            toastr.success("Yeah, Bienvenido");
+            toastr.success("¡Éxito!, bienvenido");
             window.location.href  = "/publications";
+            break;
+          case "Correo sin Confirmacion":
+            toastr.warning("Porfavor confirma tu correo para poder acceder");
             break;
           default:
             // e.preventDefault();
             toastr.error("Parece que ha habido un error con tu mail o contraseña");
         }
         if (data == "el usuario inicio sesion correctamente") {
-          toastr.success("Yeah, Bienvenido");
+          toastr.success("¡Éxito!, bienvenido");
 
         }
       });

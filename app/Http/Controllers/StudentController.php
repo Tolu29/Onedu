@@ -10,6 +10,7 @@ use App\Student;
 use App\ClasesMuestra;
 use App\StudyPlans;
 use App\Prospectos;
+use App\Noticias;
 use Illuminate\Support\Facades\DB;
 use App\Informations;
 use Illuminate\Http\Request;
@@ -26,10 +27,31 @@ class StudentController extends Controller
     #funciones para Carreras
   //==========================/
 
-  function getCareers(){
+  function getCareers(Request $request){
+
+    $user = Auth::user();
+
     $careers = Career::where('active', '=', 1)->get();
-    return $careers;
+
+    if ($user->active == 0) {
+
+      if ($request->session()->get('student_active') == '' || $request->session()->get('student_active') == null) {
+        $request->session()->put('student_active', 2);
+      }elseif ($request->session()->get('student_active') == 2) {
+        $request->session()->put('student_active', 3);
+      }
+
+    }else {
+      $request->session()->put('student_active', 1);
+    }
+
+    return response()->json([
+      'careers' => $careers,
+      'active' => $request->session()->get('student_active')
+    ]);
   }
+
+
 
   function getSelectCareer(Request $request){
     $data  = $request->all();
@@ -122,7 +144,7 @@ class StudentController extends Controller
 
   //===========================//
     #funciones para profile
-  //==========================/
+  //==========================//
 
 
   function infoStudent(){
@@ -173,6 +195,29 @@ class StudentController extends Controller
     $data = $request->all();
     $prospects = Prospectos::where('id', '=', $data['id'])->delete();
     return 'success';
+
+  }
+
+
+  //===========================//
+    #funciones para news
+  //==========================//
+
+  function likeNews(Request $request){
+    $user = Auth::user();
+    $news = [];
+    $student = Student::where('user_id', '=', $user->id)->first();
+    $likes = Prospectos::where('student_id', '=', $student->id)->get();
+    $universities = count($likes);
+
+    for ($i=0; $i < $universities; $i++) {
+      $news[$i] = DB::table('noticias')
+      ->where('noticias.universidad_id', '=', $likes[$i]->universidad_id)
+      ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
+      ->select('avance', 'noticias.id', 'cuerpo', 'logo')->get();
+    }
+
+    return $news;
 
   }
 

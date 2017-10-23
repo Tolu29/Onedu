@@ -6,6 +6,10 @@
 Carreras
 */
 
+.infoCareer{
+  cursor: pointer !important;
+}
+
 .careersCont{
   margin-top: 10rem;
   border-radius: .23rem;
@@ -45,6 +49,10 @@ Carreras
 
 .backSecond{
   margin-top: 9rem;
+}
+
+.back{
+  border-radius: .23rem;
 }
 
 /*
@@ -176,7 +184,7 @@ descripcion de escuelas
 }
 
 .schoolInfo{
-  margin-top: 9rem;
+  margin-top: 3rem;
   background-color: #ffffff;
   display: -webkit-box;
 }
@@ -282,7 +290,7 @@ descripcion de escuelas
 }
 
 .mapCont{
-  margin-top: 9rem;
+  margin-top: 3rem;
   border-top: .5rem solid #f4c945;
   background-color: #ffffff;
   height: 75vh;

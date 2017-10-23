@@ -32,6 +32,7 @@
   Route::post('/logIn', 'LoginController@logIn');
   Route::post('/logOut', 'LoginController@logOut');
   Route::post('/highSchools', 'LoginController@highSchools');
+  Route::post('/emailEnter', 'LoginController@emailEnter');
 
 /*
 * FIN rutas rutasLogIn
@@ -76,6 +77,7 @@ Route::group(['middleware' => ['auth']], function() {
       Route::post('/getInfoStudent', 'StudentController@infoStudent');
       Route::post('/getFavorites', 'StudentController@getFavorites');
       Route::post('/delFavoriteProf', 'StudentController@delFavoriteProf');
+      Route::post('/likeNews', 'StudentController@likeNews');
     /*
     * FIN rutas StudentController
     */

@@ -17,7 +17,7 @@
     </div>
 
       <div class="col-md-4 offset-md-4 col-sm-4 offset-sm-4">
-        <div class="filterSchoolCont padTopSchool">
+        <div class="filterSchoolCont padTopSchool schoolHide">
           <input type="" name="" value="">
           <button class="btn z-depth-2"><i class="fa fa-search"></i></button>
         </div>
@@ -378,7 +378,7 @@
       <div class="modal-content">
         <!--Header-->
         <div class="modal-header">
-          <p class="heading lead">Modal Success</p>
+          <p class="heading lead">Ubicacion</p>
 
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true" class="white-text">&times;</span>
@@ -394,8 +394,8 @@
 
         <!--Footer-->
         <div class="modal-footer justify-content-center">
-          <a type="button" class="btn btn-primary-modal saveUbication">Get it now <i class="fa fa-diamond ml-1"></i></a>
-          <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">No, thanks</a>
+          <a type="button" class="btn btn-primary-modal saveUbication">GUARDAR<i class="fa fa-diamond ml-1"></i></a>
+          <a type="button" class="btn btn-outline-secondary-modal waves-effect closeMap" data-dismiss="modal">CERRAR</a>
         </div>
       </div>
       <!--/.Content-->

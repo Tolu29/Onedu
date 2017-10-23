@@ -39,7 +39,7 @@ $(function(){
     if (nameCard == 1) {
       $(".backSec").remove();
     }
-    
+
     switch (nameCard) {
       case 1:
       case 2:
@@ -148,7 +148,7 @@ $(function(){
     })
     .done(function(data){
       if (data == "La carrera se ha registrado con exito") {
-        toastr.success('La carrera se ha borrado con exito');
+        toastr.success('La carrera se ha registrado con exito');
         window.location.reload();
       }else {
         toastr.error('Esto es incomodo... Podrias recargar la pagina');
@@ -288,24 +288,37 @@ $(function(){
 
 
   $("body").on('click', '.btnDelCareer', function(){
-    let trParent = $(this).parent().parent();
-    let data = {
-      id: $(this).data('id')
-    }
-    $.ajax({
-      url: "/deleteCareer",
-      type: "POST",
-      data: data,
-      headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
+    swal({
+      title: "Estas seguro de eliminar la carrera?",
+      text: "Una vez eliminada ya no podras recuperarla!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
-    .done(function(data){
-      if (data == "La carrera se ha borrado con exito") {
-        toastr.success('La carrera se ha borrado con exito');
-        trParent.remove();
-      }else {
-        toastr.error('No se puede borrar intentalo mas tarde');
+    .then((willDelete) => {
+      if (willDelete) {
+        let trParent = $(this).parent().parent();
+        let data = {
+          id: $(this).data('id')
+        }
+        $.ajax({
+          url: "/deleteCareer",
+          type: "POST",
+          data: data,
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        })
+        .done(function(data){
+          if (data == "La carrera se ha borrado con exito") {
+            toastr.success('La carrera se ha borrado con exito');
+            trParent.remove();
+          }else {
+            toastr.error('No se puede borrar intentalo mas tarde');
+          }
+        });
+      } else {
+        swal("La carrera !");
       }
     });
   });

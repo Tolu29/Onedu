@@ -110,12 +110,12 @@ class AdministerController extends Controller
       #funciones para universidades
     //==========================//
 
-function allUniversities(){
-  $universities = DB::table('universities')->where('active', '=', '1')
-  ->join('addresses', 'addresses.id', '=', 'universities.direccion_id')
-  ->select('universities.id', 'universities.nombre', 'addresses.calle', 'addresses.num_ext')->get();
-  return $universities;
-}
+  function allUniversities(){
+    $universities = DB::table('universities')->where('active', '=', '1')
+    ->join('addresses', 'addresses.id', '=', 'universities.direccion_id')
+    ->select('universities.id', 'universities.nombre', 'addresses.calle', 'addresses.num_ext')->get();
+    return $universities;
+  }
 
   function save(Request $request){
 

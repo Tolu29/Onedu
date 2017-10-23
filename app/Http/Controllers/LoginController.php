@@ -57,9 +57,7 @@ class LoginController extends Controller
         Mail::to($user->username, 'jonathan')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
 
-
-        // Auth::loginUsingId($user->id);
-        //
+        Auth::loginUsingId($user->id);
         return "Se ha registrado con exito";
 
       }else {
@@ -72,6 +70,7 @@ class LoginController extends Controller
 
   function activateStudent(Request $req,$token){
     $user = User::where("token","=", $token)->first();// buscamos a el usuario con este token|
+    $req->session()->put('LogEmaiId', $user->id);
     $user->active = 1;// y lo activamos
     $user->save();
     $student = Student::where('user_id', '=', $user->id)->first();
@@ -90,6 +89,8 @@ class LoginController extends Controller
       'password' => $data['pass']
     );
 
+    $user = DB::table('users')->where('username', '=', $data['mail'])->first();
+
     if (Auth::attempt($userdata)) {
       $user = DB::table('users')
       ->where('username', '=', $data['mail'])
@@ -100,13 +101,15 @@ class LoginController extends Controller
       return 'error al ingresar';
     }
 
+
   }
 
 
 
-  function logOut(){
-   Auth::logout();
-   return "Hasta pronto";
+  function logOut(Request $request){
+    $request->session()->flush();
+    Auth::logout();
+    return "Hasta pronto";
   }
 
 
@@ -120,6 +123,11 @@ class LoginController extends Controller
       'cities' => $cities,
       'high_Schools' => $high_Schools
     ]);
+  }
+
+  function emailEnter(Request $request){
+    $id = $request->session()->get('LogEmaiId');
+    Auth::loginUsingId($id);
   }
 
 

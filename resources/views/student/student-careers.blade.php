@@ -27,7 +27,7 @@
 
     <div class="col-md-4 col-sm-4">
       <div class="backSecond">
-        <button type="button" class="btn back z-depth-2 red">Registrar</button>
+        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
       </div>
     </div>
 
@@ -95,6 +95,12 @@
 <!-- tercer nivel -->
   <div class="row wow hideCareers thirdLevel">
 
+    <div class="col-md-4 col-sm-4">
+      <div class="backSecond">
+        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
+      </div>
+    </div>
+
     <div class="col-md-12">
       <div class="schoolInfo z-depth-2">
         <img alt="" class="logoUni">
@@ -154,6 +160,12 @@
   <!-- cuarto nivel -->
 
   <div class="row wow hideCareers fourthLevel">
+
+    <div class="col-md-4 col-sm-4">
+      <div class="backSecond">
+        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
+      </div>
+    </div>
 
     <div class="col-md-12">
       <div class="mapCont z-depth-2">

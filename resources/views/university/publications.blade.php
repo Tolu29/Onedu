@@ -3,7 +3,7 @@
 @section('css-plus')
 <link rel="stylesheet" href="/packages/assets/css/university/publications.css">
 @stop
-
+ 
 @section('content-university')
 <div class="container">
 

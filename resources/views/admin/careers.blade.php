@@ -16,7 +16,7 @@
     </div>
 
       <div class="col-md-4 offset-md-4">
-        <div class="filterSchoolCont ">
+        <div class="filterSchoolCont careerHide">
           <input type="" name="" value="" class="careerLvl1">
           <button class="btn z-depth-2 careerLvl1"><i class="fa fa-search"></i></button>
         </div>

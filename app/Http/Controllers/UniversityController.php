@@ -20,7 +20,10 @@ class UniversityController extends Controller
     $news = Noticias::where('active', '=', 1)
     ->where('universidad_id', '=', $university->id)->get();
 
-    return $news;
+    return response()->json([
+      'news' => $news,
+      'university' => $university
+    ]);
   }
 
 

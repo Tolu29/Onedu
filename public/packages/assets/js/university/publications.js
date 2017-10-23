@@ -8,24 +8,24 @@ $(function(){
     }
   })
   .done(function(data){
-
-    $.each(data, function(i){
+    $.each(data.news, function(i){
       $("#newsCont").append(
         "<div class='col-md-4'>" +
           "<div class='card contNew'>" +
-            "<img src='/packages/assets/img/universities/logos/zdIEq1811280762_030917.png' alt=''>" +
+            "<img src='/packages/assets/img/universities/logos/" + data.university.logo + "' alt=''>" +
             "<div class='card-body container elip'>" +
-              "<p>" + data[i].avance + "..." + "</p>" +
+              "<p>" + data.news[i].avance + "..." + "</p>" +
             "</div>" +
             "<div class='card-data fooCard'>" +
              "<ul class='viewMore'>" +
                 "<li><i class='fa fa-play'></i></li>" +
-                "<li><a href='#' class='newComplete' data-id='" + data[i].id + "'> Editar</a></li>" +
+                "<li><a href='#' class='newComplete' data-id='" + data.news[i].id + "'> Editar</a></li>" +
              "</ul>" +
            "</div>" +
           "</div>" +
         "</div>"
       )
+      $(".fooCard").css("background-color", data.university.color);
     });
   });
 
