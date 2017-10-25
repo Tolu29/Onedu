@@ -17,9 +17,7 @@
 */
 
   // LANDING
-  Route::get('/', function () {
-      return view('landing.home');
-  });
+  Route::get('/', 'LoginController@home');
 
   Route::get('/terms-and-conditions', function () {
       return view('landing.terms-and-conditions');

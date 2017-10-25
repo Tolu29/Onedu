@@ -258,13 +258,13 @@
                       <div class="md-form form-sm">
                        <i class="fa fa-user prefix"></i>
                        <input type="text" id="newUniUser" name="newUniUser" class="form-control">
-                       <label for="form21">Nombre de usuario</label>
+                       <label for="newUniUser">Nombre de usuario</label>
                       </div>
 
                       <div class="md-form form-sm">
                        <i class="fa fa-user prefix"></i>
                        <input type="text" id="newUniPass" name="newUniPass" class="form-control">
-                       <label for="form21">Contraseña</label>
+                       <label for="newUniPass">Contraseña</label>
                       </div>
                   </div>
                   <div class="col-md-6">
@@ -272,47 +272,47 @@
                     <div class="md-form form-sm">
                      <i class="fa fa-user prefix"></i>
                      <input type="text" id="newUniName" name="newUniName" class="form-control">
-                     <label for="form21">Nombre de la Universidad</label>
+                     <label for="newUniName">Nombre de la Universidad</label>
                     </div>
 
                     <div class="md-form form-sm">
                      <i class="fa fa-pencil prefix"></i>
                      <input type="text" id="newUniColor" name="newUniColor" class="form-control jscolor">
-                     <label for="form21">Color</label>
+                     <label for="newUniColor">Color</label>
                     </div>
 
                     <div class="md-form form-sm">
                      <i class="fa fa-university prefix"></i>
                      <input type="text" id="newUniCampus" name="newUniCampus" class="form-control">
-                     <label for="form21">Campus</label>
+                     <label for="newUniCampus">Campus</label>
                     </div>
 
                     <div class="md-form form-sm">
                      <i class="fa fa-map-marker prefix"></i>
                      <input type="text" id="newUniStreet" name="newUniStreet" class="form-control">
-                     <label for="form21">Calle</label>
+                     <label for="newUniStreet">Calle</label>
                     </div>
 
                     <div class="md-form form-sm">
                      <i class="fa fa-hashtag prefix"></i>
                      <input type="text" id="newUniExt" name="newUniExt" class="form-control">
-                     <label for="form21">Numero Exterior</label>
+                     <label for="newUniExt">Numero Exterior</label>
                     </div>
 
                     <div class="md-form form-sm">
                      <i class="fa fa-hashtag prefix"></i>
                      <input type="text" id="newUniInt" name="newUniInt" class="form-control">
-                     <label for="form21">Numero Interior</label>
+                     <label for="newUniInt">Numero Interior</label>
                     </div>
 
                     <div class="md-form form-sm">
                      <i class="fa fa-map-marker prefix"></i>
                      <input type="text" id="newUniCol" name="newUniCol" class="form-control">
-                     <label for="form21">Colonia</label>
+                     <label for="newUniCol">Colonia</label>
                     </div>
 
                     <div class="text-center mt-1-half">
-                     <button type="button"class="btn mb-2 fornBtnColor btnSend">Registrar <i class="fa fa-send ml-1"></i></button>
+                     <button type="button" class="btn mb-2 fornBtnColor btnSend">Registrar <i class="fa fa-send ml-1"></i></button>
                     </div>
 
                   </div>

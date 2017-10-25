@@ -11,7 +11,7 @@ $(function(){
     })
     .done(function(data){
       if (data == "Hasta pronto") {
-        toastr.success("No tardes en regresar :)");
+        toastr.success("!No tardes en regresar :)!");
         window.location.href  = "/";
       }
     });

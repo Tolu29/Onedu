@@ -20,6 +20,27 @@ use Validator;
 class LoginController extends Controller
 {
 
+  function home(Request $request){
+    if (Auth::user()) {
+      $user = Auth::user();
+      $role = DB::table('user_has_roles')
+      ->where('user_id', '=', $user->id)->first();
+      switch ($role->role_id) {
+        case 1:
+          return view('university.publications');
+          break;
+        case 3:
+          return view('student.student-careers');
+          break;
+        case 4:
+          return view('admin.careers');
+          break;
+      }
+    }else {
+      return view('landing.home');
+    }
+  }
+
   function signIn(Request $request){
     $data = $request->all();
 
