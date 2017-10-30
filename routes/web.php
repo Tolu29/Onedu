@@ -62,6 +62,14 @@ Route::group(['middleware' => ['auth']], function() {
         return view('student.student-profile');
     });
 
+    Route::get('/student-related', function () {
+        return view('student.student-related');
+    });
+
+    Route::get('/student-postgraduate', function () {
+        return view('student.student-postgraduate');
+    });
+
 
     /*
     * COMIENZO rutas StudentController
@@ -76,6 +84,8 @@ Route::group(['middleware' => ['auth']], function() {
       Route::post('/getFavorites', 'StudentController@getFavorites');
       Route::post('/delFavoriteProf', 'StudentController@delFavoriteProf');
       Route::post('/likeNews', 'StudentController@likeNews');
+      Route::post('/test', 'StudentController@test');
+      Route::post('/getRelatedCareers', 'StudentController@getRelatedCareers');
     /*
     * FIN rutas StudentController
     */

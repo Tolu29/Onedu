@@ -93,7 +93,6 @@ function createForm(){
       button: "Aceptar!",
       dangerMode: true,
     });
-    console.log(err);
   });
 
 }
@@ -135,8 +134,7 @@ function infoUni(){
       icon: "error",
       button: "Aceptar!",
       dangerMode: true,
-    });
-    console.log(err);
+    });    
   });
 }
 

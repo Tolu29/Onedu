@@ -1,85 +1,79 @@
 @extends('template.baseStudent')
 
 @section('css-plus')
-<link rel="stylesheet" href="/packages/assets/css/student/student-careers.css">
+<link rel="stylesheet" href="/packages/assets/css/student/student-related.css">
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClSl5b-QZJAeAfIe-NueH2pQr7CZQ4_1c"></script>
 @stop
 
 @section('content-student')
 <div class="container">
 
-
-<!-- PRIMER NIVEL -->
-
-  <div class="row wow fisrtLevel">
+  <div class="row fisrtLevel">
     <div class="col-md-12">
-      <div class="careersCont z-depth-2">
+      <div class="careers_related z-depth-2">
 
       </div>
-
     </div>
   </div>
 
+  <!-- segundo nivel -->
 
-<!-- SEGUNDO NIVEL -->
-
-  <div class="row wow hideCareers secondLevel">
+  <div class="row wow hideRelated secondLevel">
 
     <div class="col-md-4 col-sm-4">
-      <div class="backSecond">
+      <div class="backCont">
         <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
       </div>
     </div>
 
     <div class="col-md-12">
 
-      <div class="available-universities z-depth-2">
+      <div class="related-description z-depth-2">
         <label>Carreras Disponibles</label>
           <select class="browser-default">
             <option value="" disabled selected>Escoge una carrera</option>
           </select>
       </div>
 
-
     </div>
 
   </div>
 
-  <div class="row wow hideCareers secondLevel">
+  <div class="row wow hideRelated secondLevel">
 
     <div class="col-md-2 parentCol">
-      <div class="jumbotron contDesc optUniversities">
+      <div class="jumbotron contDesc" data-opt="optUniversities">
         <p class="text-center">UNIVERSIDADES</p>
       </div>
     </div>
 
     <div class="col-md-2 parentCol">
-      <div class="jumbotron contDesc optDescription">
+      <div class="jumbotron contDesc" data-opt="optDescription">
         <p class="text-center">DESCRIPCION</p>
       </div>
     </div>
 
     <div class="col-md-3 parentCol">
-      <div class="jumbotron contDesc optProfile">
+      <div class="jumbotron contDesc" data-opt="optProfile">
         <p class="text-center">PERFIL DE EGRESO</p>
       </div>
     </div>
 
     <div class="col-md-2 parentCol">
-      <div class="jumbotron contDesc optRelated">
+      <div class="jumbotron contDesc" data-opt="optRelated">
         <p class="text-center">RELACIONADAS</p>
       </div>
     </div>
 
     <div class="col-md-3 parentCol">
-      <div class="jumbotron contDesc optCapm">
+      <div class="jumbotron contDesc" data-opt="optCapm">
         <p class="text-center">CAMPOS DE TRABAJO</p>
       </div>
     </div>
 
   </div>
 
-  <div class="row wow hideCareers secondLevel">
+  <div class="row wow hideRelated secondLevel">
     <div class="col-md-12 colExplanation">
       <div class="explanationCont z-depth-2 container">
 
@@ -90,14 +84,14 @@
     </div>
   </div>
 
+  <!-- tercer nivel -->
 
 
-<!-- tercer nivel -->
-  <div class="row wow hideCareers thirdLevel">
+  <div class="row wow hideRelated thirdLevel">
 
     <div class="col-md-4 col-sm-4">
-      <div class="backSecond">
-        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
+      <div class="backCont">
+        <button type="button" class="btn back warning-color-dark z-depth-2">Regresar</button>
       </div>
     </div>
 
@@ -119,7 +113,7 @@
 
   </div>
 
-  <div class="row wow hideCareers thirdLevel">
+  <div class="row wow hideRelated thirdLevel">
 
     <div class="col-md-12">
       <div class="schoolOptions z-depth-2">
@@ -131,7 +125,7 @@
 
   </div>
 
-  <div class="row wow hideCareers thirdLevel">
+  <div class="row wow hideRelated thirdLevel">
 
     <div class="col-md-12">
       <div class="UniOptDescription z-depth-2">
@@ -159,10 +153,11 @@
 
   <!-- cuarto nivel -->
 
-  <div class="row wow hideCareers fourthLevel">
+
+  <div class="row wow hideRelated fourthLevel">
 
     <div class="col-md-4 col-sm-4">
-      <div class="backSecond">
+      <div class="backCont">
         <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
       </div>
     </div>
@@ -176,10 +171,12 @@
 
   </div>
 
+
+
 </div>
 @stop
 
 @section('js-plus')
-<script type="text/javascript" src="/packages/assets/js/student/student-careers.js"></script>
-<script type="text/javascript" src="/packages/assets/js/student/student-map.js"></script>
+<script type="text/javascript" src="/packages/assets/js/student/related-map.js"></script>
+<script type="text/javascript" src="/packages/assets/js/student/student-related.js"></script>
 @stop

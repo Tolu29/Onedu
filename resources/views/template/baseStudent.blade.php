@@ -33,6 +33,12 @@ class="fixed-sn white-skin backColor"
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-careers">Carreras</a>
                 </li>
                 <li>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-careers">Postgrados</a>
+                </li>
+                <li>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-related">Descubre</a>
+                </li>
+                <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont">Mensajes</a>
                 </li>
                 <li>

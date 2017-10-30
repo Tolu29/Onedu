@@ -17,8 +17,8 @@ $(function(){
   setTimeout(function(){
     if (mailActive == 2) {
       swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
+        title: "Hola",
+        text: "No olvides de activar tu cuenta!",
         icon: "warning",
         dangerMode: true,
       });
@@ -87,7 +87,7 @@ $(function(){
   // universidades relacionadas
   $("body").on('click', '.optUniversities', function(){
     $(".explanationCont").empty();
-
+    $(".relatedCont").empty();
     $.each(universities, function(i){
       $(".explanationCont").append(
         "<div class='z-depth-2'>" +
@@ -103,7 +103,6 @@ $(function(){
     $(".explanationCont").empty();
     $(".relatedCont").empty();
     $(".explanationCont").append(infoCareer.descripcion);
-
   });
 
   // click en prefil
@@ -177,7 +176,7 @@ $(function(){
   });
 
 
- 
+
   $("body").on('change', '.browser-default', function(){
     let optionVal = JSON.parse($(this).val());
     let data = {
@@ -421,6 +420,12 @@ function addCareers(alpha,color){
           $("." + alpha[index]).append("<p class='infoCareer' data-group='" + data.careers[i].grupo + "' data-id='" + data.careers[i].id + "'>" + data.careers[i].nombre + "</p>");
         }
       });
+
+      let sinLetter = $("."+alpha[index]);
+
+      if (sinLetter.children().length == 1) {
+        sinLetter.remove();
+      }
 
       $(".colorLetter"+cc).css("color",color[cc]);
       cc += 1;

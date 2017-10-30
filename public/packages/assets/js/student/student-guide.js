@@ -1,4 +1,4 @@
-(function() {
+$(function() {
 
   let $i = 0;
 
@@ -60,7 +60,7 @@
       correctAnswer: ""
     },
     {
-      question: "Me gustaria el mismo yipo y ritmo de trabajo cada dia?",
+      question: "Me gustaria el mismo tipo y ritmo de trabajo cada dia?",
       answers: {
         si: "administrativo",
         no: "No",
@@ -625,7 +625,7 @@
     let artisticos = 0;
     let relacionales = 0;
     let sociales = 0;
-    // names = ['mecanicos', 'cientificos', 'administrativo', 'aire_libre', 'artisticos', 'relacionales', 'sociales'];
+
     // for each question...
     myQuestions.forEach((currentQuestion, questionNumber) => {
       // find selected answer
@@ -658,27 +658,51 @@
           sociales ++;
           break;
       }
-
-      // // if answer is correct
-      // if (userAnswer === currentQuestion.correctAnswer) {
-      //   // add to the number of correct answers
-      //   numCorrect++;
-      //
-      //   // color the answers green
-      //   answerContainers[questionNumber].style.color = "lightgreen";
-      // } else {
-      //   // if answer is wrong or blank
-      //   // color the answers red
-      //   answerContainers[questionNumber].style.color = "red";
-      // }
     });
 
     let names = {
       sociales: sociales,
       relacionales: relacionales,
+      artisticos: artisticos,
+      aire_libre: aire_libre,
+      administrativo: administrativo,
+      cientificos: cientificos,
+      mecanicos: mecanicos
     }
-    console.log(getName(sociales));
-    swal ( "Oops" ,  "Something went wrong!" ,  "error" );
+
+    let less = 0, single;
+
+    for(var k in names){
+      if (names[k] > less) {
+        single = k;
+        less  = names[k];
+      }
+    }
+    let data = {
+      single: single
+    }
+
+    $.ajax({
+      url: "/test",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+
+      swal ({
+        title: "Perfecto" ,
+        text: "Ahora apareceran las carreras relacionadas con tus aptitudes!" ,
+        icon: "success"
+      })
+      .then((value) => {
+        window.location.href = '/student-related';
+      });
+
+    });
+
   }
 
   function showSlide(n) {
@@ -727,4 +751,4 @@
   submitButton.addEventListener("click", showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
-})();
+});

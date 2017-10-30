@@ -221,6 +221,28 @@ class StudentController extends Controller
 
   }
 
+  //===========================//
+    #funciones para guide
+  //==========================//
+
+
+  function test(Request $request){
+    $data = $request->all();
+    $user = Auth::user();
+    $student = Student::where('user_id', '=', $user->id)->first();
+    $student->grupo = $data['single'];
+    $student->save();
+    return $student;
+  }
+
+  function getRelatedCareers(Request $request){
+    $data = $request->all();
+    $user = Auth::user();
+    $student = Student::where('user_id', '=', $user->id)->first();
+    $careers = Career::where('grupo', '=', $student->grupo)->get();
+    return $careers;
+  }
+
 }
 // $user = Auth::user();
 // $role = Role::create(['name' => 'student']);
