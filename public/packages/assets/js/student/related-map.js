@@ -4,6 +4,7 @@
       var labelIndex = 0;
       var markers = [];
       var map;
+      var backLevel = 0;
 
       function initialize() {
         var bangalore = { lat: 25.543176, lng: -103.408397 };
@@ -48,6 +49,7 @@
       $(function(){
 
           $("body").on('click','#schoolMap',function(){
+            backLevel = 4;
             $(".thirdLevel").fadeOut('slow', function(){
               $(".fourthLevel").fadeIn('slow', function(){
                 var bangalore = { lat: uniActive[0].latitud, lng: uniActive[0].longitud };
@@ -55,7 +57,6 @@
                 markers = [];
                 addMarker(bangalore, map);
                 setTimeout(function(){ google.maps.event.trigger(map, "resize"); }, 1000);
-                backLevel = 4;
               });
             });
           });

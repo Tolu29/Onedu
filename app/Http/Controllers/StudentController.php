@@ -240,7 +240,9 @@ class StudentController extends Controller
     $user = Auth::user();
     $student = Student::where('user_id', '=', $user->id)->first();
     $careers = Career::where('grupo', '=', $student->grupo)->get();
-    return $careers;
+    return response()->json([
+      'careers' => $careers
+    ]);
   }
 
 }

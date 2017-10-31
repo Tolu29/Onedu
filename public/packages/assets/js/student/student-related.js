@@ -10,6 +10,33 @@ $(function(){
   addCareers(alphabet,colors);
 
 
+  $("body").on('click', '.backCont', function(){    
+    switch (backLevel) {
+      case 2:
+        $(".secondLevel").fadeOut('slow', function(){
+          $(".fisrtLevel").fadeIn('slow', function(){
+            backLevel = 1;
+          });
+        });
+        break;
+      case 3:
+        $(".thirdLevel").fadeOut('slow', function(){
+          $(".secondLevel").fadeIn('slow', function(){
+            backLevel = 2;
+          });
+        });
+        break;
+      case 4:
+        $(".fourthLevel").fadeOut('slow', function(){
+          $(".thirdLevel").fadeIn('slow', function(){
+            backLevel = 3;
+          });
+        });
+        break;
+    }
+  });
+
+
   $("body").on('click','.infoCareer',function(){
     backLevel = 2;
     let data = {
@@ -280,8 +307,8 @@ function addCareers(alpha,color){
             "<h2 class='colorLetter" + cc + "'>" + alpha[index] + "</h2>" +
           "</div>"
         )
-        $.each(data.careers, function(i){
 
+        $.each(data.careers, function(i){
           if (data.careers[i].nombre.substr(0, 1) == alpha[index]) {
             let temp = {id: data.careers[i].id, group: data.careers[i].grupo};
             let optionVal = JSON.stringify(temp);
