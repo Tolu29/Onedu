@@ -51,6 +51,7 @@ class AdministerController extends Controller
       $career = new Career($data);
       $career->nivel_educativo = $data['level'];
       $career->active = 1;
+      $career->tipo = $data['type'];
       $career->nombre = $data['career'];
       $career->grupo = $data['group'];
       $career->perfil = $data['profile'];
@@ -73,7 +74,7 @@ class AdministerController extends Controller
   function infoCareer(Request $request){
     $data = $request->all();
     $career = Career::where('id', '=', $data['id'])
-    ->select('nombre', 'nivel_educativo', 'descripcion', 'perfil', 'grupo', 'campo_trabajo')->first();
+    ->select('nombre', 'nivel_educativo', 'descripcion', 'perfil', 'grupo', 'campo_trabajo', 'tipo')->first();
     return $career;
   }
 
@@ -97,6 +98,7 @@ class AdministerController extends Controller
       $career->nombre = $data['career'];
       $career->nivel_educativo = $data['level'];
       $career->grupo = $data['group'];
+      $career->tipo = $data['type'];
       $career->perfil = $data['profile'];
       $career->descripcion = $data['description'];
       $career->campo_trabajo = $data['lab_camp'];

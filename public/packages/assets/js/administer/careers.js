@@ -47,19 +47,20 @@ $(function(){
       case 4:
       case 5:
       case 6:
+      case 7:
         if (bndUpd == true) {
           if (nameCard == 1) {
             newInfo.splice(1);
           }else {
             newInfo.splice((nameCard - 1))
           }
-          if (nameCard == 5) {
+          if (nameCard == 6) {
             $(".btnUpdCareer").remove();
             updBtn();
           }
         }else {
           infoArray.splice((nameCard - 1))
-          if (nameCard == 5) {
+          if (nameCard == 6) {
             $(".btnRegCareer").remove();
             saveBtn();
           }
@@ -100,16 +101,18 @@ $(function(){
         break;
       case 4:
       case 3:
+      case 6:
         let content = tinyMCE.get('textInfo'+nameCard).getContent();
         if (content == "" || content == undefined || content == null) {
           toastr.error("Debes de ingresar un texto para continuar");
           return ;
         }
         infoArray.push(content);
+        break;
       default:
     }
 
-    if (nameCard == 5) {
+    if (nameCard == 6) {
       $(".next").remove();
       $(".btnSave").append("<button type='button' class='btn z-depth-2 btnRegCareer'>Guardar</button>");
     }
@@ -123,19 +126,26 @@ $(function(){
 
 
   $("body").on('click', '.btnRegCareer', function(){
-    let content = tinyMCE.get('textInfo6').getContent();
-    if (content == "" || content == undefined || content == null) {
-      toastr.error("Debes de ingresar un texto para continuar");
+    let whiteSpaces = $("[name='textInfo" + nameCard + "']").val(), singleInput = $("[name='textInfo" + nameCard + "']");
+    if (/^\s+$/.test(whiteSpaces)) {
+      singleInput.val("");
+    }
+    if (singleInput.val() == "" || singleInput.val() == undefined) {
+      toastr.error("Ingresa un texto para continuar");
       return ;
     }
-    infoArray.push(content);
+    infoArray.push(singleInput.val());
+    if ($(".backCont").children().length == 1) {
+      $(".backCont").append("<button type='button' class='btn z-depth-2 backSec'>Atras</button>");
+    }
     let data = {
       career: infoArray[0],
       level: infoArray[1],
       description: infoArray[2],
       profile: infoArray[3],
       group: infoArray[4],
-      lab_camp: infoArray[5]
+      lab_camp: infoArray[5],
+      type: infoArray[6]
     }
 
     $.ajax({
@@ -213,19 +223,21 @@ $(function(){
         break;
       case 3:
       case 4:
+      case 6:
         let content = tinyMCE.get('textInfo'+nameCard).getContent();
         if (content == "" || content == undefined || content == null) {
           toastr.error("Debes de ingresar un texto para continuar");
           return ;
         }
         newInfo.push(content);
+        break;
       default:
 
     }
     $("[name='contInfo" + nameCard + "']").addClass('careerHide');
     updInfo[nameCard] = newInfo[nameCard];
     nameCard += 1;
-    if (nameCard == 3 || nameCard == 4) {
+    if (nameCard == 3 || nameCard == 4 || nameCard == 6) {
       let temp = {
         content: updInfo[(nameCard)]
       }
@@ -237,11 +249,7 @@ $(function(){
     }
     $(".cardColor").css("background-color", "#d5d2d2");
     $("[name=" + nameCard + "]").css("background-color", "#5172a1");
-    if (nameCard == 6) {
-      let temp = {
-        content: updInfo[(6)]
-      }
-      setTimeout(function(){ tinyMCE.get('textInfo'+nameCard ).setContent(temp.content); }, 0000);
+    if (nameCard == 7) {
       $("[name='contInfo" + nameCard + "']").removeClass('careerHide');
       $(".nextUpd").remove();
       $(".btnSave").append("<button type='button' class='btn z-depth-2 btnUpdCareer'>Guardar</button>");
@@ -252,12 +260,18 @@ $(function(){
 
 
   $("body").on('click', '.btnUpdCareer', function(){
-    let content = tinyMCE.get('textInfo6').getContent();
-    if (content == "" || content == undefined || content == null) {
-      toastr.error("Debes de ingresar un texto para continuar");
+    let whiteSpaces = $("[name='textInfo" + nameCard + "']").val(), singleInput = $("[name='textInfo" + nameCard + "']");
+    if (/^\s+$/.test(whiteSpaces)) {
+      singleInput.val("");
+    }
+    if (singleInput.val() == "" || singleInput.val() == undefined) {
+      toastr.error("Ingresa un texto para continuar");
       return ;
     }
-    newInfo.push(tinyMCE.get('textInfo6').getContent());
+    newInfo.push(singleInput.val());
+    if ($(".backCont").children().length == 1) {
+      $(".backCont").append("<button type='button' class='btn z-depth-2 backSec'>Atras</button>");
+    }
     let data = {
       career: newInfo[1],
       level: newInfo[2],
@@ -265,8 +279,10 @@ $(function(){
       profile: newInfo[4],
       group: newInfo[5],
       id: newInfo[0],
-      lab_camp: newInfo[6]
+      lab_camp: newInfo[6],
+      type: newInfo[7]
     }
+
     $.ajax({
       url: "/updateCareer",
       type: "POST",

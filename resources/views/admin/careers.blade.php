@@ -87,6 +87,13 @@
             </div>
           </div>
         </div>
+        <div class="col-md-2">
+          <div class="">
+            <div class="card profile cardColor" name="7">
+              Tipo
+            </div>
+          </div>
+        </div>
       </div>
       <div class="text-left backCont" style="margin-top:1rem;">
         <button type='button' class='btn z-depth-2 btnCancel warning-color-dark'>Cancelar</button>
@@ -122,6 +129,11 @@
 
         <div class='md-form text-center careerHide' name="contInfo6">
           <textarea name="textInfo6" class='tinymce' id="textInfo6" rows='8' cols='80' placeholder='Escribe aqui la descripcion....'></textarea>
+        </div>
+
+        <div class='md-form text-center nameCareer careerHide' name="contInfo7">
+          <input class="input-alternate" name="textInfo7" type="text">
+          <label for="form1" class="">Tipo</label>
         </div>
 
       </div>
