@@ -169,7 +169,7 @@
 
     <div class="col-md-12">
       <div class="mapCont z-depth-2">
-        <p>Tecnologico de Monterrey</p>
+        <p>Ubicacion de la Institucion</p>
           <div id="map"></div>
       </div>
     </div>
@@ -180,6 +180,6 @@
 @stop
 
 @section('js-plus')
-<script type="text/javascript" src="/packages/assets/js/student/student-careers.js"></script>
 <script type="text/javascript" src="/packages/assets/js/student/student-map.js"></script>
+<script type="text/javascript" src="/packages/assets/js/student/student-careers.js"></script>
 @stop

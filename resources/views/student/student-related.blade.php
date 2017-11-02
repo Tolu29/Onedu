@@ -164,7 +164,7 @@
 
     <div class="col-md-12">
       <div class="mapCont z-depth-2">
-        <p>Tecnologico de Monterrey</p>
+        <p>Ubicacion de la Institucion</p>
           <div id="map"></div>
       </div>
     </div>

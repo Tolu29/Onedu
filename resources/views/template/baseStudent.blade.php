@@ -18,7 +18,8 @@ class="fixed-sn white-skin backColor"
         <!-- Logo -->
         <li>
             <div class="logo-wrapper">
-                <img src="/packages/assets/img/miscellaneous/user.png" class="img-fluid flex-center mx-auto" id="userPhoto">
+              <p id="userPhoto"></p>
+                <!-- <img src="/packages/assets/img/miscellaneous/user.png" class="img-fluid flex-center mx-auto" id="userPhoto"> -->
             </div>
         </li>
         <!--/. Logo -->
@@ -33,7 +34,7 @@ class="fixed-sn white-skin backColor"
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-careers">Carreras</a>
                 </li>
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-careers">Postgrados</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-postgraduate">Postgrados</a>
                 </li>
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-related">Descubre</a>

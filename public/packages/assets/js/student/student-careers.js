@@ -3,7 +3,7 @@ $(function(){
   $(".hideCareers").hide();
   $(".hideCareers").removeClass('hideCareers');
 
-  var backLevel = 1, infoCareer = [], related = [], universities = [];
+  var infoCareer = [], related = [], universities = [];
 
   wow.init();
 
@@ -62,21 +62,24 @@ $(function(){
   $("body").on('click', '.back', function(){
     switch (backLevel) {
       case 2:
+      console.log(backLevel);
           $(".secondLevel").fadeOut('slow', function(){
           $(".fisrtLevel").fadeIn('slow')
           backLevel = 1;
         });
         break;
       case 3:
+      console.log(backLevel);
           $(".thirdLevel").fadeOut('slow', function(){
           $(".secondLevel").fadeIn('slow');
           backLevel = 2;
         });
         break;
       case 4:
+      console.log(backLevel);
+          backLevel = 3;
           $(".fourthLevel").fadeOut('slow', function(){
           $(".thirdLevel").fadeIn('slow');
-          backLevel = 3;
         });
         break;
       }

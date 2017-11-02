@@ -33,7 +33,7 @@ class Welcome extends Mailable
     public function build()
     {
         return $this->view('emails.mail')
-        ->from('jonathan.garcia@curiosity.com.mx', 'Onedu')
+        ->from('oneduconfirmacion@gmail.com', 'Onedu')
         ->subject('Bienvenido a ONEDU');
     }
 }

@@ -245,6 +245,31 @@ class StudentController extends Controller
     ]);
   }
 
+  //===========================//
+    #funciones para postgrados
+  //==========================//
+
+  function getPostCareers(Request $request){
+
+    $careers = Career::where('active', '=', 1)
+    ->where('tipo', '=', 'Postgrado')->get();
+    return response()->json([
+      'careers' => $careers
+    ]);
+  }
+
+  //===========================//
+    #funciones para baseStudent
+  //==========================//
+
+  function getIni(Request $request){
+    $data = $request->all();
+    $user = Auth::user();
+    $student = Student::where('user_id', '=', $user->id)
+    ->select('nombre_completo')->first();
+    return $student;
+  }
+
 }
 // $user = Auth::user();
 // $role = Role::create(['name' => 'student']);
