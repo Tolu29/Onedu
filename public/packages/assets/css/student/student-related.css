@@ -3,9 +3,21 @@
 }
 
 .careers_related{
-  margin-top: 9rem;
+  margin-top: 3rem;
   border-radius: .23rem;
   background-color: #ffffff;
+}
+
+.infoCareer:hover{
+  color: #5172a1;
+  font-weight: 600;
+}
+
+#currentCarrer{
+  color: rgb(57, 156, 95);
+  font-weight: 500;
+  display: block !important;
+  margin-right: .5rem;
 }
 
 .careers_related>div>h2{
@@ -20,6 +32,15 @@
   cursor: pointer;
 }
 
+.modal-content{
+  width: 33rem;
+}
+
+.aptBtn{
+  border-radius: .23rem;
+  background-color: #5172a1 !important;
+}
+
 .careerNameCont{
   margin-left: 1.5rem;
   padding-top: 1.5rem;
@@ -27,6 +48,11 @@
 }
 
 /**/
+
+.charCont{
+margin-top: 9rem;
+}
+
 .backCont{
   margin-top: 9rem;
 }
@@ -36,7 +62,7 @@
   background-color: #ffffff;
   border-top: 5px solid #f4c945;
   border-radius: .23rem;
-  height: 6rem;
+  height: 7rem;
 }
 
 .related-description>select{

@@ -14,7 +14,7 @@ class="fixed-sn white-skin backColor"
 <!--Double navigation-->
 <header>
     <!-- Sidebar navigation -->
-    <ul id="slide-out" class="side-nav fixed custom-scrollbar baseNav">
+    <ul id="slide-out" class="side-nav fixed custom-scrollbar baseNav sideNavStyle">
         <!-- Logo -->
         <li>
             <div class="logo-wrapper">
@@ -25,7 +25,7 @@ class="fixed-sn white-skin backColor"
         <br><br><br><br><br>
         <!-- Side navigation links -->
         <li>
-            <ul class="collapsible collapsible-accordion">
+            <ul class="collapsible collapsible-accordion sideNavStyle">
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/publications"> Publicaciones</a>
                 </li>

@@ -12,7 +12,19 @@
   border: 4px solid #ffffff;
   font-size: 6.5rem;
   margin-left: 2rem;
-  padding-left: 1rem;
+  /*padding-left: 1rem;*/
+}
+
+.socialNav>a>i{
+  color: #ffffff !important;
+}
+.socialNav{
+  display: -webkit-inline-box !important;
+}
+
+.sideNavStyle{
+  list-style-type: none;
+  padding: 0;
 }
 
 .baseNav{
@@ -24,7 +36,7 @@
 }
 
 .burguerColor{
-  color: #5172a1 !important;
+  color: rgb(255, 94, 0) !important;
 }
 
 .BtnExit{

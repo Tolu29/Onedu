@@ -158,7 +158,7 @@ $(function () {
             break;
           case "student":
             toastr.success("¡Éxito!, bienvenido");
-            window.location.href  = "/student-careers";
+            window.location.href  = "/student-news";
             break;
           case "universidad":
             toastr.success("¡Éxito!, bienvenido");

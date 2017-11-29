@@ -14,7 +14,7 @@ class="fixed-sn white-skin backColor"
 <!--Double navigation-->
 <header>
     <!-- Sidebar navigation -->
-    <ul id="slide-out" class="side-nav fixed custom-scrollbar baseNav">
+    <ul id="slide-out" class="side-nav fixed custom-scrollbar baseNav sideNavStyle">
         <!-- Logo -->
         <li>
             <div class="logo-wrapper">
@@ -26,7 +26,7 @@ class="fixed-sn white-skin backColor"
         <br><br><br><br><br>
         <!-- Side navigation links -->
         <li>
-            <ul class="collapsible collapsible-accordion">
+            <ul class="collapsible collapsible-accordion sideNavStyle">
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-news"> Noticias</a>
                 </li>
@@ -45,6 +45,17 @@ class="fixed-sn white-skin backColor"
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-profile">Perfil</a>
                 </li>
+                <li>
+                  <br>
+                </li>
+                <li class="text-center socialNav">
+                  <a href="https://www.facebook.com/OneduOficial/" target="_blank"><i class="fa fa-facebook"></i></a>
+                  <a href="https://www.youtube.com/channel/UCD9brIfPGQ3lyRHEKG2IZ8w/featured" target="_blank"><i class="fa fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/onedu.oficial" target="_blank"><i class="fa fa-youtube"></i></a>
+                </li>
+                <li>
+                  <a href="/terms-and-conditions" target="_blank">Terminos y condiciones</a>
+                </li>
             </ul>
         </li>
         <!--/. Side navigation links -->
@@ -59,7 +70,7 @@ class="fixed-sn white-skin backColor"
       </div>
       <!-- SideNav slide-out button -->
       <div class="float-left landOnedu">
-        <h2 class="textOnedu">ONEDU</h2>
+        <h2 class="textOnedu">O<span style="color: rgb(57, 156, 95);">N</span>E<span style="color:#f4c945;">D</span>U</h2>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars  burguerColor"></i></a>
       </div>
 

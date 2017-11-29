@@ -163,6 +163,10 @@ Route::group(['middleware' => ['auth']], function() {
         return view('admin.admin-data');
     });
 
+    Route::get('/admin-news', function () {
+        return view('admin.admin-news');
+    });
+
 
     /*
     * COMIENZO rutas administerController
@@ -197,6 +201,9 @@ Route::group(['middleware' => ['auth']], function() {
     //vista admin-data
     Route::post('/dataBaseInfo', 'AdministerController@dataBaseInfo');
     Route::post('/downloadExcel', 'AdministerController@downloadExcel');
+    // vista noticias
+    Route::post('/allAdminNews', 'AdministerController@allAdminNews');
+    Route::post('/adminDelNews', 'AdministerController@adminDelNews');
     /*
     * FIN rutas administerController
     */

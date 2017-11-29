@@ -78,6 +78,7 @@ $(function(){
     })
     .done(function(data){
       $(".closeMap").trigger('click');
+      swal("La ubicacion se ha guardado con exito!");
     });
   });
 

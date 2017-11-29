@@ -10,7 +10,7 @@ $(function(){
   addCareers(alphabet,colors);
 
 
-  $("body").on('click', '.backCont', function(){    
+  $("body").on('click', '.backCont', function(){
     switch (backLevel) {
       case 2:
         $(".secondLevel").fadeOut('slow', function(){
@@ -55,6 +55,7 @@ $(function(){
       }
     })
     .done(function(data){
+      $("#currentCarrer").text("Recomendacion actual: "+data.career.nombre);
       infoCareer = data.career;
       related = data.related;
       universities = data.universities;
@@ -275,7 +276,8 @@ function addCareers(alpha,color){
     }
   })
   .done(function(data){
-    if (data == null || data == "") {
+    let aptitud = data.aptitudes;
+    if (data.student.grupo == null || data.student.grupo == "") {
 
       swal({
         title: "Hola!!!",
@@ -299,6 +301,26 @@ function addCareers(alpha,color){
       });
 
     }else {
+
+      var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+          text: "Aptitudes"
+        },
+        data: [{
+          type: "column",
+          dataPoints: [
+            { y: aptitud.sociales, label: "Sociales" },
+            { y: aptitud.relacionales, label: "Relacionales" },
+            { y: aptitud.artisticos, label: "Artisticos" },
+            { y: aptitud.mecanicos, label: "Mecanicos" },
+            { y: aptitud.aire_libre, label: "Aire libre" },
+            { y: aptitud.administrativo, label: "Administrativo" },
+            { y: aptitud.científicos, label: "Científicos" },
+          ]
+        }]
+      });
+      chart.render();
+
       // esta variable cuenta de 0 a 3 para variar los colores de las carreras(abcedario)
       var cc = 0;
       $.each(alpha,function(index,letter){

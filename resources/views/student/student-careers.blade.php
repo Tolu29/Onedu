@@ -38,6 +38,7 @@
           <select class="browser-default">
             <option value="" disabled selected>Escoge una carrera</option>
           </select>
+          <label class="text-right" id="currentCarrer">Carrera Actual: Mecatronica</label>
       </div>
 
 

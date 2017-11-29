@@ -1,0 +1,167 @@
+.newsHide{
+  display: none;
+}
+
+.paddingAdj{
+  padding-top: 9rem;
+}
+
+.addPub{
+  background-color: #399c5f;
+  border-radius: .23rem;
+}
+
+.container-news{
+  margin-top: 6rem;
+}
+
+.contNew{
+  height: 17rem;
+  max-height: 17rem;
+  margin-bottom: 7rem;
+}
+
+.contNew>img{
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 6.5rem;
+  bottom: 12.5rem;
+}
+
+.contText{
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+p{
+  margin-bottom: 0;
+  margin-top: 5rem;
+}
+
+.viewMore{
+  padding-right: 16rem;
+  font-size: .8rem;
+}
+
+.fooCard{
+  height: 2rem !important;
+  padding-top: 6px !important;
+}
+
+.newsContent{
+  background-color: #ffffff;
+  margin-top: 3rem;
+  border-top: solid 4px rgb(244, 201, 69);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.backSecond{
+  margin-top: 9rem;
+}
+
+.btnDelNew{
+  background-color: red;
+  border-radius: .23rem;
+}
+
+.back{
+  border-radius: .23rem;
+}
+
+
+/*media querys*/
+
+@media screen and (max-width: 1024px) and (min-width: 769px){
+  .contNew>img{
+    left: 5.5rem;
+    bottom: 12.5rem;
+  }
+
+  .viewMore{
+    padding-right: 12rem;
+    font-size: .8rem;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 737px){
+
+  .contNew>img{
+    left: 2.9rem;
+    bottom: 12.5rem;
+  }
+
+  .elip{
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .viewMore{
+    padding-right: 8rem;
+    font-size: .8rem;
+  }
+}
+
+@media screen and (max-width: 736px) and (min-width: 569px){
+  .contNew>img{
+    left: 13.5rem;
+  }
+
+  .fooCard{
+    margin-top: 4rem;
+  }
+
+  .viewMore{
+    padding-right: 27rem;
+  }
+
+  p{
+    font-size: 1.2rem;
+  }
+}
+
+
+@media screen and (max-width: 568px) and (min-width: 321px){
+
+  .contNew{
+    margin-bottom: 7rem;
+  }
+
+  .contNew>img{
+    left: 13.5rem;
+    bottom: 12.5rem;
+  }
+
+  p{
+    font-size: 1.2rem;
+  }
+
+  .viewMore{
+    padding-right: 30rem;
+    font-size: .8rem;
+  }
+
+  .fooCard{
+    margin-top: 4.8rem
+  }
+
+}
+
+@media screen and (max-width: 320px) and (min-width: 2px){
+
+  .contNew{
+    margin-bottom: 7rem;
+    margin-left: .2rem;
+  }
+
+  .viewMore{
+    padding-right: 12rem;
+    font-size: .8rem;
+  }
+
+  .fooCard{
+    margin-top: 1.8rem
+  }
+}

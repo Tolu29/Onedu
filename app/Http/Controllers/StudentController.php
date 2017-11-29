@@ -11,6 +11,7 @@ use App\ClasesMuestra;
 use App\StudyPlans;
 use App\Prospectos;
 use App\Noticias;
+use App\Aptitudes;
 use Illuminate\Support\Facades\DB;
 use App\Informations;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class StudentController extends Controller
 
     $user = Auth::user();
 
-    $careers = Career::where('active', '=', 1)->get();
+    $careers = Career::where('active', '=', 1)
+    ->where('tipo', '=', 'Licenciatura')->get();
 
     if ($user->active == 0) {
 
@@ -229,9 +231,22 @@ class StudentController extends Controller
   function test(Request $request){
     $data = $request->all();
     $user = Auth::user();
+
+    $aptitud = new Aptitudes($data);
+    $aptitud->científicos = $data['científicos'];
+    $aptitud->administrativo = $data['administrativo'];
+    $aptitud->aire_libre = $data['aire_libre'];
+    $aptitud->mecanicos = $data['mecanicos'];
+    $aptitud->artisticos = $data['artisticos'];
+    $aptitud->relacionales = $data['relacionales'];
+    $aptitud->sociales = $data['sociales'];
+    $aptitud->save();
+
     $student = Student::where('user_id', '=', $user->id)->first();
     $student->grupo = $data['single'];
+    $student->aptitudes_id = $aptitud->id;
     $student->save();
+
     return $student;
   }
 
@@ -240,8 +255,12 @@ class StudentController extends Controller
     $user = Auth::user();
     $student = Student::where('user_id', '=', $user->id)->first();
     $careers = Career::where('grupo', '=', $student->grupo)->get();
+    $aptitudes = Aptitudes::where('id', '=', $student->aptitudes_id)->first();
+
     return response()->json([
-      'careers' => $careers
+      'careers' => $careers,
+      'student' => $student,
+      'aptitudes' => $aptitudes
     ]);
   }
 
@@ -252,7 +271,7 @@ class StudentController extends Controller
   function getPostCareers(Request $request){
 
     $careers = Career::where('active', '=', 1)
-    ->where('tipo', '=', 'Postgrado')->get();
+    ->where('tipo', '=', 'Posgrado')->get();
     return response()->json([
       'careers' => $careers
     ]);

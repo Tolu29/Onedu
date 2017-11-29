@@ -36,6 +36,29 @@ $(function(){
     }
   });
 
+  $("body").on('change', '.browser-default', function(){
+    let optionVal = JSON.parse($(this).val());
+    let data = {
+      id: optionVal.id,
+      group: optionVal.group
+    }
+
+    $.ajax({
+      url: "/getSelectCareer",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      $("#currentCarrer").text("Posgrado actual: "+data.career.nombre)
+      infoCareer = data.career;
+      related = data.related;
+      $(".optDescription").trigger('click');
+    });
+  });
+
 
   $("body").on('click','.infoCareer',function(){
     backLevel = 2;
@@ -55,6 +78,7 @@ $(function(){
       }
     })
     .done(function(data){
+      $("#currentCarrer").text("Posgrado Actual: "+data.career.nombre);
       infoCareer = data.career;
       related = data.related;
       universities = data.universities;

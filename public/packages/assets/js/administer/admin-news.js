@@ -1,47 +1,42 @@
 $(function(){
 
-  var news = [];
-
-  $('.newsHide').hide();
-  $('.newsHide').removeClass('newsHide');
+  var news = [], idNew;
 
   $.ajax({
-    url: "/likeNews",
+    url: "/allAdminNews",
     type: "POST",
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   })
   .done(function(data){
-
+    news = data;
     $.each(data, function(i){
-
-      $.each(data[i], function(e,g){
-        news.push(g);
+        // news.push(g);
         $("#newsCont").append(
           "<div class='col-md-4'>" +
             "<div class='card contNew'>" +
-              "<img src='/packages/assets/img/universities/logos/" + g.logo + "' alt=''>" +
+              "<img src='/packages/assets/img/universities/logos/" + data[i].logo + "' alt=''>" +
               "<div class='card-body container elip'>" +
-                "<p>" + g.avance + "</p>" +
+                "<p>" + data[i].avance + "</p>" +
               "</div>" +
               "<div class='card-data fooCard'>" +
                "<ul class='viewMore'>" +
                   "<li><i class='fa fa-play'></i></li>" +
-                  "<li><a href='#' class='read' data-id='" + g.id + "'> Leer</a></li>" +
+                  "<li><a href='#' class='read' data-id='" + data[i].id + "'> Leer</a></li>" +
                "</ul>" +
              "</div>" +
             "</div>" +
           "</div>"
         );
-
-      });
     });
 
   });
 
 
+
   $("body").on('click', '.read', function(){
+    idNew = $(this).data('id');
     $('.newsContent').empty();
     $id = $(this).data('id');
     $(".firstLevel").fadeOut('slow', function(){
@@ -62,9 +57,41 @@ $(function(){
 
   });
 
-}); 
+  $("body").on('click', '.btnDelNew', function(){
+    swal({
+      title: "Estas seguro?",
+      text: "Una vez eliminado ya no podras recuperar el informacion!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          url: "/adminDelNews",
+          type: "POST",
+          data: data,
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        })
+        .done(function(data){
+          swal("Listo! La noticia ha sido eliminada!", {
+            icon: "success",
+          });
+          window.location.reload();
+        });
+      } else {
+        swal("Todo esta como lo dejaste!");
+      }
+    });
+    let data = {
+      id: idNew
+    }
 
-// funciones
+  });
+
+});
 
 function atrib(obj,attr,data){
   var response=[];
@@ -75,11 +102,3 @@ function atrib(obj,attr,data){
   });
   return response;
 }
-
-wow = new WOW({
-    boxClass: 'wow', // default
-    animateClass: 'animated', // default
-    offset: 0, // default
-    mobile: true, // default
-    live: true // default
-});

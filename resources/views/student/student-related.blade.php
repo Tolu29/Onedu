@@ -9,6 +9,11 @@
 <div class="container">
 
   <div class="row fisrtLevel">
+    <div class="charCont">
+      <button type="button" class="btn aptBtn" data-toggle="modal" data-target="#exampleModal">
+        Aptitudes
+      </button>
+    </div>
     <div class="col-md-12">
       <div class="careers_related z-depth-2">
 
@@ -33,6 +38,7 @@
           <select class="browser-default">
             <option value="" disabled selected>Escoge una carrera</option>
           </select>
+          <label class="text-right" id="currentCarrer">Posgrado Actual: Mecatronica</label>
       </div>
 
     </div>
@@ -48,7 +54,7 @@
     </div>
 
     <div class="col-md-2 parentCol">
-      <div class="jumbotron contDesc" data-opt="optDescription">
+      <div class="jumbotron contDesc optDescription" data-opt="optDescription">
         <p class="text-center">DESCRIPCION</p>
       </div>
     </div>
@@ -171,12 +177,30 @@
 
   </div>
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+              <div id="chartContainer" style="height: 400px; width: 100% !important;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
 @stop
 
 @section('js-plus')
+<script type="text/javascript" src="/packages/libs/chart/canvasjs.min.js"></script>
 <script type="text/javascript" src="/packages/assets/js/student/related-map.js"></script>
 <script type="text/javascript" src="/packages/assets/js/student/student-related.js"></script>
 @stop

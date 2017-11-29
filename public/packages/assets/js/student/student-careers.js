@@ -49,6 +49,7 @@ $(function(){
       }
     })
     .done(function(data){
+      $("#currentCarrer").text('Carrera actual: '+data.career.nombre);
       infoCareer = data.career;
       related = data.related;
       universities = data.universities;
@@ -62,21 +63,18 @@ $(function(){
   $("body").on('click', '.back', function(){
     switch (backLevel) {
       case 2:
-      console.log(backLevel);
           $(".secondLevel").fadeOut('slow', function(){
           $(".fisrtLevel").fadeIn('slow')
           backLevel = 1;
         });
         break;
       case 3:
-      console.log(backLevel);
           $(".thirdLevel").fadeOut('slow', function(){
           $(".secondLevel").fadeIn('slow');
           backLevel = 2;
         });
         break;
       case 4:
-      console.log(backLevel);
           backLevel = 3;
           $(".fourthLevel").fadeOut('slow', function(){
           $(".thirdLevel").fadeIn('slow');
@@ -195,7 +193,8 @@ $(function(){
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     })
-    .done(function(data){
+    .done(function(data){      
+      $("#currentCarrer").text("Carrera actual: "+data.career.nombre)
       infoCareer = data.career;
       related = data.related;
       $(".optDescription").trigger('click');
@@ -415,7 +414,6 @@ function addCareers(alpha,color){
         "</div>"
       )
       $.each(data.careers, function(i){
-
         if (data.careers[i].nombre.substr(0, 1) == alpha[index]) {
           let temp = {id: data.careers[i].id, group: data.careers[i].grupo};
           let optionVal = JSON.stringify(temp);

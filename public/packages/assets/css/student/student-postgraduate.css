@@ -2,6 +2,18 @@
   display: none;
 }
 
+.infoCareer:hover{
+  font-weight: 600;
+  color: #5172a1;
+}
+
+#currentCarrer{
+  color: rgb(57, 156, 95);
+  font-weight: 500;
+  display: block !important;
+  margin-right: .5rem;
+}
+
 .careers_related{
   margin-top: 9rem;
   border-radius: .23rem;
@@ -36,7 +48,7 @@
   background-color: #ffffff;
   border-top: 5px solid #f4c945;
   border-radius: .23rem;
-  height: 6rem;
+  height: 7rem;
 }
 
 .related-description>select{

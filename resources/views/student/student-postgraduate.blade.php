@@ -33,6 +33,7 @@
           <select class="browser-default">
             <option value="" disabled selected>Escoge una carrera</option>
           </select>
+            <label class="text-right" id="currentCarrer">Posgrado Actual: Mecatronica</label>
       </div>
 
     </div>
@@ -48,7 +49,7 @@
     </div>
 
     <div class="col-md-2 parentCol">
-      <div class="jumbotron contDesc" data-opt="optDescription">
+      <div class="jumbotron contDesc optDescription" data-opt="optDescription">
         <p class="text-center">DESCRIPCION</p>
       </div>
     </div>

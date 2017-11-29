@@ -1,6 +1,7 @@
 $(function() {
 
   let $i = 0;
+  var answered = false;
 
   const myQuestions = [
     {
@@ -582,14 +583,14 @@ $(function() {
         if (letter == 'si') {
           answers.push(
             `<label>
-               <input type="radio" name="question${questionNumber}" value="${currentQuestion.answers.si}">
+               <input type="radio" name="question${questionNumber}" value="${currentQuestion.answers.si}" class="isAnswer">
                 ${letter}
              </label>`
           );
         } else {
           answers.push(
             `<label>
-               <input type="radio" name="question${questionNumber}" value="${letter}">
+               <input type="radio" name="question${questionNumber}" value="${letter}" class="isAnswer">
                 ${letter}
              </label>`
           );
@@ -614,7 +615,7 @@ $(function() {
     // gather answer containers from our quiz
     const answerContainers = quizContainer.querySelectorAll(".answers");
 
-    // keep track of user's answers
+    // keep track of answers of users
     let numCorrect = 0;
     let arrays = [];
 
@@ -679,9 +680,16 @@ $(function() {
       }
     }
     let data = {
-      single: single
+      single: single,
+      científicos: cientificos,
+      administrativo: administrativo,
+      aire_libre: aire_libre,
+      mecanicos: mecanicos,
+      artisticos: artisticos,
+      relacionales: relacionales,
+      sociales: sociales
     }
-
+    console.log(data);
     $.ajax({
       url: "/test",
       type: "POST",
@@ -726,7 +734,13 @@ $(function() {
   }
 
   function showNextSlide() {
-    showSlide(currentSlide + 1);
+    if (answered){
+       answered = false;
+       showSlide(currentSlide + 1);
+    }
+    else {
+     toastr.error('Selecciona una respuesta');
+    }
   }
 
   function showPreviousSlide() {
@@ -751,4 +765,8 @@ $(function() {
   submitButton.addEventListener("click", showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
+
+  $(".isAnswer").click(function(){
+     answered = true;
+  });
 });

@@ -15,6 +15,7 @@ use App\ClasesMuestra;
 use App\Informations;
 use App\CareersUniversities;
 use App\Career;
+use App\Noticias;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -627,6 +628,28 @@ class AdministerController extends Controller
     return $students;
   }
 
+  //=================================//
+    #funciones para news
+  //================================//
+
+
+  function allAdminNews(){
+
+    $news = DB::table('noticias')
+    ->where('active', '=', 1)->get();
+
+    return $news;
+  }
+
+  function adminDelNews(Request $request){
+    $data = $request->all();
+
+    $new = Noticias::where('id', '=', $data['id'])->first();
+    $new->active  = 0;
+    $new->save();
+
+    return 'La noticia se elimino con exito';
+  }
 
 }
 
