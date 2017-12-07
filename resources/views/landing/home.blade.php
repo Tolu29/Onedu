@@ -2,6 +2,7 @@
 @extends('template.master')
 
 @section('css')
+<link rel="stylesheet" href="/packages/assets/css/templates/baseStudent.css">
 <link rel="stylesheet" href="/packages/assets/css/landing/home.css">
 @stop
 
@@ -19,7 +20,7 @@
      <div class="collapse navbar-collapse" id="navbarNav">
 
        <!-- SideNav slide-out button -->
-       <div class="float-left landOnedu" id="ONEDU">
+       <div class="float-left" id="ONEDU">
          <h2 class="LandtextOnedu hidden-md-down">ONEDU</h2>
          <p class="futureOne hidden-md-down">Elige tu futuro</p>
        </div>
@@ -349,7 +350,6 @@
             <!--First column-->
             <div class="col-md-3 offset-md-1">
                 <h5 class="title"><b>Contácto directo</b></h5>
-                <p>Número Telefónico: (871) 785 74 84</p>
                 <p>Correo Electrónico: Contacto@onedu.com.mx</p>
             </div>
             <!--/.First column-->
@@ -359,7 +359,7 @@
             <!--Second column-->
             <div class="col-md-3 offset-md-1">
                 <h5 class="title"><b>Dirección</b></h5>
-                <ul>
+                <ul class="sideNavStyle">
                     <li><a href="#!">Calle: Santiago Lavín</a></li>
                     <li><a href="#!">No. 475</a></li>
                     <li><a href="#!">Colonia: Las Margaritas</a></li>
@@ -373,7 +373,7 @@
             <!--Third column-->
             <div class="col-md-4">
 
-                <ul>
+                <ul class="sideNavStyle">
                     <li>
                       <a class="btn btn-lg fooBtn1" href="#section-5">
                         Registrarme Grátis
@@ -402,14 +402,13 @@
     <div class="footer-copyright">
         <div class="container-fluid">
             © 2017 Powered By: <a href="http://supernovaapps.com.mx/" target="_blank"> Supernova Apps </a>
-
         </div>
     </div>
     <!--/.Copyright-->
 
     <!--Social buttons-->
     <div class="social-section footer-copyright">
-        <ul>
+        <ul class="sideNavStyle">
             <li><a class="btn-floating btn-small btn-fb" href="https://www.facebook.com/OneduOficial/" target="_blank"><i class="fa fa-facebook"> </i></a></li>
             <li><a class="btn-floating btn-small btn-yt" href="https://www.youtube.com/channel/UCD9brIfPGQ3lyRHEKG2IZ8w/featured" target="_blank"><i class="fa fa-youtube"> </i></a></li>
             <li><a class="btn-floating btn-small btn-ins" href="https://www.instagram.com/onedu.oficial" target="_blank"><i class="fa fa-instagram"> </i></a></li>

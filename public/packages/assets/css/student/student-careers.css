@@ -319,3 +319,13 @@ descripcion de escuelas
 #map {
   height: 100%;
 }
+
+@media (min-width: 1366px){
+  #slide-out{
+    transform: translateX(0%) !important;
+  }
+
+  .navbar{
+    padding-left: 240px !important;
+  }
+}
