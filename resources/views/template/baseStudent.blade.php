@@ -70,7 +70,7 @@ class="fixed-sn white-skin backColor"
       </div>
       <!-- SideNav slide-out button -->
       <div class="float-left landOnedu">
-        <h2 class="textOnedu">O<span style="color: rgb(57, 156, 95);">N</span>E<span style="color:#f4c945;">D</span>U</h2>
+        <h2 class="textOnedu"><span style="color: #f4c945 ;">ON</span><span style="color: rgb(57, 156, 95);">E</span><span style="color: ;">D</span>U</h2>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars  burguerColor"></i></a>
       </div>
 
@@ -87,7 +87,9 @@ class="fixed-sn white-skin backColor"
 @stop
 
 @section('content')
+<span id="perro">
   @yield('content-student')
+</span>
 @stop
 
 
@@ -95,5 +97,6 @@ class="fixed-sn white-skin backColor"
 @section('js')
 <script type="text/javascript" src="/packages/assets/js/baseAll.js"></script>
 <script type="text/javascript" src="/packages/assets/js/baseStudent.js"></script>
+<script type="text/javascript" src="/packages/assets/js/template/baseStudent.js"></script>
 @yield('js-plus')
 @stop
