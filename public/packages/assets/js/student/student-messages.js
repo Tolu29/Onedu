@@ -1,4 +1,18 @@
 $(function(){
+   function getMensajes(){
+     object.messages.push({mensaje: "prueba",rol:"stuedent"});
+     pushMoreMessages();
+   }
+
+   function pushMoreMessages(){
+     setInterval(function(){
+       var  number = Math.floor(Math.random() * (2 - 0)) + 1;
+       rol = (number == 1)?  "student" : "admin";
+       object.messages.push({mensaje: "Loe et dolore magno laboriolor in reprehenderit in volunulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"+number, rol:rol});
+       object.faillContentWithMessages();
+     },5000);
+   }
+
     var object = {
       messages: [],
       getMessages: function(){
@@ -21,8 +35,8 @@ $(function(){
       },
       faillContentWithMessages:function(){
         var htmlMessages = "";
-        $.each(object.messages,function(message){
-          color = (messaage.rol == "student" ) ? "userMessages" : "universityMessages";
+        $.each(object.messages,function(index,message){
+          color = (message.rol == "student" ) ? "userMessages" : "universityMessages";
           htmlMessages +=
             '<div class="col-md-11 '+color+'">'+
               '<p>'+message.mensaje+'</p>'+
@@ -53,4 +67,5 @@ $(function(){
         object.sendMessage(message);
       }
     });
+    getMensajes();
 });

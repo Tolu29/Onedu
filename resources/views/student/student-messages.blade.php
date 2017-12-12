@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="col-md-9">
-      <div class="messagesCont z-depth-2">
+      <div class="messagesCont z-depth-2" style="max-height:40rem;overflow-y:auto;">
         <div class="row" id="content-messages">
           <!-- <div class="col-md-11 userMessages">
             <p>Loe et dolore magno laboriolor in reprehenderit in volunulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -45,5 +45,5 @@
 @stop
 
 @section('js-plus')
-<script src="/assets/js/student/student-messages.js" charset="utf-8"></script>
+<script src="/packages/assets/js/student/student-messages.js" charset="utf-8"></script>
 @stop
