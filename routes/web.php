@@ -23,6 +23,14 @@
       return view('landing.terms-and-conditions');
   });
 
+  Route::get('/messages', function () {
+      return view('university.messages');
+  });
+
+  Route::get('/student-messages', function () {
+      return view('student.student-messages');
+  });
+
   Route::get("/activar/{token}", 'LoginController@activateStudent');
 
 
@@ -106,9 +114,7 @@ Route::group(['middleware' => ['auth']], function() {
         return view('university.updNew');
     });
 
-    // Route::get('/messages', function () {
-    //     return view('university.messages');
-    // });
+
 
     Route::get('/newPublications', function () {
         return view('university.newPublications');
