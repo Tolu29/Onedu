@@ -96,6 +96,10 @@ Route::group(['middleware' => ['auth']], function() {
       Route::post('/getRelatedCareers', 'StudentController@getRelatedCareers');
       Route::post('/getIni', 'StudentController@getIni');
       Route::post('/getPostCareers', 'StudentController@getPostCareers');
+      Route::get('/schoolInfo', 'StudentController@schoolInfo');
+      Route::post('/messageSend', 'StudentController@messageSend');
+      Route::post('/get-messages', 'StudentController@messageReturn');
+
     /*
     * FIN rutas StudentController
     */

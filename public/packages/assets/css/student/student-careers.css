@@ -5,6 +5,11 @@
 /*
 Carreras
 */
+.btnMessage{
+  background-color: #5172a1;
+  margin-left: 0;
+}
+
 .infoCareer:hover{
   font-weight: 600;
   color: #5172a1;

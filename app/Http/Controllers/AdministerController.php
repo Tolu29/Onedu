@@ -649,7 +649,7 @@ class AdministerController extends Controller
     $new->save();
 
     return 'La noticia se elimino con exito';
-  }
+  }  
 
 }
 

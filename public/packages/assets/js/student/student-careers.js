@@ -3,7 +3,7 @@ $(function(){
   $(".hideCareers").hide();
   $(".hideCareers").removeClass('hideCareers');
 
-  var infoCareer = [], related = [], universities = [];
+  var infoCareer = [], related = [], universities = [], idChat;
 
   wow.init();
 
@@ -193,7 +193,7 @@ $(function(){
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     })
-    .done(function(data){      
+    .done(function(data){
       $("#currentCarrer").text("Carrera actual: "+data.career.nombre)
       infoCareer = data.career;
       related = data.related;
@@ -206,6 +206,8 @@ $(function(){
 
   $("body").on('click', '.explanationCont>div>img' ,function(){
     $id = $(this).data('id');
+    idChat = $id;
+    alert(idChat);
     backLevel = 3;
     let single = atrib(universities, "id", $id);
     uniActive = atrib(universities, "id", $id);
@@ -319,6 +321,7 @@ $(function(){
         $(".likeUni").css('color', '#7c7c7c');
       });
     }else {
+
       $.ajax({
         url: "/likeUniversity",
         type: "POST",
@@ -331,6 +334,27 @@ $(function(){
         $(".likeUni").attr('data-active', '1');
       });
     }
+
+  });
+
+
+  $("body").on('click', '.btnMessage', function(){
+    let data = {
+      id: idChat
+    }
+    $.ajax({
+      url: "/messageSend",
+      type: "POST",
+      data: data,
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    })
+    .done(function(data){
+      if (data == "La sesion se ha guardado correctamente") {
+        // window.location.href = '/student-messages'
+      }
+    });
   });
 
   // cambio de colores

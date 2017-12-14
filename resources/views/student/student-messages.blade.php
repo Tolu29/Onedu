@@ -45,5 +45,5 @@
 @stop
 
 @section('js-plus')
-<script src="/assets/js/student/student-messages.js" charset="utf-8"></script>
+<script src="/packages/assets/js/student/student-messages.js" charset="utf-8"></script>
 @stop

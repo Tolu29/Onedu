@@ -38,7 +38,7 @@
           <select class="browser-default">
             <option value="" disabled selected>Escoge una carrera</option>
           </select>
-          <label class="text-right" id="currentCarrer">Carrera Actual: Mecatronica</label>
+          <label class="text-right" id="currentCarrer">Carrera Actual: </label>
       </div>
 
 
@@ -111,6 +111,9 @@
           <p class="universityCol"></p>
           <!-- <p class="university">Torreon, COAH.</p> -->
           <a id="schoolMap">VER MAPA</a>
+          <div class="text-left messageCont">
+            <button class="btn btnMessage" type="button" name="button">Enviar mensaje</button>
+          </div>
         </div>
         <div class="likeZone">
           <i class="fa fa-heart fa-2x likeUni" aria-hidden="true"></i>

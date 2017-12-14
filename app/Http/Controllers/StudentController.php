@@ -12,6 +12,7 @@ use App\StudyPlans;
 use App\Prospectos;
 use App\Noticias;
 use App\Aptitudes;
+use App\Chat;
 use Illuminate\Support\Facades\DB;
 use App\Informations;
 use Illuminate\Http\Request;
@@ -287,6 +288,63 @@ class StudentController extends Controller
     $student = Student::where('user_id', '=', $user->id)
     ->select('nombre_completo')->first();
     return $student;
+  }
+
+  //=====================//
+    #funciones para CHAT
+  //=====================//
+
+  function schoolInfo(Request $request){
+    $data = $request->all();
+    $request->session()->put('uniChat_id', 121);
+    return 'La sesion se ha guardado correctamente';
+  }
+
+  function messageSend(Request $request){
+
+    $data = $request->all();
+    $user = Auth::user();
+    $chat_id = $request->session()->get('uniChat_id');
+
+    $roles = DB::table('user_has_roles')
+    ->where('user_id', '=', $user->id)->first();
+    if ($roles->role_id == 3) {
+      $rol = 'estudiante';
+    }elseif ($roles->role_id == 1) {
+      $rol == 'universidad';
+    }
+
+    $message = new Chat($data);
+    $message->estatus = 0;
+    $message->user_id = $user->id;
+    $message->destinatario_id = $chat_id;
+    $message->role = $rol;
+    $message->mensaje = $data['mensaje'];
+    $message->save();
+
+    return "el mensaje se ha guardado correctamente";
+  }
+
+
+  function messageReturn(Request $request){
+    $data = $request->all();
+    $chat_id = $request->session()->get('uniChat_id');
+    $user_id = Auth::user()->id;
+    $messages = DB::select("select * from chat where user_id = $user_id and destinatario_id = $chat_id or user_id = $chat_id and destinatario_id = $user_id");
+    return $messages;
+  }
+
+
+  function notification(Request $request){
+    $data = $request->all();
+    $user = Auth::user();
+
+    $message = DB::table('chat')
+    ->where('destinatario_id', '=', $user->id)
+    ->where('estatus', '=', 0)->get();
+
+    return $message;
+
   }
 
 }
