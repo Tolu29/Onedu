@@ -1,4 +1,7 @@
 $(function(){
+
+  var width = $( window ).width();
+  console.log("si entra");
   $.ajax({
     url: "/getIni",
     type: "POST",
@@ -15,4 +18,28 @@ $(function(){
     $("#userPhoto").text(initials);
     $("#userPhoto").css('color', 'rgb(57, 156, 95)');
   });
+
+    if (width >= 1320) {
+      $('#slide-out').css({"-webkit-transform":"translate(0px)"});
+      $('.navbar').css('padding-left', '240px');
+      $("#perro>.container").css('padding-left', '240px');
+      $(".hideBurguer").hide();
+    }
+
+    $(window).on('resize', function(){
+      var width = $( window ).width();      
+      if (width >= 1320) {
+        $('#slide-out').css({"-webkit-transform":"translate(0px)"});
+        $('.navbar').css('padding-left', '240px');
+        $("#perro>.container").css('padding-left', '240px');
+        $(".hideBurguer").hide();
+      }else if (width < 1320) {
+        $("#perro>.container").css('padding-left', '0px');
+        $('.navbar').css('padding-left', '0px');
+        $(".hideBurguer").show();
+      }
+
+  });
+
+
 });

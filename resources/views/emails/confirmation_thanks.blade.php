@@ -15,9 +15,9 @@
             <div class="row pt-5 mt-3">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <h1 class="h1-reponsive white-text font-up font-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong>Minimalist intro</strong></h1>
+                        <h1 class="h1-reponsive white-text font-up font-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong>Bienvenido</strong></h1>
                         <hr class="hr-light mt-4 wow fadeInDown" data-wow-delay="0.4s">
-                        <h5 class="font-up mb-5 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Photography & design</strong></h5>
+                        <h5 class="font-up mb-5 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Con Onedu Elije la mejor opcion</strong></h5>
                         <a class="btn btn-outline-white wow fadeInDown btnEnter" data-wow-delay="0.4s">Entrar</a>
                     </div>
                 </div>
@@ -74,4 +74,4 @@
 
 <!-- </body> -->
 
-<!-- </html> --> 
+<!-- </html> -->

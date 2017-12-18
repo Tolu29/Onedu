@@ -12,6 +12,7 @@ use App\StudyPlans;
 use App\Prospectos;
 use App\Noticias;
 use App\Aptitudes;
+use App\University;
 use App\Chat;
 use Illuminate\Support\Facades\DB;
 use App\Informations;
@@ -296,7 +297,8 @@ class StudentController extends Controller
 
   function schoolInfo(Request $request){
     $data = $request->all();
-    $request->session()->put('uniChat_id', 121);
+    $university = University::where('id', '=', $data['id'])->first();
+    $request->session()->put('uniChat_id', $university->user_id);
     return 'La sesion se ha guardado correctamente';
   }
 
@@ -315,9 +317,10 @@ class StudentController extends Controller
     }
 
     $message = new Chat($data);
-    $message->estatus = 0;
+    $message->estatus_user = 0;
+    $message->estatus_universidad = 0;
     $message->user_id = $user->id;
-    $message->destinatario_id = $chat_id;
+    $message->universidad_id = $chat_id;
     $message->role = $rol;
     $message->mensaje = $data['mensaje'];
     $message->save();
@@ -326,25 +329,47 @@ class StudentController extends Controller
   }
 
 
-  function messageReturn(Request $request){
+  function allMessages(Request $request){
     $data = $request->all();
     $chat_id = $request->session()->get('uniChat_id');
     $user_id = Auth::user()->id;
-    $messages = DB::select("select * from chat where user_id = $user_id and destinatario_id = $chat_id or user_id = $chat_id and destinatario_id = $user_id");
-    return $messages;
+
+    $universities = University::where('active', '=', 1)->get();
+    $messages = DB::table('universities')
+    ->where('universities.active', '=', 1)
+    ->join('chat', 'chat.universidad_id', '=', 'universities.id')
+    ->where('chat.user_id', '=', $user_id)
+    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role')->get();
+
+    // $messages = null;
+
+    return response()->json([
+      'universidades' => $universities,
+      'mensajes' => $messages,
+      'chat_id' => $chat_id
+    ]);
   }
 
 
   function notification(Request $request){
+    $data = $request->all();    
+    $chat_id = $request->session()->get('uniChat_id');
+    $user_id = Auth::user()->id;
+
+    $messages = DB::table('universities')
+    ->where('universities.active', '=', 1)
+    ->join('chat', 'chat.universidad_id', '=', 'universities.id')
+    ->where('chat.user_id', '=', $user_id)
+    ->where('chat.estatus_user', '=', 0)
+    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role')->get();
+
+    return $messages;
+
+  }
+
+  function readMessages(Request $request){
     $data = $request->all();
     $user = Auth::user();
-
-    $message = DB::table('chat')
-    ->where('destinatario_id', '=', $user->id)
-    ->where('estatus', '=', 0)->get();
-
-    return $message;
-
   }
 
 }
@@ -352,3 +377,6 @@ class StudentController extends Controller
 // $role = Role::create(['name' => 'student']);
 // $permission = Permission::create(['name' => 'view']);
 // $role->givePermissionTo('view');
+
+
+// $messages = DB::select("select * from chat where user_id = $user_id and destinatario_id = $chat_id or user_id = $chat_id and destinatario_id = $user_id");

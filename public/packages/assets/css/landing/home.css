@@ -10,6 +10,15 @@
   display: none !important;
 }
 
+.forget{
+  color: #ffffff;
+  margin-right: 2rem;
+}
+
+.forget:hover{
+  color: #ffffff;
+}
+
 .checkbox-success-filled [type="checkbox"][class*='filled-in']:checked+label:after {
     border-color: #399c5f ;
     background-color: #399c5f;

@@ -1,58 +1,121 @@
 $(function(){
-    var object = {
-      messages: [],
-      getMessages: function(){
-        $.ajax({
-          url: "/get-messages",
-          type: "POST",
-          headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-        }).done(function(response){
-          console.log(response);
-          object.messages = response;
-          object.faillContentWithMessages();
-        }).fail(function(fail){
-          console.log(fail);
-        });
-      },
-      getMessagesInterval: function(){
-        setInterval(object.getMessages,5000);
-      },
-      faillContentWithMessages:function(){
-        var htmlMessages = "";
-        $.each(object.messages,function(indice,message){
-          color = (message.role == "student" ) ? "userMessages" : "universityMessages";
-          htmlMessages +=
-            '<div class="col-md-11 '+color+'">'+
-              '<p>'+message.mensaje+'</p>'+
-            '</div>';
-        });
-        $("#content-messages").html(htmlMessages);
-      },
-      sendMessage:function(mensaje){
-        data = {mensaje:mensaje};
-        $.ajax({
-          url: "/messageSend",
-          type: "POST",
-          headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          data:data
-        }).done(function(response){
-          console.log(response);
-          $("#message").val('');
-        }).fail(function(fail){
-          console.error(fail);
-        });
-      }
+
+  var $chat =  $(".messagesCont"), messages = [], universidades = [], id_chat, newMessages = [];
+
+  $.ajax({
+    url: "/allMessages",
+    type: "POST",
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
-    object.getMessages();
-    object.getMessagesInterval();
-    $("#btn-send").click(function(event){
-      var message = $("#message").val();
-      if(message!==""){
-        object.sendMessage(message);
+  }).done(function(response){
+    messages = response.mensajes;
+    universidades = response.universidades;
+    id_chat = response.chat_id;
+    if (messages == null || messages == "" || messages == undefined) {
+      $("#content-messages").html(`<h1 class="waitingInfo">No hay chats abiertos</h1>`);
+      $(".messagesCont").css('width', '97%');
+    }else {
+      if (id_chat == null || id_chat == "" || id_chat == undefined) {
+        fillUniCards(universidades, messages);
+        $(".chatRoom:first-child").trigger('click');
       }
-    });
+
+      getMessagesInterval(messages);
+    }
+  });
+
+  $("body").on('click', '.chatRoom', function(){
+    $id = $(this).data('id');
+    $("#content-messages").empty();
+    var schoolMessages = atrib(messages, "id", $id);
+    faillContentWithMessages(schoolMessages);
+    $chat.scrollTop(($chat.height() + 2000));
+  });
+
+
+  $("body").on('click', '#btn-send', function(){
+    var message = $("#message").val();
+    if(message!==""){
+      sendMessage(message);
+    }
+  });
+
+
 });
+
+function notifications(messages, newMessages){
+  $.ajax({
+    url: "/notification",
+    type: "POST",
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  })
+  .done(function(data){
+    if (data == "" || data == null || data == undefined) {
+      return ;
+    }else {
+      $.each(data, function(i){
+        newMessages.push(data[i].id)
+      });
+      messages.push(data);
+    }
+  });
+
+}
+
+
+function sendMessage(mensaje){
+  data = {mensaje:mensaje};
+  $.ajax({
+    url: "/messageSend",
+    type: "POST",
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data:data
+  }).done(function(response){
+    $("#message").val('');
+  });
+}
+
+function faillContentWithMessages(messages){
+  var htmlMessages = "";
+  $.each(messages,function(indice,message){
+    color = (message.role == "estudiante" ) ? "userMessages" : "universityMessages";
+    htmlMessages +=
+      '<div class="col-md-11 '+color+'">'+
+        '<p>'+message.mensaje+'</p>'+
+      '</div>';
+  });
+  $("#content-messages").html(htmlMessages);
+}
+
+function getMessagesInterval(messages){
+  setInterval(function(){ notifications(messages);console.log(messages); }, 5000);
+}
+
+function atrib(obj,attr,data){
+  var response=[];
+  $.each(obj,function(index,obj,i){
+    if (obj[attr] == data) {
+      response.push(obj);
+    }
+  });
+  return response;
+}
+
+function fillUniCards(universidades, messages){
+  $.each(universidades, function(i){
+    var schoolMessages = atrib(messages, "id", universidades[i].id);
+    if (schoolMessages.length > 0) {
+      $(".universidadesCard").append(
+        "<div class='chatRoom' data-id='" + universidades[i].id + "'>" +
+          "<img src='/packages/assets/img/universities/logos/" + universidades[i].logo + "' class='float-right' alt=''>" +
+          "<p>" + universidades[i].nombre + "</p>" +
+        "</div>"
+      )
+    }
+  });
+}

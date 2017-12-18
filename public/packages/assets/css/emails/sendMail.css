@@ -1,0 +1,43 @@
+.top-nav-collapse {
+    background-color: #f8bbd0 !important;
+}
+.navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+}
+@media (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #f8bbd0 !important;
+    }
+}
+@media (max-width: 740px) {
+    .full-height,
+    .full-height body,
+    .full-height header,
+    .full-height header .view {
+        height: 700px;
+    }
+}
+
+.view{
+  /* The image used */
+  background-image: url("/packages/assets/img/landing/intro.jpg");
+
+  /* Full height */
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  min-height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+[id*=-error]{
+  display: none !important;
+}
+
+.inputSend{
+  background-color: #ffffff !important;
+  border-radius: .23rem !important;
+}

@@ -207,7 +207,6 @@ $(function(){
   $("body").on('click', '.explanationCont>div>img' ,function(){
     $id = $(this).data('id');
     idChat = $id;
-    alert(idChat);
     backLevel = 3;
     let single = atrib(universities, "id", $id);
     uniActive = atrib(universities, "id", $id);
@@ -343,7 +342,7 @@ $(function(){
       id: idChat
     }
     $.ajax({
-      url: "/messageSend",
+      url: "/schoolInfo",
       type: "POST",
       data: data,
       headers: {
@@ -352,7 +351,7 @@ $(function(){
     })
     .done(function(data){
       if (data == "La sesion se ha guardado correctamente") {
-        // window.location.href = '/student-messages'
+        window.location.href = '/student-messages'
       }
     });
   });

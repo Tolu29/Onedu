@@ -151,6 +151,11 @@ class LoginController extends Controller
     Auth::loginUsingId($id);
   }
 
+  function findMail(Request $request){
+    $data = $request->all();
+      
+  }
+
 
 }
 // $user = Auth::user();
