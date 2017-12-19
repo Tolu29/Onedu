@@ -218,14 +218,14 @@ class StudentController extends Controller
       $news[$i] = DB::table('noticias')
       ->where('noticias.universidad_id', '=', $likes[$i]->universidad_id)
       ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
-      ->select('avance', 'noticias.id', 'cuerpo', 'logo')->get();
+      ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
     }
 
     $onedu = University::where('nombre', '=', 'ONEDU')->first();
     $onedu_news = DB::table('noticias')
     ->where('noticias.universidad_id', '=', $onedu->id)
     ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
-    ->select('avance', 'noticias.id', 'cuerpo', 'logo')->get();
+    ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
     // return $onedu_news;
 
     return response()->json([

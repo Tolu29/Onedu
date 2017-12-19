@@ -14,7 +14,7 @@ $(function(){
   })
   .done(function(data){
 
-    $.each(data.onedu_news, function(i){      
+    $.each(data.onedu_news, function(i){
       news.push(data.onedu_news[i]);
       $("#newsCont").append(
         "<div class='col-md-4'>" +
@@ -23,7 +23,7 @@ $(function(){
             "<div class='card-body container elip'>" +
               "<p>" + data.onedu_news[i].avance + "</p>" +
             "</div>" +
-            "<div class='card-data fooCard'>" +
+            "<div class='card-data fooCard' style='background-color:" + data.onedu_news[i].color + "'>" +
              "<ul class='viewMore'>" +
                 "<li><i class='fa fa-play'></i></li>" +
                 "<li><a href='#' class='read' data-id='" + data.onedu_news[i].id + "'> Leer</a></li>" +
@@ -45,7 +45,7 @@ $(function(){
               "<div class='card-body container elip'>" +
                 "<p>" + g.avance + "</p>" +
               "</div>" +
-              "<div class='card-data fooCard'>" +
+              "<div class='card-data fooCard' style='background-color:" + g.color + "'>" +
                "<ul class='viewMore'>" +
                   "<li><i class='fa fa-play'></i></li>" +
                   "<li><a href='#' class='read' data-id='" + g.id + "'> Leer</a></li>" +

@@ -1,6 +1,7 @@
 $(function(){
 
 	$("body").on('click', '.btnSend', function(){
+		$(".btnSend").remove();
 		let rawText = tinyMCE.activeEditor.getBody().textContent;
 		let cleanText = rawText.substring(0,219);
 

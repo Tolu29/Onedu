@@ -1,6 +1,6 @@
 $(function(){
 
-  var $chat =  $(".messagesCont"), messages = [], universidades = [], id_chat, newMessages = [], idSchools = [];
+  var $chat = $("#content-messages"), messages = [], universidades = [], id_chat, newMessages = [], idSchools = [];
 
   $.ajax({
     url: "/allMessages",
@@ -65,15 +65,16 @@ function notifications(messages, idSchools){
           }
         });
         if (bnd == true) {
-          idSchools.push(index.id);
+          // idSchools.push(index.id);
           messages.push(index);
+          console.log(messages);
         }
       });
-      if (idSchools.length > 0) {
-        $.each(idSchools, function(i){
-          $('*[data-id="' + idSchools[i] + '"]>span').addClass('newMsg');
-        });
-      }
+      // if (idSchools.length > 0) {
+      //   $.each(idSchools, function(i){
+      //     $('*[data-id="' + idSchools[i] + '"]>span').addClass('newMsg');
+      //   });
+      // }
     }
   });
 
