@@ -225,6 +225,7 @@ class StudentController extends Controller
     $onedu = University::where('nombre', '=', 'ONEDU')->first();
     $onedu_news = DB::table('noticias')
     ->where('noticias.universidad_id', '=', $onedu->id)
+    ->where('active', '=', 1)
     ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
     ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
     // return $onedu_news;
@@ -346,13 +347,9 @@ class StudentController extends Controller
     $user_id = Auth::user()->id;
 
     $universities = University::where('active', '=', 1)->get();
-    $messages = DB::table('universities')
-    ->where('universities.active', '=', 1)
-    ->join('chat', 'chat.universidad_id', '=', 'universities.id')
+    $messages = DB::table('chat')
     ->where('chat.user_id', '=', $user_id)
-    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
-
-    // $messages = null;
+    ->join('universities', 'universities.id', '=', 'chat.universidad_id')->get();
 
     return response()->json([
       'universidades' => $universities,
@@ -372,7 +369,7 @@ class StudentController extends Controller
     ->join('chat', 'chat.universidad_id', '=', 'universities.id')
     ->where('chat.user_id', '=', $user_id)
     ->where('chat.estatus_user', '=', 0)
-    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
+    ->select('chat.mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
 
     return $messages;
 

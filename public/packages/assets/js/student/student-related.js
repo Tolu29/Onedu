@@ -309,13 +309,13 @@ function addCareers(alpha,color){
         data: [{
           type: "column",
           dataPoints: [
-            { y: aptitud.sociales, label: "Sociales" },
-            { y: aptitud.relacionales, label: "Relacionales" },
-            { y: aptitud.artisticos, label: "Artisticos" },
-            { y: aptitud.mecanicos, label: "Mecanicos" },
+            { y: aptitud.sociales, label: "Social" },
+            { y: aptitud.relacionales, label: "Relacional" },
+            { y: aptitud.artisticos, label: "Artistico" },
+            { y: aptitud.mecanicos, label: "Mecanico" },
             { y: aptitud.aire_libre, label: "Aire libre" },
             { y: aptitud.administrativo, label: "Administrativo" },
-            { y: aptitud.científicos, label: "Científicos" },
+            { y: aptitud.científicos, label: "Científico" },
           ]
         }]
       });

@@ -10,6 +10,7 @@ $(function(){
     }
   }).done(function(response){
     messages = response.mensajes;
+    console.log(response);
     universidades = response.universidades;
     id_chat = response.chat_id;
     if (messages == null || messages == "" || messages == undefined) {
@@ -56,26 +57,32 @@ function notifications(messages, idSchools){
       return ;
     }else {
       $.each(data, function(i,k){
+        console.log('1',messages);
         var bnd = false;
         var index = undefined;
         $.each(messages, function(j){
-          console.log(messages[j].chat_id, data[i].chat_id);
-          if (messages[j].chat_id != data[i].chat_id) {
+          var temp = messages[j];
+          if (messages[j].chat_id == data[i].chat_id) {
             bnd = true;
             index = k;
           }
+          // if ($.inArray(temp, messages) != -1 ) {
+          //     // console.log(temp);
+          //     bnd = true;
+          //     index = k;
+          // }
         });
-        console.log('aqui se acabo');
         if (bnd == true) {
-          // idSchools.push(index.id);
+          idSchools.push(index.id);
           messages.push(index);
+          console.log(messages);
         }
       });
-      // if (idSchools.length > 0) {
-      //   $.each(idSchools, function(i){
-      //     $('*[data-id="' + idSchools[i] + '"]>span').addClass('newMsg');
-      //   });
-      // }
+      if (idSchools.length > 0) {
+        $.each(idSchools, function(i){
+          $('*[data-id="' + idSchools[i] + '"]>span').addClass('newMsg');
+        });
+      }
     }
   });
 
