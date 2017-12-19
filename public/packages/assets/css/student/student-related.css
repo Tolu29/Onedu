@@ -8,6 +8,10 @@
   background-color: #ffffff;
 }
 
+.relatedCareer{
+  cursor: pointer;
+}
+
 .infoCareer:hover{
   color: #5172a1;
   font-weight: 600;

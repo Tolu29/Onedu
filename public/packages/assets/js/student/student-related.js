@@ -276,7 +276,7 @@ function addCareers(alpha,color){
     }
   })
   .done(function(data){
-    let aptitud = data.aptitudes;
+    var aptitud = data.aptitudes;
     if (data.student.grupo == null || data.student.grupo == "") {
 
       swal({

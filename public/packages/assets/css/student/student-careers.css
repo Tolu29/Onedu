@@ -10,6 +10,10 @@ Carreras
   margin-left: 0;
 }
 
+.relatedCareer{
+  cursor: pointer;
+}
+
 .infoCareer:hover{
   font-weight: 600;
   color: #5172a1;
