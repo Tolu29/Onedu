@@ -14,9 +14,29 @@ $(function(){
   })
   .done(function(data){
 
-    $.each(data, function(i){
+    $.each(data.onedu_news, function(i){
+      console.log(data.onedu_news[i].logo);
+      $("#newsCont").append(
+        "<div class='col-md-4'>" +
+          "<div class='card contNew'>" +
+            "<img src='/packages/assets/img/universities/logos/" + data.onedu_news[i].logo + "' alt=''>" +
+            "<div class='card-body container elip'>" +
+              "<p>" + data.onedu_news[i].avance + "</p>" +
+            "</div>" +
+            "<div class='card-data fooCard'>" +
+             "<ul class='viewMore'>" +
+                "<li><i class='fa fa-play'></i></li>" +
+                "<li><a href='#' class='read' data-id='" + data.onedu_news[i].id + "'> Leer</a></li>" +
+             "</ul>" +
+           "</div>" +
+          "</div>" +
+        "</div>"
+      );
+    });
 
-      $.each(data[i], function(e,g){
+    $.each(data.news, function(i){
+
+      $.each(data.news[i], function(e,g){
         news.push(g);
         $("#newsCont").append(
           "<div class='col-md-4'>" +
@@ -62,7 +82,7 @@ $(function(){
 
   });
 
-}); 
+});
 
 // funciones
 

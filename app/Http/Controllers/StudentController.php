@@ -221,10 +221,17 @@ class StudentController extends Controller
       ->select('avance', 'noticias.id', 'cuerpo', 'logo')->get();
     }
 
-    // $onedu = DB::table('noticias')
-    // ->where('')
+    $onedu = University::where('nombre', '=', 'ONEDU')->first();
+    $onedu_news = DB::table('noticias')
+    ->where('noticias.universidad_id', '=', $onedu->id)
+    ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
+    ->select('avance', 'noticias.id', 'cuerpo', 'logo')->get();
+    // return $onedu_news;
 
-    return $news;
+    return response()->json([
+      'news' => $news,
+      'onedu_news' => $onedu_news
+    ]);
 
   }
 
