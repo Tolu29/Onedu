@@ -14,8 +14,8 @@ $(function(){
   })
   .done(function(data){
 
-    $.each(data.onedu_news, function(i){
-      console.log(data.onedu_news[i].logo);
+    $.each(data.onedu_news, function(i){      
+      news.push(data.onedu_news[i]);
       $("#newsCont").append(
         "<div class='col-md-4'>" +
           "<div class='card contNew'>" +
@@ -67,6 +67,7 @@ $(function(){
     $(".firstLevel").fadeOut('slow', function(){
       $('#secondLevelNews').fadeIn('slow', function(){
         let single = atrib(news, "id", $id)
+        console.log(single);
         $(".newsContent").append(single[0].cuerpo);
       });
     });
