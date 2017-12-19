@@ -59,15 +59,16 @@ function notifications(messages, idSchools){
         var bnd = false;
         var index = undefined;
         $.each(messages, function(j){
-          if (messages[j].chat_id == data[i].chat_id) {
+          console.log(messages[j].chat_id, data[i].chat_id);
+          if (messages[j].chat_id != data[i].chat_id) {
             bnd = true;
             index = k;
           }
         });
+        console.log('aqui se acabo');
         if (bnd == true) {
           // idSchools.push(index.id);
           messages.push(index);
-          console.log(messages);
         }
       });
       // if (idSchools.length > 0) {

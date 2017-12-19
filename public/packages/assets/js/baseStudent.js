@@ -1,7 +1,6 @@
 $(function(){
 
-  var width = $( window ).width();
-  console.log("si entra");
+  var width = $( window ).width();  
   $.ajax({
     url: "/getIni",
     type: "POST",
@@ -27,7 +26,7 @@ $(function(){
     }
 
     $(window).on('resize', function(){
-      var width = $( window ).width();      
+      var width = $( window ).width();
       if (width >= 1320) {
         $('#slide-out').css({"-webkit-transform":"translate(0px)"});
         $('.navbar').css('padding-left', '240px');

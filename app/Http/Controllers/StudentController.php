@@ -65,7 +65,8 @@ class StudentController extends Controller
     $career = DB::table('careers')
     ->where('careers.id', '=', $data['id'])->first();
 
-    $related = Career::where('grupo', '=', $data['group'])->orderBy('nombre', 'desc')->get();
+    $related = Career::where('grupo', '=', $data['group'])
+    ->where('active', '=', 1)->orderBy('nombre', 'desc')->get();
 
     $universities = DB::table('careers_universities')
     ->where('careers_universities.carrera_id', '=', $data['id'])
