@@ -1,6 +1,6 @@
 $(function(){
 
-  var $chat =  $(".messagesCont"), messages = [], universidades = [], id_chat, newMessages = [];
+  var $chat =  $(".messagesCont"), messages = [], universidades = [], id_chat, newMessages = [], idSchools = [];
 
   $.ajax({
     url: "/allMessages",
@@ -20,8 +20,7 @@ $(function(){
         fillUniCards(universidades, messages);
         $(".chatRoom:first-child").trigger('click');
       }
-
-      getMessagesInterval(messages);
+      getMessagesInterval(messages, idSchools);
     }
   });
 
@@ -44,7 +43,7 @@ $(function(){
 
 });
 
-function notifications(messages, newMessages){
+function notifications(messages, idSchools){
   $.ajax({
     url: "/notification",
     type: "POST",
@@ -56,10 +55,25 @@ function notifications(messages, newMessages){
     if (data == "" || data == null || data == undefined) {
       return ;
     }else {
-      $.each(data, function(i){
-        newMessages.push(data[i].id)
+      $.each(data, function(i,k){
+        var bnd = false;
+        var index = undefined;
+        $.each(messages, function(j){
+          if (messages[j].chat_id == data[i].chat_id) {
+            bnd = true;
+            index = k;
+          }
+        });
+        if (bnd == true) {
+          idSchools.push(index.id);
+          messages.push(index);
+        }
       });
-      messages.push(data);
+      if (idSchools.length > 0) {
+        $.each(idSchools, function(i){
+          $('*[data-id="' + idSchools[i] + '"]>span').addClass('newMsg');
+        });
+      }
     }
   });
 
@@ -92,8 +106,8 @@ function faillContentWithMessages(messages){
   $("#content-messages").html(htmlMessages);
 }
 
-function getMessagesInterval(messages){
-  setInterval(function(){ notifications(messages);console.log(messages); }, 5000);
+function getMessagesInterval(messages,idSchools){
+  setInterval(function(){ notifications(messages, idSchools);}, 5000);
 }
 
 function atrib(obj,attr,data){
@@ -112,8 +126,9 @@ function fillUniCards(universidades, messages){
     if (schoolMessages.length > 0) {
       $(".universidadesCard").append(
         "<div class='chatRoom' data-id='" + universidades[i].id + "'>" +
-          "<img src='/packages/assets/img/universities/logos/" + universidades[i].logo + "' class='float-right' alt=''>" +
+          "<img src='/packages/assets/img/universities/logos/" + universidades[i].logo + "' class='float-right img-fluid' alt=''>" +
           "<p>" + universidades[i].nombre + "</p>" +
+          '<span class="sp-alert"></span>' +
         "</div>"
       )
     }

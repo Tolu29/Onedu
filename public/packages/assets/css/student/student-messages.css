@@ -8,6 +8,16 @@
   /*width: 100%;*/
 }
 
+.newMsg{
+  background-color: red;
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 2.6rem;
+  border-radius: 50%;
+}
+
 .chatRoom{
   cursor: pointer;
 }
@@ -43,6 +53,7 @@
 }
 
 .userMessages>p{
+  padding: 1rem;
   margin: 1rem;
   color: #ffffff;
 }
@@ -58,11 +69,12 @@
 }
 
 .universityMessages>p{
+  padding: 1rem;
   margin: 1rem;
   color: #ffffff;
 }
 
-.universitysActive>.row>.col-md-11>div>img{
+.universidadesCard>div>img{
   border-radius: 100%;
   width: 3rem;
   height: 3rem;
@@ -70,7 +82,7 @@
   margin-right: .5rem;
 }
 
-.universitysActive>.row>.col-md-11>div>p{
+.universidadesCard>div>p{
   color: #ffffff;
   margin-top: .3rem;
   margin-right: .5rem;
@@ -81,46 +93,25 @@
   margin-right: 4rem;
 }
 
-.textInput{
-  position: absolute;
-  bottom: .8rem;
-  margin-left: 2rem;
-}
-
-.textInput>input{
-  height: 2.4rem;
-  width: 42rem;
+.textInput>span{
+  background-color: #5172a1 !important;
+  color: #ffffff;
   border-radius: .23rem;
-  outline: none;
-  border: 1px solid #d1d1d1;
-  color: #686868;
-  font-weight: 100;
-  padding-left: 1rem;
 }
 
-.textInput>button{
-  background-color: #5172a1;
-  border-radius: .23rem;
-  position: absolute;
-  right: -7.6rem;
-  top: -.4rem;
-  height: 2.4rem;
-}
-
-.universitysActive>.row>.col-md-11>div{
-  margin: 1rem;
+.universidadesCard>div{
   background-color: #cda939;
   width: 95%;
   height: 3.5rem;
 }
 .scrollbar {
-    margin-left: 30px;
+    /*margin-left: 30px;
     float: left;
     /*height: 300px;
     width: 65px;*/
-    background: #fff;
+    /*background: #fff;
     overflow-y: scroll;
-    margin-bottom: 25px;
+    margin-bottom: 25px;*/
 }
 .force-overflow {
     min-height: 450px;

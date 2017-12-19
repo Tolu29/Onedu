@@ -36,13 +36,15 @@
   });
 
   Route::get("/activar/{token}", 'LoginController@activateStudent');
-
+  Route::get("/restart/{token}", 'LoginController@restarMail');
 
   Route::post('/signIn', 'LoginController@signIn');
   Route::post('/logIn', 'LoginController@logIn');
   Route::post('/logOut', 'LoginController@logOut');
   Route::post('/highSchools', 'LoginController@highSchools');
   Route::post('/emailEnter', 'LoginController@emailEnter');
+  Route::post('/findMail', 'LoginController@findMail');
+  Route::post('/restartPassword', 'LoginController@restartPassword');
 
 /*
 * FIN rutas rutasLogIn

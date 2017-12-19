@@ -221,6 +221,9 @@ class StudentController extends Controller
       ->select('avance', 'noticias.id', 'cuerpo', 'logo')->get();
     }
 
+    // $onedu = DB::table('noticias')
+    // ->where('')
+
     return $news;
 
   }
@@ -339,7 +342,7 @@ class StudentController extends Controller
     ->where('universities.active', '=', 1)
     ->join('chat', 'chat.universidad_id', '=', 'universities.id')
     ->where('chat.user_id', '=', $user_id)
-    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role')->get();
+    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
 
     // $messages = null;
 
@@ -352,7 +355,7 @@ class StudentController extends Controller
 
 
   function notification(Request $request){
-    $data = $request->all();    
+    $data = $request->all();
     $chat_id = $request->session()->get('uniChat_id');
     $user_id = Auth::user()->id;
 
@@ -361,7 +364,7 @@ class StudentController extends Controller
     ->join('chat', 'chat.universidad_id', '=', 'universities.id')
     ->where('chat.user_id', '=', $user_id)
     ->where('chat.estatus_user', '=', 0)
-    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role')->get();
+    ->select('mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
 
     return $messages;
 

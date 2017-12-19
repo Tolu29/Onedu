@@ -118,7 +118,7 @@
                     <input name="logPass" type="password" class="form-control logInput" id="logPass">
                   </div>
                   <div class="text-right">
-                    <a class="forget" href="#">Olvide mi contraseña</a>
+                    <a class="forget" href="/nueva-contrasena">Olvide mi contraseña</a>
                     <button type="button" class="btn btnEnter">
                       Entrar &nbsp;
                       <i class="fa fa-sign-in ml-1"></i>

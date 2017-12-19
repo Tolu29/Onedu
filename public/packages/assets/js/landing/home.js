@@ -56,7 +56,7 @@ $(function () {
         nameReg: {required: "Ingresa tu nombre por favor"},
         mailReg: {required: "Ingresa tu mail por favor", email: "Por favor ingresa un correo valido"},
         regPass: {required: "Ingresa tu contraseña por favor"},
-        regPassDup: {required: "Confirma tu  contraseña por favor", equalTo: "Ingresa el mismo valor por favor"}
+        regPassDup: {required: "Confirma tu  contraseña por favor", equalTo: "Al parecer no son los mismos caracteres"}
       }
     });
     if ($("#formRegist").valid()){

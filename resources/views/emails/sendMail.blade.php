@@ -16,7 +16,7 @@
                 <div class="col-md-12">
                     <div class="text-center">
                         <form id="formforget">
-                          <input class="input-alternate inputSend" type="text" name="inputSend" value="" placeholder="Ingresa tu Correo">
+                          <input class="input-alternate inputSend" id="inputMail" type="text" name="inputSend" value="" placeholder="Ingresa tu Correo">
                         </form>
                         <h1 class="h1-reponsive white-text font-up font-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong></strong></h1>
                         <!-- <hr class="hr-light mt-4 wow fadeInDown" data-wow-delay="0.4s"> -->

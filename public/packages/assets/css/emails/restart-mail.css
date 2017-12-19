@@ -1,0 +1,64 @@
+.top-nav-collapse {
+    background-color: #f8bbd0 !important;
+}
+.navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+}
+@media (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #f8bbd0 !important;
+    }
+}
+@media (max-width: 740px) {
+    .full-height,
+    .full-height body,
+    .full-height header,
+    .full-height header .view {
+        height: 700px;
+    }
+}
+
+.view{
+  /* The image used */
+  background-image: url("/packages/assets/img/landing/intro.jpg");
+
+  /* Full height */
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  min-height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contenedor{
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 7px;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 30rem;
+}
+
+.contenedor>form>span>label{
+  color: #ffffff;
+  display: -webkit-box;
+}
+
+.contenedor>form>input{
+  width: 95%;
+}
+
+.password{
+  background-color: #ffffff !important;
+  border-radius: .23rem !important;
+}
+
+#btnSend{
+  background-color: #3e5f8f;
+}
+
+[id*=-error]{
+  display: none !important;
+}

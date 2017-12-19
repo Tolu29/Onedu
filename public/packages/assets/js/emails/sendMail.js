@@ -1,6 +1,7 @@
 $(function(){
 
-  $("body").on('click', '.btnSend', function(){
+  $("body").on('click', '.btnSend', function(e){
+    e.preventDefault();
     $("#formforget").validate({
        rules : {
           inputSend : {required: true,email: true}
@@ -11,10 +12,10 @@ $(function(){
     });
     if ($("#formforget").valid()){
 
-      let data = {}
+      let data = {mail: $("#inputMail").val()}
 
       $.ajax({
-        url: "/",
+        url: "/findMail",
         type: "POST",
         data: data,
         headers: {
@@ -22,8 +23,13 @@ $(function(){
         }
       })
       .done(function(data){
-
+        if (data == 'el mail se ha enviado') {
+          swal("Exelente!", "Te hemos enviado un correo, Sigue las instrucciones para cambiar tu contraseña!", "success")
+        }else {
+          swal("Hay un problema!", "Al parecer el correo que ingresaste no esta registrado!", "warning")
+        }
       });
+
     }else {
       let BreakException = {};
       $.each($("[id*=-error]"),function(i){

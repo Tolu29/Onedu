@@ -8,6 +8,7 @@ use App\User;
 use App\Ciudad;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Welcome as WelcomeEmail;
+use App\Mail\PassWord as ForgetMail;
 use App\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -151,9 +152,36 @@ class LoginController extends Controller
     Auth::loginUsingId($id);
   }
 
+
   function findMail(Request $request){
     $data = $request->all();
-      
+
+    $user = User::where('username', '=', $data['mail'])->first();
+
+    if ($user) {
+      $student = Student::where('user_id', '=', $user->id)->first();
+      Mail::to($user->username, 'jonathan')
+      ->send(new ForgetMail($student->nombre_completo,$user->token));
+      return 'el mail se ha enviado';
+    }else {
+      return 'el mail no existe';
+    }
+
+  }
+
+  function restarMail(Request $req,$token){
+    return view('emails.restart-mail',['token'=>$token]);
+  }
+
+  function restartPassword(Request $request){
+    $data = $request->all();
+    
+    $secret = Hash::make($data['password']);
+    $user = User::where('token', '=', $data['token'])->first();
+    $user->password = $secret;
+    $user->save();
+
+    return 'La contraseña se ha gurdado con exito';
   }
 
 

@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Welcome extends Mailable
+class PassWord extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,13 +16,12 @@ class Welcome extends Mailable
      *
      * @return void
      */
-
     public $name, $token;
     public function __construct($name,$token)
     {
-      //
-      $this->name = $name;
-      $this->token = $token;
+        //
+        $this->name = $name;
+        $this->token = $token;
     }
 
     /**
@@ -32,7 +31,7 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.mail')
+        return $this->view('emails.restart')
         ->from('oneduconfirmacion@gmail.com', 'Onedu')
         ->subject('Bienvenido a ONEDU');
     }
