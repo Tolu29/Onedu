@@ -72,10 +72,6 @@
 
 /*Medias queries*/
 @media all and (max-width: 480px) and (min-width: 1px) {
-  .BtnExit{
-    display: none;
-  }
-
   .baseSearch{
     width: 14rem;
   }
