@@ -4,51 +4,33 @@
 <link rel="stylesheet" href="/packages/assets/css/university/messages.css">
 @stop
 
-@section('content-student')
+@section('content-university')
 <div class="container">
-  <div class="chat">
-    <div class="row z-depth-2">
-      <div class="col-md-9 chat-box">
-        <p class="userMessage">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="uniMessage">dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <div class="messageInputCont">
-          <input type="" name="" value="Escribe tu mensaje..." class="messageInput">
-          <button type="button" class="btn btnSend z-depth-2">Enviar</button>
-        </div>
-      </div>
-      <div class="col-md-3 user-box">
-        <div class="userCont activeUser">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-        <div class="userCont">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-        <div class="userCont">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-        <div class="userCont">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-        <div class="userCont">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-        <div class="userCont">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-        <div class="userCont">
-          <img class="float-right imgUser" src="/packages/assets/img/students/studentPrueba.jpg" alt="">
-          <p class="chatUserName">Hernesto abdul rodriguez zamora</p>
-        </div>
-      </div>
 
+  <div class="row" style="margin-top: 9rem;">
+
+    <div class="col-xs-3 col-sm-9">
+      <div class="msgcontainer-msgs scrollbar scrollbar-primary" id="content-messages" style="height: 55%;background: #ffffff;padding: 1rem;overflow-y:auto;">
+
+      </div>
+      <div class="msgcontainer-input" style="background: #ffffff;height: 15%;padding: 1rem;">
+        <div class="input-group textInput">
+          <input type="text" class="form-control" placeholder="Escribe tu mensaje" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <span class="input-group-addon" id="btn-send">Enviar</span>
+        </div>
+      </div>
     </div>
+    <div class="col-xs-3 col-sm-3">
+      <div class="msgcontainer-list universidadesCard" style="background: #f4c945;height: 70%">
+
+      </div>
+    </div>
+
   </div>
 
 </div>
+@stop
+
+@section('js-plus')
+<script type="text/javascript" src="/packages/assets/js/university/messages.js"></script>
 @stop

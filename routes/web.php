@@ -27,14 +27,6 @@
       return view('emails.sendMail');
   });
 
-  Route::get('/messages', function () {
-      return view('university.messages');
-  });
-
-  Route::get('/student-messages', function () {
-      return view('student.student-messages');
-  });
-
   Route::get("/activar/{token}", 'LoginController@activateStudent');
   Route::get("/restart/{token}", 'LoginController@restarMail');
 
@@ -64,9 +56,9 @@ Route::group(['middleware' => ['auth']], function() {
         return view('student.student-guide');
     });
 
-    // Route::get('/student-messages', function () {
-    //     return view('student.student-messages');
-    // });
+    Route::get('/student-messages', function () {
+        return view('student.student-messages');
+    });
 
     Route::get('/student-news', function () {
         return view('student.student-news');
@@ -125,7 +117,9 @@ Route::group(['middleware' => ['auth']], function() {
         return view('university.updNew');
     });
 
-
+    Route::get('/messages', function () {
+        return view('university.messages');
+    });
 
     Route::get('/newPublications', function () {
         return view('university.newPublications');
@@ -142,6 +136,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/infoNew', 'UniversityController@infoNew');
     Route::post('/updateNew', 'UniversityController@updateNew');
     Route::post('/imgUni', 'UniversityController@imgUni');
+    Route::post('/UniallMessages', 'UniversityController@UniallMessages');
 
     /*
     * FIN rutas UniversityController

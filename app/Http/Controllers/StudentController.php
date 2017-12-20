@@ -309,8 +309,7 @@ class StudentController extends Controller
 
   function schoolInfo(Request $request){
     $data = $request->all();
-    $university = University::where('id', '=', $data['id'])->first();
-    $request->session()->put('uniChat_id', $university->user_id);
+    $request->session()->put('uniChat_id', $data['id']);
     return 'La sesion se ha guardado correctamente';
   }
 
@@ -349,7 +348,8 @@ class StudentController extends Controller
     $universities = University::where('active', '=', 1)->get();
     $messages = DB::table('chat')
     ->where('chat.user_id', '=', $user_id)
-    ->join('universities', 'universities.id', '=', 'chat.universidad_id')->get();
+    ->join('universities', 'universities.id', '=', 'chat.universidad_id')
+    ->select('chat.mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
 
     return response()->json([
       'universidades' => $universities,

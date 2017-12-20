@@ -29,9 +29,9 @@ class="fixed-sn white-skin backColor"
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/publications"> Publicaciones</a>
                 </li>
-                <!-- <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Mensajes</a>
-                </li> -->
+                <li>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/messages">Mensajes</a>
+                </li>
             </ul>
         </li>
         <!--/. Side navigation links -->

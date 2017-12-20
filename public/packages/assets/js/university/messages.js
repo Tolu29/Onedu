@@ -3,7 +3,7 @@ $(function(){
   var $chat = $("#content-messages"), messages = [], universidades = [], id_chat, newMessages = [], idSchools = [];
 
   $.ajax({
-    url: "/allMessages",
+    url: "/UniallMessages",
     type: "POST",
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -35,7 +35,6 @@ $(function(){
 
   $("body").on('click', '#btn-send', function(){
     var message = $("#message").val();
-    console.log(message);
     if(message!==""){
       sendMessage(message);
     }
@@ -74,9 +73,8 @@ function notifications(messages, idSchools){
 }
 
 
-function sendMessage(message){
-  data = {mensaje:message};
-  console.log(data);
+function sendMessage(mensaje){
+  data = {mensaje:mensaje};
   $.ajax({
     url: "/messageSend",
     type: "POST",
