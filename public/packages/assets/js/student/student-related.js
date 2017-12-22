@@ -281,9 +281,8 @@ function addCareers(alpha,color){
 
       swal({
         title: "Hola!!!",
-        text: "Necesitas hacer tu examen de aptitudes para ver esta seccion, Quieres hacer el examen?",
+        text: 'En esta sección podrás tomar un test de intereses profesionales. El test consta de 70 preguntas cortas, con respuestas de "si" y "no". Una vez concluido el examen, podrás ver los grupos profesionales en los que más destacas. También podrás ver una lista de las carreras que se relacionan con ese grupo en particular. Ten en cuenta que sólo podrás hacer el examen una vez y tus resultados quedarán guardados. Te sugerimos que estés en un ambiente tranquilo. ¡Suerte!',
         icon: "warning",
-        buttons: ["No", true],
         dangerMode: true,
       })
       .then((willDelete) => {
