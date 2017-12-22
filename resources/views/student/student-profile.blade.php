@@ -12,7 +12,7 @@
     <div class="col-md-3">
       <div class="jumbotron">
         <div class="info">
-          <a>INFORMACION</a>
+          <a>INFORMACIÓN</a>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@
            <a href="#section-3" class="nav-link waves-effect waves-light landOpt" id="ventajas">Ventajas</a>
          </li>
          <li class="nav-item">
-           <a href="#section-4" class="nav-link waves-effect waves-light landOpt" id="oneduDo">¿Que hacemos?</a>
+           <a href="#section-4" class="nav-link waves-effect waves-light landOpt" id="oneduDo">¿Qué hacemos?</a>
          </li>
          <li class="nav-item">
            <a class="nav-link waves-effect waves-light landOpt" href="#section-5">Registro</a>
@@ -118,7 +118,7 @@
                     <input name="logPass" type="password" class="form-control logInput" id="logPass">
                   </div>
                   <div class="text-right">
-                    <a class="forget" href="/nueva-contrasena">Olvide mi contraseña</a>
+                    <a class="forget" href="/nueva-contrasena">Olvidé mi contraseña</a>
                     <button type="button" class="btn btnEnter">
                       Entrar &nbsp;
                       <i class="fa fa-sign-in ml-1"></i>
@@ -129,7 +129,7 @@
             </div>
             <div class="col-md-6 wow fadeInRight">
               <h1 class="display-2 LandtextShad padH1">Observa todas las posibilidades</h1>
-              <p class="futureOne LandtextShad">Con Onedu Elije la mejor opcion</p>
+              <p class="futureOne LandtextShad">Con Onedu Elige la mejor ópcion</p>
             </div>
         </div>
           <!--/Container to center the content-->
@@ -198,7 +198,7 @@
           </div>
 
           <div class="col-md-6">
-            <h2 class="headSec2">¿No sabes que estudiar? ¡Conoce todas tus posibilidades!</h2>
+            <h2 class="headSec2">¿No sabes qué estudiar? ¡Conoce todas tus posibilidades!</h2>
             <p class="descSec2">Onedu es la nueva forma de escoger tu profesión.</p>
             <p>Todos somos soñadores, pero no todos perseguimos nuestro sueño. En Onedu queremos ser el vínculo entre jóvenes que buscan el éxito a través de una carrera profesional y las universidades que las ofertan. Ven, encuentra tu pasión y alcanza tus sueños.</p>
             <button type="button" class="btn z-depth-2 btnSec2" data-toggle="modal" data-target="#modalLogin">Entrar</button>
@@ -306,7 +306,7 @@
                   <i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i>
                 </span>
                 {{-- <div class="landRegFa"><i class="fa fa-unlock-alt adjustFa text-white" aria-hidden="true"></i></div> --}}
-                <input placeholder="Confirmacion Contraseña" type="password" class="form-control landinputpass" id="regPassDup" name="regPassDup">
+                <input placeholder="Confirmación Contraseña" type="password" class="form-control landinputpass" id="regPassDup" name="regPassDup">
               </div>
               {{-- LandRegInp landinputpass --}}
               <div class="regInputCont input-group">
@@ -350,7 +350,7 @@
 
             <!--First column-->
             <div class="col-md-3 offset-md-1">
-                <h5 class="title"><b>Contácto directo</b></h5>
+                <h5 class="title"><b>Contacto directo</b></h5>
                 <p>Correo Electrónico: Contacto@onedu.com.mx</p>
             </div>
             <!--/.First column-->
@@ -377,7 +377,7 @@
                 <ul class="sideNavStyle">
                     <li>
                       <a class="btn btn-lg fooBtn1" href="#section-5">
-                        Registrarme Grátis
+                        Registrarme Gratis
                       </a>
                     </li>
                     <li>
