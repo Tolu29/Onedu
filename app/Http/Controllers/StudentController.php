@@ -225,7 +225,7 @@ class StudentController extends Controller
     $onedu = University::where('nombre', '=', 'ONEDU')->first();
     $onedu_news = DB::table('noticias')
     ->where('noticias.universidad_id', '=', $onedu->id)
-    ->where('active', '=', 1)
+    ->where('noticias.active', '=', 1)
     ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
     ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
     // return $onedu_news;
