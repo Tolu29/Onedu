@@ -19,7 +19,7 @@ $(function(){
       $("#newsCont").append(
         "<div class='col-md-4'>" +
           "<div class='card contNew'>" +
-            "<img src='/packages/assets/img/universities/logos/" + data.onedu_news[i].logo + "' alt=''>" +
+            "<img src='/packages/assets/img/universities/logos/" + data.onedu_news[i].logo + "' style='background-color:" + data.onedu_news[i].color + "' alt=''>" +
             "<div class='card-body container elip'>" +
               "<p>" + data.onedu_news[i].avance + "</p>" +
             "</div>" +
@@ -41,7 +41,7 @@ $(function(){
         $("#newsCont").append(
           "<div class='col-md-4'>" +
             "<div class='card contNew'>" +
-              "<img src='/packages/assets/img/universities/logos/" + g.logo + "' alt=''>" +
+              "<img src='/packages/assets/img/universities/logos/" + g.logo + "' style='background-color:" + g.color + "' alt=''>" +
               "<div class='card-body container elip'>" +
                 "<p>" + g.avance + "</p>" +
               "</div>" +
@@ -66,8 +66,7 @@ $(function(){
     $id = $(this).data('id');
     $(".firstLevel").fadeOut('slow', function(){
       $('#secondLevelNews').fadeIn('slow', function(){
-        let single = atrib(news, "id", $id)
-        console.log(single);
+        let single = atrib(news, "id", $id);
         $(".newsContent").append(single[0].cuerpo);
       });
     });
