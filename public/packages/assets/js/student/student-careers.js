@@ -91,7 +91,7 @@ $(function(){
     $(".relatedCont").empty();
     $.each(universities, function(i){
       $(".explanationCont").append(
-        "<div class='z-depth-2'>" +
+        "<div class='z-depth-1'>" +
           "<img data-id='" + universities[i].id + "' src='/packages/assets/img/universities/logos/" + universities[i].logo + "'  alt=''>" +
         "</div>"
       );
@@ -130,7 +130,7 @@ $(function(){
     $.each(alphabet, function(i){
 
       $(".relatedCont").append(
-        "<div class='careerNameRelated" + alphabet[i] + "'>" +
+        "<div class='careerNameRelated" + alphabet[i] + " careerNameRelated'>" +
           "<h2 class='colorLetter" + cc + "'>" + alphabet[i] + "</h2>" +
         "</div>"
       )

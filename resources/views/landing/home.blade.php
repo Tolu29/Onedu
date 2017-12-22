@@ -311,7 +311,7 @@
               {{-- LandRegInp landinputpass --}}
               <div class="regInputCont input-group">
                 <span class="input-group-addon landRegFa">
-                  <i class="fa fa-university adjustFa text-white" aria-hidden="true"></i>
+                  <i class="fa fa-caret-right adjustFa text-white" aria-hidden="true"></i>
                 </span>
                 {{-- <div class="landRegFa"><i class="fa fa-university adjustFa text-white" aria-hidden="true"></i></div> --}}
                 <select class="form-control browser-default" id="citiesSelect" style='background-color: #ffffff;'>
