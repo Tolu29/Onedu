@@ -13,7 +13,7 @@
 
   <div class="row wow fisrtLevel">
     <div class="col-md-12">
-      <div class="careersCont z-depth-2">
+      <div class="careersCont z-depth-1">
 
       </div>
 
@@ -27,15 +27,15 @@
 
     <div class="col-md-4 col-sm-4">
       <div class="backSecond">
-        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
+        <button type="button" class="btn back warning-color-dark z-depth-1 red">Regresar</button>
       </div>
     </div>
 
     <div class="col-md-12">
 
-      <div class="available-universities z-depth-2">
+      <div class="available-universities z-depth-1">
         <label>Carreras Disponibles</label>
-          <select class="browser-default">
+          <select class="form-control browser-default">
             <option value="" disabled selected>Escoge una carrera</option>
           </select>
           <label class="text-right" id="currentCarrer">Carrera Actual: </label>
@@ -82,10 +82,10 @@
 
   <div class="row wow hideCareers secondLevel">
     <div class="col-md-12 colExplanation">
-      <div class="explanationCont z-depth-2 container">
+      <div class="explanationCont z-depth-1 container">
 
       </div>
-      <div class="relatedCont z-depth-2 container">
+      <div class="relatedCont z-depth-1 container">
 
       </div>
     </div>
@@ -98,12 +98,12 @@
 
     <div class="col-md-4 col-sm-4">
       <div class="backSecond">
-        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
+        <button type="button" class="btn back warning-color-dark z-depth-1 red">Regresar</button>
       </div>
     </div>
 
     <div class="col-md-12">
-      <div class="schoolInfo z-depth-2">
+      <div class="schoolInfo z-depth-1">
         <img alt="" class="logoUni">
         <div>
           <h2 class="universityName"></h2>
@@ -126,7 +126,7 @@
   <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
-      <div class="schoolOptions z-depth-2">
+      <div class="schoolOptions z-depth-1">
         <div class="row">
 
         </div>
@@ -138,7 +138,7 @@
   <div class="row wow hideCareers thirdLevel">
 
     <div class="col-md-12">
-      <div class="UniOptDescription z-depth-2">
+      <div class="UniOptDescription z-depth-1">
         <div class="row">
           <div class="col-md-4 hideCareers" id="contPlans">
             <div class="namePlans">
@@ -167,12 +167,12 @@
 
     <div class="col-md-4 col-sm-4">
       <div class="backSecond">
-        <button type="button" class="btn back warning-color-dark z-depth-2 red">Regresar</button>
+        <button type="button" class="btn back warning-color-dark z-depth-1 red">Regresar</button>
       </div>
     </div>
 
     <div class="col-md-12">
-      <div class="mapCont z-depth-2">
+      <div class="mapCont z-depth-1">
         <p>Ubicacion de la Institucion</p>
           <div id="map"></div>
       </div>
