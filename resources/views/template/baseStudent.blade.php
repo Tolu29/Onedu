@@ -49,12 +49,12 @@ class="fixed-sn white-skin backColor"
                   <br>
                 </li>
                 <li class="text-center socialNav">
-                  <a href="https://www.facebook.com/OneduOficial/" target="_blank"><i class="fa fa-facebook"></i></a>
-                  <a href="https://www.youtube.com/channel/UCD9brIfPGQ3lyRHEKG2IZ8w/featured" target="_blank"><i class="fa fa-youtube"></i></a>
-                  <a href="https://www.instagram.com/onedu.oficial" target="_blank"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/OneduOficial/" target="_blank"><i class="fa fa-facebook linknet"></i></a>
+                  <a href="https://www.youtube.com/channel/UCD9brIfPGQ3lyRHEKG2IZ8w/featured" target="_blank"><i class="fa fa-youtube linknet"></i></a>
+                  <a href="https://www.instagram.com/onedu.oficial" target="_blank"><i class="fa fa-instagram linknet"></i></a>
                 </li>
                 <li>
-                  <a href="/terms-and-conditions" target="_blank">Terminos y condiciones</a>
+                  <a href="/terms-and-conditions" target="_blank" class="terms">Terminos y condiciones</a>
                 </li>
             </ul>
         </li>

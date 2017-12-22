@@ -69,6 +69,14 @@
   color: #5172a1;
 }
 
+.linknet{
+  padding-top: .7rem;
+}
+
+.terms{
+  color: #fff !important;
+}
+
 
 /*Medias queries*/
 @media all and (max-width: 480px) and (min-width: 1px) {

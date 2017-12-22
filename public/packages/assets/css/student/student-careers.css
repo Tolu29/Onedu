@@ -61,7 +61,7 @@ Carreras
   background-color: #ffffff;
   border-top: 5px solid #f4c945;
   border-radius: .23rem;
-  height: 6.7rem;
+  padding: 1rem;
 }
 
 .backSecond{
@@ -78,9 +78,6 @@ Descripcion de carreras
 
 .available-universities>select{
   outline: none;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
   background-color: transparent;
   border: 2px solid #d1d1d1;
   color: #686868;
@@ -92,8 +89,6 @@ Descripcion de carreras
 .available-universities>label{
   letter-spacing: .5px;
   color: #686868;
-  padding-left: 7rem;
-  margin-top: 1rem;
 }
 
 .jumbotron>div{
@@ -123,6 +118,11 @@ Descripcion de carreras
   box-shadow: none;
   background-color: #eaeaea;
   cursor: pointer;
+  box-sizing: border-box;
+  font-size: .7rem;
+  text-align: center;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .colExplanation{
@@ -132,8 +132,7 @@ Descripcion de carreras
 
 .explanationCont{
   background-color: #ffffff;
-  margin-bottom: 1rem;
-  /*height: 20rem;*/
+  padding: 2rem !important;
 }
 
 .relatedCont{
@@ -142,26 +141,25 @@ Descripcion de carreras
 }
 
 .explanationCont>div{
-  margin-top: 1.7rem;
-  margin-left: 4.39rem;
+  /* margin-top: 1.7rem; */
+  /* margin-left: 1rem; */
   background-color: #ffffff;
   width: 9rem;
   height: 9rem;
   display: inline-block;
-  margin-bottom: .6rem;
+  /* margin-bottom: .6rem; */
+  padding: .5rem;
 }
 
 .explanationCont>div>img{
   width: 100%;
-  margin-bottom: .8rem;
+  /* margin-bottom: .8rem; */
 }
 
 .explanationCont>p{
-  padding-top: 1rem;
-  margin-left: 2rem;
+  /* padding-top: 2rem;
   margin-right: 2rem;
-  text-align: left;
-  font-weight: 500;
+  font-weight: 500; */
 }
 
 /*
@@ -337,4 +335,10 @@ descripcion de escuelas
   .navbar{
     padding-left: 240px !important;
   }
+}
+
+.careerNameRelated{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
 }
