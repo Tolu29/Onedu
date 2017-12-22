@@ -137,6 +137,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/updateNew', 'UniversityController@updateNew');
     Route::post('/imgUni', 'UniversityController@imgUni');
     Route::post('/UniallMessages', 'UniversityController@UniallMessages');
+    Route::post('/Uninotification', 'UniversityController@Uninotification');
 
     /*
     * FIN rutas UniversityController

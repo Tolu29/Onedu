@@ -45,7 +45,7 @@ $(function(){
 
 function notifications(messages, idSchools){
   $.ajax({
-    url: "/notification",
+    url: "/Uninotification",
     type: "POST",
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

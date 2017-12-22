@@ -328,28 +328,34 @@ class StudentController extends Controller
     }
 
     $message = new Chat($data);
-    $message->estatus_user = 0;
+    $message->estatus_user = 1;
     $message->estatus_universidad = 0;
     $message->user_id = $user->id;
-    $message->universidad_id = $chat_id;
+    $message->universidad_id = $data['universidad_id'];
     $message->role = $rol;
     $message->mensaje = $data['mensaje'];
     $message->save();
 
-    return "el mensaje se ha guardado correctamente";
+    return response()->json([
+      'message' => $message,
+      'estatus' => "el mensaje se ha guardado correctamente"
+    ]);
   }
 
 
   function allMessages(Request $request){
     $data = $request->all();
-    $chat_id = $request->session()->get('uniChat_id');
     $user_id = Auth::user()->id;
 
+    if ($request->session()->get('uniChat_id')) {
+      $chat_id = $request->session()->get('uniChat_id');
+    }else {
+      $chat_id = null;
+    }
+
     $universities = University::where('active', '=', 1)->get();
-    $messages = DB::table('chat')
-    ->where('chat.user_id', '=', $user_id)
-    ->join('universities', 'universities.id', '=', 'chat.universidad_id')
-    ->select('chat.mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
+    $messages = Chat::where('chat.user_id', '=', $user_id)
+    ->select('mensaje', 'user_id', 'role', 'id', 'universidad_id')->get();
 
     return response()->json([
       'universidades' => $universities,
@@ -364,12 +370,9 @@ class StudentController extends Controller
     $chat_id = $request->session()->get('uniChat_id');
     $user_id = Auth::user()->id;
 
-    $messages = DB::table('universities')
-    ->where('universities.active', '=', 1)
-    ->join('chat', 'chat.universidad_id', '=', 'universities.id')
-    ->where('chat.user_id', '=', $user_id)
-    ->where('chat.estatus_user', '=', 0)
-    ->select('chat.mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
+    $messages = Chat::where('user_id', '=', $user_id)
+    ->where('estatus_user', '=', 0)
+    ->select('mensaje', 'user_id', 'role', 'id', 'universidad_id')->get();
 
     return $messages;
 

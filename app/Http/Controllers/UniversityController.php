@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\Noticias;
 use App\University;
+use App\Chat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -89,12 +90,11 @@ class UniversityController extends Controller
   //   $request->session()->put('uniChat_id', $university->user_id);
   //   return 'La sesion se ha guardado correctamente';
   // }
-  //
+
   function messageSend(Request $request){
 
     $data = $request->all();
     $user = Auth::user();
-    $chat_id = $request->session()->get('uniChat_id');
 
     $roles = DB::table('user_has_roles')
     ->where('user_id', '=', $user->id)->first();
@@ -106,9 +106,9 @@ class UniversityController extends Controller
 
     $message = new Chat($data);
     $message->estatus_user = 0;
-    $message->estatus_universidad = 0;
-    $message->user_id = $user->id;
-    $message->universidad_id = $chat_id;
+    $message->estatus_universidad = 1;
+    $message->user_id = $data['user_id'];
+    $message->universidad_id = $user->id;
     $message->role = $rol;
     $message->mensaje = $data['mensaje'];
     $message->save();
@@ -125,30 +125,24 @@ class UniversityController extends Controller
     $university = University::where('user_id', '=', $user_id)->first();
     $messages = DB::table('chat')
     ->where('chat.universidad_id', '=', $university->id)->get();
-    // ->join('universities', 'universities.id', '=', 'chat.universidad_id')
 
     return response()->json([
       'mensajes' => $messages
     ]);
   }
-  //
-  //
-  // function notification(Request $request){
-  //   $data = $request->all();
-  //   $chat_id = $request->session()->get('uniChat_id');
-  //   $user_id = Auth::user()->id;
-  //
-  //   $messages = DB::table('universities')
-  //   ->where('universities.active', '=', 1)
-  //   ->join('chat', 'chat.universidad_id', '=', 'universities.id')
-  //   ->where('chat.user_id', '=', $user_id)
-  //   ->where('chat.estatus_user', '=', 0)
-  //   ->select('chat.mensaje', 'universities.nombre', 'universities.id', 'chat.role', 'chat.id as chat_id')->get();
-  //
-  //   return $messages;
-  //
-  // }
-  //
+
+
+  function Uninotification(Request $request){
+    $data = $request->all();
+    $chat_id = $request->session()->get('uniChat_id');
+    $user_id = Auth::user()->id;
+
+    $messages = Chat::where('universidad_id', '=', $chat_id)
+    ->where('estatus_universidad', '=', 0)->get();
+
+    return $messages;
+  }
+
   // function readMessages(Request $request){
   //   $data = $request->all();
   //   $user = Auth::user();
