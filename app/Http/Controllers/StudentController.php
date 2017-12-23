@@ -319,20 +319,12 @@ class StudentController extends Controller
     $user = Auth::user();
     $chat_id = $request->session()->get('uniChat_id');
 
-    $roles = DB::table('user_has_roles')
-    ->where('user_id', '=', $user->id)->first();
-    if ($roles->role_id == 3) {
-      $rol = 'estudiante';
-    }elseif ($roles->role_id == 1) {
-      $rol == 'universidad';
-    }
-
     $message = new Chat($data);
     $message->estatus_user = 1;
     $message->estatus_universidad = 0;
     $message->user_id = $user->id;
     $message->universidad_id = $data['universidad_id'];
-    $message->role = $rol;
+    $message->role = 'estudiante';
     $message->mensaje = $data['mensaje'];
     $message->save();
 
@@ -391,3 +383,11 @@ class StudentController extends Controller
 
 
 // $messages = DB::select("select * from chat where user_id = $user_id and destinatario_id = $chat_id or user_id = $chat_id and destinatario_id = $user_id");
+
+// $roles = DB::table('user_has_roles')
+// ->where('user_id', '=', $user->id)->first();
+// if ($roles->role_id == 3) {
+//   $rol = 'estudiante';
+// }elseif ($roles->role_id == 1) {
+//   $rol == 'universidad';
+// }

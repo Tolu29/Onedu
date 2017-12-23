@@ -91,25 +91,17 @@ class UniversityController extends Controller
   //   return 'La sesion se ha guardado correctamente';
   // }
 
-  function messageSend(Request $request){
-
+  function UnimessageSend(Request $request){
     $data = $request->all();
     $user = Auth::user();
-
-    $roles = DB::table('user_has_roles')
-    ->where('user_id', '=', $user->id)->first();
-    if ($roles->role_id == 3) {
-      $rol = 'estudiante';
-    }elseif ($roles->role_id == 1) {
-      $rol == 'universidad';
-    }
+    $university_id = $request->session()->get('chat_universidad_id');
 
     $message = new Chat($data);
     $message->estatus_user = 0;
     $message->estatus_universidad = 1;
     $message->user_id = $data['user_id'];
-    $message->universidad_id = $user->id;
-    $message->role = $rol;
+    $message->universidad_id = $university_id;
+    $message->role = 'universidad';
     $message->mensaje = $data['mensaje'];
     $message->save();
 
@@ -119,12 +111,14 @@ class UniversityController extends Controller
 
   function UniallMessages(Request $request){
     $data = $request->all();
-    $chat_id = $request->session()->get('uniChat_id');
     $user_id = Auth::user()->id;
+    $chat_id = $request->session()->get('uniChat_id');
 
     $university = University::where('user_id', '=', $user_id)->first();
     $messages = DB::table('chat')
-    ->where('chat.universidad_id', '=', $university->id)->get();
+    ->where('chat.universidad_id', '=', $university->id)
+    ->join('students', 'students.user_id', '=', 'chat.user_id')
+    ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.role', 'students.nombre_completo')->get();
 
     return response()->json([
       'mensajes' => $messages
@@ -134,11 +128,15 @@ class UniversityController extends Controller
 
   function Uninotification(Request $request){
     $data = $request->all();
-    $chat_id = $request->session()->get('uniChat_id');
     $user_id = Auth::user()->id;
 
-    $messages = Chat::where('universidad_id', '=', $chat_id)
-    ->where('estatus_universidad', '=', 0)->get();
+    $university = University::where('user_id', '=', $user_id)->first();
+    $request->session()->put('chat_universidad_id', $university->id);
+    $messages = DB::table('chat')
+    ->where('chat.universidad_id', '=', $university->id)
+    ->where('chat.estatus_universidad', '=', 0)
+    ->join('students', 'students.user_id', '=', 'chat.user_id')
+    ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.role', 'students.nombre_completo')->get();
 
     return $messages;
   }

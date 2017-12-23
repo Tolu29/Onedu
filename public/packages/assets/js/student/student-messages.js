@@ -15,21 +15,22 @@ $(function(){
     if (response.chat_id == null) {
       if (messages == null || messages == "" || messages == undefined) {
         $("#content-messages").html(`<h1 class="waitingInfo">No hay chats abiertos</h1>`);
+        $(".textInput").remove();
         $(".messagesCont").css('width', '97%');
       }else {
         fillUniCards(universidades, messages);
         $(".chatRoom:first-child").trigger('click');
-        getMessagesInterval(messages, idSchools);
+        getMessagesInterval(messages, idSchools,universidad_id);
       }
     }else {
       if (messages == null || messages == "" || messages == undefined) {
         makeUniCard(id_chat, universidades);
         $('*[data-id="' + id_chat + '"]').trigger('click');
-        getMessagesInterval(messages, idSchools);
+        getMessagesInterval(messages, idSchools,universidad_id);
       }else {
         fillUniCards(universidades, messages);
         $('*[data-id="' + id_chat + '"]').trigger('click');
-        getMessagesInterval(messages, idSchools);
+        getMessagesInterval(messages, idSchools,universidad_id);
       }
     }
   });
@@ -65,7 +66,7 @@ $(function(){
 // cierre jquery
 });
 
-function notifications(messages, idSchools){
+function notifications(messages, idSchools, universidad_id){
   $.ajax({
     url: "/notification",
     type: "POST",
@@ -82,6 +83,13 @@ function notifications(messages, idSchools){
         if (single == null) {
           idSchools.push(data[i].id);
           messages.push(data[i]);
+          if (data[i].universidad_id == universidad_id) {
+            $('#content-messages').append(
+              '<div class="col-md-11 universityMessages">'+
+                '<p>'+data[i].mensaje+'</p>'+
+              '</div>'
+            );
+          }
         }
       });
       if (idSchools.length > 0) {
@@ -140,8 +148,8 @@ function faillContentWithMessages(messages){
   $("#content-messages").html(htmlMessages);
 }
 
-function getMessagesInterval(messages,idSchools){
-  setInterval(function(){ notifications(messages, idSchools);}, 5000);
+function getMessagesInterval(messages,idSchools,universidad_id){
+  setInterval(function(){ notifications(messages, idSchools,universidad_id);}, 5000);
 }
 
 function atrib(obj,attr,data){

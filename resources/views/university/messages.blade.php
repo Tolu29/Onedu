@@ -15,8 +15,8 @@
       </div>
       <div class="msgcontainer-input" style="background: #ffffff;height: 15%;padding: 1rem;">
         <div class="input-group textInput">
-          <input type="text" class="form-control" placeholder="Escribe tu mensaje" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <span class="input-group-addon" id="btn-send">Enviar</span>
+          <input type="text" class="form-control" id="message" placeholder="Escribe tu mensaje" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <span class="input-group-addon activeBtn" id="btn-send">Enviar</span>
         </div>
       </div>
     </div>
