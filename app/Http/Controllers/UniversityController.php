@@ -112,9 +112,9 @@ class UniversityController extends Controller
   function UniallMessages(Request $request){
     $data = $request->all();
     $user_id = Auth::user()->id;
-    $chat_id = $request->session()->get('uniChat_id');
 
     $university = University::where('user_id', '=', $user_id)->first();
+    $request->session()->put('chat_universidad_id', $university->id);
     $messages = DB::table('chat')
     ->where('chat.universidad_id', '=', $university->id)
     ->join('students', 'students.user_id', '=', 'chat.user_id')
@@ -129,9 +129,9 @@ class UniversityController extends Controller
   function Uninotification(Request $request){
     $data = $request->all();
     $user_id = Auth::user()->id;
-
+    $chat_id = $request->session()->get('uniChat_id');
     $university = University::where('user_id', '=', $user_id)->first();
-    $request->session()->put('chat_universidad_id', $university->id);
+
     $messages = DB::table('chat')
     ->where('chat.universidad_id', '=', $university->id)
     ->where('chat.estatus_universidad', '=', 0)
