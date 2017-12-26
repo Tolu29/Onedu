@@ -101,7 +101,6 @@ function notifications(messages){
         }
       });
       if (idSchools.length > 0) {
-        console.log(idSchools);
         $.each(idSchools, function(i){
           $('*[data-id="' + idSchools[i] + '"]>div').addClass('newMsg');
         });
@@ -114,6 +113,7 @@ function notifications(messages){
 
 
 function sendMessage(message,uni_id,obj){
+  $("#message").val('');
   data = {mensaje:message, universidad_id:universidad_id};
   $.ajax({
     url: "/messageSend",
@@ -137,8 +137,7 @@ function sendMessage(message,uni_id,obj){
         universidad_id: response.message.universidad_id,
         user_id: response.message.user_id
       }
-      obj.push(single)
-      $("#message").val('');
+      obj.push(single);
       $("#btn-send").removeClass('disabledBtn');
       $("#btn-send").addClass('activeBtn');
     }

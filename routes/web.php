@@ -221,7 +221,7 @@ Route::group(['middleware' => ['auth']], function() {
     //vista mensajes
     Route::post('/adminAllMessages', 'AdministerController@adminAllMessages');
     Route::post('/adminNotification', 'AdministerController@adminNotification');
-    Route::post('/UnimessageSend', 'AdministerController@UnimessageSend');
+    Route::post('/adminMessageSend', 'AdministerController@adminMessageSend');
     /*
     * FIN rutas administerController
     */

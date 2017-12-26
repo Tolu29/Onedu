@@ -105,6 +105,7 @@ function notifications(messages, universidad_id){
 
 
 function sendMessage(message,obj){
+  $("#message").val('');
   data = {mensaje:message, user_id:student_id};
   $.ajax({
     url: "/UnimessageSend",
@@ -128,8 +129,7 @@ function sendMessage(message,obj){
         universidad_id: response.message.universidad_id,
         user_id: response.message.user_id
       }
-      obj.push(single)
-      $("#message").val('');
+      obj.push(single);
       $("#btn-send").removeClass('disabledBtn');
       $("#btn-send").addClass('activeBtn');
     }

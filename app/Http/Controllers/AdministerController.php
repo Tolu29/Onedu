@@ -199,7 +199,7 @@ class AdministerController extends Controller
 
   function updateUniversity(Request $request){
     $data = $request->all();
-        
+
     $validation = Validator::make($data,[
       'id' => 'required',
       'name' => 'required',
@@ -668,7 +668,7 @@ class AdministerController extends Controller
   //   return 'La sesion se ha guardado correctamente';
   // }
 
-  function UnimessageSend(Request $request){
+  function adminMessageSend(Request $request){
     $data = $request->all();
 
     $message = new Chat($data);
