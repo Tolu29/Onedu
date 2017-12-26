@@ -157,10 +157,6 @@ Route::group(['middleware' => ['auth']], function() {
         return view('admin.admin-images');
     });
 
-    // Route::get('/adminUsers', function () {
-    //     return view('admin.adminUsers');
-    // });
-
     Route::get('/careers', function () {
         return view('admin.careers');
     });
@@ -179,6 +175,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/admin-news', function () {
         return view('admin.admin-news');
+    });
+
+    Route::get('/admin-chat', function () {
+        return view('admin.admin-chat');
     });
 
 
