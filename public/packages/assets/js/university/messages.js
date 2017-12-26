@@ -11,7 +11,7 @@ $(function(){
     }
   }).done(function(response){
     messages = response.mensajes;
-    if (messages == null || messages == "" || messages == undefined) {      
+    if (messages == null || messages == "" || messages == undefined) {
       $("#content-messages").html(`<h1 class="waitingInfo">No hay chats abiertos</h1>`);
       $(".textInput").remove();
       $(".messagesCont").css('width', '97%');
@@ -52,6 +52,12 @@ $(function(){
       $("#btn-send").removeClass('activeBtn');
       $("#btn-send").addClass('disabledBtn');
       sendMessage(message,messages);
+    }
+  });
+
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      $("#btn-send").trigger('click');
     }
   });
 

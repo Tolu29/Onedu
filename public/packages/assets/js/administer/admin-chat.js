@@ -30,7 +30,7 @@ $(function(){
     single.addClass('activeCard');
     single.children('div').removeClass('newMsg');
     $("#content-messages").empty();
-    var studentMessages = atrib(messages, "user_id", student_id);
+    var studentMessages = dobleAttr(messages, "user_id", "universidad_id", student_id, universidad_id);
     faillContentWithMessages(studentMessages);
     $chat.scrollTop(($chat.height() + 2000));
   });
@@ -50,10 +50,16 @@ $(function(){
     }
   });
 
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      $("#btn-send").trigger('click');
+    }
+  });
+
 // cierre jquery
 });
 
-function notifications(messages, universidad_id){
+function notifications(messages){
   $.ajax({
     url: "/adminNotification",
     type: "POST",
@@ -70,7 +76,7 @@ function notifications(messages, universidad_id){
         if (single == null) {
           idSchools.push(data[i].user_id);
           messages.push(data[i]);
-          if (data[i].user_id == student_id) {
+          if (data[i].user_id == student_id && data[i].universidad_id == universidad_id) {
             $('#content-messages').append(
               '<div class="col-md-11 universityMessages">'+
                 '<p>'+data[i].mensaje+'</p>'+
@@ -138,8 +144,8 @@ function faillContentWithMessages(messages){
   $("#content-messages").html(htmlMessages);
 }
 
-function getMessagesInterval(messages, universidad_id){
-  setInterval(function(){ notifications(messages, universidad_id);}, 5000);
+function getMessagesInterval(messages){
+  setInterval(function(){ notifications(messages);}, 5000);
 }
 
 function atrib(obj,attr,data){
