@@ -105,7 +105,10 @@ class UniversityController extends Controller
     $message->mensaje = $data['mensaje'];
     $message->save();
 
-    return "el mensaje se ha guardado correctamente";
+    return response()->json([
+      'message' => $message,
+      "estatus" => "el mensaje se ha guardado correctamente"
+    ]);
   }
 
 

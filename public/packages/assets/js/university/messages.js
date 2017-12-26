@@ -24,11 +24,10 @@ $(function(){
 
   $("body").on('click', '.chatRoom', function(){
     student_id = $(this).data('id');
-    console.log(student_id);
     let single = $(this);
     $(".chatRoom").removeClass('activeCard');
     single.addClass('activeCard');
-    single.children('span').removeClass('newMsg');
+    single.children('div').removeClass('newMsg');
     $("#content-messages").empty();
     var studentMessages = atrib(messages, "user_id", student_id);
     // console.log(studentMessages);
@@ -47,7 +46,7 @@ $(function(){
     if(message!==""){
       $("#btn-send").removeClass('activeBtn');
       $("#btn-send").addClass('disabledBtn');
-      sendMessage(message,universidad_id,messages);
+      sendMessage(message,messages);
     }
   });
 
@@ -69,9 +68,9 @@ function notifications(messages, idSchools, universidad_id){
       $.each(data, function(i){
         var single = atrib(messages, 'id', data[i].id);
         if (single == null) {
-          idSchools.push(data[i].id);
+          idSchools.push(data[i].user_id);
           messages.push(data[i]);
-          if (data[i].universidad_id == universidad_id) {
+          if (data[i].user_id == student_id) {
             $('#content-messages').append(
               '<div class="col-md-11 universityMessages">'+
                 '<p>'+data[i].mensaje+'</p>'+
@@ -82,7 +81,9 @@ function notifications(messages, idSchools, universidad_id){
       });
       if (idSchools.length > 0) {
         $.each(idSchools, function(i){
-          $('*[data-id="' + idSchools[i] + '"]>span').addClass('newMsg');
+          if (idSchools[i] != student_id) {
+            $('*[data-id="' + idSchools[i] + '"]>div').addClass('newMsg');
+          }
         });
       }
     }
@@ -91,10 +92,10 @@ function notifications(messages, idSchools, universidad_id){
 }
 
 
-function sendMessage(message,uni_id,obj){
-  data = {mensaje:message, universidad_id: uni_id};
+function sendMessage(message,obj){
+  data = {mensaje:message, user_id:student_id};
   $.ajax({
-    url: "/messageSend",
+    url: "/UnimessageSend",
     type: "POST",
     data:data,
     headers: {
@@ -162,7 +163,7 @@ function fillStudentCards(messages,students){
         "<div class='chatRoom' data-id='" + messages[i].user_id + "'>" +
           "<img src='/packages/assets/img/miscellaneous/logo.png' class='float-right img-fluid' alt=''>" +
           "<p>" + messages[i].nombre_completo + "</p>" +
-          '<span class="sp-alert"></span>' +
+          '<div class="sp-alert"></div>' +
         "</div>"
       );
     }
