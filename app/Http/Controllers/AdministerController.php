@@ -685,14 +685,13 @@ class AdministerController extends Controller
 
 
   function adminAllMessages(Request $request){
-    $data = $request->all();    
+    $data = $request->all();
 
-    $university = University::where('user_id', '=', $user_id)->first();
-    $request->session()->put('chat_universidad_id', $university->id);
-    $messages = DB::table('chat')
-    ->where('chat.universidad_id', '=', $university->id)
-    ->join('students', 'students.user_id', '=', 'chat.user_id')
-    ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.role', 'students.nombre_completo')->get();
+    $messages = University::where('premium', '=', 'falso')
+    ->join('chat', 'chat.universidad_id', '=', 'universities.id')
+    ->join('users', 'users.id', '=', 'chat.user_id')
+    ->join('students', 'students.user_id', '=', 'users.id')
+    ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.universidad_id', 'chat.role', 'students.nombre_completo', 'universities.logo as logo')->get();
 
     return response()->json([
       'mensajes' => $messages
@@ -700,17 +699,15 @@ class AdministerController extends Controller
   }
 
 
-  function Uninotification(Request $request){
+  function adminNotification(Request $request){
     $data = $request->all();
-    $user_id = Auth::user()->id;
-    $chat_id = $request->session()->get('uniChat_id');
-    $university = University::where('user_id', '=', $user_id)->first();
 
-    $messages = DB::table('chat')
-    ->where('chat.universidad_id', '=', $university->id)
-    ->where('chat.estatus_universidad', '=', 0)
-    ->join('students', 'students.user_id', '=', 'chat.user_id')
-    ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.role', 'students.nombre_completo')->get();
+    $messages = University::where('premium', '=', 'falso')
+    ->join('chat', 'chat.universidad_id', '=', 'universities.id')
+    ->where('chat.estatus_universidad', '=', 1)
+    ->join('users', 'users.id', '=', 'chat.user_id')
+    ->join('students', 'students.user_id', '=', 'users.id')
+    ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.universidad_id', 'chat.role', 'students.nombre_completo')->get();
 
     return $messages;
   }

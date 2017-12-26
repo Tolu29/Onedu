@@ -4,7 +4,7 @@ $(function(){
   var $chat = $("#content-messages"), messages = [], students = [], id_chat, newMessages = [], idSchools = [];
 
   $.ajax({
-    url: "/UniallMessages",
+    url: "/adminAllMessages",
     type: "POST",
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -55,7 +55,7 @@ $(function(){
 
 function notifications(messages, idSchools, universidad_id){
   $.ajax({
-    url: "/Uninotification",
+    url: "/adminNotification",
     type: "POST",
     headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -161,7 +161,7 @@ function fillStudentCards(messages,students){
       students.push({user_id:messages[i].user_id})
       $(".universidadesCard").append(
         "<div class='chatRoom' data-id='" + messages[i].user_id + "'>" +
-          "<img src='/packages/assets/img/miscellaneous/logo.png' class='float-right img-fluid' alt=''>" +
+          "<img src='/packages/assets/img/universities/logos/" + messages[i].logo + "' class='float-right img-fluid' alt=''>" +
           "<p>" + messages[i].nombre_completo + "</p>" +
           '<div class="sp-alert"></div>' +
         "</div>"
@@ -170,12 +170,12 @@ function fillStudentCards(messages,students){
   });
 }
 
-function newMessage(message){
+function newMessage(mensaje){
   var htmlMessages = "";
   color = (message.role == "estudiante" ) ? "userMessages" : "universityMessages";
   htmlMessages +=
     '<div class="col-md-11 '+color+'">'+
-      '<p>'+message.mensaje+'</p>'+
+      '<p>'+mensaje+'</p>'+
     '</div>';
   $("#content-messages").html(htmlMessages);
 }
