@@ -16,6 +16,7 @@ use App\Informations;
 use App\CareersUniversities;
 use App\Career;
 use App\Noticias;
+use App\Chat;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -665,14 +666,12 @@ class AdministerController extends Controller
 
   function UnimessageSend(Request $request){
     $data = $request->all();
-    $user = Auth::user();
-    $university_id = $request->session()->get('chat_universidad_id');
 
     $message = new Chat($data);
     $message->estatus_user = 0;
     $message->estatus_universidad = 1;
     $message->user_id = $data['user_id'];
-    $message->universidad_id = $university_id;
+    $message->universidad_id = $data['uni_id'];
     $message->role = 'universidad';
     $message->mensaje = $data['mensaje'];
     $message->save();
@@ -704,7 +703,7 @@ class AdministerController extends Controller
 
     $messages = University::where('premium', '=', 'falso')
     ->join('chat', 'chat.universidad_id', '=', 'universities.id')
-    ->where('chat.estatus_universidad', '=', 1)
+    ->where('chat.estatus_universidad', '=', 0)
     ->join('users', 'users.id', '=', 'chat.user_id')
     ->join('students', 'students.user_id', '=', 'users.id')
     ->select('chat.id', 'chat.mensaje', 'chat.user_id', 'chat.universidad_id', 'chat.role', 'students.nombre_completo')->get();

@@ -1,3 +1,4 @@
+var universidades_id = [];
 $(function(){
 
   var $chat = $("#content-messages"), messages = [], universidades = [], id_chat, newMessages = [], idSchools = [], universidad_id;
@@ -28,6 +29,7 @@ $(function(){
         $('*[data-id="' + id_chat + '"]').trigger('click');
         getMessagesInterval(messages, idSchools,universidad_id);
       }else {
+        makeUniCard(id_chat, universidades);
         fillUniCards(universidades, messages);
         $('*[data-id="' + id_chat + '"]').trigger('click');
         getMessagesInterval(messages, idSchools,universidad_id);
@@ -169,6 +171,7 @@ function fillUniCards(universidades, messages){
   $.each(universidades, function(i){
     var schoolMessages = atrib(messages, "universidad_id", universidades[i].id);
     if (schoolMessages != null) {
+      universidades_id.push(universidades[i]);
       $(".universidadesCard").append(
         "<div class='chatRoom' data-id='" + universidades[i].id + "'>" +
           "<img src='/packages/assets/img/universities/logos/" + universidades[i].logo + "' class='float-right img-fluid' alt=''>" +

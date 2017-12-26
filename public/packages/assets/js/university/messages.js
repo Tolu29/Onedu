@@ -1,7 +1,7 @@
-var student_id;
+var student_id, idSchools = [];
 $(function(){
 
-  var $chat = $("#content-messages"), messages = [], students = [], id_chat, newMessages = [], idSchools = [];
+  var $chat = $("#content-messages"), messages = [], students = [], id_chat, newMessages = [];
 
   $.ajax({
     url: "/UniallMessages",
@@ -11,14 +11,19 @@ $(function(){
     }
   }).done(function(response){
     messages = response.mensajes;
-    if (messages == null || messages == "" || messages == undefined) {
+    if (messages == null || messages == "" || messages == undefined) {      
+      $("#content-messages").html(`<h1 class="waitingInfo">No hay chats abiertos</h1>`);
+      $(".textInput").remove();
+      $(".messagesCont").css('width', '97%');
+    }else if (response.mensajes == "la escuela no es premium") {
+      swal("Lo sentimos!", "No pudes enviar ni recibir mensajes ");
       $("#content-messages").html(`<h1 class="waitingInfo">No hay chats abiertos</h1>`);
       $(".textInput").remove();
       $(".messagesCont").css('width', '97%');
     }else {
       fillStudentCards(messages,students);
       $(".chatRoom:first-child").trigger('click');
-      getMessagesInterval(messages, idSchools,student_id);
+      getMessagesInterval(messages, student_id);
     }
   });
 
@@ -53,7 +58,7 @@ $(function(){
 // cierre jquery
 });
 
-function notifications(messages, idSchools, universidad_id){
+function notifications(messages, universidad_id){
   $.ajax({
     url: "/Uninotification",
     type: "POST",
@@ -85,6 +90,7 @@ function notifications(messages, idSchools, universidad_id){
             $('*[data-id="' + idSchools[i] + '"]>div').addClass('newMsg');
           }
         });
+        idSchools = []
       }
     }
   });
@@ -137,8 +143,8 @@ function faillContentWithMessages(messages){
   $("#content-messages").html(htmlMessages);
 }
 
-function getMessagesInterval(messages,idSchools,universidad_id){
-  setInterval(function(){ notifications(messages, idSchools,universidad_id);}, 5000);
+function getMessagesInterval(messages,universidad_id){
+  setInterval(function(){ notifications(messages,universidad_id);}, 5000);
 }
 
 function atrib(obj,attr,data){

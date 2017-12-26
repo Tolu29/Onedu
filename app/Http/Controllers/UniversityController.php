@@ -116,7 +116,12 @@ class UniversityController extends Controller
     $data = $request->all();
     $user_id = Auth::user()->id;
 
-    $university = University::where('user_id', '=', $user_id)->first();
+    $university = University::where('user_id', '=', $user_id)->first();    
+    if ($university->premium === 'falso') {
+      return response()->json([
+        'mensajes' => "la escuela no es premium"
+      ]);
+    }
     $request->session()->put('chat_universidad_id', $university->id);
     $messages = DB::table('chat')
     ->where('chat.universidad_id', '=', $university->id)
