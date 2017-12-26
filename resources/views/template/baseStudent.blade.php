@@ -40,7 +40,7 @@ class="fixed-sn white-skin backColor"
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-related">Descubre</a>
                 </li>
                 <li>
-                  <a class="collapsible-header waves-effect arrow-r white-text baseFont">Mensajes</a>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-messages">Mensajes</a>
                 </li>
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/student-profile">Perfil</a>

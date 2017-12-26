@@ -38,6 +38,9 @@ class="fixed-sn white-skin backColor"
                 <li>
                   <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/admin-data"> Estudiantes</a>
                 </li>
+                <li>
+                  <a class="collapsible-header waves-effect arrow-r white-text baseFont" href="/admin-chat"> Mensajes</a>
+                </li>
             </ul>
         </li>
         <!--/. Side navigation links -->
