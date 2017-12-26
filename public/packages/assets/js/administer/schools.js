@@ -8,6 +8,10 @@ $(function(){
   $('.uniLvl2').removeClass('schoolHide');
   $('.uniLvl2').hide();
 
+  $(document).ready(function() {
+    $('.mdb-select').material_select();
+  });
+
   $.ajax({
     url: "/allUniversities",
     type: "POST",
@@ -49,6 +53,7 @@ $(function(){
             newUniExt : {required:true,maxlength:4},
             newUniInt : { maxlength:4},
             newUniCol : {required:true},
+            newPremium : {required:true}
 
          },
          messages: {
@@ -60,7 +65,8 @@ $(function(){
           newUniStreet: {required: "Ingresa la calle donde esta ubicada la Universidad"},
           newUniExt: {required: "Ingresa el numero de exterior", maxlength: "Solo puedes agregar maximo 4 caracteres"},
           newUniInt:{maxlength: "Solo puedes agregar maximo 4 caracteres"},
-          newUniCol: {required: "Ingresa la colonia donde esta ubicada la Universidad"}
+          newUniCol: {required: "Ingresa la colonia donde esta ubicada la Universidad"},
+          newPremium: {required: "Selecciona un valor del campo premium"}
         }
       });
       if ($("#formSchool").valid()){
@@ -74,6 +80,8 @@ $(function(){
         formData.append('col', $('#newUniCol').val());
         formData.append('username', $('#newUniUser').val());
         formData.append('password', $('#newUniPass').val());
+        formData.append('premium', $('#newPremium').val());
+
         $.ajax({
           contentType: false,
           processData: false,
@@ -169,7 +177,7 @@ $(function(){
       .done(function(data){
           locationInfo = {
             obj: data.university[0]
-          };          
+          };
           $(".uniLvl1").fadeOut('slow', function(){
             $('.uniLvl2').fadeIn( 'slow' );
           });
@@ -230,6 +238,7 @@ $(function(){
             infoExt : {required:true,maxlength:4},
             infoInt : { maxlength:4},
             infoColonia : {required:true},
+            infoPremium : {required:true}
 
          },
          messages: {
@@ -240,7 +249,8 @@ $(function(){
           infoCalle: {required: "Ingresa la calle donde esta ubicada la Universidad"},
           infoExt: {required: "Ingresa el numero de exterior", maxlength: "Solo puedes agregar maximo 4 caracteres"},
           infoInt:{maxlength: "Solo puedes agregar maximo 4 caracteres"},
-          infoColonia: {required: "Ingresa la colonia donde esta ubicada la Universidad"}
+          infoColonia: {required: "Ingresa la colonia donde esta ubicada la Universidad"},
+          infoPremium: {required: "Selecciona un valor del campo premium"}
         }
       });
       if ($("#updForm").valid()){
@@ -258,6 +268,7 @@ $(function(){
         formData.append('col', $("#infoColonia").val());
         formData.append('username', $("#infoUser").val());
         formData.append('password', $("#infoPass").val());
+        formData.append('premium', $('#infoPremium').val());
 
         $.ajax({
           contentType: false,

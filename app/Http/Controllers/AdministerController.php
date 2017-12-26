@@ -134,6 +134,7 @@ class AdministerController extends Controller
       'col' => 'required',
       'username' => 'required',
       'password' => 'required',
+      'premium' => 'required',
     ]);
     if( $validation->fails()){
       return 'Tenemos un Error';
@@ -166,6 +167,7 @@ class AdministerController extends Controller
       $university->campus = $data['campus'];
       $university->color = $data['color'];
       $university->logo = $NewNameLogo;
+      $university->premium = $data['premium'];
       $university->save();
       $file->move($destinationPath, $NewNameLogo);
 
@@ -197,7 +199,7 @@ class AdministerController extends Controller
 
   function updateUniversity(Request $request){
     $data = $request->all();
-
+        
     $validation = Validator::make($data,[
       'id' => 'required',
       'name' => 'required',
@@ -208,6 +210,7 @@ class AdministerController extends Controller
       'col' => 'required',
       'username' => 'required',
       'infoInput' => 'required',
+      'premium' => 'required',
     ]);
     if( $validation->fails()){
       return 'Tenemos un Error';
@@ -217,6 +220,7 @@ class AdministerController extends Controller
       $university->nombre = $data['name'];
       $university->campus = $data['campus'];
       $university->color = $data['color'];
+      $university->premium = $data['premium'];
       if ($data['infoInput'] != 'no_val108') {
         $file = $data['infoInput'];
         $NewNameLogo = makeRandomName() . "." . $file->getClientOriginalExtension();

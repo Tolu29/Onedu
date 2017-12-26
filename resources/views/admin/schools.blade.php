@@ -91,8 +91,14 @@
               </div>
               <div class="contInput">
                 <label for="">Color</label>
-                <input id="infoColor" name="" type="text" class="input-alternate" disabled>
+                <input id="infoColor" name="" type="text" class="input-alternate jscolor" disabled>
               </div>
+              <label>Premium</label>
+              <select class="mdb-select" id="infoPremium" name="infoPremium">
+                  <option value="" disabled selected>Escoge un valor</option>
+                  <option value="verdadero">verdadero</option>
+                  <option value="falso">falso</option>
+              </select>
             </div>
         </div>
         <div class="card-header contInput" role="tab" id="addressTag">
@@ -310,6 +316,14 @@
                      <input type="text" id="newUniCol" name="newUniCol" class="form-control">
                      <label for="newUniCol">Colonia</label>
                     </div>
+
+                    <label>Premium</label>
+                    <select class="mdb-select" id="newPremium" name="newPremium">
+                        <option value="" disabled selected>Escoge un valor</option>
+                        <option value="verdadero">verdadero</option>
+                        <option value="falso">falso</option>
+                    </select>
+
 
                     <div class="text-center mt-1-half">
                      <button type="button" class="btn mb-2 fornBtnColor btnSend">Registrar <i class="fa fa-send ml-1"></i></button>
