@@ -367,6 +367,8 @@ class StudentController extends Controller
 
     $messages = Chat::where('user_id', '=', $user_id)
     ->where('estatus_user', '=', 0)
+    ->join('universities', 'universities.id', '=', 'chat.universidad_id')
+    ->where('universities.active', '=', 1)
     ->select('mensaje', 'user_id', 'role', 'id', 'universidad_id')->get();
 
     return $messages;
