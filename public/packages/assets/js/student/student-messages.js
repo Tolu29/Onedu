@@ -112,7 +112,7 @@ function notifications(messages){
 }
 
 
-function sendMessage(message,uni_id,obj){
+function sendMessage(message,obj){
   $("#message").val('');
   data = {mensaje:message, universidad_id:universidad_id};
   $.ajax({
