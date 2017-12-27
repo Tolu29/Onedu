@@ -72,7 +72,8 @@ class StudentController extends Controller
     ->where('careers_universities.carrera_id', '=', $data['id'])
     ->join('universities', 'universities.id', '=', 'careers_universities.universidad_id')
     ->where('universities.active', '=', 1)
-    ->join('addresses', 'addresses.id', '=', 'universities.direccion_id')->get();
+    ->join('addresses', 'addresses.id', '=', 'universities.direccion_id')
+    ->select('universities.logo', 'universities.id', 'universities.nombre', 'universities.longitud', 'universities.latitud', 'addresses.calle', 'addresses.colonia')->get();
 
     return response()->json([
       'career' => $career,
