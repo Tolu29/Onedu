@@ -25,6 +25,7 @@ $(function(){
       }
     }else {
       if (messages == null || messages == "" || messages == undefined) {
+        console.log(universidades);
         makeUniCard(id_chat, universidades);
         $('*[data-id="' + id_chat + '"]').trigger('click');
         getMessagesInterval(messages);
@@ -164,6 +165,7 @@ function getMessagesInterval(messages){
 function atrib(obj,attr,data){
   var response=[];
   $.each(obj,function(index,obj,i){
+      console.log(obj[attr]);
     if (obj[attr] == data) {
       response.push(obj);
     }
@@ -191,7 +193,7 @@ function fillUniCards(universidades, messages){
 
 function makeUniCard($id, $universidades){
     card_id = $id;
-    var school = atrib($universidades, "id", $id);
+    var school = atrib($universidades, "id", $id);    
     $(".universidadesCard").append(
       "<div class='chatRoom' data-id='" + school[0].id + "'>" +
         "<img src='/packages/assets/img/universities/logos/" + school[0].logo + "' class='float-right img-fluid' alt=''>" +

@@ -337,7 +337,7 @@ $(function(){
   });
 
 
-  $("body").on('click', '.btnMessage', function(){
+  $("body").on('click', '.btnMessage', function(){    
     let data = {
       id: idChat
     }

@@ -309,8 +309,7 @@ class StudentController extends Controller
 
   function schoolInfo(Request $request){
     $data = $request->all();
-    $id = University::where('user_id', '=', $data['id'])->first();
-    $request->session()->put('uniChat_id', $id);
+    $request->session()->put('uniChat_id', $data['id']);
     return 'La sesion se ha guardado correctamente';
   }
 
