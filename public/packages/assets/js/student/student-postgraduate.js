@@ -55,6 +55,7 @@ $(function(){
       $("#currentCarrer").text("Posgrado actual: "+data.career.nombre)
       infoCareer = data.career;
       related = data.related;
+      universities = data.universities;
       $(".optDescription").trigger('click');
     });
   });

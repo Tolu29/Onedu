@@ -8,12 +8,14 @@
   border-radius: 50%;
   padding: 0;
   width: 10rem;
+  height: 10rem;
   margin-top: 2rem;
   border: 4px solid #ffffff;
-  font-size: 6.5rem;
+  font-size: 5.5rem;
   margin-left: 2rem;
   text-align: center;
-  /*padding-left: 1rem;*/
+  /* padding-left: 1rem; */
+  padding-top: .3rem;
 }
 
 .socialNav>a>i{

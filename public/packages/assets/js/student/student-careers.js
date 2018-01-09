@@ -197,6 +197,7 @@ $(function(){
       $("#currentCarrer").text("Carrera actual: "+data.career.nombre)
       infoCareer = data.career;
       related = data.related;
+      universities = data.universities;
       $(".optDescription").trigger('click');
     });
   });
@@ -337,7 +338,7 @@ $(function(){
   });
 
 
-  $("body").on('click', '.btnMessage', function(){    
+  $("body").on('click', '.btnMessage', function(){
     let data = {
       id: idChat
     }

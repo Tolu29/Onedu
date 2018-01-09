@@ -216,12 +216,13 @@ class StudentController extends Controller
     $likes = Prospectos::where('student_id', '=', $student->id)->get();
     $universities = count($likes);
 
-    for ($i=0; $i < $universities; $i++) {
-      $news[$i] = DB::table('noticias')
-      ->where('noticias.universidad_id', '=', $likes[$i]->universidad_id)
-      ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
-      ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
-    }
+    $onedu = University::where('nombre', '=', 'ONEDU')->first();
+    
+    $news = DB::table('noticias')
+    ->where('noticias.active', '=', 1)
+    ->where('noticias.universidad_id', '!=',  $onedu->id)
+    ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
+    ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
 
     $onedu = University::where('nombre', '=', 'ONEDU')->first();
     $onedu_news = DB::table('noticias')

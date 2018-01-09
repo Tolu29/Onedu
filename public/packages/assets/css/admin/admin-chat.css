@@ -85,9 +85,9 @@
 .universidadesCard>div>p{
   color: #ffffff;
   margin-top: .3rem;
-  margin-right: .5rem;
+  margin-left: .5rem;
   font-weight: 600;
-  text-align: right;
+  text-align: left;
   padding-top: 1rem;
   font-size: .8rem;
   margin-right: 4rem;
@@ -109,7 +109,7 @@
 }
 
 .universidadesCard>div{
-  width: 95%;
+  width: 100%;
   height: 3.5rem;
 }
 
