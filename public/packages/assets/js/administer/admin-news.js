@@ -9,7 +9,7 @@ $(function(){
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   })
-  .done(function(data){
+  .done(function(data){ 
     news = data;
     $.each(data, function(i){
         // news.push(g);

@@ -217,12 +217,12 @@ class StudentController extends Controller
     $universities = count($likes);
 
     $onedu = University::where('nombre', '=', 'ONEDU')->first();
-    
+
     $news = DB::table('noticias')
     ->where('noticias.active', '=', 1)
     ->where('noticias.universidad_id', '!=',  $onedu->id)
     ->join('universities', 'universities.id', '=', 'noticias.universidad_id')
-    ->select('avance', 'noticias.id', 'cuerpo', 'logo', 'color')->get();
+    ->select('noticias.avance', 'noticias.id', 'noticias.cuerpo', 'universities.logo', 'universities.color')->get();
 
     $onedu = University::where('nombre', '=', 'ONEDU')->first();
     $onedu_news = DB::table('noticias')

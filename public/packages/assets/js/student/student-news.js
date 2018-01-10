@@ -36,26 +36,27 @@ $(function(){
 
     $.each(data.news, function(i){
 
-      $.each(data.news[i], function(e,g){
-        news.push(g);
-        $("#newsCont").append(
-          "<div class='col-md-4'>" +
-            "<div class='card contNew'>" +
-              "<img src='/packages/assets/img/universities/logos/" + g.logo + "' alt=''>" +
-              "<div class='card-body container elip'>" +
-                "<p>" + g.avance + "</p>" +
-              "</div>" +
-              "<div class='card-data fooCard' style='background-color:" + g.color + "'>" +
-               "<ul class='viewMore'>" +
-                  "<li><i class='fa fa-play'></i></li>" +
-                  "<li><a href='#' class='read' data-id='" + g.id + "'> Leer</a></li>" +
-               "</ul>" +
-             "</div>" +
+      // news.push(g);
+      $("#newsCont").append(
+        "<div class='col-md-4'>" +
+          "<div class='card contNew'>" +
+            "<img src='/packages/assets/img/universities/logos/" + data.news[i].logo + "' alt=''>" +
+            "<div class='card-body container elip'>" +
+              "<p>" + data.news[i].avance + "</p>" +
             "</div>" +
-          "</div>"
-        );
-
-      });
+            "<div class='card-data fooCard' style='background-color:" + data.news[i].color + "'>" +
+             "<ul class='viewMore'>" +
+                "<li><i class='fa fa-play'></i></li>" +
+                "<li><a href='#' class='read' data-id='" + data.news[i].id + "'> Leer</a></li>" +
+             "</ul>" +
+           "</div>" +
+          "</div>" +
+        "</div>"
+      );
+      // $.each(data.news[i], function(e,g){
+      //
+      //
+      // });
     });
 
   });
