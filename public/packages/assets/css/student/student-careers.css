@@ -223,6 +223,7 @@ descripcion de escuelas
   position: absolute;
   right: 3rem;
   bottom: 1rem;
+  cursor: pointer;
 }
 
 .schoolInfo>div>h2{

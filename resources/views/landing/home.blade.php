@@ -129,7 +129,7 @@
             </div>
             <div class="col-md-6 wow fadeInRight">
               <h1 class="display-2 LandtextShad padH1">Observa todas las posibilidades</h1>
-              <p class="futureOne LandtextShad">Con Onedu Elige la mejor ópcion</p>
+              <p class="futureOne LandtextShad">Con Onedu elige la mejor opción</p>
             </div>
         </div>
           <!--/Container to center the content-->

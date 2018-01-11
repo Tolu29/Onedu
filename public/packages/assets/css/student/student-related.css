@@ -190,6 +190,7 @@ margin-top: 9rem;
   position: absolute;
   right: 3rem;
   bottom: 1rem;
+  cursor: pointer;
 }
 
 .likeUni{

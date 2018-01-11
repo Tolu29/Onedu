@@ -22,6 +22,7 @@
                         <!-- <hr class="hr-light mt-4 wow fadeInDown" data-wow-delay="0.4s"> -->
                         <h5 class="font-up mb-5 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Para poder cambiar tu contraseña introduce tu correo</strong></h5>
                         <a class="btn btn-outline-white wow fadeInDown btnSend" data-wow-delay="0.4s">Enviar</a>
+                        <a class="btn btn-outline-white wow fadeInDown" href="/" data-wow-delay="0.4s">Cancelar</a>
                     </div>
                 </div>
             </div>

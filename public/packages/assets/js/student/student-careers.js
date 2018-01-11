@@ -242,7 +242,7 @@ $(function(){
             addinfo("Acreditación", data.info[i].id);
             break;
           case "admission":
-            addinfo("Admición", data.info[i].id);
+            addinfo("Admisión", data.info[i].id);
             break;
           case "extra_activities":
             addinfo("Actividades Extracurriculares", data.info[i].id);
@@ -255,7 +255,7 @@ $(function(){
             break;
         }
       });
-      $(".infoSelect").trigger('click');
+      $(".planInfo").trigger('click');
     });
     $(".secondLevel").fadeOut('slow', function(){
       $(".thirdLevel").fadeIn('slow');

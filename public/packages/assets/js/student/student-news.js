@@ -52,11 +52,7 @@ $(function(){
            "</div>" +
           "</div>" +
         "</div>"
-      );
-      // $.each(data.news[i], function(e,g){
-      //
-      //
-      // });
+      );      
     });
 
   });

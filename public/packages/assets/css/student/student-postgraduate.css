@@ -172,6 +172,7 @@
   position: absolute;
   right: 3rem;
   bottom: 1rem;
+  cursor: pointer;
 }
 
 .likeUni{
