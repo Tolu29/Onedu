@@ -66,7 +66,7 @@ class LoginController extends Controller
         $user->token = sha1($user->username);
         $user->save();
         $user->assignRole('student');
-        return $user->username;
+        
         Mail::to($user->username, 'ONEDU')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
 
