@@ -78,9 +78,9 @@ class LoginController extends Controller
 
         Mail::to($user->username, 'jonathan')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
-        return 'se hizo';
+
         Auth::loginUsingId($user->id);
-        return "Se ha registrado con exito";
+        return 'Se ha registrado con exito';
 
       }else {
         return "El mail ya existe";
