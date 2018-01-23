@@ -69,7 +69,7 @@ class LoginController extends Controller
 
         Mail::to($user->username, 'jonathan')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
-        
+
         $student = new Student($data);
         $student->nombre_completo = $data['name'];
         $student->active = 0;
@@ -81,6 +81,7 @@ class LoginController extends Controller
 
 
         Auth::loginUsingId($user->id);
+        
         return 'Se ha registrado con exito';
 
       }else {
