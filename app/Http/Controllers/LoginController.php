@@ -67,7 +67,7 @@ class LoginController extends Controller
         $user->save();
         $user->assignRole('student');
 
-        Mail::to($user->username, 'jonathan')
+        Mail::to($user->username, 'ONEDU')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
 
         $student = new Student($data);
@@ -81,7 +81,7 @@ class LoginController extends Controller
 
 
         Auth::loginUsingId($user->id);
-        
+
         return 'Se ha registrado con exito';
 
       }else {
