@@ -78,7 +78,7 @@ class LoginController extends Controller
 
         Mail::to($user->username, 'jonathan')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
-
+        return 'se hizo';
         Auth::loginUsingId($user->id);
         return "Se ha registrado con exito";
 
@@ -175,7 +175,7 @@ class LoginController extends Controller
 
   function restartPassword(Request $request){
     $data = $request->all();
-    
+
     $secret = Hash::make($data['password']);
     $user = User::where('token', '=', $data['token'])->first();
     $user->password = $secret;
