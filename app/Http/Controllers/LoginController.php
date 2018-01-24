@@ -62,7 +62,7 @@ class LoginController extends Controller
         $user = new User($data);
         $user->username = $data['mail'];
         $user->password = $secret;
-        $user->active = 0;
+        $user->active = 1;
         $user->token = sha1($user->username);
         $user->save();
         $user->assignRole('student');
@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         $student = new Student($data);
         $student->nombre_completo = $data['name'];
-        $student->active = 0;
+        $student->active = 1;
         $student->escuela_anterior = $data['school'];
         $student->user_id = $user->id;
         $student->mail = $data['mail'];
