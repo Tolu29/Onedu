@@ -66,7 +66,7 @@ class LoginController extends Controller
         $user->token = sha1($user->username);
         $user->save();
         $user->assignRole('student');
-        
+
         Mail::to($user->username, 'ONEDU')
         ->send(new WelcomeEmail($student->nombre_completo,$user->token));
 
@@ -78,7 +78,6 @@ class LoginController extends Controller
         $student->mail = $data['mail'];
         $mailUser = $student->nombre_completo;
         $student->save();
-
 
         Auth::loginUsingId($user->id);
 
