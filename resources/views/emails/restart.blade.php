@@ -69,7 +69,7 @@
           <p class="welcome">Parece que haz olvidado tu contraseña, para poder asignar una nueva contraseña a tu cuenta en ONEDU por favor presiona el siguiente botón</p>
           <p class="welcome">(Si no haz solicitado esto por favor solo ignora este correo)</p>
 
-          <center><a href="http://localhost:8000/restart/{{$token}}"><div id="confirm" type="button" name="button">Cambiar contraseña</div></a></center>
+          <center><a href="https://www.onedu.com.mx/restart/{{$token}}"><div id="confirm" type="button" name="button">Cambiar contraseña</div></a></center>
 
         </div>
       </div>
