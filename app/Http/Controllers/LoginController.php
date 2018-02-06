@@ -183,7 +183,7 @@ class LoginController extends Controller
     $user->password = $secret;
     $user->save();
 
-    return 'La contraseña se ha gurdado con exito';
+    return 'La contraseña se ha guardado con exito';
   }
 
 

@@ -1,6 +1,6 @@
 $(function(){
 
-  $("body").on('click', '.btnSend', function(e){ 
+  $("body").on('click', '.btnSend', function(e){
     e.preventDefault();
     $("#formforget").validate({
        rules : {

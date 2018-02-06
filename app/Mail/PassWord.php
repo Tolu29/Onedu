@@ -32,7 +32,7 @@ class PassWord extends Mailable
     public function build()
     {
         return $this->view('emails.restart')
-        ->from('oneduconfirmacion@gmail.com', 'Onedu')
+        ->from('Contacto@onedu.com.mx', 'Onedu')
         ->subject('Bienvenido a ONEDU');
     }
 }

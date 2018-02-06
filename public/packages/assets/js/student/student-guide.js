@@ -5,7 +5,7 @@ $(function() {
 
   const myQuestions = [
     {
-      question: "Me gusta Contruir, arreglar, montar...herramientas, objetos?",
+      question: "Me gusta construir, arreglar, montar... herramientas, objetos?",
       answers: {
         si: "mecanicos",
         no: "No",
@@ -13,7 +13,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria dedicarme a la enseñanza de niños y niñas, jovenes, adultos?",
+      question: "Me gustaría dedicarme a la enseñanza de niños y niñas, jóvenes, adultos?",
       answers: {
         si: "sociales",
         no: "No",
@@ -21,7 +21,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Considero la economia un aspecto muy importante para la vida y para la sociendad?",
+      question: "Considero la economía un aspecto muy importante para la vida y para la sociedad?",
       answers: {
         si: "relacionales",
         no: "No",
@@ -29,7 +29,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria aprender a tocar un instrumento musical?",
+      question: "Me gustaría aprender a tocar un instrumento musical?",
       answers: {
         si: "artisticos",
         no: "No",
@@ -37,7 +37,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me apuntaria a visitar el museo de la ciencia?",
+      question: "Me apuntaría a visitar el museo de la ciencia?",
       answers: {
         si: "cientificos",
         no: "No",
@@ -45,7 +45,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Colaboraria en campañas destinadas a ayudar a personas marginadas?",
+      question: "Colaboraría en campañas destinadas a ayudar a personas marginadas?",
       answers: {
         si: "sociales",
         no: "No",
@@ -53,7 +53,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Dirigiria un negocio propio: tienda, restaurante, etc.?",
+      question: "Dirigiría un negocio propio: tienda, restaurante, etc.?",
       answers: {
         si: "relacionales",
         no: "No",
@@ -61,7 +61,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria el mismo tipo y ritmo de trabajo cada dia?",
+      question: "Me gusta el mismo tipo y ritmo de trabajo cada día?",
       answers: {
         si: "administrativo",
         no: "No",
@@ -69,7 +69,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria intentar arreglar los electrodomesticos que se estropean?",
+      question: "Me gustaría intentar arreglar los pequeños electrodomésticos que se estropean en casa?",
       answers: {
         si: "mecanicos",
         no: "No",
@@ -77,7 +77,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gusta analizar el por que de las cosas?",
+      question: "Me gusta analizar el porque de las cosas?",
       answers: {
         si: "cientificos",
         no: "No",
@@ -85,7 +85,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria estudiar la flora y la fauna de diferentes lugares?",
+      question: "Me gustaría estudiar la flora y la fauna de diferentes lugares?",
       answers: {
         si: "aire_libre",
         no: "No",
@@ -93,7 +93,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria formar parte de una compañia de teatro?",
+      question: "Me gustaría formar parte de una compañía de teatro?",
       answers: {
         si: "artisticos",
         no: "No",
@@ -101,7 +101,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Asistiria a una conferencia de salud y deporte?",
+      question: "Asistiría a una conferencia sobre salud y deporte?",
       answers: {
         si: "aire_libre",
         no: "No",
@@ -109,7 +109,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me interesaria un trabajo en el que tuviera un contacto con la gente?",
+      question: "Me interesaría un trabajo en el que tuviera un contacto con la gente?",
       answers: {
         si: "relacionales",
         no: "No",
@@ -117,7 +117,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaria seleccionar y dirigir a los trabajadores de una empresa?",
+      question: "Me gustaría seleccionar y dirigir a los trabajadores de una empresa?",
       answers: {
         si: "relacionales",
         no: "No",
@@ -125,7 +125,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Trabajaria en un taller mecanico?",
+      question: "Trabajaría en un taller mecánico?",
       answers: {
         si: "mecanicos",
         no: "No",
@@ -141,7 +141,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me lo pasaría bien recibiendo mensajes telefónicos en una oficina ?",
+      question: "Me lo pasaría bien recibiendo mensajes telefónicos en una oficina?",
       answers: {
         si: "administrativo",
         no: "No",
@@ -149,7 +149,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaría encargarme de una caja registradora ?",
+      question: "Me gustaría encargarme de una caja registradora?",
       answers: {
         si: "administrativo",
         no: "No",
@@ -157,7 +157,7 @@ $(function() {
       correctAnswer: ""
     },
     {
-      question: "Me gustaría cuidar a personas enfermas –o animales heridos ?",
+      question: "Me gustaría cuidar a personas enfermas o animales heridos?",
       answers: {
         si: "sociales",
         no: "No",

@@ -22,7 +22,7 @@ $(function(){
         }
       })
       .done(function(data){
-        if (data == "La contraseña se ha gurdado con exito") {
+        if (data == "La contraseña se ha guardado con exito") {
           swal("Excelente!", "Tu contraseña se ha actualizad con exito!", "success");
           window.location.href = '/';
         }
