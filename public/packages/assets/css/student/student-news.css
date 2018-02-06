@@ -67,6 +67,16 @@ p{
 }
 
 
+@media screen and (max-width: 736px) and (min-width: 1px){
+  img{
+    width: 100%;
+  }
+
+  .viewMore{
+    width: 532px;
+  }
+}
+
 /*media querys*/
 
 @media screen and (max-width: 1024px) and (min-width: 769px){
@@ -115,6 +125,7 @@ p{
   p{
     font-size: 1.2rem;
   }
+
 }
 
 
@@ -142,6 +153,7 @@ p{
     margin-top: 4.8rem
   }
 
+
 }
 
 @media screen and (max-width: 320px) and (min-width: 2px){
@@ -159,4 +171,5 @@ p{
   .fooCard{
     margin-top: 1.8rem
   }
+
 }
