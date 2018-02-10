@@ -87,7 +87,7 @@
             <div class="modal-footer">
                 <div class="options text-center text-md-right mt-1">
                     {{-- <p>No eres Miembro <a href="#" id="modalRegister">Registrate</a></p> --}}
-                    {{-- <p>Olvidaste tu <a href="#">Contraseña?</a></p> --}}
+                     <p>Olvidaste tu <a href="/nueva-contrasena">Contraseña?</a></p>
                 </div>
                 {{-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" style="color: #5172a1 !important; border-color: #5172a1;" data-dismiss="modal">Cerrar <i class="fa fa-times-circle ml-1"></i></button> --}}
             </div>

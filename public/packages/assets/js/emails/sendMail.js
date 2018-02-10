@@ -24,7 +24,7 @@ $(function(){
       })
       .done(function(data){
         if (data == 'el mail se ha enviado') {
-          swal("Exelente!", "Te hemos enviado un correo, Sigue las instrucciones para cambiar tu contraseña!", "success")
+          swal("Excelente!", "Te hemos enviado un correo, Sigue las instrucciones para cambiar tu contraseña!", "success")
         }else {
           swal("Hay un problema!", "Al parecer el correo que ingresaste no esta registrado!", "warning")
         }
