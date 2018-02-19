@@ -26,6 +26,7 @@ $(function () {
   $("body").on('change', '#citiesSelect', function(){
     $id = $(this).find(':selected').data('id');
     let schools = atrib(high_Schools,"ciudad_id",$id);
+    $("#contCities").empty();
     $("#contCities").append(
       "<div class='landRegFa' style='text-align: center; box-sizing: border-box;padding-top: .6rem;'><i class='fa fa-university adjustFa text-white' aria-hidden='true'></i></div>" +
         "<select class='browser-default LandRegInp form-control' id='schoolsSelect' style='background-color: #ffffff;'>" +
