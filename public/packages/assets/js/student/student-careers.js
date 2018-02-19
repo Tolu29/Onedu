@@ -186,7 +186,7 @@ $(function(){
     }
 
     $.ajax({
-      url: "/getSelectCareer",
+      url: "/getSelectCareer", 
       type: "POST",
       data: data,
       headers: {
