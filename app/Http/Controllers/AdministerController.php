@@ -627,10 +627,15 @@ class AdministerController extends Controller
 
   function downloadExcel(Request $request){
     $data = $request->all();
-
-    $students = Student::where('id', '=', $data['school'])
-    ->whereBetween('created_at', [$data['iniDate'],$data['finDate']])->get();
-    return $students;
+    if ($data['school'] == 'all') {
+      $students = Student::where('active', '=', 1)
+      ->whereBetween('created_at', [$data['iniDate'],$data['finDate']])->get();
+      return $students;
+    }else {
+      $students = Student::where('id', '=', $data['school'])
+      ->whereBetween('created_at', [$data['iniDate'],$data['finDate']])->get();
+      return $students;
+    }
   }
 
   //=================================//

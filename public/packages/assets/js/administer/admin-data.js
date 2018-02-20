@@ -1,6 +1,6 @@
 $(function(){
 
-  var highSchools = [];
+  var highSchools = [], citie_id;
 
   var picker = new Pikaday({
     field: document.getElementById('inicialDate'),
@@ -60,11 +60,15 @@ $(function(){
 
 
   $("body").on('change', '#city_select', function(){
-    $id = $("#city_select").val()
+    citie_id = $("#city_select").val();
+    $id = $("#city_select").val();
     let schools = atrib(highSchools, "ciudad_id", $id);
     $("#highSchool_select").empty();
     $(".schoolHide").removeClass('admD-hide');
-    $("#highSchool_select").append("<option value='' disabled selected>Selecciona una preparatoria</option>");
+    $("#highSchool_select").append(
+      "<option value='' disabled selected>Selecciona una preparatoria</option>" +
+      "<option value='all'>Todas</option>"
+    );
     $.each(schools, function(i){
       $("#highSchool_select").append('<option value="' + highSchools[i].id + '">' + highSchools[i].nombre + '</option>')
     });
@@ -88,6 +92,7 @@ $(function(){
     });
     if ($("#formExcel").valid()){
       let data = {
+        citie: citie_id,
         school: $("#highSchool_select").val(),
         iniDate: $("#inicialDate").val(),
         finDate: $("#finalDate").val()
@@ -112,7 +117,7 @@ $(function(){
             "</tr>"
           )
 
-          if (exLength === (i+1)) {            
+          if (exLength === (i+1)) {
             //getting data from our table
             var data_type = 'data:application/vnd.ms-excel';
             var table_div = document.getElementById('table_wrapper');
